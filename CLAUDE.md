@@ -48,13 +48,46 @@ Antes de modificar:
 4. Verifica rutas.
 5. No toques index.html salvo que se pida expresamente.
 
+## Carpeta de trabajo
+
+La carpeta raíz del proyecto es:
+
+```
+/Users/javidel/Library/CloudStorage/GoogleDrive-deljavierher@gmail.com/Mi unidad/EsarIA
+```
+
+- Trabaja siempre dentro de esta carpeta.
+- No modifiques archivos fuera de ella.
+
 ## Web
 
 - La landing principal está en index.html.
-- No modificar index.html salvo petición explícita.
+- Puedes modificar index.html cuando el usuario lo pida explícitamente.
 - No rediseñar la landing si solo se pide corregir logo, responsive, rutas o enlaces.
 - Mantener estilo B2B limpio, sobrio y profesional.
 - Evitar estética cyberpunk, robots, cerebros, bombillas, engranajes o circuitos exagerados.
+
+## Publicación en la web — flujo obligatorio
+
+Después de cualquier modificación de index.html:
+
+1. NO hagas commit ni push automáticamente.
+2. Muestra un resumen corto de los cambios realizados.
+3. Pregunta exactamente:
+   "¿Quieres que publique estos cambios en la web pública?"
+4. Solo si el usuario responde afirmativamente (sí, publica, adelante, confirmo), ejecuta:
+
+```bash
+git status
+git add .
+git commit -m "update website"
+git push
+```
+
+5. Tras el push, indica:
+   "Cloudflare Pages actualizará https://esaria.es automáticamente en unos segundos."
+
+Este flujo es obligatorio. No lo omitas aunque el cambio sea pequeño.
 
 ## Marca
 
