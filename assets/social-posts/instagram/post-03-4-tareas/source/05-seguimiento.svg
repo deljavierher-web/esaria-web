@@ -1,0 +1,41 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="1350" fill="#6D5EF3"/>
+
+  <!-- Number -->
+  <text x="80" y="160" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="100" font-weight="800" fill="#6D5EF3">4.</text>
+
+  <!-- Headline -->
+  <text x="80" y="260" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="56" font-weight="800" fill="#FFFFFF">Seguimiento de clientes</text>
+  <text x="80" y="326" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="56" fill="#FFFFFF">que no vuelven</text>
+
+  <!-- Divider -->
+  <rect x="80" y="380" width="920" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Body -->
+  <text x="80" y="460" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" fill="#94A3B8">Ese cliente que hace meses</text>
+  <text x="80" y="514" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" fill="#94A3B8">no aparece.</text>
+  <text x="80" y="582" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" fill="#94A3B8">Ese recordatorio que siempre</text>
+  <text x="80" y="636" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" fill="#94A3B8">queda para luego.</text>
+
+  <!-- Accent -->
+  <text x="80" y="740" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" fill="#FFFFFF">Se puede programar un mensaje</text>
+  <text x="80" y="794" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" fill="#FFFFFF">automático tras X tiempo</text>
+  <text x="80" y="848" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" font-weight="700" fill="#6D5EF3">sin actividad.</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Logo dark version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

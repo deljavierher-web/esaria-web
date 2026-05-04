@@ -1,0 +1,86 @@
+<svg viewBox="0 0 1584 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EsarIA banner LinkedIn">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap');
+    </style>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0F172A"/>
+      <stop offset="60%"  stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <radialGradient id="accent-glow" cx="78%" cy="42%" r="42%">
+      <stop offset="0%" stop-color="#6D5EF3" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1584" height="396" fill="url(#bg-grad)"/>
+  <rect width="1584" height="396" fill="url(#accent-glow)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1584" height="3" fill="#6D5EF3" opacity="0.7"/>
+
+  <!-- Zona izquierda libre (x=0 a x=420) — sin contenido importante -->
+
+  <!-- Separador sutil en borde de zona segura -->
+  <line x1="448" y1="48" x2="448" y2="348" stroke="#FFFFFF" stroke-width="1" opacity="0.04"/>
+
+  <!-- ICONO — empieza en x=468, zona segura -->
+  <g transform="translate(468, 124) scale(3)">
+    <rect x="2" y="7"    width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    <rect x="2" y="17.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+    <circle cx="33" cy="20" r="5" fill="#6D5EF3"/>
+    <rect x="2" y="28"   width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- WORDMARK -->
+  <text
+    x="608" y="212"
+    font-family="'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="72"
+    font-weight="800"
+    letter-spacing="-1.5"
+  >
+    <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+  </text>
+
+  <!-- Divider -->
+  <rect x="468" y="252" width="860" height="1.5" fill="#FFFFFF" opacity="0.1"/>
+
+  <!-- Tagline principal -->
+  <text
+    x="468" y="290"
+    font-family="'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="22"
+    font-weight="600"
+    fill="#CBD5E1"
+    letter-spacing="0.2"
+  >Automatización útil para negocios reales</text>
+
+  <!-- Tagline secundario -->
+  <text
+    x="468" y="326"
+    font-family="'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="17"
+    font-weight="400"
+    fill="#475569"
+    letter-spacing="0.3"
+  >IA práctica para pequeñas empresas</text>
+
+  <!-- DECORACIÓN DERECHA — anillos geométricos -->
+  <circle cx="1450" cy="198" r="170" fill="none" stroke="#6D5EF3" stroke-width="1" opacity="0.06"/>
+  <circle cx="1450" cy="198" r="105" fill="none" stroke="#6D5EF3" stroke-width="1" opacity="0.09"/>
+  <circle cx="1450" cy="198" r="50"  fill="none" stroke="#6D5EF3" stroke-width="2" opacity="0.12"/>
+
+  <!-- Nodos -->
+  <circle cx="1450" cy="28"  r="5" fill="#6D5EF3" opacity="0.28"/>
+  <circle cx="1556" cy="130" r="4" fill="#6D5EF3" opacity="0.22"/>
+  <circle cx="1524" cy="348" r="5" fill="#6D5EF3" opacity="0.28"/>
+  <circle cx="1310" cy="308" r="3" fill="#6D5EF3" opacity="0.18"/>
+
+  <!-- Líneas conectoras -->
+  <line x1="1450" y1="28"  x2="1556" y2="130" stroke="#6D5EF3" stroke-width="1" opacity="0.09"/>
+  <line x1="1556" y1="130" x2="1524" y2="348" stroke="#6D5EF3" stroke-width="1" opacity="0.09"/>
+  <line x1="1450" y1="28"  x2="1310" y2="308" stroke="#6D5EF3" stroke-width="1" opacity="0.07"/>
+</svg>

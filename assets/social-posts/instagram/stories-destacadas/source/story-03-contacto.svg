@@ -1,0 +1,42 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1920" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="1920" fill="#6D5EF3"/>
+
+  <!-- Label chip -->
+  <rect x="215" y="170" width="650" height="64" rx="32" fill="none" stroke="#6D5EF3" stroke-width="2"/>
+  <text x="540" y="213" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="32" font-weight="600" fill="#FFFFFF">¿Por dónde empezar?</text>
+
+  <!-- Headline -->
+  <text x="540" y="420" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF">Cuéntanos qué tarea</text>
+  <text x="540" y="502" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="68" fill="#FFFFFF">te quita más tiempo.</text>
+
+  <!-- Divider -->
+  <rect x="60" y="570" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Body -->
+  <text x="540" y="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="48" fill="#94A3B8">Te decimos si tiene sentido</text>
+  <text x="540" y="710" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="48" fill="#94A3B8">automatizarla.</text>
+
+  <!-- Big CTA -->
+  <text x="540" y="860" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="64" font-weight="800" fill="#6D5EF3">Escríbenos por DM</text>
+
+  <!-- Thin note -->
+  <text x="540" y="960" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#64748B">Sin coste. Sin compromiso.</text>
+  <text x="540" y="1060" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="36" font-weight="700" fill="#FFFFFF">EsarIA</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1820" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Logo reel dark version -->
+  <g transform="translate(447, 1838) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

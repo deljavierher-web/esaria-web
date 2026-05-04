@@ -1,0 +1,44 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="1350" fill="#6D5EF3"/>
+
+  <!-- Headline -->
+  <text x="540" y="200" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="74" font-weight="800" fill="#FFFFFF">¿Cuántas citas</text>
+  <text x="540" y="286" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="74" font-weight="800" fill="#FFFFFF">gestionas a la semana?</text>
+
+  <!-- Divider -->
+  <rect x="60" y="360" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Body text -->
+  <text x="540" y="440" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#94A3B8">Imagina que cada cita te lleva 10–15 min</text>
+  <text x="540" y="492" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#94A3B8">entre confirmación, recordatorio</text>
+  <text x="540" y="544" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#94A3B8">y gestión de cancelaciones.</text>
+
+  <!-- Accent box -->
+  <rect x="80" y="610" width="920" height="170" rx="16" fill="#6D5EF3" fill-opacity="0.12" stroke="#6D5EF3" stroke-width="1.5"/>
+  <text x="540" y="678" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#FFFFFF">Con 20 citas semanales, eso podría ser</text>
+  <text x="540" y="736" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" font-weight="800" fill="#6D5EF3">más de 3 horas que desaparecen.</text>
+
+  <!-- Note -->
+  <text x="540" y="840" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="28" fill="#64748B">(Ejemplo ilustrativo — depende de cada negocio)</text>
+
+  <!-- Spacer text -->
+  <text x="540" y="960" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="34" fill="#94A3B8">Esas horas podrían dedicarse</text>
+  <text x="540" y="1004" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="34" fill="#94A3B8">a lo que realmente importa.</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Logo dark version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

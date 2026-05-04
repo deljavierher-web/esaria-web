@@ -1,0 +1,10 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EsarIA icono (sobre fondo oscuro)">
+  <!-- Top bar -->
+  <rect x="2" y="7" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+  <!-- Middle bar (shorter) -->
+  <rect x="2" y="17.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+  <!-- Accent node -->
+  <circle cx="33" cy="20" r="5" fill="#6D5EF3"/>
+  <!-- Bottom bar -->
+  <rect x="2" y="28" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+</svg>

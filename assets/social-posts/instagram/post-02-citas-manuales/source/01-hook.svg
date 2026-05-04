@@ -1,0 +1,36 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="1350" fill="#6D5EF3"/>
+
+  <!-- Main headline -->
+  <text x="540" y="280" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="80" font-weight="800" fill="#FFFFFF">Gestionas las citas</text>
+  <text x="540" y="372" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="80" font-weight="800" fill="#FFFFFF">por WhatsApp.</text>
+  <text x="540" y="500" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="68" fill="#94A3B8">Las apuntas a mano.</text>
+  <text x="540" y="578" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="60" fill="#64748B">Mandas los recordatorios tú mismo.</text>
+
+  <!-- Thin divider -->
+  <rect x="60" y="660" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Highlighted text -->
+  <text x="540" y="740" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#6D5EF3">Esto le pasa a muchos negocios.</text>
+  <text x="540" y="792" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#FFFFFF">Tiene solución.</text>
+
+  <!-- Slide indicator -->
+  <text x="940" y="1150" text-anchor="end" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="30" fill="#64748B">Desliza →</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Logo dark version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

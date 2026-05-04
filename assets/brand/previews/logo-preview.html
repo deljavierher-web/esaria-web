@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EsarIA — Preview de Logo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0F172A; --accent: #6D5EF3; --bg: #F8FAFC;
+      --border: #E2E8F0; --muted: #64748B; --text: #1E293B;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 48px 0; }
+    .page { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+    h1 { font-size: 1.75rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; letter-spacing: -0.04em; }
+    h1 span { color: var(--accent); }
+    .subtitle { font-size: 0.9rem; color: var(--muted); margin-bottom: 48px; }
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--muted); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+    .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .preview-box {
+      border-radius: 12px; padding: 40px 32px;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+    }
+    .preview-box.light { background: #FFFFFF; border: 1px solid var(--border); }
+    .preview-box.soft  { background: #F1F5F9; border: 1px solid var(--border); }
+    .preview-box.dark  { background: var(--dark); }
+    .preview-box.accent { background: var(--accent); }
+    .preview-label {
+      font-size: 0.72rem; font-weight: 600; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px;
+    }
+    .preview-box.dark  .preview-label { color: #475569; }
+    .preview-box.accent .preview-label { color: rgba(255,255,255,0.6); }
+    img { max-width: 100%; height: auto; display: block; }
+    .logo-size-sm { height: 28px; }
+    .logo-size-md { height: 40px; }
+    .logo-size-lg { height: 56px; }
+    .logo-size-xl { height: 72px; }
+
+    .mono-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    .single-box {
+      background: #FFFFFF; border: 1px solid var(--border); border-radius: 12px;
+      padding: 40px 32px; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .single-box.dark { background: var(--dark); }
+    .icon-demo { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .icon-demo img { width: 64px; height: 64px; }
+    .icon-demo span { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+    .size-demo { display: flex; align-items: center; gap: 20px; padding: 24px 32px; background: #fff; border: 1px solid var(--border); border-radius: 12px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <h1>Esar<span>IA</span> — Logo Preview</h1>
+  <p class="subtitle">Variantes del logo horizontal · Wordmark · Isotipo</p>
+
+  <!-- LOGO HORIZONTAL -->
+  <div class="section">
+    <p class="section-title">Logo horizontal — fondos claro y oscuro</p>
+    <div class="preview-grid">
+      <div class="preview-box light">
+        <img src="../logo/esaria-logo-horizontal.svg" class="logo-size-lg" alt="Logo standard"/>
+        <span class="preview-label">Estándar — sobre fondo claro</span>
+      </div>
+      <div class="preview-box dark">
+        <img src="../logo/esaria-logo-horizontal-dark.svg" class="logo-size-lg" alt="Logo oscuro"/>
+        <span class="preview-label" style="color:#475569">Sobre fondo oscuro</span>
+      </div>
+      <div class="preview-box soft">
+        <img src="../logo/esaria-logo-horizontal.svg" class="logo-size-lg" alt="Logo soft"/>
+        <span class="preview-label">Sobre fondo gris suave</span>
+      </div>
+      <div class="preview-box light" style="background:#EEF2FF; border-color:#C7D2FE;">
+        <img src="../logo/esaria-logo-horizontal.svg" class="logo-size-lg" alt="Logo accent bg"/>
+        <span class="preview-label">Sobre fondo de acento suave</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAMAÑOS -->
+  <div class="section">
+    <p class="section-title">Tamaños recomendados</p>
+    <div class="size-demo">
+      <div class="icon-demo">
+        <img src="../logo/esaria-logo-horizontal.svg" class="logo-size-sm" alt="sm"/>
+        <span>28px — Footer</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../logo/esaria-logo-horizontal.svg" class="logo-size-md" alt="md"/>
+        <span>40px — Header web</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../logo/esaria-logo-horizontal.svg" class="logo-size-lg" alt="lg"/>
+        <span>56px — Portadas</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../logo/esaria-logo-horizontal.svg" class="logo-size-xl" alt="xl"/>
+        <span>72px — Presentaciones</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORDMARK -->
+  <div class="section">
+    <p class="section-title">Wordmark solo</p>
+    <div class="preview-grid">
+      <div class="preview-box light">
+        <img src="../logo/esaria-wordmark.svg" class="logo-size-lg" alt="Wordmark"/>
+        <span class="preview-label">Wordmark estándar</span>
+      </div>
+      <div class="preview-box light">
+        <img src="../logo/esaria-wordmark-mono.svg" class="logo-size-lg" alt="Wordmark mono"/>
+        <span class="preview-label">Wordmark monocromo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ICONO / ISOTIPO -->
+  <div class="section">
+    <p class="section-title">Isotipo — variantes</p>
+    <div class="single-box">
+      <div class="icon-demo">
+        <img src="../icon/esaria-icon.svg" alt="Icon standard"/>
+        <span>Estándar</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../icon/esaria-icon-mono.svg" alt="Icon mono"/>
+        <span>Monocromo</span>
+      </div>
+    </div>
+    <div class="single-box dark" style="margin-top:12px;">
+      <div class="icon-demo">
+        <img src="../icon/esaria-icon-dark.svg" alt="Icon dark"/>
+        <span style="color:#475569">Para fondo oscuro</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../icon/esaria-icon-light.svg" alt="Icon light"/>
+        <span style="color:#475569">Con fondo blanco</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAVICON -->
+  <div class="section">
+    <p class="section-title">Favicon</p>
+    <div class="single-box" style="gap:32px;">
+      <div class="icon-demo">
+        <img src="../favicon/favicon.svg" style="width:16px;height:16px;" alt="16px"/>
+        <span>16px</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../favicon/favicon.svg" style="width:32px;height:32px;" alt="32px"/>
+        <span>32px</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../favicon/favicon.svg" style="width:48px;height:48px;" alt="48px"/>
+        <span>48px</span>
+      </div>
+      <div class="icon-demo">
+        <img src="../favicon/favicon.svg" style="width:64px;height:64px;" alt="64px"/>
+        <span>64px</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

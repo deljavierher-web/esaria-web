@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EsarIA — Brand Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark:   #0F172A;
+      --dark2:  #111827;
+      --accent: #6D5EF3;
+      --blue:   #5B7CFA;
+      --bg:     #F8FAFC;
+      --white:  #FFFFFF;
+      --border: #E2E8F0;
+      --muted:  #64748B;
+      --text:   #1E293B;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 48px 0; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+    /* Header */
+    .brand-header {
+      background: var(--dark); border-radius: 16px; padding: 40px 48px;
+      margin-bottom: 40px; display: flex; align-items: center; gap: 24px;
+    }
+    .brand-header img { height: 44px; }
+    .brand-header-text h1 { color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .brand-header-text p { color: #64748B; font-size: 0.875rem; }
+
+    h2 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+    .section { margin-bottom: 48px; }
+
+    /* Color palette */
+    .palette { display: flex; gap: 12px; flex-wrap: wrap; }
+    .swatch { border-radius: 10px; overflow: hidden; border: 1px solid rgba(0,0,0,0.07); width: 130px; }
+    .swatch-color { height: 72px; }
+    .swatch-info { padding: 10px 12px; background: #fff; }
+    .swatch-name { font-size: 0.8rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 2px; }
+    .swatch-hex  { font-size: 0.72rem; color: var(--muted); font-family: 'Courier New', monospace; }
+
+    /* Typography */
+    .type-demo { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px; }
+    .type-row { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 20px; }
+    .type-row:last-child { border-bottom: none; }
+    .type-label { font-size: 0.72rem; color: var(--muted); width: 110px; flex-shrink: 0; }
+    .type-sample { color: var(--text); }
+
+    /* Usage grid */
+    .usage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .usage-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      padding: 18px; font-size: 0.82rem;
+    }
+    .usage-card .uc-head { font-weight: 700; color: var(--text); margin-bottom: 6px; font-size: 0.875rem; }
+    .usage-card p { color: var(--muted); line-height: 1.6; }
+    .tag {
+      display: inline-block; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 100px; font-size: 0.68rem; font-weight: 600; color: var(--muted);
+      padding: 2px 8px; margin-top: 8px;
+    }
+
+    /* Rules */
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .rule-card {
+      border-radius: 10px; padding: 16px 18px; font-size: 0.82rem;
+    }
+    .rule-do   { background: #F0FDF4; border: 1px solid #BBF7D0; }
+    .rule-dont { background: #FFF1F2; border: 1px solid #FECDD3; }
+    .rule-card .rule-title { font-weight: 700; margin-bottom: 8px; }
+    .rule-do   .rule-title { color: #15803D; }
+    .rule-dont .rule-title { color: #BE123C; }
+    .rule-card ul { padding-left: 16px; color: var(--text); line-height: 2; }
+
+    @media (max-width: 640px) {
+      .usage-grid, .rules-grid { grid-template-columns: 1fr; }
+      .palette { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Brand Header -->
+  <div class="brand-header">
+    <img src="../logo/esaria-logo-horizontal-dark.svg" alt="EsarIA logo"/>
+    <div class="brand-header-text">
+      <h1>Brand Guidelines</h1>
+      <p>Guía de identidad visual · Mayo 2025</p>
+    </div>
+  </div>
+
+  <!-- COLOR PALETTE -->
+  <div class="section">
+    <h2>Paleta de colores</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0F172A;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Primary Dark</span>
+          <span class="swatch-hex">#0F172A</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#111827;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Dark Alt</span>
+          <span class="swatch-hex">#111827</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6D5EF3;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Accent Purple</span>
+          <span class="swatch-hex">#6D5EF3</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#5B7CFA;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Accent Blue</span>
+          <span class="swatch-hex">#5B7CFA</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FFFFFF; border:1px solid #E2E8F0;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">White</span>
+          <span class="swatch-hex">#FFFFFF</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F8FAFC;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Background</span>
+          <span class="swatch-hex">#F8FAFC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="section">
+    <h2>Tipografía</h2>
+    <div class="type-demo">
+      <div class="type-row">
+        <span class="type-label">Display / Logo</span>
+        <span class="type-sample" style="font-size:2rem;font-weight:800;letter-spacing:-0.04em;">EsarIA · Automatización</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Heading H1</span>
+        <span class="type-sample" style="font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;">Automatización útil para negocios reales</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Heading H2</span>
+        <span class="type-sample" style="font-size:1.1rem;font-weight:700;">Cómo trabajamos · Proceso</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Body / Regular</span>
+        <span class="type-sample" style="font-size:1rem;font-weight:400;color:#64748B;">Ayudamos a pequeñas empresas a ahorrar tiempo y ordenar sus procesos.</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Label / Caption</span>
+        <span class="type-sample" style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#64748B;">Automatización · IA Práctica</span>
+      </div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--muted);margin-top:10px;">
+      Fuente principal: <strong>Inter</strong> (Google Fonts) · Fallback: Manrope, -apple-system, Helvetica Neue, Arial
+    </p>
+  </div>
+
+  <!-- CUÁNDO USAR CADA VARIANTE -->
+  <div class="section">
+    <h2>Cuándo usar cada variante</h2>
+    <div class="usage-grid">
+      <div class="usage-card">
+        <p class="uc-head">Logo horizontal estándar</p>
+        <p>Header de la web, documentos corporativos, presentaciones sobre fondo blanco.</p>
+        <span class="tag">Uso principal</span>
+      </div>
+      <div class="usage-card">
+        <p class="uc-head">Logo horizontal oscuro</p>
+        <p>Footer oscuro, banners sobre fondo navy, secciones con fondo oscuro.</p>
+        <span class="tag">Fondos oscuros</span>
+      </div>
+      <div class="usage-card">
+        <p class="uc-head">Wordmark solo</p>
+        <p>Cuando el espacio es limitado en altura o el isotipo ya aparece cerca en el diseño.</p>
+        <span class="tag">Espacio reducido</span>
+      </div>
+      <div class="usage-card">
+        <p class="uc-head">Isotipo / Icono</p>
+        <p>Favicon, perfil de redes sociales, app icon, badge en contextos donde el nombre ya es conocido.</p>
+        <span class="tag">Icónico</span>
+      </div>
+      <div class="usage-card">
+        <p class="uc-head">Versión monocroma</p>
+        <p>Documentos impresos en blanco y negro, bordados, sellos, grabados.</p>
+        <span class="tag">Impresión mono</span>
+      </div>
+      <div class="usage-card">
+        <p class="uc-head">Redes sociales</p>
+        <p>Usar el perfil-square o perfil-circle-safe para foto de perfil. Banner LinkedIn para la portada de empresa.</p>
+        <span class="tag">Digital social</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGLAS -->
+  <div class="section">
+    <h2>Reglas de uso</h2>
+    <div class="rules-grid">
+      <div class="rule-card rule-do">
+        <p class="rule-title">✓ Hacer</p>
+        <ul>
+          <li>Mantener proporciones originales del logo</li>
+          <li>Respetar el margen mínimo alrededor del logo</li>
+          <li>Usar sobre fondos con contraste suficiente</li>
+          <li>Usar el isotipo para favicon y avatares</li>
+          <li>Usar el logo horizontal para la web</li>
+        </ul>
+      </div>
+      <div class="rule-card rule-dont">
+        <p class="rule-title">✗ Evitar</p>
+        <ul>
+          <li>Deformar o estirar el logo</li>
+          <li>Cambiar los colores sin criterio</li>
+          <li>Usar sobre fondos con poco contraste</li>
+          <li>Añadir sombras, efectos 3D o degradados</li>
+          <li>Recrear el logo con otra tipografía</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

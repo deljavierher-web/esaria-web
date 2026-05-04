@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EsarIA — Social Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --dark: #0F172A; --accent: #6D5EF3; --bg: #F8FAFC; --border: #E2E8F0; --muted: #64748B; --text: #1E293B; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 48px 0; }
+    .page { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+    h1 { font-size: 1.75rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; letter-spacing: -0.04em; }
+    h1 span { color: var(--accent); }
+    .subtitle { font-size: 0.9rem; color: var(--muted); margin-bottom: 48px; }
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--muted); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+    .preview-label {
+      font-size: 0.72rem; font-weight: 600; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-top: 10px; text-align: center;
+    }
+    .profiles-row { display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap; }
+    .profile-demo { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .profile-square { width: 140px; height: 140px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .profile-circle { width: 140px; height: 140px; border-radius: 50%; overflow: hidden; border: 3px solid var(--border); }
+    .profile-square img, .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .banner-demo { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .banner-demo img { width: 100%; height: auto; display: block; }
+    .banner-demo.li { border-radius: 8px; }
+    .note {
+      font-size: 0.8rem; color: var(--muted); background: #F1F5F9; border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 16px; margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <h1>Esar<span>IA</span> — Social Preview</h1>
+  <p class="subtitle">Formatos para redes sociales y perfiles digitales</p>
+
+  <!-- PERFILES -->
+  <div class="section">
+    <p class="section-title">Fotos de perfil</p>
+    <div class="profiles-row">
+      <div class="profile-demo">
+        <div class="profile-square">
+          <img src="../social/esaria-profile-square.svg" alt="Perfil cuadrado"/>
+        </div>
+        <span class="preview-label">Perfil cuadrado</span>
+        <p style="font-size:0.7rem;color:var(--muted);text-align:center;max-width:120px;">Twitter, Facebook, LinkedIn</p>
+      </div>
+      <div class="profile-demo">
+        <div class="profile-circle">
+          <img src="../social/esaria-profile-circle-safe.svg" alt="Perfil circular"/>
+        </div>
+        <span class="preview-label">Circle-safe</span>
+        <p style="font-size:0.7rem;color:var(--muted);text-align:center;max-width:120px;">Sin recorte · margen amplio</p>
+      </div>
+      <div class="profile-demo">
+        <div class="profile-circle" style="width:90px;height:90px;">
+          <img src="../social/esaria-instagram-profile.svg" alt="Instagram"/>
+        </div>
+        <span class="preview-label">Instagram</span>
+        <p style="font-size:0.7rem;color:var(--muted);text-align:center;max-width:120px;">Icono optimizado para IG</p>
+      </div>
+    </div>
+    <p class="note">Los archivos SVG están a 800×800. Para subir a redes, exporta a PNG a 400×400 o superior.</p>
+  </div>
+
+  <!-- PORTADA / COVER -->
+  <div class="section">
+    <p class="section-title">Portada horizontal</p>
+    <div class="banner-demo">
+      <img src="../social/esaria-cover-horizontal.svg" alt="Cover horizontal"/>
+    </div>
+    <p class="preview-label" style="margin-left:0;text-align:left;">Portada general — 1500×500</p>
+  </div>
+
+  <!-- LINKEDIN BANNER -->
+  <div class="section">
+    <p class="section-title">Banner LinkedIn</p>
+    <div class="banner-demo li">
+      <img src="../social/esaria-linkedin-banner.svg" alt="LinkedIn banner"/>
+    </div>
+    <p class="preview-label" style="margin-left:0;text-align:left;">LinkedIn — 1584×396 (ratio 4:1)</p>
+    <p class="note">LinkedIn recorta el banner según el dispositivo. El logo y el texto están posicionados en la zona segura izquierda.</p>
+  </div>
+</div>
+</body>
+</html>

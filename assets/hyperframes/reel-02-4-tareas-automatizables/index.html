@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* ── Scene container ── */
+    .scene {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+    #s2, #s3, #s4, #s5, #s6 { opacity: 0; }
+
+    /* ── Decoratives ── */
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .accent-bar {
+      position: absolute;
+      top: 0; left: 0;
+      width: 8px;
+      height: 1920px;
+      background: #6D5EF3;
+      transform-origin: top center;
+    }
+
+    .ghost-num {
+      position: absolute;
+      font-weight: 900;
+      /* intentionally near-invisible decorative — contrast warnings expected */
+      color: rgba(109, 94, 243, 0.055);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hairline {
+      position: absolute;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.09);
+      pointer-events: none;
+    }
+
+    /* ── Content layout ── */
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 180px 80px 380px 88px;
+      gap: 0;
+    }
+
+    /* ── Typography ── */
+    .label {
+      font-family: "DM Mono", "Fira Code", "Courier New", monospace;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: #A090F5; /* lighter: 4.73:1 vs #0F172A — clears WCAG AA */
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .headline {
+      font-size: 86px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+    }
+
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.14);
+      margin-bottom: 34px;
+      transform-origin: left center;
+    }
+
+    .body {
+      font-size: 34px;
+      font-weight: 400;
+      color: #94A3B8;
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Progress dots ── */
+    .dots {
+      position: absolute;
+      bottom: 160px;
+      left: 88px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+    .dot.on {
+      width: 28px;
+      border-radius: 4px;
+      background: #6D5EF3;
+    }
+
+    /* ── Logo mark (bottom) ── */
+    .logo-bot {
+      position: absolute;
+      bottom: 88px;
+      left: 88px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-bot .wordmark {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .logo-bot .wordmark .w { color: #FFFFFF; }
+    .logo-bot .wordmark .a { color: #6D5EF3; }
+  </style>
+</head>
+<body>
+
+<div id="root"
+  data-composition-id="main"
+  data-width="1080"
+  data-height="1920"
+  data-start="0"
+  data-duration="22">
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCENE 1 — HOOK  (0 – 3 s)
+       ══════════════════════════════════════════════════════════ -->
+  <div id="s1" class="scene">
+
+    <!-- BG decoratives -->
+    <div class="glow" id="s1-glow"
+      style="width:680px;height:680px;top:220px;left:200px;
+             background:radial-gradient(circle, rgba(109,94,243,0.16) 0%, rgba(109,94,243,0) 70%);"
+      data-layout-ignore></div>
+
+    <div class="ghost-num" aria-hidden="true" id="s1-ghost"
+      style="font-size:440px;right:-30px;top:340px;color:rgba(109,94,243,0.05);"
+      data-layout-ignore>4</div>
+
+    <div class="hairline"
+      style="width:920px;top:230px;left:88px;" data-layout-ignore></div>
+    <div class="hairline"
+      style="width:920px;bottom:220px;left:88px;" data-layout-ignore></div>
+
+    <div class="accent-bar" id="s1-bar"></div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="label" id="s1-label">Automatización · EsarIA</div>
+      <div class="headline" id="s1-title" style="font-size:90px;">
+        4 tareas que tu negocio puede automatizar
+      </div>
+      <div class="rule" id="s1-rule"></div>
+      <div class="body" id="s1-sub"
+        style="font-size:40px;color:#6D5EF3;font-weight:600;">
+        sin complicarte
+      </div>
+    </div>
+
+    <!-- Logo bottom -->
+    <div class="logo-bot" id="s1-logo" data-layout-ignore>
+      <svg width="38" height="38" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,2)">
+          <rect x="0" y="5"    width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+          <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+          <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+          <rect x="0" y="26"   width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+        </g>
+      </svg>
+      <span class="wordmark"><span class="w">Esar</span><span class="a">IA</span></span>
+    </div>
+
+  </div><!-- /s1 -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCENE 2 — TAREA 1: Recordatorios de cita  (3 – 7 s)
+       ══════════════════════════════════════════════════════════ -->
+  <div id="s2" class="scene">
+
+    <div class="glow"
+      style="width:560px;height:560px;top:80px;right:-80px;
+             background:radial-gradient(circle, rgba(109,94,243,0.14) 0%, rgba(109,94,243,0) 70%);"
+      data-layout-ignore></div>
+
+    <div class="ghost-num" aria-hidden="true" id="s2-ghost"
+      style="font-size:360px;right:-12px;top:580px;"
+      data-layout-ignore>01</div>
+
+    <div class="hairline"
+      style="width:920px;bottom:230px;left:88px;" data-layout-ignore></div>
+
+    <div class="accent-bar" id="s2-bar"></div>
+
+    <div class="content">
+      <div class="label" id="s2-label">Tarea 01 / 04</div>
+      <div class="headline" id="s2-title">
+        Recordatorios<br>de cita
+      </div>
+      <div class="rule" id="s2-rule"></div>
+      <div class="body" id="s2-body">
+        WhatsApps automáticos<br>antes de cada cita.
+      </div>
+    </div>
+
+    <div class="dots" id="s2-dots" data-layout-ignore>
+      <div class="dot on"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+  </div><!-- /s2 -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCENE 3 — TAREA 2: Preguntas frecuentes  (7 – 11 s)
+       ══════════════════════════════════════════════════════════ -->
+  <div id="s3" class="scene">
+
+    <div class="glow"
+      style="width:720px;height:720px;top:560px;left:-200px;
+             background:radial-gradient(circle, rgba(109,94,243,0.13) 0%, rgba(109,94,243,0) 70%);"
+      data-layout-ignore></div>
+
+    <div class="ghost-num" aria-hidden="true" id="s3-ghost"
+      style="font-size:360px;right:-12px;top:550px;"
+      data-layout-ignore>02</div>
+
+    <div class="hairline"
+      style="width:920px;bottom:230px;left:88px;" data-layout-ignore></div>
+
+    <div class="accent-bar" id="s3-bar"></div>
+
+    <div class="content">
+      <div class="label" id="s3-label">Tarea 02 / 04</div>
+      <div class="headline" id="s3-title">
+        Preguntas<br>frecuentes
+      </div>
+      <div class="rule" id="s3-rule"></div>
+      <div class="body" id="s3-body">
+        Horarios, precios, disponibilidad<br>y dudas repetidas.
+      </div>
+    </div>
+
+    <div class="dots" id="s3-dots" data-layout-ignore>
+      <div class="dot"></div>
+      <div class="dot on"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+  </div><!-- /s3 -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCENE 4 — TAREA 3: Avisos de estado  (11 – 15 s)
+       ══════════════════════════════════════════════════════════ -->
+  <div id="s4" class="scene">
+
+    <div class="glow"
+      style="width:600px;height:600px;top:260px;left:260px;
+             background:radial-gradient(circle, rgba(109,94,243,0.15) 0%, rgba(109,94,243,0) 70%);"
+      data-layout-ignore></div>
+
+    <div class="ghost-num" aria-hidden="true" id="s4-ghost"
+      style="font-size:360px;right:-12px;top:565px;"
+      data-layout-ignore>03</div>
+
+    <div class="hairline"
+      style="width:920px;bottom:230px;left:88px;" data-layout-ignore></div>
+
+    <div class="accent-bar" id="s4-bar"></div>
+
+    <div class="content">
+      <div class="label" id="s4-label">Tarea 03 / 04</div>
+      <div class="headline" id="s4-title">
+        Avisos<br>de estado
+      </div>
+      <div class="rule" id="s4-rule"></div>
+      <div class="body" id="s4-body">
+        Pedidos, reparaciones,<br>confirmaciones o recogidas.
+      </div>
+    </div>
+
+    <div class="dots" id="s4-dots" data-layout-ignore>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot on"></div>
+      <div class="dot"></div>
+    </div>
+
+  </div><!-- /s4 -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCENE 5 — TAREA 4: Seguimiento de clientes  (15 – 18 s)
+       ══════════════════════════════════════════════════════════ -->
+  <div id="s5" class="scene">
+
+    <div class="glow"
+      style="width:640px;height:640px;top:120px;right:-140px;
+             background:radial-gradient(circle, rgba(109,94,243,0.14) 0%, rgba(109,94,243,0) 70%);"
+      data-layout-ignore></div>
+
+    <div class="ghost-num" aria-hidden="true" id="s5-ghost"
+      style="font-size:360px;right:-12px;top:560px;"
+      data-layout-ignore>04</div>
+
+    <div class="hairline"
+      style="width:920px;bottom:230px;left:88px;" data-layout-ignore></div>
+
+    <div class="accent-bar" id="s5-bar"></div>
+
+    <div class="content">
+      <div class="label" id="s5-label">Tarea 04 / 04</div>
+      <div class="headline" id="s5-title">
+        Seguimiento<br>de clientes
+      </div>
+      <div class="rule" id="s5-rule"></div>
+      <div class="body" id="s5-body">
+        Mensajes automáticos cuando<br>alguien lleva tiempo sin volver.
+      </div>
+    </div>
+
+    <div class="dots" id="s5-dots" data-layout-ignore>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot on"></div>
+    </div>
+
+  </div><!-- /s5 -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCENE 6 — CTA  (18 – 22 s)
+       ══════════════════════════════════════════════════════════ -->
+  <div id="s6" class="scene">
+
+    <div class="glow" id="s6-glow-a"
+      style="width:800px;height:800px;top:280px;left:140px;
+             background:radial-gradient(circle, rgba(109,94,243,0.17) 0%, rgba(109,94,243,0) 70%);"
+      data-layout-ignore></div>
+
+    <div class="glow"
+      style="width:460px;height:460px;top:980px;right:-100px;
+             background:radial-gradient(circle, rgba(109,94,243,0.11) 0%, rgba(109,94,243,0) 70%);"
+      data-layout-ignore></div>
+
+    <div class="ghost-num" aria-hidden="true" id="s6-ghost"
+      style="font-size:480px;right:-50px;top:380px;color:rgba(109,94,243,0.04);"
+      data-layout-ignore>?</div>
+
+    <div class="hairline"
+      style="width:920px;bottom:230px;left:88px;" data-layout-ignore></div>
+
+    <div class="accent-bar" id="s6-bar"></div>
+
+    <div class="content">
+      <div class="label" id="s6-label">La pregunta</div>
+      <div class="headline" id="s6-title" style="font-size:92px;">
+        ¿Cuál haces<br>todavía<br>a mano?
+      </div>
+      <div class="rule" id="s6-rule"></div>
+      <div class="body" id="s6-sub" style="font-size:38px;">
+        Escríbenos por DM
+      </div>
+    </div>
+
+    <!-- Logo bottom -->
+    <div class="logo-bot" id="s6-logo">
+      <svg width="38" height="38" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(2,2)">
+          <rect x="0" y="5"    width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+          <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+          <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+          <rect x="0" y="26"   width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+        </g>
+      </svg>
+      <span class="wordmark"><span class="w">Esar</span><span class="a">IA</span></span>
+    </div>
+
+  </div><!-- /s6 -->
+
+</div><!-- /root -->
+
+<script>
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+
+// ── Transition timing constants ──────────────────────────────────────────────
+const T1 = 2.7,  T2 = 6.7,  T3 = 10.7, T4 = 14.7, T5 = 17.7;
+const DT = 0.3;   // transition duration
+const S1 = 0.1;   // scene 1 content start offset
+const S2 = T1 + DT + 0.1;  // 3.1
+const S3 = T2 + DT + 0.1;  // 7.1
+const S4 = T3 + DT + 0.1;  // 11.1
+const S5 = T4 + DT + 0.1;  // 15.1
+const S6 = T5 + DT + 0.1;  // 18.1
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// SCENE 1 — HOOK
+// ════════════════════════════════════════════════════════════════════════════
+
+// Glow breathes
+tl.to("#s1-glow",  { scale: 1.1, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+// Ghost drifts right
+tl.to("#s1-ghost", { x: 18, duration: 3, ease: "sine.inOut" }, 0);
+
+// Accent bar draws down
+tl.fromTo("#s1-bar",
+  { scaleY: 0 },
+  { scaleY: 1, duration: 0.5, ease: "power3.out" },
+  S1);
+
+// Label slides in from left
+tl.fromTo("#s1-label",
+  { x: -35, opacity: 0 },
+  { x: 0,   opacity: 1, duration: 0.42, ease: "power3.out" },
+  S1 + 0.1);
+
+// Title punches up
+tl.fromTo("#s1-title",
+  { y: 65, opacity: 0 },
+  { y: 0,  opacity: 1, duration: 0.65, ease: "power4.out" },
+  S1 + 0.3);
+
+// Rule draws right
+tl.fromTo("#s1-rule",
+  { scaleX: 0 },
+  { scaleX: 1, duration: 0.5, ease: "expo.out" },
+  S1 + 0.65);
+
+// Subtext fades in with blur
+tl.fromTo("#s1-sub",
+  { opacity: 0, filter: "blur(6px)" },
+  { opacity: 1, filter: "blur(0px)", duration: 0.52, ease: "power2.out" },
+  S1 + 0.82);
+
+// Logo fades up
+tl.fromTo("#s1-logo",
+  { opacity: 0, y: 14 },
+  { opacity: 1, y: 0,  duration: 0.45, ease: "power2.out" },
+  S1 + 1.05);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// TRANSITION 1→2
+// ════════════════════════════════════════════════════════════════════════════
+
+tl.to("#s1",
+  { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: DT, ease: "power2.inOut" },
+  T1);
+tl.fromTo("#s2",
+  { filter: "blur(10px)", scale: 0.97, opacity: 0 },
+  { filter: "blur(0px)",  scale: 1,    opacity: 1, duration: DT, ease: "power2.inOut" },
+  T1 + 0.08);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// SCENE 2 — TAREA 1
+// ════════════════════════════════════════════════════════════════════════════
+
+// Ghost slow drift up
+tl.to("#s2-ghost", { y: -22, duration: 3.6, ease: "sine.inOut" }, S2);
+
+tl.fromTo("#s2-bar",
+  { scaleY: 0 },
+  { scaleY: 1, duration: 0.44, ease: "power3.out" },
+  S2);
+
+// Label slides from left
+tl.fromTo("#s2-label",
+  { x: -38, opacity: 0 },
+  { x: 0,   opacity: 1, duration: 0.40, ease: "power3.out" },
+  S2 + 0.12);
+
+// Title punches up
+tl.fromTo("#s2-title",
+  { y: 52, opacity: 0 },
+  { y: 0,  opacity: 1, duration: 0.55, ease: "power4.out" },
+  S2 + 0.28);
+
+// Rule draws
+tl.fromTo("#s2-rule",
+  { scaleX: 0 },
+  { scaleX: 1, duration: 0.52, ease: "expo.out" },
+  S2 + 0.54);
+
+// Body fades with soft blur
+tl.fromTo("#s2-body",
+  { y: 20, opacity: 0, filter: "blur(4px)" },
+  { y: 0,  opacity: 1, filter: "blur(0px)", duration: 0.50, ease: "power2.out" },
+  S2 + 0.68);
+
+// Dots appear
+tl.fromTo("#s2-dots",
+  { opacity: 0 },
+  { opacity: 1, duration: 0.32, ease: "power1.out" },
+  S2 + 0.90);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// TRANSITION 2→3
+// ════════════════════════════════════════════════════════════════════════════
+
+tl.to("#s2",
+  { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: DT, ease: "power2.inOut" },
+  T2);
+tl.fromTo("#s3",
+  { filter: "blur(10px)", scale: 0.97, opacity: 0 },
+  { filter: "blur(0px)",  scale: 1,    opacity: 1, duration: DT, ease: "power2.inOut" },
+  T2 + 0.08);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// SCENE 3 — TAREA 2
+// ════════════════════════════════════════════════════════════════════════════
+
+// Ghost gentle scale breathe
+tl.to("#s3-ghost", { scale: 0.96, duration: 3.6, ease: "sine.inOut" }, S3);
+
+tl.fromTo("#s3-bar",
+  { scaleY: 0 },
+  { scaleY: 1, duration: 0.44, ease: "power3.out" },
+  S3);
+
+// Label fades down from top
+tl.fromTo("#s3-label",
+  { y: -22, opacity: 0 },
+  { y: 0,   opacity: 1, duration: 0.40, ease: "expo.out" },
+  S3 + 0.12);
+
+// Title punches up
+tl.fromTo("#s3-title",
+  { y: 55, opacity: 0 },
+  { y: 0,  opacity: 1, duration: 0.58, ease: "power3.out" },
+  S3 + 0.28);
+
+// Rule draws
+tl.fromTo("#s3-rule",
+  { scaleX: 0 },
+  { scaleX: 1, duration: 0.50, ease: "power4.out" },
+  S3 + 0.55);
+
+// Body slides from left
+tl.fromTo("#s3-body",
+  { x: -24, opacity: 0 },
+  { x: 0,   opacity: 1, duration: 0.50, ease: "sine.out" },
+  S3 + 0.70);
+
+// Dots
+tl.fromTo("#s3-dots",
+  { opacity: 0 },
+  { opacity: 1, duration: 0.32, ease: "power1.out" },
+  S3 + 0.90);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// TRANSITION 3→4
+// ════════════════════════════════════════════════════════════════════════════
+
+tl.to("#s3",
+  { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: DT, ease: "power2.inOut" },
+  T3);
+tl.fromTo("#s4",
+  { filter: "blur(10px)", scale: 0.97, opacity: 0 },
+  { filter: "blur(0px)",  scale: 1,    opacity: 1, duration: DT, ease: "power2.inOut" },
+  T3 + 0.08);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// SCENE 4 — TAREA 3
+// ════════════════════════════════════════════════════════════════════════════
+
+// Ghost subtle rotation
+tl.to("#s4-ghost", { rotation: 1.5, duration: 3.6, ease: "sine.inOut" }, S4);
+
+tl.fromTo("#s4-bar",
+  { scaleY: 0 },
+  { scaleY: 1, duration: 0.44, ease: "power3.out" },
+  S4);
+
+// Label slides from right
+tl.fromTo("#s4-label",
+  { x: 38, opacity: 0 },
+  { x: 0,  opacity: 1, duration: 0.40, ease: "power3.out" },
+  S4 + 0.12);
+
+// Title scales in
+tl.fromTo("#s4-title",
+  { scale: 0.88, opacity: 0 },
+  { scale: 1,    opacity: 1, duration: 0.55, ease: "expo.out" },
+  S4 + 0.28);
+
+// Rule draws
+tl.fromTo("#s4-rule",
+  { scaleX: 0 },
+  { scaleX: 1, duration: 0.50, ease: "power3.out" },
+  S4 + 0.55);
+
+// Body fades with blur
+tl.fromTo("#s4-body",
+  { y: 18, opacity: 0, filter: "blur(4px)" },
+  { y: 0,  opacity: 1, filter: "blur(0px)", duration: 0.50, ease: "power2.out" },
+  S4 + 0.70);
+
+// Dots
+tl.fromTo("#s4-dots",
+  { opacity: 0 },
+  { opacity: 1, duration: 0.32, ease: "power1.out" },
+  S4 + 0.90);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// TRANSITION 4→5
+// ════════════════════════════════════════════════════════════════════════════
+
+tl.to("#s4",
+  { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: DT, ease: "power2.inOut" },
+  T4);
+tl.fromTo("#s5",
+  { filter: "blur(10px)", scale: 0.97, opacity: 0 },
+  { filter: "blur(0px)",  scale: 1,    opacity: 1, duration: DT, ease: "power2.inOut" },
+  T4 + 0.08);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// SCENE 5 — TAREA 4
+// ════════════════════════════════════════════════════════════════════════════
+
+// Ghost drifts right (mirror of s1)
+tl.to("#s5-ghost", { x: -16, duration: 2.6, ease: "sine.inOut" }, S5);
+
+tl.fromTo("#s5-bar",
+  { scaleY: 0 },
+  { scaleY: 1, duration: 0.44, ease: "power3.out" },
+  S5);
+
+// Label slides from left
+tl.fromTo("#s5-label",
+  { x: -38, opacity: 0 },
+  { x: 0,   opacity: 1, duration: 0.40, ease: "expo.out" },
+  S5 + 0.12);
+
+// Title punches up (power4 — energetic close)
+tl.fromTo("#s5-title",
+  { y: 52, opacity: 0 },
+  { y: 0,  opacity: 1, duration: 0.58, ease: "power4.out" },
+  S5 + 0.28);
+
+// Rule draws
+tl.fromTo("#s5-rule",
+  { scaleX: 0 },
+  { scaleX: 1, duration: 0.52, ease: "expo.out" },
+  S5 + 0.55);
+
+// Body fades up
+tl.fromTo("#s5-body",
+  { opacity: 0, filter: "blur(4px)" },
+  { opacity: 1, filter: "blur(0px)", duration: 0.54, ease: "power2.out" },
+  S5 + 0.70);
+
+// Dots
+tl.fromTo("#s5-dots",
+  { opacity: 0 },
+  { opacity: 1, duration: 0.32, ease: "power1.out" },
+  S5 + 0.90);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// TRANSITION 5→6
+// ════════════════════════════════════════════════════════════════════════════
+
+tl.to("#s5",
+  { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: DT, ease: "power2.inOut" },
+  T5);
+tl.fromTo("#s6",
+  { filter: "blur(10px)", scale: 0.97, opacity: 0 },
+  { filter: "blur(0px)",  scale: 1,    opacity: 1, duration: DT, ease: "power2.inOut" },
+  T5 + 0.08);
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// SCENE 6 — CTA
+// ════════════════════════════════════════════════════════════════════════════
+
+// Glow pulses
+tl.to("#s6-glow-a", { scale: 1.12, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, S6);
+// Ghost breathes
+tl.to("#s6-ghost",  { scale: 1.04, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, S6);
+
+tl.fromTo("#s6-bar",
+  { scaleY: 0 },
+  { scaleY: 1, duration: 0.50, ease: "power3.out" },
+  S6);
+
+// Label
+tl.fromTo("#s6-label",
+  { x: -35, opacity: 0 },
+  { x: 0,   opacity: 1, duration: 0.40, ease: "power3.out" },
+  S6 + 0.15);
+
+// CTA title — big slam
+tl.fromTo("#s6-title",
+  { y: 68, opacity: 0 },
+  { y: 0,  opacity: 1, duration: 0.68, ease: "power4.out" },
+  S6 + 0.32);
+
+// Rule
+tl.fromTo("#s6-rule",
+  { scaleX: 0 },
+  { scaleX: 1, duration: 0.52, ease: "expo.out" },
+  S6 + 0.72);
+
+// DM subtext
+tl.fromTo("#s6-sub",
+  { opacity: 0, y: 16 },
+  { opacity: 1, y: 0,  duration: 0.50, ease: "power2.out" },
+  S6 + 0.88);
+
+// Logo
+tl.fromTo("#s6-logo",
+  { opacity: 0, y: 14 },
+  { opacity: 1, y: 0,  duration: 0.45, ease: "power2.out" },
+  S6 + 1.10);
+
+// ── Final fade to black (last scene — allowed per rules) ─────────────────
+tl.to("#s6", { opacity: 0, duration: 0.55, ease: "power2.inOut" }, 21.45);
+
+
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

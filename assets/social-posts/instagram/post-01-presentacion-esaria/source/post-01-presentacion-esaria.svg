@@ -1,0 +1,57 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="1350" fill="#6D5EF3"/>
+
+  <!-- Label pill -->
+  <rect x="310" y="88" width="460" height="52" rx="26" fill="none" stroke="#6D5EF3" stroke-width="1.5"/>
+  <text x="540" y="120" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" fill="#6D5EF3" font-weight="600">Automatización · Valladolid</text>
+
+  <!-- Logo centered, scale 2.0 -->
+  <g transform="translate(290, 160) scale(2.0)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+
+  <!-- Thin divider -->
+  <rect x="60" y="380" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Big headline -->
+  <text x="540" y="470" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="78" font-weight="800" fill="#FFFFFF">Automatización útil</text>
+  <text x="540" y="560" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="78" font-weight="800" fill="#FFFFFF">para negocios reales</text>
+
+  <!-- Secondary line -->
+  <text x="540" y="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="36" fill="#94A3B8">IA práctica para pequeñas empresas</text>
+
+  <!-- Divider -->
+  <rect x="60" y="720" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Sector list -->
+  <text x="540" y="800" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#64748B">Clínicas · Talleres · Gimnasios · Comercios</text>
+  <text x="540" y="852" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#64748B">Academias · Centros de estética · Valladolid</text>
+
+  <!-- Note -->
+  <text x="540" y="1000" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="30" fill="#64748B">Sin complicaciones. Sin tecnología innecesaria.</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Logo dark version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

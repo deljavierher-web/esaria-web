@@ -1,0 +1,41 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1920" fill="#0F172A"/>
+  <rect x="0" y="0" width="8" height="1920" fill="#6D5EF3"/>
+
+  <!-- Label chip -->
+  <rect x="310" y="170" width="460" height="64" rx="32" fill="none" stroke="#6D5EF3" stroke-width="2"/>
+  <text x="540" y="213" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="32" font-weight="600" fill="#FFFFFF">Qué hacemos</text>
+
+  <!-- Divider -->
+  <rect x="60" y="280" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Headline -->
+  <text x="540" y="400" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="80" font-weight="800" fill="#6D5EF3">Automatizamos</text>
+  <text x="540" y="490" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="80" font-weight="800" fill="#FFFFFF">tareas repetitivas</text>
+  <text x="540" y="580" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="80" fill="#FFFFFF">para pequeñas</text>
+  <text x="540" y="670" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="80" fill="#FFFFFF">empresas.</text>
+
+  <!-- Divider -->
+  <rect x="60" y="750" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Tag list -->
+  <text x="540" y="840" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#64748B">Citas · WhatsApp · Formularios</text>
+  <text x="540" y="892" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#64748B">Recordatorios · Documentos</text>
+  <text x="540" y="944" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#64748B">Seguimiento de clientes</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1820" width="960" height="1" fill="#FFFFFF" opacity="0.12"/>
+
+  <!-- Logo reel dark version -->
+  <g transform="translate(447, 1838) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

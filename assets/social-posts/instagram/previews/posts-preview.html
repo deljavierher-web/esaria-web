@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EsarIA — Preview de Contenidos Instagram</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #0A0F1E;
+      color: #E2E8F0;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar nav */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: #0F172A;
+      border-right: 1px solid #1E293B;
+      overflow-y: auto;
+      padding: 24px 0;
+      z-index: 100;
+    }
+
+    #sidebar .brand {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid #1E293B;
+      margin-bottom: 16px;
+    }
+
+    #sidebar .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    #sidebar .brand-name span {
+      color: #6D5EF3;
+    }
+
+    #sidebar .brand-sub {
+      font-size: 11px;
+      color: #64748B;
+      margin-top: 4px;
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 10px 20px;
+      color: #94A3B8;
+      text-decoration: none;
+      font-size: 13px;
+      border-left: 3px solid transparent;
+      transition: all 0.15s;
+    }
+
+    #sidebar nav a:hover,
+    #sidebar nav a.active {
+      color: #6D5EF3;
+      border-left-color: #6D5EF3;
+      background: rgba(109, 94, 243, 0.08);
+    }
+
+    #sidebar nav .nav-label {
+      padding: 12px 20px 4px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #334155;
+    }
+
+    /* Main content */
+    #main {
+      margin-left: 220px;
+      flex: 1;
+      padding: 0 0 80px;
+    }
+
+    /* Header */
+    #header {
+      background: #0F172A;
+      border-bottom: 1px solid #1E293B;
+      padding: 32px 48px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    #header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    #header h1 span { color: #6D5EF3; }
+
+    #header p {
+      font-size: 13px;
+      color: #64748B;
+      margin-top: 4px;
+    }
+
+    /* Sections */
+    .section {
+      padding: 48px 48px 32px;
+      border-bottom: 1px solid #1E293B;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .section-meta {
+      font-size: 12px;
+      color: #64748B;
+      margin-top: 4px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .badge-dark {
+      background: rgba(109, 94, 243, 0.15);
+      color: #6D5EF3;
+      border: 1px solid rgba(109, 94, 243, 0.3);
+    }
+
+    .badge-light {
+      background: rgba(248, 250, 252, 0.08);
+      color: #94A3B8;
+      border: 1px solid #2D3748;
+    }
+
+    .badge-reel {
+      background: rgba(34, 197, 94, 0.1);
+      color: #22C55E;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+
+    .badge-story {
+      background: rgba(251, 191, 36, 0.1);
+      color: #FBB924;
+      border: 1px solid rgba(251, 191, 36, 0.25);
+    }
+
+    /* Post single */
+    .post-single {
+      max-width: 360px;
+    }
+
+    .post-single img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      border: 1px solid #1E293B;
+    }
+
+    /* Carousel strip */
+    .carousel-strip {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: #334155 transparent;
+    }
+
+    .carousel-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .carousel-strip::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .carousel-strip::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+
+    .carousel-item {
+      flex: 0 0 260px;
+    }
+
+    .carousel-item img {
+      width: 260px;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      border: 1px solid #1E293B;
+    }
+
+    .carousel-item .slide-num {
+      font-size: 11px;
+      color: #64748B;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    /* Reel strip */
+    .reel-strip {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: #334155 transparent;
+    }
+
+    .reel-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .reel-strip::-webkit-scrollbar-track { background: transparent; }
+    .reel-strip::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+    .reel-item {
+      flex: 0 0 135px;
+    }
+
+    .reel-item img {
+      width: 135px;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      border: 1px solid #1E293B;
+    }
+
+    .reel-item .frame-label {
+      font-size: 11px;
+      color: #64748B;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    /* Stories strip */
+    .stories-strip {
+      display: flex;
+      gap: 20px;
+    }
+
+    .story-item {
+      flex: 0 0 210px;
+    }
+
+    .story-item img {
+      width: 210px;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+      border: 1px solid #1E293B;
+    }
+
+    .story-item .story-label {
+      font-size: 12px;
+      color: #64748B;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* Caption preview */
+    .caption-preview {
+      background: #0F172A;
+      border: 1px solid #1E293B;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      max-width: 560px;
+      margin-top: 20px;
+    }
+
+    .caption-label {
+      font-size: 11px;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #sidebar { display: none; }
+      #main { margin-left: 0; }
+      #header { padding: 20px 20px; }
+      .section { padding: 32px 20px; }
+      .stories-strip { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside id="sidebar">
+  <div class="brand">
+    <div class="brand-name">Esar<span>IA</span></div>
+    <div class="brand-sub">Preview de contenidos</div>
+  </div>
+  <nav>
+    <div class="nav-label">Posts</div>
+    <a href="#post-01">Post 1 — Presentación</a>
+
+    <div class="nav-label">Carruseles</div>
+    <a href="#carousel-02">Carrusel 02 — Citas</a>
+    <a href="#carousel-03">Carrusel 03 — 4 Tareas</a>
+    <a href="#carousel-04">Carrusel 04 — Automatizar</a>
+    <a href="#carousel-06">Carrusel 06 — Clínica</a>
+
+    <div class="nav-label">Reels</div>
+    <a href="#reel-05">Reel 05 — WhatsApp</a>
+
+    <div class="nav-label">Stories</div>
+    <a href="#stories">Stories (3)</a>
+  </nav>
+</aside>
+
+<!-- Main -->
+<main id="main">
+
+  <!-- Header -->
+  <div id="header">
+    <h1>Esar<span>IA</span> — Preview de Contenidos Instagram</h1>
+    <p>Vista previa de todos los diseños. Usa el panel izquierdo para navegar.</p>
+  </div>
+
+  <!-- Post 01 -->
+  <section class="section" id="post-01">
+    <div class="section-header">
+      <div class="section-title">Post 1 — Presentación <span class="badge badge-dark">Post único</span></div>
+      <div class="section-meta">1080 × 1350 px · Fondo oscuro</div>
+    </div>
+    <div class="post-single">
+      <img src="../posts/post-01-presentacion-esaria.svg" alt="Post 01 — Presentación EsarIA">
+    </div>
+  </section>
+
+  <!-- Carousel 02 -->
+  <section class="section" id="carousel-02">
+    <div class="section-header">
+      <div class="section-title">Carrusel 02 — Citas manuales <span class="badge badge-dark">Carrusel · 7 slides</span></div>
+      <div class="section-meta">1080 × 1350 px · Fondo alternado oscuro/claro</div>
+    </div>
+    <div class="carousel-strip">
+      <div class="carousel-item">
+        <img src="../post-02-citas-manuales/source/01-hook.svg" alt="02 Slide 1">
+        <div class="slide-num">1 — Hook</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-02-citas-manuales/source/02-ciclo.svg" alt="02 Slide 2">
+        <div class="slide-num">2 — El ciclo</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-02-citas-manuales/source/03-tiempo.svg" alt="02 Slide 3">
+        <div class="slide-num">3 — El tiempo</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-02-citas-manuales/source/04-proceso.svg" alt="02 Slide 4">
+        <div class="slide-num">4 — El proceso</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-02-citas-manuales/source/05-automatizacion.svg" alt="02 Slide 5">
+        <div class="slide-num">5 — Automatización</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-02-citas-manuales/source/06-sectores.svg" alt="02 Slide 6">
+        <div class="slide-num">6 — Sectores</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-02-citas-manuales/source/07-cta.svg" alt="02 Slide 7">
+        <div class="slide-num">7 — CTA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel 03 -->
+  <section class="section" id="carousel-03">
+    <div class="section-header">
+      <div class="section-title">Carrusel 03 — 4 Tareas <span class="badge badge-dark">Carrusel · 6 slides</span></div>
+      <div class="section-meta">1080 × 1350 px · Fondo alternado oscuro/claro</div>
+    </div>
+    <div class="carousel-strip">
+      <div class="carousel-item">
+        <img src="../post-03-4-tareas/source/01-hook.svg" alt="03 Slide 1">
+        <div class="slide-num">1 — Hook</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-03-4-tareas/source/02-recordatorios.svg" alt="03 Slide 2">
+        <div class="slide-num">2 — Recordatorios</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-03-4-tareas/source/03-preguntas.svg" alt="03 Slide 3">
+        <div class="slide-num">3 — Preguntas</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-03-4-tareas/source/04-avisos.svg" alt="03 Slide 4">
+        <div class="slide-num">4 — Avisos</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-03-4-tareas/source/05-seguimiento.svg" alt="03 Slide 5">
+        <div class="slide-num">5 — Seguimiento</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-03-4-tareas/source/06-cta.svg" alt="03 Slide 6">
+        <div class="slide-num">6 — CTA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel 04 -->
+  <section class="section" id="carousel-04">
+    <div class="section-header">
+      <div class="section-title">Carrusel 04 — Qué es automatizar <span class="badge badge-dark">Carrusel · 8 slides</span></div>
+      <div class="section-meta">1080 × 1350 px · Fondo alternado oscuro/claro</div>
+    </div>
+    <div class="carousel-strip">
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/01-hook.svg" alt="04 Slide 1">
+        <div class="slide-num">1 — Hook</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/02-si-es.svg" alt="04 Slide 2">
+        <div class="slide-num">2 — Sí es</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/03-no-es.svg" alt="04 Slide 3">
+        <div class="slide-num">3 — No es</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/04-pregunta.svg" alt="04 Slide 4">
+        <div class="slide-num">4 — La pregunta</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/05-empezar.svg" alt="04 Slide 5">
+        <div class="slide-num">5 — Para empezar</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/06-software.svg" alt="04 Slide 6">
+        <div class="slide-num">6 — Software</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/07-criterio.svg" alt="04 Slide 7">
+        <div class="slide-num">7 — Criterio</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-04-que-es-automatizar/source/08-cta.svg" alt="04 Slide 8">
+        <div class="slide-num">8 — CTA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reel 05 -->
+  <section class="section" id="reel-05">
+    <div class="section-header">
+      <div class="section-title">Reel 05 — El Bucle del WhatsApp <span class="badge badge-reel">Reel · 8 frames</span></div>
+      <div class="section-meta">1080 × 1920 px · Fondo oscuro · Duración total: ~21 segundos</div>
+    </div>
+    <div class="reel-strip">
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-01.svg" alt="Frame 01">
+        <div class="frame-label">Frame 1 (2s)</div>
+      </div>
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-02.svg" alt="Frame 02">
+        <div class="frame-label">Frame 2 (3s)</div>
+      </div>
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-03.svg" alt="Frame 03">
+        <div class="frame-label">Frame 3 (3s)</div>
+      </div>
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-04.svg" alt="Frame 04">
+        <div class="frame-label">Frame 4 (2s)</div>
+      </div>
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-05.svg" alt="Frame 05">
+        <div class="frame-label">Frame 5 (2s)</div>
+      </div>
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-06.svg" alt="Frame 06">
+        <div class="frame-label">Frame 6 (2s)</div>
+      </div>
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-07.svg" alt="Frame 07">
+        <div class="frame-label">Frame 7 (3s)</div>
+      </div>
+      <div class="reel-item">
+        <img src="../reels/post-05-bucle-whatsapp/frame-08.svg" alt="Frame 08">
+        <div class="frame-label">Frame 8 (4s)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel 06 -->
+  <section class="section" id="carousel-06">
+    <div class="section-header">
+      <div class="section-title">Carrusel 06 — Ejemplo Clínica <span class="badge badge-dark">Carrusel · 7 slides</span></div>
+      <div class="section-meta">1080 × 1350 px · Fondo alternado oscuro/claro</div>
+    </div>
+    <div class="carousel-strip">
+      <div class="carousel-item">
+        <img src="../post-06-ejemplo-clinica/source/01-hook.svg" alt="06 Slide 1">
+        <div class="slide-num">1 — Hook</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-06-ejemplo-clinica/source/02-agenda.svg" alt="06 Slide 2">
+        <div class="slide-num">2 — Agenda</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-06-ejemplo-clinica/source/03-recordatorio.svg" alt="06 Slide 3">
+        <div class="slide-num">3 — Recordatorio</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-06-ejemplo-clinica/source/04-whatsapp.svg" alt="06 Slide 4">
+        <div class="slide-num">4 — WhatsApp</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-06-ejemplo-clinica/source/05-seguimiento.svg" alt="06 Slide 5">
+        <div class="slide-num">5 — Seguimiento</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-06-ejemplo-clinica/source/06-cambio.svg" alt="06 Slide 6">
+        <div class="slide-num">6 — Qué cambió</div>
+      </div>
+      <div class="carousel-item">
+        <img src="../post-06-ejemplo-clinica/source/07-cta.svg" alt="06 Slide 7">
+        <div class="slide-num">7 — CTA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories -->
+  <section class="section" id="stories">
+    <div class="section-header">
+      <div class="section-title">Stories <span class="badge badge-story">3 stories</span></div>
+      <div class="section-meta">1080 × 1920 px · Fondo oscuro · Mostradas al 19% del tamaño original</div>
+    </div>
+    <div class="stories-strip">
+      <div class="story-item">
+        <img src="../stories/story-01-que-hacemos.svg" alt="Story 01 — Qué hacemos">
+        <div class="story-label">Story 1 — Qué hacemos</div>
+      </div>
+      <div class="story-item">
+        <img src="../stories/story-02-sectores.svg" alt="Story 02 — Sectores">
+        <div class="story-label">Story 2 — Sectores</div>
+      </div>
+      <div class="story-item">
+        <img src="../stories/story-03-contacto.svg" alt="Story 03 — Contacto">
+        <div class="story-label">Story 3 — Contacto</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Active nav highlighting on scroll
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('#sidebar nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const id = entry.target.id;
+        const activeLink = document.querySelector('#sidebar nav a[href="#' + id + '"]');
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>

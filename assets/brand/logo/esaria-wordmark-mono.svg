@@ -1,0 +1,15 @@
+<svg viewBox="0 0 160 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EsarIA wordmark monocromo">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&amp;display=swap');
+    </style>
+  </defs>
+  <text
+    x="8" y="36"
+    font-family="'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="32"
+    font-weight="800"
+    letter-spacing="-0.8"
+    fill="#0F172A"
+  >EsarIA</text>
+</svg>

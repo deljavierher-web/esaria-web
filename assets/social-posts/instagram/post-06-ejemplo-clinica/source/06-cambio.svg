@@ -1,0 +1,41 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#6D5EF3"/>
+
+  <!-- Headline -->
+  <text x="540" y="200" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="72" font-weight="800" fill="#0F172A">¿Qué cambió realmente?</text>
+
+  <!-- Divider -->
+  <rect x="80" y="270" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Content -->
+  <text x="540" y="370" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="52" fill="#64748B">No el trabajo clínico.</text>
+  <text x="540" y="434" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="52" fill="#64748B">No el trato con el paciente.</text>
+
+  <!-- Divider -->
+  <rect x="80" y="500" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Emphasis -->
+  <text x="540" y="590" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="48" fill="#334155">Solo dejaron de hacerse a mano</text>
+  <text x="540" y="650" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="48" fill="#334155">algunas tareas repetitivas.</text>
+
+  <!-- Note -->
+  <text x="540" y="790" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="30" fill="#64748B">(Ejemplo hipotético basado en automatizaciones</text>
+  <text x="540" y="830" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="30" fill="#64748B">reales disponibles hoy)</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Logo light version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#0F172A"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#0F172A"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#0F172A"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#0F172A">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

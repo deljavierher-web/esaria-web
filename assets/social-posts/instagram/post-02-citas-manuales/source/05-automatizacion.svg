@@ -1,0 +1,51 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#6D5EF3"/>
+
+  <!-- Headline -->
+  <text x="540" y="100" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="64" font-weight="800" fill="#0F172A">¿Cómo funcionaría</text>
+  <text x="540" y="174" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="64" fill="#0F172A">con automatización?</text>
+
+  <!-- Divider -->
+  <rect x="80" y="220" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Checklist item 1 -->
+  <rect x="80" y="302" width="6" height="44" rx="3" fill="#22C55E"/>
+  <text x="114" y="336" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#334155">El cliente confirma la cita</text>
+
+  <!-- Checklist item 2 -->
+  <rect x="80" y="382" width="6" height="44" rx="3" fill="#22C55E"/>
+  <text x="114" y="416" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#334155">El sistema envía confirmación</text>
+
+  <!-- Checklist item 3 -->
+  <rect x="80" y="462" width="6" height="44" rx="3" fill="#22C55E"/>
+  <text x="114" y="496" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#334155">Recordatorio automático antes de la cita</text>
+
+  <!-- Checklist item 4 -->
+  <rect x="80" y="542" width="6" height="44" rx="3" fill="#22C55E"/>
+  <text x="114" y="576" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#334155">Las cancelaciones quedan registradas</text>
+
+  <!-- Checklist item 5 -->
+  <rect x="80" y="622" width="6" height="44" rx="3" fill="#22C55E"/>
+  <text x="114" y="656" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="38" fill="#334155">Tú no tienes que hacer nada de esto</text>
+
+  <!-- Note -->
+  <text x="540" y="790" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="28" fill="#64748B">(El nivel de automatización depende de las</text>
+  <text x="540" y="828" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="28" fill="#64748B">herramientas de cada negocio)</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Logo light version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#0F172A"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#0F172A"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#0F172A"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#0F172A">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#6D5EF3"/>
+
+  <!-- Time label -->
+  <text x="80" y="140" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="48" font-weight="700" fill="#6D5EF3">8:00 —</text>
+
+  <!-- Headline -->
+  <text x="80" y="220" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="56" font-weight="800" fill="#0F172A">La agenda está más ordenada</text>
+
+  <!-- Divider -->
+  <rect x="80" y="260" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Body -->
+  <text x="80" y="360" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#334155">Las citas confirmadas están claras.</text>
+  <text x="80" y="414" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#334155">Las cancelaciones quedan registradas.</text>
+  <text x="80" y="514" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#64748B">Los huecos se pueden revisar</text>
+  <text x="80" y="568" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#64748B">antes de empezar.</text>
+
+  <!-- Accent -->
+  <text x="80" y="680" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" font-weight="700" fill="#6D5EF3">Tú no has hecho nada todavía.</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Logo light version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#0F172A"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#0F172A"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#0F172A"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#0F172A">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

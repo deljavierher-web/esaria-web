@@ -1,0 +1,39 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#6D5EF3"/>
+
+  <!-- Headline -->
+  <text x="540" y="160" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="72" font-weight="800" fill="#0F172A">¿Qué necesitas</text>
+  <text x="540" y="244" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="72" fill="#0F172A">para empezar?</text>
+
+  <!-- Divider -->
+  <rect x="80" y="310" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Steps list -->
+  <text x="80" y="400" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#334155"><tspan fill="#6D5EF3" font-weight="800">1. </tspan>Identificar qué tareas se repiten</text>
+  <text x="80" y="470" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#334155"><tspan fill="#6D5EF3" font-weight="800">2. </tspan>Ver si tienen un patrón claro</text>
+  <text x="80" y="540" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#334155"><tspan fill="#6D5EF3" font-weight="800">3. </tspan>Configurar el proceso una vez</text>
+  <text x="80" y="610" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="42" fill="#334155"><tspan fill="#6D5EF3" font-weight="800">4. </tspan>Probarlo con calma</text>
+
+  <!-- Divider -->
+  <rect x="80" y="680" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Note -->
+  <text x="540" y="760" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="40" fill="#64748B">Eso es todo. Sin grandes inversiones iniciales.</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Logo light version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#0F172A"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#0F172A"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#0F172A"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#0F172A">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

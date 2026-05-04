@@ -1,0 +1,50 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#6D5EF3"/>
+
+  <!-- Number -->
+  <text x="80" y="160" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="100" font-weight="800" fill="#6D5EF3">3.</text>
+
+  <!-- Headline -->
+  <text x="80" y="260" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="56" font-weight="800" fill="#0F172A">Avisar del estado</text>
+  <text x="80" y="326" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="52" fill="#0F172A">de un pedido o reparación</text>
+
+  <!-- Divider -->
+  <rect x="80" y="380" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Chat-style messages -->
+  <rect x="80" y="408" width="600" height="60" rx="12" fill="#E2E8F0"/>
+  <text x="110" y="447" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="36" fill="#334155">Tu coche está listo.</text>
+
+  <rect x="80" y="488" width="620" height="60" rx="12" fill="#E2E8F0"/>
+  <text x="110" y="527" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="36" fill="#334155">El pedido ya ha salido.</text>
+
+  <rect x="80" y="568" width="680" height="60" rx="12" fill="#E2E8F0"/>
+  <text x="110" y="607" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="36" fill="#334155">Puedes pasar a recogerlo.</text>
+
+  <!-- Divider -->
+  <rect x="80" y="660" width="920" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Body -->
+  <text x="80" y="740" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" fill="#334155">El sistema puede enviarlo solo</text>
+  <text x="80" y="798" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="44" font-weight="700" fill="#6D5EF3">cuando cambia el estado.</text>
+
+  <!-- Note -->
+  <text x="80" y="890" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="34" fill="#64748B">Sin que nadie tenga que escribirlo cada vez.</text>
+
+  <!-- Bottom separator -->
+  <rect x="60" y="1210" width="960" height="1" fill="#0F172A" opacity="0.1"/>
+
+  <!-- Logo light version -->
+  <g transform="translate(447, 1258) scale(1.5)">
+    <g transform="translate(2, 2)">
+      <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#0F172A"/>
+      <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#0F172A"/>
+      <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+      <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#0F172A"/>
+    </g>
+    <text x="50" y="31" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.6">
+      <tspan fill="#0F172A">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+    </text>
+  </g>
+</svg>

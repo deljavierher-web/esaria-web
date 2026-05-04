@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EsarIA — Contenidos Instagram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0F172A; color: #F8FAFC; min-height: 100vh; }
+
+    /* Header */
+    .site-header { background: #080F1E; border-bottom: 1px solid #1E293B; padding: 32px 40px 28px; }
+    .site-header h1 { font-size: 28px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em; }
+    .site-header p { font-size: 14px; color: #64748B; margin-top: 6px; }
+    .badge { display: inline-block; background: #6D5EF3; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 10px; vertical-align: middle; letter-spacing: 0.04em; }
+
+    /* Nav */
+    .top-nav { position: sticky; top: 0; z-index: 100; background: #0C1525; border-bottom: 1px solid #1E293B; padding: 0 40px; display: flex; gap: 0; overflow-x: auto; }
+    .top-nav a { display: inline-block; padding: 14px 18px; font-size: 13px; font-weight: 500; color: #94A3B8; text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+    .top-nav a:hover { color: #FFFFFF; border-bottom-color: #6D5EF3; }
+
+    /* Main content */
+    .main { padding: 48px 40px; max-width: 1200px; }
+
+    /* Section */
+    .post-section { margin-bottom: 64px; }
+    .post-section-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+    .post-section-header h2 { font-size: 18px; font-weight: 700; color: #FFFFFF; }
+    .format-badge { font-size: 12px; color: #64748B; background: #1E293B; border: 1px solid #334155; padding: 3px 10px; border-radius: 4px; white-space: nowrap; }
+    .preview-link { font-size: 12px; color: #6D5EF3; text-decoration: none; margin-left: auto; border: 1px solid #6D5EF3; padding: 4px 12px; border-radius: 6px; white-space: nowrap; }
+    .preview-link:hover { background: #6D5EF3; color: #fff; }
+
+    .slides-strip { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 16px; margin-top: 20px; margin-bottom: 0; }
+    .slide-wrap { flex-shrink: 0; text-align: center; }
+    .slide-wrap img { display: block; border-radius: 8px; border: 1px solid #1E293B; }
+    .slide-label { font-size: 11px; color: #64748B; margin-top: 6px; }
+
+    .duration-table { margin: 16px 0 0; border-collapse: collapse; }
+    .duration-table td, .duration-table th { padding: 6px 16px; font-size: 13px; text-align: left; border-bottom: 1px solid #1E293B; }
+    .duration-table th { color: #6D5EF3; font-weight: 600; }
+    .duration-table td { color: #94A3B8; }
+
+    .divider { border: none; border-top: 1px solid #1E293B; margin-bottom: 64px; }
+
+    /* Footer */
+    .site-footer { border-top: 1px solid #1E293B; padding: 24px 40px; font-size: 12px; color: #334155; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>EsarIA — Contenidos Instagram <span class="badge">6 posts · 3 stories</span></h1>
+    <p>Vista general de todos los posts</p>
+  </header>
+
+  <nav class="top-nav">
+    <a href="#post-01">Post 01</a>
+    <a href="#post-02">Post 02</a>
+    <a href="#post-03">Post 03</a>
+    <a href="#post-04">Post 04</a>
+    <a href="#post-05">Post 05 (Reel)</a>
+    <a href="#post-06">Post 06</a>
+    <a href="#stories">Stories</a>
+  </nav>
+
+  <div class="main">
+
+    <!-- POST 01 -->
+    <section class="post-section" id="post-01">
+      <div class="post-section-header">
+        <h2>Post 01 — Presentación EsarIA</h2>
+        <span class="format-badge">Imagen única · 1080×1350px</span>
+        <a class="preview-link" href="../post-01-presentacion-esaria/preview.html" target="_blank">Abrir preview</a>
+      </div>
+      <div class="slides-strip">
+        <div class="slide-wrap">
+          <img src="../post-01-presentacion-esaria/source/post-01-presentacion-esaria.svg" width="360" alt="Post 01">
+          <div class="slide-label">post-01-presentacion-esaria.svg</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- POST 02 -->
+    <section class="post-section" id="post-02">
+      <div class="post-section-header">
+        <h2>Post 02 — ¿Cuánto tiempo pierdes gestionando citas?</h2>
+        <span class="format-badge">Carrusel · 7 slides · 1080×1350px</span>
+        <a class="preview-link" href="../post-02-citas-manuales/preview.html" target="_blank">Abrir preview</a>
+      </div>
+      <div class="slides-strip">
+        <div class="slide-wrap">
+          <img src="../post-02-citas-manuales/source/01-hook.svg" width="240" alt="01-hook">
+          <div class="slide-label">01-hook</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-02-citas-manuales/source/02-ciclo.svg" width="240" alt="02-ciclo">
+          <div class="slide-label">02-ciclo</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-02-citas-manuales/source/03-tiempo.svg" width="240" alt="03-tiempo">
+          <div class="slide-label">03-tiempo</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-02-citas-manuales/source/04-proceso.svg" width="240" alt="04-proceso">
+          <div class="slide-label">04-proceso</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-02-citas-manuales/source/05-automatizacion.svg" width="240" alt="05-automatizacion">
+          <div class="slide-label">05-automatizacion</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-02-citas-manuales/source/06-sectores.svg" width="240" alt="06-sectores">
+          <div class="slide-label">06-sectores</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-02-citas-manuales/source/07-cta.svg" width="240" alt="07-cta">
+          <div class="slide-label">07-cta</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- POST 03 -->
+    <section class="post-section" id="post-03">
+      <div class="post-section-header">
+        <h2>Post 03 — 4 tareas que una pyme puede dejar de hacer a mano</h2>
+        <span class="format-badge">Carrusel · 6 slides · 1080×1350px</span>
+        <a class="preview-link" href="../post-03-4-tareas/preview.html" target="_blank">Abrir preview</a>
+      </div>
+      <div class="slides-strip">
+        <div class="slide-wrap">
+          <img src="../post-03-4-tareas/source/01-hook.svg" width="240" alt="01-hook">
+          <div class="slide-label">01-hook</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-03-4-tareas/source/02-recordatorios.svg" width="240" alt="02-recordatorios">
+          <div class="slide-label">02-recordatorios</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-03-4-tareas/source/03-preguntas.svg" width="240" alt="03-preguntas">
+          <div class="slide-label">03-preguntas</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-03-4-tareas/source/04-avisos.svg" width="240" alt="04-avisos">
+          <div class="slide-label">04-avisos</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-03-4-tareas/source/05-seguimiento.svg" width="240" alt="05-seguimiento">
+          <div class="slide-label">05-seguimiento</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-03-4-tareas/source/06-cta.svg" width="240" alt="06-cta">
+          <div class="slide-label">06-cta</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- POST 04 -->
+    <section class="post-section" id="post-04">
+      <div class="post-section-header">
+        <h2>Post 04 — Qué es automatizar un negocio (y qué no es)</h2>
+        <span class="format-badge">Carrusel · 8 slides · 1080×1350px</span>
+        <a class="preview-link" href="../post-04-que-es-automatizar/preview.html" target="_blank">Abrir preview</a>
+      </div>
+      <div class="slides-strip">
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/01-hook.svg" width="240" alt="01-hook">
+          <div class="slide-label">01-hook</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/02-si-es.svg" width="240" alt="02-si-es">
+          <div class="slide-label">02-si-es</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/03-no-es.svg" width="240" alt="03-no-es">
+          <div class="slide-label">03-no-es</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/04-pregunta.svg" width="240" alt="04-pregunta">
+          <div class="slide-label">04-pregunta</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/05-empezar.svg" width="240" alt="05-empezar">
+          <div class="slide-label">05-empezar</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/06-software.svg" width="240" alt="06-software">
+          <div class="slide-label">06-software</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/07-criterio.svg" width="240" alt="07-criterio">
+          <div class="slide-label">07-criterio</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-04-que-es-automatizar/source/08-cta.svg" width="240" alt="08-cta">
+          <div class="slide-label">08-cta</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- POST 05 (REEL) -->
+    <section class="post-section" id="post-05">
+      <div class="post-section-header">
+        <h2>Post 05 — El Bucle del WhatsApp (Reel)</h2>
+        <span class="format-badge">Reel · 8 frames · 1080×1920px · ~21s</span>
+        <a class="preview-link" href="../post-05-bucle-whatsapp-reel/preview.html" target="_blank">Abrir preview</a>
+      </div>
+      <div class="slides-strip">
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-01.svg" width="180" alt="frame-01">
+          <div class="slide-label">frame-01</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-02.svg" width="180" alt="frame-02">
+          <div class="slide-label">frame-02</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-03.svg" width="180" alt="frame-03">
+          <div class="slide-label">frame-03</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-04.svg" width="180" alt="frame-04">
+          <div class="slide-label">frame-04</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-05.svg" width="180" alt="frame-05">
+          <div class="slide-label">frame-05</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-06.svg" width="180" alt="frame-06">
+          <div class="slide-label">frame-06</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-07.svg" width="180" alt="frame-07">
+          <div class="slide-label">frame-07</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-05-bucle-whatsapp-reel/source/frame-08.svg" width="180" alt="frame-08">
+          <div class="slide-label">frame-08</div>
+        </div>
+      </div>
+      <table class="duration-table">
+        <tr>
+          <th>Frame</th>
+          <th>Duración</th>
+        </tr>
+        <tr><td>frame-01</td><td>2s</td></tr>
+        <tr><td>frame-02</td><td>3s</td></tr>
+        <tr><td>frame-03</td><td>3s</td></tr>
+        <tr><td>frame-04</td><td>2s</td></tr>
+        <tr><td>frame-05</td><td>2s</td></tr>
+        <tr><td>frame-06</td><td>2s</td></tr>
+        <tr><td>frame-07</td><td>3s</td></tr>
+        <tr><td>frame-08</td><td>4s</td></tr>
+      </table>
+    </section>
+
+    <hr class="divider">
+
+    <!-- POST 06 -->
+    <section class="post-section" id="post-06">
+      <div class="post-section-header">
+        <h2>Post 06 — Ejemplo práctico: una clínica con automatización</h2>
+        <span class="format-badge">Carrusel · 7 slides · 1080×1350px</span>
+        <a class="preview-link" href="../post-06-ejemplo-clinica/preview.html" target="_blank">Abrir preview</a>
+      </div>
+      <div class="slides-strip">
+        <div class="slide-wrap">
+          <img src="../post-06-ejemplo-clinica/source/01-hook.svg" width="240" alt="01-hook">
+          <div class="slide-label">01-hook</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-06-ejemplo-clinica/source/02-agenda.svg" width="240" alt="02-agenda">
+          <div class="slide-label">02-agenda</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-06-ejemplo-clinica/source/03-recordatorio.svg" width="240" alt="03-recordatorio">
+          <div class="slide-label">03-recordatorio</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-06-ejemplo-clinica/source/04-whatsapp.svg" width="240" alt="04-whatsapp">
+          <div class="slide-label">04-whatsapp</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-06-ejemplo-clinica/source/05-seguimiento.svg" width="240" alt="05-seguimiento">
+          <div class="slide-label">05-seguimiento</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-06-ejemplo-clinica/source/06-cambio.svg" width="240" alt="06-cambio">
+          <div class="slide-label">06-cambio</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../post-06-ejemplo-clinica/source/07-cta.svg" width="240" alt="07-cta">
+          <div class="slide-label">07-cta</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- STORIES -->
+    <section class="post-section" id="stories">
+      <div class="post-section-header">
+        <h2>Stories Destacadas (3)</h2>
+        <span class="format-badge">Stories · 1080×1920px · Guardar como destacadas el día 1</span>
+        <a class="preview-link" href="../stories-destacadas/preview.html" target="_blank">Abrir preview</a>
+      </div>
+      <div class="slides-strip">
+        <div class="slide-wrap">
+          <img src="../stories-destacadas/source/story-01-que-hacemos.svg" width="200" alt="Story 01 — Qué hacemos">
+          <div class="slide-label">¿Qué hacemos?</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../stories-destacadas/source/story-02-sectores.svg" width="200" alt="Story 02 — Sectores">
+          <div class="slide-label">Sectores</div>
+        </div>
+        <div class="slide-wrap">
+          <img src="../stories-destacadas/source/story-03-contacto.svg" width="200" alt="Story 03 — Contacto">
+          <div class="slide-label">Contacto</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    EsarIA — Generado el 2 de mayo de 2026 · assets/social-posts/instagram/previews/master-preview.html
+  </footer>
+
+</body>
+</html>
