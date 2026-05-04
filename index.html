@@ -58,6 +58,7 @@
        LAYOUT
     ============================================================ */
     .container {
+      width: 100%;
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
@@ -529,7 +530,7 @@
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--accent);
-      width: 40px;
+      width: 64px;
       text-align: right;
       flex-shrink: 0;
     }
@@ -953,9 +954,41 @@
     }
 
     /* ============================================================
+       SOCIAL BUTTONS
+    ============================================================ */
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-white);
+      transition: border-color 0.2s;
+    }
+    .social-btn:hover { border-color: var(--accent); }
+
+    /* Proof icon (hero) */
+    .proof-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
        FLOATING WHATSAPP
     ============================================================ */
     .wa-float {
+      color: #fff;
       position: fixed;
       bottom: 28px;
       right: 28px;
@@ -1014,13 +1047,6 @@
 
     img, svg {
       max-width: 100%;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      padding-left: 20px;
-      padding-right: 20px;
     }
 
     @media (max-width: 640px) {
@@ -1086,8 +1112,35 @@
     }
 
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "EsarIA",
+    "description": "Automatización útil para negocios reales. Ayudamos a pequeñas empresas a ahorrar tiempo automatizando tareas repetitivas.",
+    "url": "https://esaria.es",
+    "telephone": "+34614918261",
+    "email": "hola@esaria.es",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Valladolid",
+      "addressRegion": "Castilla y León",
+      "addressCountry": "ES"
+    },
+    "areaServed": { "@type": "City", "name": "Valladolid" },
+    "serviceType": "Automatización e Inteligencia Artificial para pequeñas empresas"
+  }
+  </script>
 </head>
 <body>
+
+<!-- SVG symbols reutilizables -->
+<svg aria-hidden="true" style="display:none" focusable="false">
+  <symbol id="icon-wa" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </symbol>
+</svg>
 
 <!-- ============================================================
      HEADER
@@ -1156,20 +1209,18 @@
         <!-- WhatsApp real EsarIA: cambiar aquí si cambia el número -->
         <a href="https://wa.me/34614918261?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20para%20mi%20negocio"
            class="btn btn-wa" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
+          <svg width="18" height="18" aria-hidden="true"><use href="#icon-wa"/></svg>
           Pedir diagnóstico gratuito
         </a>
         <a href="#sectores" class="btn btn-outline">Ver ejemplos</a>
       </div>
 
       <div class="hero-proof fade-up d4">
-        <div class="proof-avatars">
-          <span>C</span><span>G</span><span>T</span>
+        <div class="proof-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <p class="proof-text">
-          <strong>Buscando los primeros negocios piloto</strong> en Valladolid para automatizar procesos reales.
+          <strong>Abriendo plazas piloto</strong> para negocios locales de Valladolid.
         </p>
       </div>
     </div>
@@ -1271,35 +1322,35 @@
       </div>
 
       <div class="solution-visual reveal">
-        <span class="visual-label">Tiempo ahorrado por tipo de tarea</span>
+        <span class="visual-label">Potencial de automatización por área</span>
         <div class="metric-list">
           <div class="metric-item">
             <span class="metric-label">Gestión de citas</span>
             <div class="metric-bar-wrap"><div class="metric-bar" data-w="85"></div></div>
-            <span class="metric-value">-85%</span>
+            <span class="metric-value">Muy alto</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">Atención básica</span>
             <div class="metric-bar-wrap"><div class="metric-bar" data-w="70"></div></div>
-            <span class="metric-value">-70%</span>
+            <span class="metric-value">Alto</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">Presupuestos</span>
             <div class="metric-bar-wrap"><div class="metric-bar" data-w="75"></div></div>
-            <span class="metric-value">-75%</span>
+            <span class="metric-value">Alto</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">Reportes internos</span>
             <div class="metric-bar-wrap"><div class="metric-bar" data-w="90"></div></div>
-            <span class="metric-value">-90%</span>
+            <span class="metric-value">Muy alto</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">Seguimiento clientes</span>
             <div class="metric-bar-wrap"><div class="metric-bar" data-w="65"></div></div>
-            <span class="metric-value">-65%</span>
+            <span class="metric-value">Notable</span>
           </div>
         </div>
-        <span class="visual-note">* Estimaciones basadas en automatizaciones en negocios similares.</span>
+        <span class="visual-note">Estimación orientativa. El impacto real depende de cada negocio.</span>
       </div>
 
     </div>
@@ -1355,15 +1406,15 @@
       <p>Selecciona tu sector y descubre qué automatizaciones pueden funcionar para ti.</p>
     </div>
 
-    <div class="sector-tabs reveal">
-      <button class="sector-tab active" onclick="showSector('clinica', this)">🏥 Clínicas</button>
-      <button class="sector-tab" onclick="showSector('taller', this)">🔧 Talleres</button>
-      <button class="sector-tab" onclick="showSector('gimnasio', this)">💪 Gimnasios</button>
-      <button class="sector-tab" onclick="showSector('comercio', this)">🛍️ Comercios</button>
+    <div class="sector-tabs reveal" role="tablist" aria-label="Sectores">
+      <button class="sector-tab active" id="tab-clinica"  role="tab" aria-selected="true"  aria-controls="sector-clinica"  onclick="showSector('clinica', this)">🏥 Clínicas</button>
+      <button class="sector-tab"        id="tab-taller"   role="tab" aria-selected="false" aria-controls="sector-taller"   onclick="showSector('taller', this)">🔧 Talleres</button>
+      <button class="sector-tab"        id="tab-gimnasio" role="tab" aria-selected="false" aria-controls="sector-gimnasio" onclick="showSector('gimnasio', this)">💪 Gimnasios</button>
+      <button class="sector-tab"        id="tab-comercio" role="tab" aria-selected="false" aria-controls="sector-comercio" onclick="showSector('comercio', this)">🛍️ Comercios</button>
     </div>
 
     <!-- CLÍNICA -->
-    <div class="sector-content active" id="sector-clinica">
+    <div class="sector-content active" id="sector-clinica" role="tabpanel" aria-labelledby="tab-clinica">
       <div class="sector-info">
         <h3>Clínicas y centros de salud</h3>
         <p>Reduce el tiempo administrativo y mejora la experiencia del paciente.</p>
@@ -1400,7 +1451,7 @@
     </div>
 
     <!-- TALLER -->
-    <div class="sector-content" id="sector-taller">
+    <div class="sector-content" id="sector-taller" role="tabpanel" aria-labelledby="tab-taller">
       <div class="sector-info">
         <h3>Talleres mecánicos</h3>
         <p>Más orden, menos llamadas y clientes mejor informados en todo momento.</p>
@@ -1437,7 +1488,7 @@
     </div>
 
     <!-- GIMNASIO -->
-    <div class="sector-content" id="sector-gimnasio">
+    <div class="sector-content" id="sector-gimnasio" role="tabpanel" aria-labelledby="tab-gimnasio">
       <div class="sector-info">
         <h3>Gimnasios y entrenadores personales</h3>
         <p>Automatiza la captación, la retención y la comunicación con tus alumnos.</p>
@@ -1474,7 +1525,7 @@
     </div>
 
     <!-- COMERCIO -->
-    <div class="sector-content" id="sector-comercio">
+    <div class="sector-content" id="sector-comercio" role="tabpanel" aria-labelledby="tab-comercio">
       <div class="sector-info">
         <h3>Comercios y empresas locales</h3>
         <p>Vende más, atiende mejor y deja de perder tiempo con gestión manual.</p>
@@ -1566,9 +1617,7 @@
         </div>
         <a href="https://wa.me/34614918261?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20para%20mi%20negocio"
            class="btn btn-wa" style="width:100%;justify-content:center;" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
+          <svg width="18" height="18" aria-hidden="true"><use href="#icon-wa"/></svg>
           Quiero mi plaza en el piloto
         </a>
       </div>
@@ -1614,20 +1663,14 @@
 
         <div style="margin-top:24px;">
           <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:10px;">Redes sociales</p>
-          <div style="display:flex;gap:12px;">
-            <a href="https://www.instagram.com/esar.ia/" target="_blank" rel="noopener"
-               style="display:inline-flex;align-items:center;gap:6px;font-size:0.875rem;font-weight:500;color:var(--text);text-decoration:none;padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-white);transition:border-color 0.2s;"
-               onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://www.instagram.com/esar.ia/" target="_blank" rel="noopener" class="social-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> Instagram
             </a>
-            <a href="https://www.tiktok.com/@esar.ia" target="_blank" rel="noopener"
-               style="display:inline-flex;align-items:center;gap:6px;font-size:0.875rem;font-weight:500;color:var(--text);text-decoration:none;padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-white);transition:border-color 0.2s;"
-               onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <a href="https://www.tiktok.com/@esar.ia" target="_blank" rel="noopener" class="social-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.77 1.52V6.69a4.85 4.85 0 0 1-1 0z"/></svg> TikTok
             </a>
-            <a href="https://www.linkedin.com/in/javier-delgado-hern%C3%A1ndez-esaria" target="_blank" rel="noopener"
-               style="display:inline-flex;align-items:center;gap:6px;font-size:0.875rem;font-weight:500;color:var(--text);text-decoration:none;padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-white);transition:border-color 0.2s;"
-               onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <a href="https://www.linkedin.com/in/javier-delgado-hern%C3%A1ndez-esaria" target="_blank" rel="noopener" class="social-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
             </a>
           </div>
@@ -1683,7 +1726,7 @@
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
             Preparar mensaje por WhatsApp →
           </button>
-          <p class="form-note">Sin compromiso. Te respondemos en menos de 24 horas.</p>
+          <p class="form-note">Sin compromiso · <a href="#aviso-privacidad" style="color:inherit;text-decoration:underline">Aviso de privacidad</a></p>
         </form>
       </div>
 
@@ -1741,6 +1784,13 @@
       <span>© 2026 EsarIA · Valladolid, España</span>
       <span>Automatización útil para negocios reales</span>
     </div>
+
+    <details id="aviso-privacidad" style="margin-top:20px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;">
+      <summary style="font-size:0.75rem;color:#475569;cursor:pointer;user-select:none;list-style:none;">▸ Aviso de privacidad</summary>
+      <p style="font-size:0.75rem;color:#334155;margin-top:10px;max-width:640px;line-height:1.7;">
+        EsarIA no almacena los datos que introduces en el formulario de contacto. Al pulsar el botón de envío, tus datos se incluyen en el texto del mensaje y se transfieren a WhatsApp para que puedas enviarlo directamente — el tratamiento posterior está sujeto a la política de privacidad de WhatsApp. Para contacto por email (hola@esaria.es), la información se trata exclusivamente para responder a tu consulta. Responsable del tratamiento: EsarIA · hola@esaria.es · Valladolid, España. Puedes ejercer tus derechos de acceso, rectificación y supresión escribiéndonos a ese mismo email.
+      </p>
+    </details>
   </div>
 </footer>
 
@@ -1750,9 +1800,7 @@
 ============================================================ -->
 <a href="https://wa.me/34614918261?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20para%20mi%20negocio"
    class="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+  <svg width="28" height="28" aria-hidden="true"><use href="#icon-wa"/></svg>
 </a>
 
 
@@ -1760,6 +1808,17 @@
      JAVASCRIPT
 ============================================================ -->
 <script>
+  /* ---- Número WhatsApp — cambiar aquí si cambia ---- */
+  const WA_PHONE = '34614918261';
+  const WA_DEFAULT_TEXT = encodeURIComponent('Hola, quiero información sobre automatización para mi negocio');
+
+  /* Actualiza todos los enlaces de WhatsApp a partir de WA_PHONE */
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
+      link.href = 'https://wa.me/' + WA_PHONE + '?text=' + WA_DEFAULT_TEXT;
+    });
+  });
+
   /* ---- Mobile menu ---- */
   function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
@@ -1782,9 +1841,13 @@
   /* ---- Sector tabs ---- */
   function showSector(id, btn) {
     document.querySelectorAll('.sector-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.sector-tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.sector-tab').forEach(el => {
+      el.classList.remove('active');
+      el.setAttribute('aria-selected', 'false');
+    });
     document.getElementById('sector-' + id).classList.add('active');
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
   }
 
   /* ---- Contact form ---- */
@@ -1796,15 +1859,20 @@
     const business = document.getElementById('business').value;
     const message  = document.getElementById('message').value.trim();
 
+    if (!name)     { document.getElementById('name').focus();     return; }
+    if (!email)    { document.getElementById('email').focus();    return; }
+    if (!business) { document.getElementById('business').focus(); return; }
+    if (!message)  { document.getElementById('message').focus();  return; }
+
     const text = [
       'Hola, me llamo ' + name + ' y quiero un diagnóstico gratuito para mi negocio.',
-      business ? 'Sector: ' + business : '',
-      phone    ? 'Teléfono: ' + phone  : '',
-      email    ? 'Email: '   + email   : '',
+      'Sector: ' + business,
+      phone  ? 'Teléfono: ' + phone : '',
+      'Email: ' + email,
       'Cuello de botella: ' + message
     ].filter(Boolean).join('\n');
 
-    window.open('https://wa.me/34614918261?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    window.open('https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
 
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('formSuccess').classList.add('show');
