@@ -17,5 +17,13 @@ exports/
 .agents/
 skills-lock.json
 
+# Claude Code / Ruflo (archivos locales, no van al repo)
+.claude/
+.claude-flow/
+.swarm/
+.mcp.json
+RUFLO.md
+ruvector.db
+
 # Dependencias (por si se añade tooling futuro)
 node_modules/
