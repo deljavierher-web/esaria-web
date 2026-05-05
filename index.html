@@ -526,8 +526,10 @@
       height: 100%;
       background: linear-gradient(90deg, var(--accent), #818CF8);
       border-radius: 100px;
-      width: 0%;
-      transition: width 1.4s cubic-bezier(.25,.46,.45,.94);
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 1.4s cubic-bezier(.25,.46,.45,.94);
     }
     .metric-value {
       font-size: 0.82rem;
@@ -1037,7 +1039,23 @@
       transform: translateY(0);
     }
 
-    
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-up {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+      .metric-bar {
+        transition: none;
+      }
+    }
+
     /* ============================================================
        MOBILE OVERFLOW FIX
        Evita que elementos se salgan por la derecha en móvil
@@ -1881,7 +1899,9 @@
     document.getElementById('formSuccess').classList.add('show');
   }
 
-  /* ---- Scroll-reveal ---- */
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Scroll-reveal (elementos individuales no gestionados por stagger) ---- */
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1891,15 +1911,56 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  /* ---- Stagger reveal para grupos de cards ---- */
+  const staggeredEls = new Set();
 
-  /* ---- Metric bars animation ---- */
+  if (!prefersReduced) {
+    const staggerGroups = [
+      { parent: '.grid-3',        cards: '.problem-card.reveal' },
+      { parent: '.solution-list', cards: '.solution-item.reveal' },
+      { parent: '.steps-grid',    cards: '.step.reveal'         },
+    ];
+
+    const staggerObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('.reveal').forEach((card, i) => {
+          card.style.transitionDelay = (i * 100) + 'ms';
+          card.classList.add('visible');
+        });
+        staggerObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    staggerGroups.forEach(({ parent, cards }) => {
+      const parentEl = document.querySelector(parent);
+      if (!parentEl) return;
+      parentEl.querySelectorAll(cards).forEach(el => staggeredEls.add(el));
+      staggerObserver.observe(parentEl);
+    });
+  }
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (prefersReduced) {
+      el.classList.add('visible');
+    } else if (!staggeredEls.has(el)) {
+      revealObserver.observe(el);
+    }
+  });
+
+  /* ---- Metric bars (scaleX — solo compositor, sin layout recalc) ---- */
   const barObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.metric-bar').forEach(bar => {
-          bar.style.width = '0%';
-          setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 150);
+        entry.target.querySelectorAll('.metric-bar').forEach((bar, i) => {
+          const target = (bar.dataset.w || 0) / 100;
+          if (prefersReduced) {
+            bar.style.transform = 'scaleX(' + target + ')';
+          } else {
+            setTimeout(() => {
+              bar.style.transform = 'scaleX(' + target + ')';
+            }, 150 + i * 80);
+          }
         });
         barObserver.unobserve(entry.target);
       }
