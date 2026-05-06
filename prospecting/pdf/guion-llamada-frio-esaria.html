@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guion de Llamada en Frío — EsarIA</title>
+  <style>
+    /* ─── Variables ─── */
+    :root {
+      --dark:    #0F172A;
+      --accent:  #6366F1;
+      --bg:      #F8FAFC;
+      --text:    #1E293B;
+      --subtle:  #64748B;
+      --border:  #E2E8F0;
+      --white:   #FFFFFF;
+    }
+
+    /* ─── Reset base ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      background: #CBD5E1;
+    }
+
+    /* ─── Botón impresión ─── */
+    .no-print {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .no-print button {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .no-print button:hover {
+      background: #4F46E5;
+    }
+
+    /* ─── Página base ─── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 1.5rem auto;
+      background: var(--white);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+      padding: 20mm 25mm;
+      position: relative;
+    }
+
+    /* ─── Portada y página final ─── */
+    .page-cover {
+      background: var(--dark);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .cover-brand {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .cover-accent-dot {
+      color: var(--accent);
+    }
+
+    .cover-subtitle {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #94A3B8;
+      margin-bottom: 2.5rem;
+    }
+
+    .cover-objective-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #94A3B8;
+      margin-bottom: 0.5rem;
+    }
+
+    .cover-objective {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      color: #CBD5E1;
+      max-width: 320px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .cover-rule {
+      width: 100%;
+      max-width: 380px;
+      border: none;
+      border-top: 1px solid #334155;
+      margin: 1.25rem 0;
+    }
+
+    .cover-tagline {
+      font-size: 0.85rem;
+      color: #94A3B8;
+      letter-spacing: 0.04em;
+      font-style: italic;
+      max-width: 340px;
+    }
+
+    .cover-footer {
+      position: absolute;
+      bottom: 20mm;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #475569;
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── Encabezado de sección ─── */
+    .section-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--subtle);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    h1.page-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 1.25rem 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Bloques destacados ─── */
+    .box-accent {
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .box-accent p {
+      margin: 0;
+    }
+
+    .box-left-border {
+      border-left: 4px solid var(--accent);
+      background: var(--bg);
+      padding: 0.85rem 1rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .box-left-border p {
+      margin: 0;
+    }
+
+    .box-light {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 0.9rem 1.1rem;
+      margin: 0.75rem 0;
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .box-light p {
+      margin: 0 0 0.4rem;
+    }
+    .box-light p:last-child {
+      margin-bottom: 0;
+    }
+
+    .box-alert-red {
+      background: #FEF2F2;
+      color: #991B1B;
+      border: 1px solid #FECACA;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .box-alert-red p {
+      margin: 0;
+    }
+
+    .box-green {
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-left: 4px solid #16A34A;
+      border-radius: 0 6px 6px 0;
+      padding: 0.9rem 1.1rem;
+      margin: 0.75rem 0;
+      font-size: 0.875rem;
+      color: #14532D;
+    }
+
+    .box-blue {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-left: 4px solid #2563EB;
+      border-radius: 0 6px 6px 0;
+      padding: 0.9rem 1.1rem;
+      margin: 0.75rem 0;
+      font-size: 0.875rem;
+      color: #1E3A8A;
+    }
+
+    .box-note {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-left: 4px solid #D97706;
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.82rem;
+      color: #92400E;
+    }
+
+    .box-note p { margin: 0; }
+
+    /* ─── Texto del guion (estilo quote) ─── */
+    .script-line {
+      font-style: italic;
+      color: var(--text);
+    }
+
+    /* ─── Checklist ─── */
+    .checklist {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checklist-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .checklist-box {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 3px;
+      margin-top: 2px;
+      background: var(--white);
+    }
+
+    /* ─── Tabla ─── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.82rem;
+    }
+
+    thead th {
+      background: var(--dark);
+      color: var(--white);
+      padding: 0.55rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: var(--bg);
+    }
+
+    tbody tr:nth-child(even) {
+      background: var(--white);
+    }
+
+    tbody td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ─── Tarjetas de objeción ─── */
+    .objection-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .objection-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .objection-q {
+      background: var(--bg);
+      color: var(--subtle);
+      padding: 0.5rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .objection-a {
+      padding: 0.65rem 0.85rem;
+      font-size: 0.84rem;
+      color: var(--text);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ─── Reglas de oro ─── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .rule-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      background: var(--white);
+    }
+
+    .rule-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .rule-title {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .rule-body {
+      font-size: 0.79rem;
+      color: var(--subtle);
+      line-height: 1.5;
+    }
+
+    /* ─── Página final ─── */
+    .final-quote {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.65;
+      max-width: 420px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .final-rule {
+      width: 60px;
+      border: none;
+      border-top: 1px solid #334155;
+      margin: 1.5rem auto;
+    }
+
+    .final-footer {
+      font-size: 0.8rem;
+      color: #64748B;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Utilidades de texto ─── */
+    p {
+      margin-bottom: 0.65rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul, ol {
+      padding-left: 1.25rem;
+      margin: 0.5rem 0;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .text-subtle {
+      color: var(--subtle);
+      font-size: 0.82rem;
+    }
+
+    .text-highlight {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .key-rule {
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark);
+      padding: 0.75rem 1rem;
+      background: var(--bg);
+      border-radius: 6px;
+      margin: 1rem 0;
+      border: 1px solid var(--border);
+    }
+
+    /* ─── MEDIA PRINT ─── */
+    @media print {
+      @page {
+        size: A4;
+        margin: 20mm 25mm;
+      }
+
+      body {
+        background: white;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .page {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+      }
+
+      .page + .page {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      /* Conservar fondos de color en print */
+      .page-cover,
+      .box-accent,
+      .box-alert-red,
+      .box-note,
+      .box-green,
+      .box-blue,
+      .box-left-border,
+      .box-light,
+      .objection-q,
+      .rule-card,
+      thead th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .objection-grid {
+        gap: 0.5rem;
+      }
+
+      .rules-grid {
+        gap: 0.5rem;
+      }
+
+      h1.page-title {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botón de impresión -->
+  <div class="no-print">
+    <button onclick="window.print()">
+      Imprimir / Guardar PDF &nbsp;(Cmd+P)
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PORTADA
+  ══════════════════════════════════════════ -->
+  <div class="page page-cover">
+    <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+      <div class="cover-brand">Esar<span class="cover-accent-dot">IA</span></div>
+      <div class="cover-subtitle">Guion de Llamada en Frío</div>
+
+      <div class="cover-objective-label">Objetivo</div>
+      <div class="cover-objective">
+        Agendar reuniones para diagnóstico inicial<br>
+        de automatización e IA
+      </div>
+
+      <hr class="cover-rule">
+      <div class="cover-tagline">
+        No vendas por teléfono. Agenda una reunión.
+      </div>
+      <hr class="cover-rule">
+
+      <div style="margin-top:1.5rem; font-size:0.85rem; color:#94A3B8; letter-spacing:0.04em;">
+        Automatización útil para negocios reales
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      Javier Delgado &nbsp;·&nbsp; EsarIA &nbsp;·&nbsp; Mayo 2026
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 1 — El único objetivo
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Principio fundamental</div>
+    <h1 class="page-title">El único objetivo de esta llamada</h1>
+
+    <div class="box-accent">
+      <p>Agendar una reunión de 20 minutos.</p>
+      <p style="margin-top:0.25rem; font-weight:400; font-size:0.9rem;">Nada más.</p>
+    </div>
+
+    <p style="margin-top:1.25rem;">Antes de marcar el número, ten esto claro:</p>
+
+    <ul>
+      <li>Si el negocio es local en Valladolid &rarr; <strong>reunión presencial</strong></li>
+      <li>Si está fuera de Valladolid &rarr; <strong>videollamada</strong></li>
+      <li>No expliques el servicio completo por teléfono</li>
+      <li>No presentes precio por teléfono</li>
+      <li><strong>Vendes 20 minutos de diagnóstico</strong>, no una implementación</li>
+    </ul>
+
+    <div class="box-left-border" style="margin-top:1.5rem;">
+      <p><strong>Si te preguntan cuánto cuesta, di:</strong></p>
+      <p class="script-line">"Eso depende de lo que detectemos. Por eso primero hago el diagnóstico."</p>
+    </div>
+
+    <p style="margin-top:1.5rem;" class="text-subtle">
+      La llamada no es el momento de vender ni de convencer. Es el momento de despertar suficiente curiosidad para que el decisor te reserve 20 minutos. Ese es el único KPI de la llamada.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 2 — Antes de llamar
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Preparación</div>
+    <h1 class="page-title">Antes de llamar</h1>
+    <p class="text-subtle" style="margin-bottom:1.25rem;">2 minutos de preparación que marcan la diferencia</p>
+
+    <ul class="checklist">
+      <li>
+        <div class="checklist-num">1</div>
+        <div>Busca el nombre del decisor: <strong>propietario, director o gerente</strong>. Nunca llames preguntando por "el responsable".</div>
+      </li>
+      <li>
+        <div class="checklist-num">2</div>
+        <div>Revisa la web: ¿cómo gestionan las citas o los pedidos? ¿Tienen formulario? ¿Redirigen a WhatsApp?</div>
+      </li>
+      <li>
+        <div class="checklist-num">3</div>
+        <div>Revisa Google Maps: ¿qué dicen las reseñas? ¿Hay quejas de tiempos de espera, confirmaciones o comunicación?</div>
+      </li>
+      <li>
+        <div class="checklist-num">4</div>
+        <div>Detecta <strong>un problema concreto visible desde fuera</strong>. Solo necesitas uno.</div>
+      </li>
+      <li>
+        <div class="checklist-num">5</div>
+        <div>Prepara tu frase de apertura con ese problema específico.</div>
+      </li>
+    </ul>
+
+    <div class="box-note">
+      <p><strong>Nota:</strong> Cuanto más concreto seas sobre el problema del negocio, más atención consigues en los primeros 10 segundos. Un nombre + un problema concreto vale más que cualquier guion genérico.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 3 — Si contesta recepción
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Filtro de portería</div>
+    <h1 class="page-title">Si contesta recepción o un empleado</h1>
+
+    <p>Tu único objetivo aquí es llegar al decisor. Sé amable, directo y no expliques nada.</p>
+
+    <div class="box-accent" style="margin-top:1rem;">
+      <p class="script-line">"Hola, buenos días. Necesito hablar un momento con [NOMBRE DEL DECISOR]. ¿Está disponible?"</p>
+    </div>
+
+    <h2 style="margin-top:1.5rem;">Respuestas preparadas</h2>
+
+    <div class="objection-grid">
+      <div class="objection-card">
+        <div class="objection-q">¿De parte de quién?</div>
+        <div class="objection-a">"Soy Javier, de EsarIA."</div>
+      </div>
+      <div class="objection-card">
+        <div class="objection-q">¿Para qué es?</div>
+        <div class="objection-a">"Es un tema breve sobre automatización. ¿Está disponible un momento?"</div>
+      </div>
+      <div class="objection-card">
+        <div class="objection-q">No está / Está ocupado</div>
+        <div class="objection-a">"¿A qué hora suele estar disponible? Le llamo en ese momento."</div>
+      </div>
+      <div class="objection-card">
+        <div class="objection-q">¿Le puedo dejar un mensaje?</div>
+        <div class="objection-a">"Prefiero llamarle directamente. ¿Cuál es el mejor momento?"</div>
+      </div>
+    </div>
+
+    <div class="box-alert-red">
+      <p>NUNCA expliques el servicio al empleado. Solo necesitas pasar al decisor. Cualquier explicacion que des al empleado puede llegar distorsionada o bloquear el acceso.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 4 — Primeros 10 segundos
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Apertura</div>
+    <h1 class="page-title">Los primeros 10 segundos con el decisor</h1>
+    <p class="text-subtle" style="margin-bottom:1.5rem;">Dos versiones según tu situación</p>
+
+    <h2>Versión A &mdash; Si estás empezando (más honesta)</h2>
+    <div class="box-light">
+      <p class="script-line">"Hola [NOMBRE], soy Javier, de EsarIA. Te voy a ser sincero: estoy empezando a trabajar con negocios locales en automatización e inteligencia artificial. He visto vuestro negocio y he detectado algo que creo que os puede ahorrar bastante tiempo. ¿Te puedo robar 2 minutos?"</p>
+    </div>
+    <p class="text-subtle" style="margin-bottom:1.5rem;">La honestidad sobre estar empezando genera confianza. No intentes sonar más grande de lo que eres.</p>
+
+    <h2>Versión B &mdash; Versión más establecida</h2>
+    <div class="box-light">
+      <p class="script-line">"Hola [NOMBRE], soy Javier, de EsarIA. Ayudamos a pequeños negocios a automatizar tareas repetitivas como WhatsApps, citas, presupuestos y seguimientos. He estado mirando vuestra web y he visto algo que os puede interesar. ¿Tienes un par de minutos?"</p>
+    </div>
+
+    <div class="key-rule" style="margin-top:1.5rem;">
+      Habla con energía tranquila. Sin prisa. Sin sonar a televentas.
+    </div>
+
+    <p class="text-subtle" style="margin-top:0.75rem;">
+      Si el decisor dice que no tiene tiempo: "Sin problema, ¿cuándo te viene mejor que te llame? No te roba más de 2 minutos." Anota el slot y llama puntual.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 5 — Si dice "Sí, dime"
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">El pitch de diagnóstico</div>
+    <h1 class="page-title">Si dice "Sí, dime"</h1>
+
+    <div class="box-light" style="margin-bottom:1.25rem;">
+      <p class="script-line">"He estado viendo [WEB / REDES / PROCESO] y he detectado que [PROBLEMA CONCRETO].</p>
+      <p class="script-line" style="margin-top:0.75rem;">Lo que hacemos en EsarIA es un diagnóstico inicial: analizamos vuestros procesos, detectamos dónde perdéis tiempo y os entregamos un plan concreto de qué automatizar, en qué orden y con qué impacto.</p>
+      <p class="script-line" style="margin-top:0.75rem;">No te vendo nada por teléfono. Solo te propongo quedar 20 minutos para enseñarte qué hemos detectado. Sin compromiso. ¿Esta semana?"</p>
+    </div>
+
+    <h2>Ejemplos de problema concreto por sector</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sector</th>
+          <th>Problema concreto que mencionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Clínica dental</td>
+          <td>"Gestionáis las citas por teléfono y hay cancelaciones sin aviso"</td>
+        </tr>
+        <tr>
+          <td>Taller mecánico</td>
+          <td>"Los clientes llaman para saber cuándo está el coche listo"</td>
+        </tr>
+        <tr>
+          <td>Gimnasio</td>
+          <td>"No hay un proceso claro para seguir a socios que se dan de baja"</td>
+        </tr>
+        <tr>
+          <td>Fisioterapia</td>
+          <td>"Las citas se coordinan por WhatsApp al móvil personal"</td>
+        </tr>
+        <tr>
+          <td>Academia</td>
+          <td>"Las consultas de alumnos interesados no tienen seguimiento automático"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 6 — Objeciones
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Manejo de objeciones</div>
+    <h1 class="page-title">Respuestas a las objeciones más frecuentes</h1>
+
+    <div class="objection-grid">
+
+      <div class="objection-card">
+        <div class="objection-q">"No me interesa"</div>
+        <div class="objection-a">"Entiendo. ¿Puedo preguntarte qué proceso os consume más tiempo ahora mismo en el negocio? Por curiosidad." &mdash; Si responde, tienes información. Si no, despídete con respeto.</div>
+      </div>
+
+      <div class="objection-card">
+        <div class="objection-q">"No tengo tiempo"</div>
+        <div class="objection-a">"Precisamente por eso os llamo. Lo que hacemos ahorra tiempo al equipo. El diagnóstico son 20 minutos y si no veis valor, no hay nada más. ¿Qué día tienes un rato, mañana por la mañana?"</div>
+      </div>
+
+      <div class="objection-card">
+        <div class="objection-q">"Ya tenemos alguien que nos lleva eso"</div>
+        <div class="objection-a">"Perfecto, eso facilita las cosas. Lo que hacemos complementa lo que ya tenéis. ¿Qué herramientas estáis usando ahora?"</div>
+      </div>
+
+      <div class="objection-card">
+        <div class="objection-q">"Envíame información por email"</div>
+        <div class="objection-a">"Claro, te la mando ahora. Pero la automatización se entiende mucho mejor cuando la ves aplicada a tu negocio concreto. ¿No te importa si quedamos 20 minutos antes de que te llegue el email?"</div>
+      </div>
+
+      <div class="objection-card">
+        <div class="objection-q">"¿Cuánto cuesta?"</div>
+        <div class="objection-a">"Eso depende de lo que detectemos exactamente en vuestro caso. Por eso primero hacemos el diagnóstico: para saber qué tiene sentido y qué impacto tendría antes de hablar de precio. ¿Quedamos?"</div>
+      </div>
+
+      <div class="objection-card">
+        <div class="objection-q">"No sé qué es eso de la IA"</div>
+        <div class="objection-a">"Es normal, hay mucho ruido con ese tema. Lo que hacemos es mucho más sencillo: automatizar tareas que vuestro equipo hace a mano cada día, como enviar recordatorios, responder preguntas repetitivas o confirmar citas. Nada de robots raros. ¿Te cuento en 20 minutos?"</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 7 — Cerrar la reunión
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Cierre</div>
+    <h1 class="page-title">Cómo cerrar la reunión</h1>
+    <p class="text-subtle" style="margin-bottom:1.25rem;">Propón siempre una fecha concreta</p>
+
+    <h2>Si es presencial</h2>
+    <div class="box-green">
+      <p class="script-line">"Perfecto. ¿Qué te parece si me paso el [DÍA] por la mañana? Son 20 minutos, te enseño en mi portátil qué hemos detectado en tu negocio. Sin compromiso."</p>
+    </div>
+
+    <h2 style="margin-top:1rem;">Si es videollamada</h2>
+    <div class="box-blue">
+      <p class="script-line">"Perfecto. Te mando un enlace de Google Meet para el [DÍA] a las [HORA]. Son 15–20 minutos para enseñarte qué se puede automatizar en vuestro negocio."</p>
+    </div>
+
+    <div class="key-rule" style="margin-top:1.5rem;">
+      No preguntes "¿cuándo tienes tiempo?" → Propón tú una fecha concreta.<br>
+      <span style="font-weight:400; font-size:0.85rem; color:var(--subtle);">El decisor confirmará o pedirá cambiarla. Así o así, hay movimiento.</span>
+    </div>
+
+    <h2 style="margin-top:1.25rem;">Si no acepta reunión</h2>
+    <div class="box-left-border">
+      <p class="script-line">"Sin problema. ¿Te parece si te mando un vídeo corto de 2 minutos mostrando cómo funciona aplicado a un negocio como el vuestro?"</p>
+    </div>
+    <p class="text-subtle">Si acepta recibir el vídeo, tienes un lead caliente. Mándalo en menos de 24 horas y haz seguimiento.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 8 — Después de colgar
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Post-llamada</div>
+    <h1 class="page-title">Después de colgar &mdash; Checklist</h1>
+
+    <ul class="checklist">
+      <li>
+        <div class="checklist-box"></div>
+        <div>Mandar <strong>WhatsApp de confirmación</strong> si quedó reunión (ver plantilla abajo)</div>
+      </li>
+      <li>
+        <div class="checklist-box"></div>
+        <div>Guardar el lead en el CRM con el <strong>estado actualizado</strong></div>
+      </li>
+      <li>
+        <div class="checklist-box"></div>
+        <div>Anotar el <strong>problema concreto que mencionó</strong> el decisor</div>
+      </li>
+      <li>
+        <div class="checklist-box"></div>
+        <div>Preparar <strong>mini diagnóstico antes de la reunión</strong>: revisar web, redes, reseñas en detalle</div>
+      </li>
+      <li>
+        <div class="checklist-box"></div>
+        <div>Si no aceptó reunión → <strong>ofrecer vídeo corto personalizado</strong> por email o WhatsApp</div>
+      </li>
+      <li>
+        <div class="checklist-box"></div>
+        <div>Si no contestó → poner <strong>recordatorio para seguimiento en 2 semanas</strong></div>
+      </li>
+    </ul>
+
+    <h2 style="margin-top:1.5rem;">WhatsApp de confirmación de reunión</h2>
+
+    <div class="box-light">
+      <p class="script-line">"Hola [NOMBRE] 👋 Confirmado para el [DÍA] a las [HORA]. Estaré en [LUGAR / ENLACE MEET]. Cualquier cosa me dices. Hasta entonces, Javier — EsarIA"</p>
+    </div>
+
+    <p class="text-subtle" style="margin-top:0.75rem;">
+      El WhatsApp hace dos cosas: confirma el compromiso y pone tu nombre + marca en el historial del decisor antes de la reunión.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA 9 — 7 reglas de oro
+  ══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="section-label">Resumen ejecutivo</div>
+    <h1 class="page-title">7 reglas de oro</h1>
+
+    <div class="rules-grid">
+
+      <div class="rule-card">
+        <div class="rule-number">1</div>
+        <div class="rule-title">La llamada dura menos de 2 minutos</div>
+        <div class="rule-body">Si supera los 3 minutos sin haber cerrado reunión, algo ha salido mal. Vuelve al objetivo: agendar.</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">2</div>
+        <div class="rule-title">Presencial mejor que videollamada</div>
+        <div class="rule-body">La reunión en persona convierte más. Propón siempre presencial primero para negocios de Valladolid.</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">3</div>
+        <div class="rule-title">Vendes diagnóstico, no implementación</div>
+        <div class="rule-body">Nunca presentes el servicio completo por teléfono. El diagnóstico es el producto que vendes en la llamada.</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">4</div>
+        <div class="rule-title">Sé sincero, no vendas</div>
+        <div class="rule-body">Si estás empezando, dilo. La honestidad genera más confianza que aparentar ser una empresa grande.</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">5</div>
+        <div class="rule-title">Lo concreto gana a lo genérico</div>
+        <div class="rule-body">"He visto que gestionáis citas por WhatsApp" vale más que "ayudamos a negocios como el vuestro".</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">6</div>
+        <div class="rule-title">El no es información, no fracaso</div>
+        <div class="rule-body">Cada no te dice algo útil. Anota siempre por qué no le interesó. Mejora el guion con esos datos.</div>
+      </div>
+
+    </div>
+
+    <!-- Regla 7 ocupa el ancho completo -->
+    <div class="rule-card" style="display:flex; align-items:flex-start; gap:1rem; margin-top:0;">
+      <div class="rule-number" style="font-size:2rem;">7</div>
+      <div>
+        <div class="rule-title">Mejor llamar martes–jueves, 10:00–12:00 o 16:00–18:00</div>
+        <div class="rule-body">Evita lunes por la mañana (caos de inicio de semana) y viernes por la tarde (modo fin de semana). Los mejores slots son martes y miércoles por la mañana.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PÁGINA FINAL
+  ══════════════════════════════════════════ -->
+  <div class="page page-cover">
+    <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+      <p class="final-quote">
+        "No vendes IA por teléfono.<br>
+        Vendes 20 minutos para enseñar un diagnóstico.<br>
+        La automatización se entiende cuando se ve en directo."
+      </p>
+      <hr class="final-rule">
+      <div class="final-footer">
+        EsarIA &nbsp;—&nbsp; Automatización útil para negocios reales<br>
+        <span style="letter-spacing:0.08em;">esaria.es</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -42,3 +42,17 @@ experiments/reels-pipeline/*.mp3
 experiments/reels-pipeline/assets/piper/
 experiments/reels-pipeline/.venv/
 experiments/reels-pipeline/.venv312/
+
+# Contenido generado en Drive (no van al repo)
+contenido/reels/finales/
+contenido/reels/borradores/
+contenido/reels/audios/
+contenido/reels/previews/
+
+# Prospección — archivos privados / generados (no van al repo)
+prospecting/pdf/*.pdf
+prospecting/leads/reales/
+prospecting/leads/*.private.csv
+prospecting/leads/*.private.json
+prospecting/exports/
+prospecting/backups/
