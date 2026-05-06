@@ -316,6 +316,14 @@ function openModal(id) {
     copyText(lead.mensaje_llamada_personalizado, 'Guion copiado');
   });
 
+  /* Copiar guion recepcion */
+  var btnRecepcion = content.querySelector('#btn-copy-recepcion');
+  if (btnRecepcion) {
+    btnRecepcion.addEventListener('click', function() {
+      copyText(lead.guion_recepcion_personalizado, 'Guion de recepcion copiado');
+    });
+  }
+
   /* Copiar mensaje WA */
   content.querySelector('#btn-copy-wa').addEventListener('click', function() {
     copyText(lead.mensaje_whatsapp_personalizado, 'Mensaje copiado');
@@ -367,6 +375,8 @@ function buildModalHTML(lead) {
     ? '<a href="' + esc(lead.linkedin) + '" target="_blank" rel="noopener">' + esc(lead.linkedin) + '</a>'
     : '<span>—</span>';
 
+  var candidatosHTML = buildCandidatosHTML(lead.candidatos_decisor);
+
   return (
     /* EMPRESA */
     '<div class="modal-section">' +
@@ -386,6 +396,10 @@ function buildModalHTML(lead) {
         fieldHTML('LinkedIn', liLink) +
         field('Decisor', lead.decisor_nombre) +
         field('Cargo', lead.decisor_cargo) +
+        field('Confianza decisor', lead.confianza_decisor) +
+        fieldFull('Fuente decisor', lead.fuente_decisor) +
+        fieldFull('Evidencia decisor', lead.evidencia_decisor) +
+        fieldHTMLFull('Candidatos decisor', candidatosHTML) +
       '</div>' +
     '</div>' +
 
@@ -420,6 +434,15 @@ function buildModalHTML(lead) {
           '</div>' +
         '</div>' +
         fieldFull('Fuente de datos', lead.fuente_datos) +
+      '</div>' +
+    '</div>' +
+
+    /* GUION RECEPCION */
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Guion recepcion</div>' +
+      '<div class="script-box">' + esc(lead.guion_recepcion_personalizado) + '</div>' +
+      '<div class="copy-row">' +
+        '<button class="btn btn-secondary btn-sm" id="btn-copy-recepcion">Copiar guion recepción</button>' +
       '</div>' +
     '</div>' +
 
@@ -464,6 +487,23 @@ function fieldFull(label, value) {
 
 function fieldHTML(label, html) {
   return '<div class="modal-field"><label>' + label + '</label>' + html + '</div>';
+}
+
+function fieldHTMLFull(label, html) {
+  return '<div class="modal-field modal-field-full"><label>' + label + '</label>' + html + '</div>';
+}
+
+function buildCandidatosHTML(candidatos) {
+  if (!Array.isArray(candidatos) || candidatos.length === 0) return '<span>—</span>';
+  return '<div class="script-box">' + candidatos.map(function(c) {
+    var parts = [];
+    if (c.nombre) parts.push(c.nombre);
+    if (c.cargo) parts.push(c.cargo);
+    if (c.confianza) parts.push('Confianza: ' + c.confianza);
+    if (c.fuente) parts.push('Fuente: ' + c.fuente);
+    if (c.evidencia) parts.push('Evidencia: ' + c.evidencia);
+    return esc(parts.join(' | '));
+  }).join('<br><br>') + '</div>';
 }
 
 /* ---- Actualizar lead ---- */
@@ -574,18 +614,43 @@ function importJSON(file) {
       if (!Array.isArray(data)) throw new Error('El archivo no contiene un array de leads.');
       leads = data;
       saveLeads();
-      /* Recargar UI */
-      var select = document.getElementById('filter-sector');
-      while (select.options.length > 1) select.remove(1);
-      populateSectorFilter();
-      renderStats();
-      applyFilters();
+      reloadUI();
       showToast(data.length + ' leads importados');
     } catch (err) {
       alert('Error al importar: ' + err.message);
     }
   };
   reader.readAsText(file);
+}
+
+/* Importar leads reales — reemplaza los DEMO y guarda en localStorage */
+function importLeadsReales(file) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var data = JSON.parse(e.target.result);
+      if (!Array.isArray(data)) throw new Error('El archivo no contiene un array de leads.');
+      if (data.length === 0) {
+        showToast('El archivo está vacío (0 leads)');
+        return;
+      }
+      leads = data;
+      saveLeads();
+      reloadUI();
+      showToast(data.length + ' leads reales importados');
+    } catch (err) {
+      alert('Error al importar leads reales: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function reloadUI() {
+  var select = document.getElementById('filter-sector');
+  while (select.options.length > 1) select.remove(1);
+  populateSectorFilter();
+  renderStats();
+  applyFilters();
 }
 
 /* ---- Eventos ---- */
@@ -610,6 +675,37 @@ function bindEvents() {
       this.value = '';
     }
   });
+
+  /* Botón "Importar leads reales" — inyectado dinámicamente */
+  var filterActions = document.querySelector('.filter-actions');
+  if (filterActions) {
+    var btnReales = document.createElement('button');
+    btnReales.className = 'btn btn-primary';
+    btnReales.id = 'btn-import-reales';
+    btnReales.title = 'Selecciona prospecting/leads/reales/leads-reales.json';
+    btnReales.textContent = 'Importar leads reales';
+
+    var fileReales = document.createElement('input');
+    fileReales.type = 'file';
+    fileReales.id = 'file-import-reales';
+    fileReales.accept = '.json';
+    fileReales.style.display = 'none';
+
+    filterActions.insertBefore(btnReales, filterActions.firstChild);
+    filterActions.appendChild(fileReales);
+
+    btnReales.addEventListener('click', function() {
+      fileReales.click();
+    });
+
+    fileReales.addEventListener('change', function(e) {
+      var file = e.target.files && e.target.files[0];
+      if (file) {
+        importLeadsReales(file);
+        this.value = '';
+      }
+    });
+  }
 
   /* Modal cierre */
   document.getElementById('modal-close').addEventListener('click', closeModal);

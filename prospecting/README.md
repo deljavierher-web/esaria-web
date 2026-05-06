@@ -191,20 +191,138 @@ Viernes:
 
 ---
 
+## Buscar leads reales automáticamente
+
+Los leads reales se guardan en `leads/reales/` y **nunca se suben a GitHub** (ignorado por `.gitignore`).
+
+Hay tres modos de trabajo según los recursos disponibles:
+
+---
+
+### MODO A — Manual/seguro (sin dependencias)
+
+Busca manualmente en Google Maps, Instagram o directorios y copia los datos públicos en un CSV:
+
+```
+nombre_empresa,sector,ciudad,telefono,web,direccion,fuente_datos
+Clínica Dental Sol,Clínica dental,Valladolid,983 111 222,https://...,Calle Mayor 5,Google Maps — búsqueda manual — 2025-05-06
+```
+
+Importa con:
+
+```bash
+python3 scripts/importar-leads.py mi_archivo.csv leads/reales/leads-reales.json
+python3 scripts/enriquecer-leads.py
+open app/index.html
+```
+
+---
+
+### MODO B — Semi-automático (abre búsquedas preparadas)
+
+El script abre Google Maps con las búsquedas correctas y te da instrucciones para copiar/pegar resultados:
+
+```bash
+# Buscar y abrir búsquedas en el navegador
+python3 scripts/buscar-leads.py --sector "clínicas dentales" --ciudad "Valladolid" --limite 20
+python3 scripts/buscar-leads.py --sector "talleres mecánicos" --ciudad "Valladolid" --limite 20
+python3 scripts/buscar-leads.py --sector "gimnasios" --ciudad "Valladolid" --limite 20
+python3 scripts/buscar-leads.py --sector "fisioterapia" --ciudad "Valladolid" --limite 20
+
+# Enriquecer con análisis comercial
+python3 scripts/enriquecer-leads.py
+
+# Abrir app e importar leads reales
+open app/index.html
+```
+
+---
+
+### MODO C — Automático con Google Places API
+
+Si tienes una clave de Google Places API, el script la detecta automáticamente desde `.env`:
+
+```bash
+# Añadir al archivo .env (ya ignorado por Git):
+GOOGLE_PLACES_API_KEY=tu_clave_aqui
+```
+
+Luego ejecuta exactamente igual que el Modo B:
+
+```bash
+python3 scripts/buscar-leads.py --sector "clínicas dentales" --ciudad "Valladolid" --limite 20
+python3 scripts/fusionar-leads.py leads/reales/batch-FECHA.json
+python3 scripts/enriquecer-leads.py
+open app/index.html
+```
+
+La clave es gratuita hasta ciertos límites en [Google Cloud Console](https://console.cloud.google.com/) (habilita "Places API").
+
+---
+
+### Importar en la app
+
+1. Abre la app: `open prospecting/app/index.html`
+2. Pulsa el botón **"Importar leads reales"** (aparece en la barra de filtros)
+3. Selecciona `prospecting/leads/reales/leads-reales.json`
+4. Los leads reales reemplazan los DEMO en el navegador y se guardan en `localStorage`
+
+---
+
+## Enriquecer decisores automáticamente
+
+El script `enriquecer-decisores.py` intenta localizar el posible decisor usando solo la web pública oficial de cada negocio. No entra en LinkedIn, Instagram, paneles privados, login, admin, checkout ni páginas protegidas.
+
+Reglas importantes:
+
+- No inventa nombres.
+- Si no encuentra evidencia clara, deja el decisor como `No encontrado`.
+- Guarda siempre `fuente_decisor` con la URL exacta revisada.
+- Guarda `evidencia_decisor` con un fragmento corto del texto encontrado.
+- Si hay varios nombres y no hay cargo claro, los guarda en `candidatos_decisor` y no elige aleatoriamente.
+
+Niveles de confianza:
+
+| Nivel | Criterio |
+|---|---|
+| `Alta` | Nombre + cargo claro en la misma zona de texto |
+| `Media` | Nombre claro en página de equipo, pero cargo ambiguo |
+| `Baja` | Candidatos encontrados sin evidencia suficiente para elegir |
+| `No encontrado` | Sin evidencia suficiente o lead sin web |
+
+Uso:
+
+```bash
+python3 prospecting/scripts/enriquecer-decisores.py
+open prospecting/app/index.html
+```
+
+Después abre la app y pulsa **Importar leads reales** para seleccionar:
+
+```bash
+prospecting/leads/reales/leads-reales.json
+```
+
+---
+
 ## Scripts de referencia
 
 ```bash
-# Importar leads desde CSV externo
+# FASE 1 — Leads demo y análisis
 python3 scripts/importar-leads.py mis_leads.csv leads/leads.json
-
-# Analizar todos los leads y rellenar campos vacíos
 python3 scripts/analizar-leads.py
-
-# Generar PDF del guion
 python3 scripts/exportar-pdf.py
 
-# Instalar weasyprint para generación automática de PDF
-pip3 install weasyprint
+# FASE 2 — Leads reales
+python3 scripts/buscar-leads.py --sector "clínicas dentales" --ciudad "Valladolid" --limite 20
+python3 scripts/fusionar-leads.py leads/reales/batch-FECHA.json
+python3 scripts/enriquecer-leads.py
+python3 scripts/enriquecer-decisores.py
+open app/index.html
+
+# PDF del guion
+python3 scripts/exportar-pdf.py
+pip3 install weasyprint  # para generación automática
 ```
 
 ---
