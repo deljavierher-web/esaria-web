@@ -1,0 +1,10 @@
+# Instalar en venv:
+#   python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+
+# ── Gemini TTS (recomendado, ya instalado en .venv) ──────────────────────────
+google-genai>=1.0.0
+
+# ── Kokoro TTS (opcional, requiere Python 3.12 via .venv312) ─────────────────
+# kokoro>=0.9.0
+# soundfile>=0.12.0
+# numpy>=1.24.0

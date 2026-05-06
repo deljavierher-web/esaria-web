@@ -1,0 +1,16 @@
+{
+  "name": "esaria-reels-pipeline",
+  "version": "1.0.0",
+  "description": "Pipeline local: GSAP animation + TTS + ffmpeg → MP4 vertical para Reels/TikTok",
+  "private": true,
+  "scripts": {
+    "setup": "npx playwright install chromium",
+    "voice": "python3 scripts/make-voice.py",
+    "render": "node scripts/render-video.js",
+    "compose": "bash scripts/compose-video.sh",
+    "reel": "bash scripts/make-reel.sh"
+  },
+  "dependencies": {
+    "playwright": "^1.44.0"
+  }
+}

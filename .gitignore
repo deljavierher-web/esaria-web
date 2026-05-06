@@ -27,3 +27,18 @@ ruvector.db
 
 # Dependencias (por si se añade tooling futuro)
 node_modules/
+
+# Local secrets
+.env
+*.env
+experiments/reels-pipeline/.env
+
+# Reels pipeline — archivos generados (no van al repo)
+experiments/reels-pipeline/tmp/
+experiments/reels-pipeline/output/
+experiments/reels-pipeline/*.mp4
+experiments/reels-pipeline/*.wav
+experiments/reels-pipeline/*.mp3
+experiments/reels-pipeline/assets/piper/
+experiments/reels-pipeline/.venv/
+experiments/reels-pipeline/.venv312/
