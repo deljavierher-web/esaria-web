@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+      color: #FFFFFF;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+
+    #s2, #s3, #s4, #s5, #s6 { opacity: 0; }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 156px 82px 270px;
+      gap: 28px;
+    }
+
+    .label {
+      width: fit-content;
+      padding: 11px 18px;
+      border: 1px solid rgba(160, 144, 245, 0.38);
+      border-radius: 999px;
+      color: #A090F5;
+      background: rgba(109, 94, 243, 0.12);
+      font-family: "DM Mono", "Fira Code", "Courier New", monospace;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      max-width: 910px;
+      color: #FFFFFF;
+      font-size: 84px;
+      font-weight: 880;
+      line-height: 1.01;
+      letter-spacing: -0.055em;
+    }
+
+    .headline.big { font-size: 94px; }
+    .headline.mid { font-size: 78px; }
+
+    .body {
+      max-width: 835px;
+      color: #CBD5E1;
+      font-size: 35px;
+      font-weight: 470;
+      line-height: 1.38;
+      letter-spacing: -0.025em;
+    }
+
+    .accent { color: #A090F5; }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 90px 90px;
+      mask-image: radial-gradient(circle at 50% 42%, black 0%, black 42%, transparent 78%);
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(109, 94, 243, 0.22), rgba(109, 94, 243, 0.06) 42%, rgba(109, 94, 243, 0) 72%);
+    }
+
+    .tactic-board {
+      position: relative;
+      width: 830px;
+      height: 520px;
+      margin-top: 14px;
+      border: 2px solid rgba(248, 250, 252, 0.22);
+      border-radius: 42px;
+      background: rgba(255, 255, 255, 0.045);
+      overflow: hidden;
+    }
+
+    .pitch-line {
+      position: absolute;
+      background: rgba(248, 250, 252, 0.18);
+    }
+
+    .pitch-line.center { left: 50%; top: 0; width: 2px; height: 100%; }
+    .pitch-line.mid { left: 50%; top: 50%; width: 140px; height: 140px; border: 2px solid rgba(248, 250, 252, 0.18); border-radius: 50%; background: transparent; transform: translate(-50%, -50%); }
+
+    .player {
+      position: absolute;
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #FFFFFF;
+      background: #6D5EF3;
+      font-size: 28px;
+      font-weight: 900;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    }
+
+    .player.white { color: #0F172A; background: #F8FAFC; }
+
+    .ball {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: inset -8px -8px 0 rgba(15, 23, 42, 0.25);
+    }
+
+    .chaos-list {
+      display: grid;
+      gap: 16px;
+      width: 100%;
+      max-width: 850px;
+    }
+
+    .chaos-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px 26px;
+      border: 1px solid rgba(226, 232, 240, 0.14);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.055);
+      color: #FFFFFF;
+      font-size: 34px;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+    }
+
+    .chaos-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 18px;
+      color: #FFFFFF;
+      background: #6D5EF3;
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    .role-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 6px;
+    }
+
+    .role {
+      min-height: 150px;
+      padding: 28px;
+      border-radius: 34px;
+      background: #F8FAFC;
+      color: #0F172A;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    }
+
+    .role strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #6D5EF3;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .role span {
+      font-size: 33px;
+      font-weight: 850;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .ordered-flow {
+      display: grid;
+      gap: 20px;
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      align-items: center;
+      gap: 20px;
+      padding: 26px 28px;
+      border-radius: 32px;
+      background: rgba(109, 94, 243, 0.14);
+      border: 1px solid rgba(160, 144, 245, 0.42);
+    }
+
+    .flow-num {
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #6D5EF3;
+      color: #FFFFFF;
+      font-size: 30px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .flow-step span {
+      color: #FFFFFF;
+      font-size: 34px;
+      font-weight: 780;
+      letter-spacing: -0.035em;
+    }
+
+    .cta-card {
+      display: grid;
+      gap: 22px;
+      width: 100%;
+      max-width: 850px;
+      padding: 42px;
+      border-radius: 42px;
+      background: #F8FAFC;
+      color: #0F172A;
+    }
+
+    .cta-card strong {
+      color: #6D5EF3;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-card span {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+    }
+
+    .cta-pill {
+      width: fit-content;
+      margin-top: 6px;
+      padding: 22px 34px;
+      border-radius: 999px;
+      background: #6D5EF3;
+      color: #FFFFFF;
+      font-size: 30px;
+      font-weight: 880;
+      letter-spacing: -0.02em;
+    }
+
+    .logo {
+      position: absolute;
+      left: 82px;
+      bottom: 78px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo span {
+      color: #FFFFFF;
+      font-size: 28px;
+      font-weight: 880;
+      letter-spacing: -0.03em;
+    }
+
+    .logo .ia { color: #6D5EF3; }
+
+    .transition {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      transform: translateY(-105%);
+      background: #6D5EF3;
+    }
+
+    .transition::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -120px;
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(180deg, #6D5EF3 0%, rgba(109, 94, 243, 0) 100%);
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-start="0" data-duration="31.2">
+    <audio id="voice" data-start="0" data-duration="30.84" data-track-index="1" data-volume="1" src="audio/voice.wav"></audio>
+
+    <div id="s1" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 820px; height: 820px; top: 80px; right: -240px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s1-label">Gancho local</div>
+        <h1 class="headline big" id="s1-title">¿Tu negocio sale jugando peor que el Pucela?</h1>
+        <p class="body" id="s1-body">Tranquilo. El caos operativo también se puede entrenar.</p>
+        <div class="tactic-board" id="s1-board" data-layout-allow-overflow>
+          <div class="pitch-line center"></div>
+          <div class="pitch-line mid"></div>
+          <div class="player" style="left: 80px; top: 74px;">1</div>
+          <div class="player white" style="left: 210px; top: 310px;">?</div>
+          <div class="player" style="left: 400px; top: 150px;">7</div>
+          <div class="player white" style="left: 610px; top: 340px;">!</div>
+          <div class="ball" id="ball" style="left: 126px; top: 266px;"></div>
+        </div>
+      </div>
+      <div class="logo" id="s1-logo" data-layout-ignore>
+        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="translate(2,2)"><rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/><rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/><circle cx="31" cy="18" r="5" fill="#6D5EF3"/><rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/></g></svg>
+        <span>Esar<span class="ia">IA</span></span>
+      </div>
+    </div>
+
+    <div id="s2" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 760px; height: 760px; bottom: 160px; left: -270px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s2-label">El partido real</div>
+        <h2 class="headline mid" id="s2-title">Mensajes por un lado. Citas por otro.</h2>
+        <div class="chaos-list" id="s2-list">
+          <div class="chaos-item"><div class="chaos-icon">1</div><span>WhatsApps sin cerrar</span></div>
+          <div class="chaos-item"><div class="chaos-icon">2</div><span>Citas apuntadas dos veces</span></div>
+          <div class="chaos-item"><div class="chaos-icon">3</div><span>Recordatorios a mano</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s3" class="scene">
+      <div class="glow" style="width: 880px; height: 880px; top: 360px; right: -290px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s3-label">La plantilla</div>
+        <h2 class="headline mid" id="s3-title">Y tú haciendo de todo a la vez</h2>
+        <div class="role-card" id="s3-roles">
+          <div class="role"><strong>Entrenador</strong><span>decidir prioridades</span></div>
+          <div class="role"><strong>Portero</strong><span>parar urgencias</span></div>
+          <div class="role"><strong>Medio</strong><span>pasar datos</span></div>
+          <div class="role"><strong>Utillero</strong><span>arreglar el Excel</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s4" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s4-label">Buena noticia</div>
+        <h2 class="headline" id="s4-title">Esto se puede ordenar</h2>
+        <p class="body" id="s4-body">No con magia. Con procesos simples y automatizaciones útiles para tareas repetitivas.</p>
+        <div class="ordered-flow" id="s4-flow">
+          <div class="flow-step"><div class="flow-num">1</div><span>Detectar el atasco</span></div>
+          <div class="flow-step"><div class="flow-num">2</div><span>Quitar pasos manuales</span></div>
+          <div class="flow-step"><div class="flow-num">3</div><span>Dejarlo funcionando</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s5" class="scene">
+      <div class="glow" style="width: 820px; height: 820px; top: 120px; left: -250px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s5-label">Sin humo</div>
+        <h2 class="headline mid" id="s5-title">Primero miramos dónde se pierde tiempo</h2>
+        <div class="ordered-flow" id="s5-flow">
+          <div class="flow-step"><div class="flow-num">A</div><span>Proceso repetido</span></div>
+          <div class="flow-step"><div class="flow-num">B</div><span>Tiempo semanal</span></div>
+          <div class="flow-step"><div class="flow-num">C</div><span>Automatizar solo si encaja</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s6" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 940px; height: 940px; top: 200px; left: 70px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s6-label">EsarIA</div>
+        <h2 class="headline" id="s6-title">Automatización práctica para negocios de Valladolid</h2>
+        <div class="cta-card" id="s6-card">
+          <strong>Si se repite cada semana</strong>
+          <span>probablemente merece revisión</span>
+        </div>
+        <div class="cta-pill" id="s6-cta">Escríbenos por DM</div>
+      </div>
+      <div class="logo" id="s6-logo" data-layout-ignore>
+        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="translate(2,2)"><rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/><rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/><circle cx="31" cy="18" r="5" fill="#6D5EF3"/><rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/></g></svg>
+        <span>Esar<span class="ia">IA</span></span>
+      </div>
+    </div>
+
+    <div class="transition" id="wipe" data-layout-ignore></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+
+    const tl = gsap.timeline({ paused: true });
+    const wipe = "#wipe";
+
+    function transitionAt(time, currentScene, nextScene) {
+      tl.fromTo(wipe, { y: "-105%" }, { y: "0%", duration: 0.34, ease: "power3.in" }, time);
+      tl.set(currentScene, { opacity: 0 }, time + 0.34);
+      tl.set(nextScene, { opacity: 1 }, time + 0.34);
+      tl.to(wipe, { y: "105%", duration: 0.46, ease: "power3.out" }, time + 0.34);
+    }
+
+    tl.from("#s1-label", { y: 30, opacity: 0, duration: 0.44, ease: "power2.out" }, 0.18)
+      .from("#s1-title", { y: 68, opacity: 0, duration: 0.70, ease: "expo.out" }, 0.34)
+      .from("#s1-body", { y: 38, opacity: 0, duration: 0.52, ease: "back.out(1.15)" }, 0.92)
+      .from("#s1-board", { y: 70, rotation: -2, opacity: 0, duration: 0.66, ease: "power4.out" }, 1.18)
+      .from("#s1-board .player", { scale: 0.5, opacity: 0, duration: 0.38, stagger: 0.08, ease: "back.out(1.8)" }, 1.54)
+      .from("#ball", { x: -90, y: 80, opacity: 0, duration: 0.48, ease: "circ.out" }, 1.92)
+      .from("#s1-logo", { x: -22, opacity: 0, duration: 0.40, ease: "sine.out" }, 2.10)
+      .to("#ball", { x: 410, y: -120, duration: 1.10, ease: "power1.inOut" }, 2.48)
+      .to("#ball", { x: 250, y: 110, duration: 0.74, ease: "power1.inOut" }, 3.58);
+    transitionAt(4.84, "#s1", "#s2");
+
+    tl.from("#s2-label", { x: -34, opacity: 0, duration: 0.44, ease: "sine.out" }, 5.48)
+      .from("#s2-title", { y: 62, opacity: 0, duration: 0.66, ease: "expo.out" }, 5.64)
+      .from("#s2-list .chaos-item", { x: -70, opacity: 0, duration: 0.48, stagger: 0.16, ease: "power3.out" }, 6.32)
+      .from("#s2-list .chaos-icon", { rotation: -18, scale: 0.72, duration: 0.46, stagger: 0.16, ease: "back.out(1.6)" }, 6.42);
+    transitionAt(9.98, "#s2", "#s3");
+
+    tl.from("#s3-label", { y: -28, opacity: 0, duration: 0.42, ease: "power2.out" }, 10.62)
+      .from("#s3-title", { x: -58, opacity: 0, duration: 0.64, ease: "expo.out" }, 10.78)
+      .from("#s3-roles .role", { y: 66, opacity: 0, rotation: -1.5, duration: 0.54, stagger: 0.12, ease: "back.out(1.1)" }, 11.40);
+    transitionAt(15.12, "#s3", "#s4");
+
+    tl.from("#s4-label", { y: 30, opacity: 0, duration: 0.42, ease: "sine.out" }, 15.76)
+      .from("#s4-title", { y: 66, opacity: 0, duration: 0.66, ease: "expo.out" }, 15.92)
+      .from("#s4-body", { y: 38, opacity: 0, duration: 0.50, ease: "power2.out" }, 16.54)
+      .from("#s4-flow .flow-step", { x: 62, opacity: 0, duration: 0.48, stagger: 0.14, ease: "power3.out" }, 17.04)
+      .from("#s4-flow .flow-num", { scale: 0.62, duration: 0.42, stagger: 0.14, ease: "back.out(1.7)" }, 17.14);
+    transitionAt(20.26, "#s4", "#s5");
+
+    tl.from("#s5-label", { x: -32, opacity: 0, duration: 0.42, ease: "power2.out" }, 20.90)
+      .from("#s5-title", { y: 62, opacity: 0, duration: 0.66, ease: "expo.out" }, 21.06)
+      .from("#s5-flow .flow-step", { y: 52, opacity: 0, duration: 0.48, stagger: 0.16, ease: "circ.out" }, 21.76)
+      .from("#s5-flow .flow-num", { scale: 0.5, rotation: -10, duration: 0.40, stagger: 0.16, ease: "back.out(1.8)" }, 21.88);
+    transitionAt(25.40, "#s5", "#s6");
+
+    tl.from("#s6-label", { y: 30, opacity: 0, duration: 0.40, ease: "sine.out" }, 26.04)
+      .from("#s6-title", { y: 62, opacity: 0, duration: 0.66, ease: "expo.out" }, 26.18)
+      .from("#s6-card", { y: 58, opacity: 0, scale: 0.96, duration: 0.58, ease: "back.out(1.05)" }, 26.82)
+      .from("#s6-cta", { y: 28, opacity: 0, duration: 0.42, ease: "power3.out" }, 27.48)
+      .from("#s6-logo", { x: -22, opacity: 0, duration: 0.38, ease: "sine.out" }, 27.66)
+      .to("#s6-cta", { scale: 1.035, duration: 0.32, yoyo: true, repeat: 4, ease: "sine.inOut" }, 28.34)
+      .to("#s6", { opacity: 0, duration: 0.70, ease: "power2.inOut" }, 30.38);
+
+    window.__timelines["main"] = tl;
+  </script>
+</body>
+</html>

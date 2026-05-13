@@ -1,0 +1,44 @@
+{
+  "audio": "audio/voice.wav",
+  "duration": 23.76,
+  "transcript": "audio/voice.transcript.json",
+  "whisper_model": "/opt/homebrew/opt/whisper-cpp/share/whisper-cpp/for-tests-ggml-tiny.bin",
+  "fallback_model": true,
+  "scene_plan": [
+    {
+      "scene": 1,
+      "start": 0.0,
+      "end": 4.75,
+      "duration": 4.75,
+      "text": "Tu negocio pierde tiempo en sitios que no se ven"
+    },
+    {
+      "scene": 2,
+      "start": 4.75,
+      "end": 9.5,
+      "duration": 4.75,
+      "text": "Cinco minutos buscando un dato parecen poco Pero repetidos cada"
+    },
+    {
+      "scene": 3,
+      "start": 9.5,
+      "end": 14.26,
+      "duration": 4.75,
+      "text": "semana pesan Antes de automatizar no empieces por la herramienta"
+    },
+    {
+      "scene": 4,
+      "start": 14.26,
+      "end": 19.01,
+      "duration": 4.75,
+      "text": "Empieza midiendo el proceso Si esa tarea vuelve una y"
+    },
+    {
+      "scene": 5,
+      "start": 19.01,
+      "end": 23.76,
+      "duration": 4.75,
+      "text": "otra vez merece revisarse Esaría Automatización útil para negocios reales"
+    }
+  ]
+}

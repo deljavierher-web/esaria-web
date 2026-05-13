@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+      color: #FFFFFF;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+
+    #s2, #s3, #s4, #s5, #s6 { opacity: 0; }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 160px 86px 280px;
+      gap: 26px;
+    }
+
+    .label {
+      width: fit-content;
+      padding: 10px 18px;
+      border: 1px solid rgba(160, 144, 245, 0.36);
+      border-radius: 999px;
+      color: #A090F5;
+      background: rgba(109, 94, 243, 0.10);
+      font-family: "DM Mono", "Fira Code", "Courier New", monospace;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      max-width: 910px;
+      color: #FFFFFF;
+      font-size: 84px;
+      font-weight: 880;
+      line-height: 1.01;
+      letter-spacing: -0.05em;
+    }
+
+    .headline.big { font-size: 92px; }
+    .headline.mid { font-size: 76px; }
+
+    .body {
+      max-width: 835px;
+      color: #CBD5E1;
+      font-size: 36px;
+      font-weight: 470;
+      line-height: 1.40;
+      letter-spacing: -0.02em;
+    }
+
+    .accent { color: #A090F5; }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 90px 90px;
+      mask-image: radial-gradient(circle at 50% 38%, black 0%, black 40%, transparent 76%);
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(109, 94, 243, 0.22), rgba(109, 94, 243, 0.07) 44%, rgba(109, 94, 243, 0) 72%);
+    }
+
+    .scoreboard {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      width: 100%;
+      max-width: 840px;
+      padding: 42px 24px;
+      margin-top: 10px;
+      border: 2px solid rgba(248, 250, 252, 0.20);
+      border-radius: 40px;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(10px);
+    }
+
+    .score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .score .num {
+      font-size: 140px;
+      font-weight: 960;
+      line-height: 0.85;
+      letter-spacing: -0.07em;
+      font-variant-numeric: tabular-nums;
+      color: #FFFFFF;
+    }
+
+    .score .tag {
+      font-size: 24px;
+      font-weight: 760;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .score .vs {
+      font-size: 52px;
+      font-weight: 880;
+      color: #6D5EF3;
+      opacity: 0.85;
+    }
+
+    .meeting-cards {
+      display: grid;
+      gap: 18px;
+      width: 100%;
+      max-width: 850px;
+    }
+
+    .meeting-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 30px;
+      border: 1px solid rgba(248, 250, 252, 0.14);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.048);
+    }
+
+    .meeting-card .icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 16px;
+      background: #1E293B;
+      font-size: 28px;
+    }
+
+    .meeting-card .title {
+      flex: 1;
+      font-size: 32px;
+      font-weight: 780;
+      letter-spacing: -0.03em;
+    }
+
+    .meeting-card .badge {
+      flex: 0 0 auto;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      background: rgba(109, 94, 243, 0.18);
+      color: #A090F5;
+    }
+
+    .meeting-card .badge.fail {
+      background: rgba(239, 68, 68, 0.16);
+      color: #FCA5A5;
+    }
+
+    .whatsapp-bubble {
+      width: 100%;
+      max-width: 750px;
+      padding: 34px 38px;
+      margin-top: 10px;
+      border-radius: 42px;
+      border-bottom-left-radius: 14px;
+      background: #1E293B;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.30);
+    }
+
+    .whatsapp-bubble .top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .whatsapp-bubble .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #6D5EF3;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .whatsapp-bubble .name {
+      font-size: 26px;
+      font-weight: 780;
+      color: #FFFFFF;
+    }
+
+    .whatsapp-bubble .msg {
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: #CBD5E1;
+    }
+
+    .sticky {
+      width: 100%;
+      max-width: 820px;
+      padding: 38px 42px;
+      border-radius: 34px;
+      background: #FDE047;
+      color: #0F172A;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .sticky span {
+      font-size: 42px;
+      font-weight: 870;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .news {
+      display: grid;
+      gap: 20px;
+      width: 100%;
+      max-width: 850px;
+    }
+
+    .news-card {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      align-items: center;
+      gap: 22px;
+      padding: 30px 32px;
+      border-radius: 30px;
+      background: rgba(218, 201, 248, 0.10);
+      border: 1px solid rgba(160, 144, 245, 0.36);
+    }
+
+    .news-card .check {
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #6D5EF3;
+      color: #FFFFFF;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .news-card span {
+      font-size: 34px;
+      font-weight: 780;
+      letter-spacing: -0.035em;
+      color: #FFFFFF;
+    }
+
+    .cta-card {
+      display: grid;
+      gap: 22px;
+      width: 100%;
+      max-width: 850px;
+      padding: 42px;
+      border-radius: 42px;
+      background: #F8FAFC;
+      color: #0F172A;
+    }
+
+    .cta-card strong {
+      color: #6D5EF3;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-card span {
+      font-size: 52px;
+      font-weight: 920;
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+    }
+
+    .cta-pill {
+      width: fit-content;
+      margin-top: 6px;
+      padding: 22px 34px;
+      border-radius: 999px;
+      background: #6D5EF3;
+      color: #FFFFFF;
+      font-size: 30px;
+      font-weight: 880;
+      letter-spacing: -0.02em;
+    }
+
+    .logo {
+      position: absolute;
+      left: 86px;
+      bottom: 78px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo span {
+      color: #FFFFFF;
+      font-size: 28px;
+      font-weight: 880;
+      letter-spacing: -0.03em;
+    }
+
+    .logo .ia { color: #6D5EF3; }
+
+    .transition {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      transform: translateY(-105%);
+      background: #6D5EF3;
+    }
+
+    .transition::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -120px;
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(180deg, #6D5EF3 0%, rgba(109, 94, 243, 0) 100%);
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-start="0" data-duration="38">
+    <audio id="voice" data-start="0" data-duration="37.56" data-track-index="1" data-volume="1" src="audio/voice.wav"></audio>
+
+    <div id="s1" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 860px; height: 860px; top: 60px; right: -260px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s1-label">Dato absurdo</div>
+        <h1 class="headline big" id="s1-title">Más reuniones que goles en un Mundial</h1>
+        <p class="body" id="s1-body">Y la mayoría acaban igual que un España-Chipre de los 90.</p>
+        <div class="scoreboard" id="s1-score">
+          <div class="score"><div class="num" id="s1-reuniones">14</div><div class="tag">Reuniones</div></div>
+          <div class="vs">-</div>
+          <div class="score"><div class="num" id="s1-goles">0</div><div class="tag">Goles</div></div>
+        </div>
+      </div>
+      <div class="logo" id="s1-logo" data-layout-ignore>
+        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="translate(2,2)"><rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/><rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/><circle cx="31" cy="18" r="5" fill="#6D5EF3"/><rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/></g></svg>
+        <span>Esar<span class="ia">IA</span></span>
+      </div>
+    </div>
+
+    <div id="s2" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 780px; height: 780px; bottom: 140px; left: -280px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s2-label">Calendario real</div>
+        <h2 class="headline mid" id="s2-title">Reuniones para preparar reuniones</h2>
+        <div class="meeting-cards" id="s2-cards">
+          <div class="meeting-card"><div class="icon" style="background:#4f46e5">📋</div><div class="title">Pre-reunión semanal</div><div class="badge fail">1h 20min</div></div>
+          <div class="meeting-card"><div class="icon" style="background:#7c3aed">🔄</div><div class="title">Reunión de seguimiento</div><div class="badge fail">55 min</div></div>
+          <div class="meeting-card"><div class="icon" style="background:#a855f7">📝</div><div class="title">Acta de la reunión</div><div class="badge">mail</div></div>
+          <div class="meeting-card"><div class="icon" style="background:#6366f1">📅</div><div class="title">Preparar próxima reunión</div><div class="badge fail">2h</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s3" class="scene">
+      <div class="glow" style="width: 880px; height: 880px; top: 400px; right: -300px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s3-label">Realidad alternativa</div>
+        <h2 class="headline mid" id="s3-title">Esto era un audio de WhatsApp</h2>
+        <div class="whatsapp-bubble" id="s3-bubble">
+          <div class="top"><div class="avatar">J</div><div class="name">Jefe de proyecto</div></div>
+          <div class="msg">Equipo, resuelto en 3 minutos: actualizamos la automatización y os ahorráis la reunión del jueves. Abrazo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s4" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="content" style="padding-top: 190px;">
+        <div class="label" id="s4-label">Diagnóstico</div>
+        <h2 class="headline" id="s4-title">No sobra talento. Sobra desorden.</h2>
+        <p class="body" id="s4-body">Pero tiene solución. Y no pasa por contratar a nadie más.</p>
+        <div class="sticky" id="s4-sticky">
+          <span>1. Revisar el proceso<br>2. Detectar repeticiones<br>3. Automatizar</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="s5" class="scene">
+      <div class="glow" style="width: 820px; height: 820px; top: 80px; left: -240px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s5-label">Sin humo</div>
+        <h2 class="headline mid" id="s5-title">Ni consultoras de 5 cifras ni magia</h2>
+        <div class="news" id="s5-news">
+          <div class="news-card"><div class="check">1</div><span>Revisar tareas que se repiten</span></div>
+          <div class="news-card"><div class="check">2</div><span>Detectar cuellos de botella</span></div>
+          <div class="news-card"><div class="check">3</div><span>Automatizar solo lo útil</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s6" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 960px; height: 960px; top: 160px; left: 60px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s6-label">EsarIA</div>
+        <h2 class="headline" id="s6-title">Menos reuniones, más resultados</h2>
+        <div class="cta-card" id="s6-card">
+          <strong>Automatizaciones prácticas</strong>
+          <span>para negocios de Valladolid</span>
+        </div>
+        <div class="cta-pill" id="s6-cta">Escríbenos por DM</div>
+      </div>
+      <div class="logo" id="s6-logo" data-layout-ignore>
+        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="translate(2,2)"><rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/><rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/><circle cx="31" cy="18" r="5" fill="#6D5EF3"/><rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/></g></svg>
+        <span>Esar<span class="ia">IA</span></span>
+      </div>
+    </div>
+
+    <div class="transition" id="wipe" data-layout-ignore></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+
+    const tl = gsap.timeline({ paused: true });
+    const wipe = "#wipe";
+
+    function transitionAt(time, currentScene, nextScene) {
+      tl.fromTo(wipe, { y: "-105%" }, { y: "0%", duration: 0.34, ease: "power3.in" }, time);
+      tl.set(currentScene, { opacity: 0 }, time + 0.34);
+      tl.set(nextScene, { opacity: 1 }, time + 0.34);
+      tl.to(wipe, { y: "105%", duration: 0.46, ease: "power3.out" }, time + 0.34);
+    }
+
+    tl.from("#s1-label", { y: 30, opacity: 0, duration: 0.42, ease: "power2.out" }, 0.16)
+      .from("#s1-title", { y: 72, opacity: 0, duration: 0.72, ease: "expo.out" }, 0.32)
+      .from("#s1-body", { y: 36, opacity: 0, duration: 0.50, ease: "back.out(1.1)" }, 0.92)
+      .from("#s1-score", { y: 78, opacity: 0, rotation: -1.5, duration: 0.64, ease: "power4.out" }, 1.18)
+      .from("#s1-reuniones", { textContent: 0, duration: 0.64, snap: { textContent: 1 }, ease: "power2.out" }, 1.46)
+      .from("#s1-logo", { x: -24, opacity: 0, duration: 0.40, ease: "sine.out" }, 1.64);
+    transitionAt(5.96, "#s1", "#s2");
+
+    tl.from("#s2-label", { x: -34, opacity: 0, duration: 0.42, ease: "sine.out" }, 6.60)
+      .from("#s2-title", { y: 64, opacity: 0, duration: 0.66, ease: "expo.out" }, 6.76)
+      .from("#s2-cards .meeting-card", { x: -72, opacity: 0, duration: 0.48, stagger: 0.14, ease: "power3.out" }, 7.40);
+    transitionAt(12.22, "#s2", "#s3");
+
+    tl.from("#s3-label", { y: -28, opacity: 0, duration: 0.42, ease: "power2.out" }, 12.86)
+      .from("#s3-title", { x: -56, opacity: 0, duration: 0.64, ease: "expo.out" }, 13.02)
+      .from("#s3-bubble", { y: 84, scale: 0.92, opacity: 0, duration: 0.64, ease: "back.out(1.15)" }, 13.66);
+    transitionAt(18.48, "#s3", "#s4");
+
+    tl.from("#s4-label", { y: 30, opacity: 0, duration: 0.42, ease: "sine.out" }, 19.12)
+      .from("#s4-title", { y: 66, opacity: 0, duration: 0.68, ease: "expo.out" }, 19.28)
+      .from("#s4-body", { y: 38, opacity: 0, duration: 0.50, ease: "power2.out" }, 19.90)
+      .from("#s4-sticky", { y: 80, rotation: -3, opacity: 0, duration: 0.68, ease: "back.out(1.1)" }, 20.36);
+    transitionAt(24.74, "#s4", "#s5");
+
+    tl.from("#s5-label", { x: -32, opacity: 0, duration: 0.40, ease: "power2.out" }, 25.38)
+      .from("#s5-title", { y: 64, opacity: 0, duration: 0.66, ease: "expo.out" }, 25.54)
+      .from("#s5-news .news-card", { y: 56, opacity: 0, duration: 0.46, stagger: 0.16, ease: "circ.out" }, 26.22);
+    transitionAt(31.00, "#s5", "#s6");
+
+    tl.from("#s6-label", { y: 28, opacity: 0, duration: 0.38, ease: "sine.out" }, 31.64)
+      .from("#s6-title", { y: 64, opacity: 0, duration: 0.68, ease: "expo.out" }, 31.78)
+      .from("#s6-card", { y: 54, opacity: 0, scale: 0.96, duration: 0.56, ease: "back.out(1.05)" }, 32.44)
+      .from("#s6-cta", { y: 26, opacity: 0, duration: 0.40, ease: "power3.out" }, 33.10)
+      .from("#s6-logo", { x: -22, opacity: 0, duration: 0.38, ease: "sine.out" }, 33.24)
+      .to("#s6-cta", { scale: 1.035, duration: 0.32, yoyo: true, repeat: 4, ease: "sine.inOut" }, 33.98)
+      .to("#s6", { opacity: 0, duration: 0.70, ease: "power2.inOut" }, 37.14);
+
+    window.__timelines["main"] = tl;
+  </script>
+</body>
+</html>

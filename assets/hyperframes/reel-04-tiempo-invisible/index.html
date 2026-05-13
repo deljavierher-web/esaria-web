@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      color: #FFFFFF;
+    }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #0F172A;
+    }
+
+    #s2, #s3, #s4, #s5 { opacity: 0; }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 170px 86px 300px 86px;
+      gap: 26px;
+    }
+
+    .label {
+      font-family: "DM Mono", "Fira Code", "Courier New", monospace;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: #A090F5;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      max-width: 900px;
+      font-size: 88px;
+      font-weight: 850;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      color: #FFFFFF;
+    }
+
+    .headline.tight { font-size: 82px; }
+
+    .body {
+      max-width: 820px;
+      font-size: 36px;
+      font-weight: 450;
+      line-height: 1.42;
+      letter-spacing: -0.02em;
+      color: #CBD5E1;
+    }
+
+    .accent { color: #A090F5; }
+
+    .rule {
+      width: 100%;
+      height: 1px;
+      margin: 10px 0 4px;
+      background: rgba(255, 255, 255, 0.16);
+      transform-origin: left center;
+    }
+
+    .logo {
+      position: absolute;
+      left: 86px;
+      bottom: 82px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #FFFFFF;
+    }
+
+    .logo span {
+      font-size: 28px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+    }
+
+    .logo .ia { color: #6D5EF3; }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(109, 94, 243, 0.20) 0%, rgba(109, 94, 243, 0.05) 42%, rgba(109, 94, 243, 0) 70%);
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 90px 90px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 72%, transparent 100%);
+    }
+
+    .counter {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      margin: 18px 0 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .number {
+      font-size: 172px;
+      font-weight: 900;
+      line-height: 0.86;
+      letter-spacing: -0.07em;
+      color: #FFFFFF;
+    }
+
+    .unit {
+      font-size: 40px;
+      font-weight: 750;
+      color: #A090F5;
+      letter-spacing: -0.02em;
+    }
+
+    .time-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      width: 100%;
+      max-width: 850px;
+      margin-top: 16px;
+    }
+
+    .time-row {
+      display: grid;
+      grid-template-columns: 170px 1fr 94px;
+      align-items: center;
+      gap: 22px;
+      padding: 22px 24px;
+      border: 1px solid rgba(226, 232, 240, 0.14);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(8px);
+    }
+
+    .time-row strong {
+      font-size: 28px;
+      font-weight: 760;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .bar-track {
+      height: 16px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(226, 232, 240, 0.12);
+    }
+
+    .bar-fill {
+      width: var(--w);
+      height: 100%;
+      border-radius: 99px;
+      background: #6D5EF3;
+      transform-origin: left center;
+    }
+
+    .time-row span {
+      font-size: 26px;
+      font-weight: 760;
+      color: #A090F5;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .paper {
+      display: grid;
+      gap: 18px;
+      width: 100%;
+      max-width: 830px;
+      padding: 34px;
+      border-radius: 34px;
+      background: #F8FAFC;
+      color: #0F172A;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+      transform: rotate(-1deg);
+    }
+
+    .paper-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid #E2E8F0;
+      font-size: 28px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .paper-line:last-child { border-bottom: 0; }
+    .paper-line .muted { color: #64748B; }
+    .paper-line .mark { color: #6D5EF3; }
+
+    .question-card {
+      display: grid;
+      gap: 24px;
+      width: 100%;
+      max-width: 860px;
+      padding: 38px;
+      border: 1px solid rgba(160, 144, 245, 0.44);
+      border-radius: 38px;
+      background: rgba(109, 94, 243, 0.10);
+    }
+
+    .question {
+      font-size: 42px;
+      font-weight: 780;
+      line-height: 1.18;
+      letter-spacing: -0.035em;
+      color: #FFFFFF;
+    }
+
+    .answer {
+      font-size: 30px;
+      line-height: 1.42;
+      color: #CBD5E1;
+    }
+
+    .cta {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      min-height: 76px;
+      margin-top: 12px;
+      padding: 0 34px;
+      border-radius: 999px;
+      background: #6D5EF3;
+      color: #FFFFFF;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .transition {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      transform: translateX(-105%);
+      background: #6D5EF3;
+    }
+
+    .transition::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -80px;
+      width: 160px;
+      height: 100%;
+      background: linear-gradient(90deg, #6D5EF3 0%, rgba(109, 94, 243, 0) 100%);
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-start="0" data-duration="24.3">
+    <audio id="voice" data-start="0" data-duration="23.76" data-track-index="1" data-volume="1" src="audio/voice.wav"></audio>
+
+    <div id="s1" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 820px; height: 820px; top: 120px; right: -220px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s1-label">Diagnóstico primero</div>
+        <h1 class="headline" id="s1-title">Tu negocio pierde tiempo en sitios que no se ven</h1>
+        <div class="rule" id="s1-rule"></div>
+        <p class="body" id="s1-body">Antes de automatizar, conviene detectar dónde se escapa cada semana.</p>
+      </div>
+      <div class="logo" id="s1-logo" data-layout-ignore>
+        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g transform="translate(2,2)">
+            <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+            <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+            <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+            <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+          </g>
+        </svg>
+        <span>Esar<span class="ia">IA</span></span>
+      </div>
+    </div>
+
+    <div id="s2" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 760px; height: 760px; bottom: 80px; left: -260px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s2-label">Ejemplo simple</div>
+        <h2 class="headline tight" id="s2-title">5 minutos parecen poco</h2>
+        <div class="counter" id="s2-counter">
+          <div class="number" id="s2-number">5</div>
+          <div class="unit">minutos</div>
+        </div>
+        <p class="body" id="s2-body">Pero repetidos muchas veces se convierten en una carga real.</p>
+      </div>
+    </div>
+
+    <div id="s3" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s3-label">Tiempo invisible</div>
+        <h2 class="headline tight" id="s3-title">El problema suele estar repartido</h2>
+        <div class="time-stack" id="s3-stack">
+          <div class="time-row" id="row-1" style="--w: 42%;"><strong>Buscar datos</strong><div class="bar-track"><div class="bar-fill"></div></div><span>12 min</span></div>
+          <div class="time-row" id="row-2" style="--w: 68%;"><strong>Copiar info</strong><div class="bar-track"><div class="bar-fill"></div></div><span>19 min</span></div>
+          <div class="time-row" id="row-3" style="--w: 54%;"><strong>Revisar estado</strong><div class="bar-track"><div class="bar-fill"></div></div><span>15 min</span></div>
+          <div class="time-row" id="row-4" style="--w: 82%;"><strong>Perseguir respuestas</strong><div class="bar-track"><div class="bar-fill"></div></div><span>23 min</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s4" class="scene">
+      <div class="glow" style="width: 880px; height: 880px; top: 470px; right: -280px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s4-label">La decisión</div>
+        <h2 class="headline tight" id="s4-title">No empieces por la herramienta</h2>
+        <div class="paper" id="s4-paper">
+          <div class="paper-line"><span>1. Proceso repetido</span><span class="mark">sí/no</span></div>
+          <div class="paper-line"><span>2. Tiempo semanal</span><span class="mark">medido</span></div>
+          <div class="paper-line"><span>3. Error frecuente</span><span class="muted">detectado</span></div>
+          <div class="paper-line"><span>4. Automatización</span><span class="mark">solo si encaja</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s5" class="scene">
+      <div class="grid" data-layout-ignore></div>
+      <div class="glow" style="width: 900px; height: 900px; top: 180px; left: 80px;" data-layout-ignore></div>
+      <div class="content">
+        <div class="label" id="s5-label">Pregunta útil</div>
+        <h2 class="headline" id="s5-title">¿Qué tarea te roba tiempo sin parecer importante?</h2>
+        <div class="question-card" id="s5-card">
+          <div class="question">Si aparece cada semana, merece revisarse.</div>
+          <div class="answer">En EsarIA empezamos por entender el proceso antes de proponer una automatización.</div>
+        </div>
+        <div class="cta" id="s5-cta">Escríbenos por DM</div>
+      </div>
+      <div class="logo" id="s5-logo" data-layout-ignore>
+        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g transform="translate(2,2)">
+            <rect x="0" y="5" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+            <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+            <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+            <rect x="0" y="26" width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+          </g>
+        </svg>
+        <span>Esar<span class="ia">IA</span></span>
+      </div>
+    </div>
+
+    <div class="transition" id="wipe" data-layout-ignore></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+
+    const tl = gsap.timeline({ paused: true });
+    const wipe = "#wipe";
+
+    function transitionAt(time, currentScene, nextScene) {
+      tl.fromTo(wipe, { x: "-105%" }, { x: "0%", duration: 0.34, ease: "power3.in" }, time);
+      tl.set(currentScene, { opacity: 0 }, time + 0.34);
+      tl.set(nextScene, { opacity: 1 }, time + 0.34);
+      tl.to(wipe, { x: "105%", duration: 0.46, ease: "power3.out" }, time + 0.34);
+    }
+
+    tl.from("#s1-label", { y: 34, opacity: 0, duration: 0.52, ease: "power2.out" }, 0.18)
+      .from("#s1-title", { y: 74, opacity: 0, duration: 0.72, ease: "expo.out" }, 0.34)
+      .from("#s1-rule", { scaleX: 0, opacity: 0, duration: 0.58, ease: "power4.out" }, 0.78)
+      .from("#s1-body", { y: 42, opacity: 0, duration: 0.56, ease: "back.out(1.2)" }, 0.94)
+      .from("#s1-logo", { x: -24, opacity: 0, duration: 0.42, ease: "sine.out" }, 1.14);
+    transitionAt(4.45, "#s1", "#s2");
+
+    tl.from("#s2-label", { x: -36, opacity: 0, duration: 0.48, ease: "power3.out" }, 5.08)
+      .from("#s2-title", { y: 60, opacity: 0, duration: 0.64, ease: "expo.out" }, 5.20)
+      .from("#s2-counter", { scale: 0.78, opacity: 0, duration: 0.70, ease: "back.out(1.45)" }, 5.54)
+      .from("#s2-body", { y: 36, opacity: 0, duration: 0.52, ease: "power2.out" }, 6.16);
+    transitionAt(9.20, "#s2", "#s3");
+
+    tl.from("#s3-label", { y: -28, opacity: 0, duration: 0.44, ease: "sine.out" }, 9.84)
+      .from("#s3-title", { x: -52, opacity: 0, duration: 0.62, ease: "expo.out" }, 10.02)
+      .from("#row-1", { x: -54, opacity: 0, duration: 0.46, ease: "power3.out" }, 10.58)
+      .from("#row-2", { x: 54, opacity: 0, duration: 0.46, ease: "power2.out" }, 10.76)
+      .from("#row-3", { x: -54, opacity: 0, duration: 0.46, ease: "back.out(1.15)" }, 10.94)
+      .from("#row-4", { x: 54, opacity: 0, duration: 0.46, ease: "circ.out" }, 11.12)
+      .from("#s3-stack .bar-fill", { scaleX: 0, duration: 0.72, stagger: 0.08, ease: "power4.out" }, 11.32);
+    transitionAt(13.95, "#s3", "#s4");
+
+    tl.from("#s4-label", { y: 32, opacity: 0, duration: 0.48, ease: "power2.out" }, 14.58)
+      .from("#s4-title", { y: 58, opacity: 0, duration: 0.66, ease: "expo.out" }, 14.74)
+      .from("#s4-paper", { rotation: -6, y: 80, opacity: 0, duration: 0.74, ease: "back.out(1.15)" }, 15.28)
+      .from("#s4-paper .paper-line", { x: -28, opacity: 0, duration: 0.38, stagger: 0.12, ease: "power3.out" }, 15.74);
+    transitionAt(18.70, "#s4", "#s5");
+
+    tl.from("#s5-label", { x: -34, opacity: 0, duration: 0.42, ease: "sine.out" }, 19.36)
+      .from("#s5-title", { y: 70, opacity: 0, duration: 0.70, ease: "expo.out" }, 19.52)
+      .from("#s5-card", { y: 48, scale: 0.96, opacity: 0, duration: 0.60, ease: "back.out(1.08)" }, 20.14)
+      .from("#s5-cta", { y: 26, opacity: 0, duration: 0.42, ease: "power3.out" }, 20.70)
+      .from("#s5-logo", { x: -22, opacity: 0, duration: 0.38, ease: "sine.out" }, 20.86)
+      .to("#s5-cta", { scale: 1.035, duration: 0.32, yoyo: true, repeat: 3, ease: "sine.inOut" }, 21.55)
+      .to("#s5", { opacity: 0, duration: 0.70, ease: "power2.inOut" }, 23.45);
+
+    window.__timelines["main"] = tl;
+  </script>
+</body>
+</html>

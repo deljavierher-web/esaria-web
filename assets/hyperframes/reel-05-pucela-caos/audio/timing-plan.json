@@ -1,0 +1,51 @@
+{
+  "audio": "audio/voice.wav",
+  "duration": 30.84,
+  "transcript": "audio/voice.transcript.json",
+  "whisper_model": "/opt/homebrew/opt/whisper-cpp/share/whisper-cpp/for-tests-ggml-tiny.bin",
+  "fallback_model": true,
+  "scene_plan": [
+    {
+      "scene": 1,
+      "start": 0.0,
+      "end": 5.14,
+      "duration": 5.14,
+      "text": "Si tu negocio se organiza peor que una salida de balón del"
+    },
+    {
+      "scene": 2,
+      "start": 5.14,
+      "end": 10.28,
+      "duration": 5.14,
+      "text": "Pucela tranquilo no estás solo Mensajes por un lado Citas por otro"
+    },
+    {
+      "scene": 3,
+      "start": 10.28,
+      "end": 15.42,
+      "duration": 5.14,
+      "text": "Un Excel que nadie actualiza Y tú haciendo de entrenador portero y"
+    },
+    {
+      "scene": 4,
+      "start": 15.42,
+      "end": 20.56,
+      "duration": 5.14,
+      "text": "utillero La buena noticia esto se puede ordenar No con magia Con procesos"
+    },
+    {
+      "scene": 5,
+      "start": 20.56,
+      "end": 25.7,
+      "duration": 5.14,
+      "text": "simples y automatizaciones útiles Primero miramos dónde se pierde tiempo Luego automatizamos"
+    },
+    {
+      "scene": 6,
+      "start": 25.7,
+      "end": 30.84,
+      "duration": 5.14,
+      "text": "solo lo que tiene sentido Esaría Automatización práctica para negocios de Valladolid"
+    }
+  ]
+}

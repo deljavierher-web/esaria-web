@@ -1,0 +1,51 @@
+{
+  "audio": "audio/voice.wav",
+  "duration": 37.56,
+  "transcript": "audio/voice.transcript.json",
+  "whisper_model": "/opt/homebrew/opt/whisper-cpp/share/whisper-cpp/for-tests-ggml-tiny.bin",
+  "fallback_model": true,
+  "scene_plan": [
+    {
+      "scene": 1,
+      "start": 0.0,
+      "end": 6.26,
+      "duration": 6.26,
+      "text": "En España se celebran más reuniones que goles en un Mundial Y muchas acaban"
+    },
+    {
+      "scene": 2,
+      "start": 6.26,
+      "end": 12.52,
+      "duration": 6.26,
+      "text": "igual cero a cero Reuniones para preparar reuniones Reuniones que podrían resolverse con"
+    },
+    {
+      "scene": 3,
+      "start": 12.52,
+      "end": 18.78,
+      "duration": 6.26,
+      "text": "un audio de WhatsApp Y entre reunión y reunión el negocio no avanza"
+    },
+    {
+      "scene": 4,
+      "start": 18.78,
+      "end": 25.04,
+      "duration": 6.26,
+      "text": "No es que sobre talento Es que sobra desorden La buena noticia no hace"
+    },
+    {
+      "scene": 5,
+      "start": 25.04,
+      "end": 31.3,
+      "duration": 6.26,
+      "text": "falta una consultora de cinco cifras Basta con revisar el proceso detectar tareas repetitivas"
+    },
+    {
+      "scene": 6,
+      "start": 31.3,
+      "end": 37.56,
+      "duration": 6.26,
+      "text": "y automatizar solo lo que encaja Esaría Automatización útil para negocios de Valladolid"
+    }
+  ]
+}
