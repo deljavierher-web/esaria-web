@@ -51,11 +51,11 @@ _STYLE_FAST = (
 STYLE_PROMPT = _STYLE_FAST if GEMINI_SPEED == 'fast' else _STYLE_NORMAL
 
 GUION = (
-    "Tu negocio pierde horas cada semana en tareas repetitivas. "
-    "Citas, mensajes, presupuestos y seguimientos. "
-    "En Esária automatizamos esos procesos para que tú puedas centrarte "
-    "en vender y atender mejor. "
-    "Pide tu diagnóstico gratuito."
+    "Dos mil veintiséis y siguen contestando WhatsApps a mano. "
+    "Horarios, precios, citas, seguimientos. Lo mismo todos los días. "
+    "Clínicas, talleres y gimnasios pierden horas que no recuperan. "
+    "Esaría lo automatiza. "
+    "Esaría. Automatización útil para negocios reales."
 )
 
 WAV_OUT  = os.path.join(TMP_DIR, 'voice.wav')

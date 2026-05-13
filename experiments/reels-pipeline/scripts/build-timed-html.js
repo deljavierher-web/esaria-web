@@ -50,11 +50,11 @@ const CTA_TAIL    = 1.8;   // CTA visible los últimos N segundos del audio
 
 // ── 3. Escenas (chars = proxy de duración de voz) ─────────────────────────────
 const SLIDES = [
-  { id: 'sc1', chars: 23, minDur: 1.4 },   // "Tu negocio pierde horas"
-  { id: 'sc2', chars: 11, minDur: 1.0 },   // "cada semana"
-  { id: 'sc3', chars: 21, minDur: 1.5 },   // "en tareas repetitivas"
-  { id: 'sc4', chars: 44, minDur: 2.2 },   // lista de tareas (más tiempo para stagger)
-  { id: 'sc5', chars: 93, minDur: 2.0 },   // "En Esária automatizamos…" (hero, stays)
+  { id: 'sc1', chars: 60, minDur: 1.8 },   // "2026 y siguen contestando WhatsApps a mano"
+  { id: 'sc2', chars: 42, minDur: 1.5 },   // "Horarios, precios, citas, seguimientos"
+  { id: 'sc3', chars: 58, minDur: 2.0 },   // "Clínicas, talleres y gimnasios pierden horas"
+  { id: 'sc4', chars: 40, minDur: 2.4 },   // lista de tareas (stagger: 4 items)
+  { id: 'sc5', chars: 52, minDur: 2.5 },   // "EsarIA. Automatización útil para negocios reales."
 ];
 
 const nTransitions = SLIDES.length - 1;            // 4 gaps entre sc1→sc5
@@ -178,12 +178,12 @@ const html = `<!DOCTYPE html>
       margin-top: 28px; line-height: 1.3; letter-spacing: -1px;
     }
 
-    #sc1 { top: 690px; }
+    #sc1 { top: 640px; }
 
-    #sc2 { top: 760px; }
-    #sc2 .slide-title { font-size: 108px; letter-spacing: -5px; }
+    #sc2 { top: 700px; }
+    #sc2 .slide-title { font-size: 84px; letter-spacing: -3px; }
 
-    #sc3 { top: 680px; }
+    #sc3 { top: 600px; }
 
     #sc4 { top: 580px; }
     .task-list { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
@@ -246,48 +246,53 @@ const html = `<!DOCTYPE html>
   <div class="accent-line" id="accentLine"></div>
 
   <div class="slide" id="sc1">
-    <div class="slide-label">El problema</div>
+    <div class="slide-label">2026</div>
     <div class="slide-title">
-      Tu negocio<br>
-      pierde <span class="accent">horas</span>
+      ¿Y siguen<br>
+      <span class="accent">contestando</span><br>
+      a mano?
     </div>
   </div>
 
   <div class="slide" id="sc2">
+    <div class="slide-label">Todos los días</div>
     <div class="slide-title">
-      cada<br>
-      <span class="accent">semana</span>
+      <span class="accent">Horarios,</span><br>
+      <span class="accent">precios,</span><br>
+      <span class="accent">citas</span>
     </div>
+    <div class="slide-body">lo mismo una y otra vez</div>
   </div>
 
   <div class="slide" id="sc3">
-    <div class="slide-label">¿En qué?</div>
+    <div class="slide-label">¿A quién le pasa?</div>
     <div class="slide-title">
-      En tareas<br>
-      <span class="accent">repetitivas</span>
+      Clínicas,<br>
+      talleres,<br>
+      <span class="accent">gimnasios</span>
     </div>
-    <div class="slide-body">que no generan valor</div>
+    <div class="slide-body">pierden horas que no recuperan</div>
   </div>
 
   <div class="slide" id="sc4">
-    <div class="slide-label">Por ejemplo</div>
+    <div class="slide-label">¿En qué?</div>
     <div class="task-list">
-      <div class="task-item"><div class="task-dot"></div>Citas y reservas</div>
-      <div class="task-item"><div class="task-dot"></div>Mensajes de WhatsApp</div>
-      <div class="task-item"><div class="task-dot"></div>Presupuestos</div>
-      <div class="task-item"><div class="task-dot"></div>Seguimientos</div>
+      <div class="task-item"><div class="task-dot"></div>Responder WhatsApps</div>
+      <div class="task-item"><div class="task-dot"></div>Confirmar citas</div>
+      <div class="task-item"><div class="task-dot"></div>Dar presupuestos</div>
+      <div class="task-item"><div class="task-dot"></div>Hacer seguimientos</div>
     </div>
   </div>
 
   <div class="slide" id="sc5">
     <div class="slide-label">La solución</div>
     <span class="brand-hero">EsarIA</span>
-    <span class="action-hero">lo <span class="accent">automatiza</span></span>
+    <span class="action-hero"><span class="accent">Automatización</span> útil<br>para negocios reales</span>
   </div>
 
   <div id="cta">
-    <div class="cta-pill">Diagnóstico gratuito</div>
-    <div class="cta-sub">Sin compromiso · esaria.es</div>
+    <div class="cta-pill">esaria.es</div>
+    <div class="cta-sub">Automatización útil para negocios reales</div>
   </div>
 
   <div id="footer">

@@ -1,29 +1,72 @@
 # EsarIA Reels Pipeline
 
-Pipeline local para generar vídeos verticales (1080×1920) listos para Instagram Reels y TikTok. Sin APIs de pago, sin dependencias cloud.
+Pipeline local para generar vídeos verticales (1080×1920) listos para Instagram Reels y TikTok.
 
-## Qué hace
+## Flujo
 
 ```
-templates/reel-demo.html   ← animación GSAP
-        ↓ Playwright (grabación browser)
-tmp/video.mp4              ← vídeo base
-        +
-scripts/make-voice.py      ← TTS (Kokoro o macOS say)
-tmp/voice.wav              ← audio
-        ↓ ffmpeg
-output/reel-demo.mp4       ← resultado final
+make-voice.py          → tmp/voice.wav          (TTS: Gemini / Kokoro / macOS say)
+build-timed-html.js    → tmp/reel-timed.html     (timings calculados desde el audio)
+render-video.js        → tmp/video.mp4           (Playwright graba el HTML)
+compose-video.sh       → output/reel-demo.mp4   (ffmpeg: vídeo + audio)
+                       → contenido/reels/finales/reel-SLUG-FECHA.mp4  (copia en Drive)
+                       → contenido/reels/audios/audio-SLUG-FECHA.wav  (copia del audio)
 ```
 
-## Requisitos previos
+## Generar un reel
 
-- **Node.js** ≥ 18 (tienes 25.9)
-- **Python 3** (tienes 3.14)
-- **ffmpeg** (tienes 8.1 via Homebrew)
+```bash
+cd experiments/reels-pipeline
 
-## Instalación — primera vez
+# Reel básico (slug = esaria)
+TTS_ENGINE=gemini GEMINI_VOICE=Iapetus GEMINI_SPEED=fast bash scripts/make-reel.sh
 
-### 1. Instalar Playwright + Chromium
+# Reel con slug descriptivo
+REEL_SLUG=whatsapp-clinicas TTS_ENGINE=gemini GEMINI_VOICE=Iapetus GEMINI_SPEED=fast bash scripts/make-reel.sh
+```
+
+El MP4 queda en dos sitios:
+- `experiments/reels-pipeline/output/reel-demo.mp4` — copia de trabajo local
+- `contenido/reels/finales/reel-SLUG-YYYY-MM-DD-HHMM.mp4` — copia en Drive lista para subir
+
+## Variables de entorno
+
+| Variable | Valores | Default |
+|---|---|---|
+| `TTS_ENGINE` | `gemini`, `kokoro`, `piper`, `macos`, `auto` | `auto` |
+| `REEL_SLUG` | nombre libre, sin espacios | `esaria` |
+| `GEMINI_VOICE` | `Iapetus`, `Charon`, … | `Charon` |
+| `GEMINI_SPEED` | `fast`, `normal` | `normal` |
+| `MACOS_VOICE` | nombre de voz macOS | `Reed (Español (España))` |
+
+## Dónde van los archivos
+
+```
+experiments/reels-pipeline/
+├── output/reel-demo.mp4          ← MP4 interno (ignorado por git)
+└── tmp/                          ← archivos temporales (ignorados por git)
+
+contenido/reels/
+├── finales/    ← MP4 listos para subir a Instagram/TikTok (ignorado por git)
+├── borradores/ ← versiones de prueba (ignorado por git)
+├── audios/     ← voces aprobadas (ignorado por git)
+├── previews/   ← capturas o previews (ignorado por git)
+└── guiones/    ← guiones en texto/markdown (versionado en git)
+```
+
+## Requisitos
+
+- **Node.js** ≥ 18
+- **Python 3**
+- **ffmpeg** (`brew install ffmpeg`)
+- **Playwright + Chromium**: `npm install && npm run setup`
+
+Para Gemini TTS, crea `experiments/reels-pipeline/.env`:
+```
+GEMINI_API_KEY=tu_api_key_aqui
+```
+
+## Instalación inicial
 
 ```bash
 cd experiments/reels-pipeline
@@ -31,108 +74,26 @@ npm install
 npm run setup   # descarga Chromium (~350 MB, única vez)
 ```
 
-### 2. TTS con Kokoro (opcional, mejor calidad)
+## Motores TTS disponibles
 
-Kokoro puede no tener wheels para Python 3.14 todavía.
-Si funciona, lo usará automáticamente; si no, usará `macOS say`.
+| Motor | Calidad | Notas |
+|---|---|---|
+| Gemini (`gemini`) | ★★★★★ | Requiere API key en `.env`. Límite: 10 req/día (tier gratuito) |
+| Kokoro (`kokoro`) | ★★★★☆ | Requiere `.venv312` con kokoro instalado |
+| macOS say (`macos`) | ★★★☆☆ | Sin instalación. Fallback final |
 
-```bash
-cd experiments/reels-pipeline
-python3 -m venv .venv
-source .venv/bin/activate
-pip install kokoro soundfile numpy
-deactivate
-```
+Modo `auto`: prueba Gemini → Kokoro → Piper → macOS say.
 
-## Generar el reel
+## Cambiar el guion
 
-```bash
-cd experiments/reels-pipeline
-bash scripts/make-reel.sh
-```
+Edita `GUION` en [scripts/make-voice.py](scripts/make-voice.py).
+El texto enviado al TTS puede usar "Esária" (pronunciación correcta); los textos visuales usan "EsarIA".
 
-O paso a paso:
+## Paso a paso (manual)
 
 ```bash
-python3 scripts/make-voice.py     # genera tmp/voice.wav
-node scripts/render-video.js      # genera tmp/video.mp4 (~20s de espera)
-bash scripts/compose-video.sh     # genera output/reel-demo.mp4
+python3 scripts/make-voice.py       # genera tmp/voice.wav
+node scripts/build-timed-html.js    # genera tmp/reel-timed.html con timings reales
+node scripts/render-video.js        # graba la animación (~16-20s)
+bash scripts/compose-video.sh       # mezcla vídeo + audio
 ```
-
-## Previsualizar
-
-```bash
-open output/reel-demo.mp4
-```
-
-## TTS: opciones y calidad
-
-| Motor          | Calidad voz    | Instalación     | Estado            |
-|----------------|----------------|-----------------|-------------------|
-| Kokoro (e/es)  | ★★★★☆ Natural  | pip (venv)      | Opcional          |
-| macOS Flo es_ES| ★★★☆☆ Buena    | Incluida en Mac | **Fallback activo** |
-| macOS Mónica   | ★★☆☆☆ Aceptable| Incluida en Mac | Fallback secundario |
-
-El script elige automáticamente en ese orden.
-
-## Cambiar el guion de voz
-
-Edita la variable `GUION` en [scripts/make-voice.py](scripts/make-voice.py):
-
-```python
-GUION = "Tu nuevo texto aquí."
-```
-
-Luego ejecuta `python3 scripts/make-voice.py` para regenerar el audio.
-
-## Cambiar los textos visuales
-
-Edita los `div.slide` en [templates/reel-demo.html](templates/reel-demo.html).
-Los tiempos de animación están en el `<script>` al final del HTML (objeto `tl`).
-
-## Cambiar los tiempos de animación
-
-En `reel-demo.html`, busca el bloque `gsap.timeline()`.
-Cada número es el tiempo en segundos en que empieza cada acción:
-
-```javascript
-.to('#slide1', { opacity: 1, ... }, 1.8)   // aparece a los 1.8s
-.to('#slide1', { opacity: 0, ... }, 4.5)   // desaparece a los 4.5s
-```
-
-## Dónde queda el MP4
-
-```
-experiments/reels-pipeline/output/reel-demo.mp4
-```
-
-## Estructura de archivos
-
-```
-experiments/reels-pipeline/
-├── README.md
-├── package.json
-├── requirements.txt
-├── scripts/
-│   ├── render-video.js    ← Playwright → tmp/video.mp4
-│   ├── make-voice.py      ← TTS → tmp/voice.wav
-│   ├── compose-video.sh   ← ffmpeg → output/reel-demo.mp4
-│   └── make-reel.sh       ← pipeline completo
-├── templates/
-│   └── reel-demo.html     ← animación GSAP (editable)
-├── assets/                ← recursos estáticos opcionales
-├── output/                ← MP4 final (ignorado por git)
-└── tmp/                   ← archivos temporales (ignorados por git)
-```
-
-## Limitaciones conocidas
-
-- La primera ejecución descarga Chromium (~350 MB).
-- El render tarda ~20s (graba 16s de animación en tiempo real).
-- GSAP se carga desde CDN: requiere internet en el render.
-- Kokoro en Python 3.14 puede no tener wheels; en ese caso usa `say`.
-- Los subtítulos visuales no están sincronizados automáticamente con el audio (la sincronía es aproximada).
-
-## Próxima mejora sugerida
-
-Sincronización automática: usar `ffprobe` para medir la duración real del audio generado y ajustar los timings de GSAP antes de renderizar.

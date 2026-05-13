@@ -19,6 +19,7 @@ import sys
 import subprocess
 import urllib.parse
 import datetime
+import uuid
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
@@ -161,8 +162,9 @@ def normalizar_sector(sector_raw: str) -> str:
 # ---------------------------------------------------------------------------
 def construir_lead(raw: dict, sector_norm: str, ciudad: str, query: str) -> dict:
     ahora = datetime.datetime.now().strftime('%Y-%m-%d')
+    place_id = raw.get('place_id', '')
     return {
-        'id':                         generar_id(),
+        'id':                         generar_id(place_id),
         'nombre_empresa':             raw.get('nombre_empresa', ''),
         'sector':                     sector_norm,
         'ciudad':                     ciudad,
@@ -191,12 +193,11 @@ def construir_lead(raw: dict, sector_norm: str, ciudad: str, query: str) -> dict
     }
 
 
-_id_counter = 0
-def generar_id() -> str:
-    global _id_counter
-    _id_counter += 1
-    mes = datetime.datetime.now().strftime('%Y%m')
-    return f'LEAD-{mes}-{_id_counter:03d}'
+def generar_id(place_id: str = '') -> str:
+    """ID estable y único: usa place_id de Google (globalmente único) o UUID4."""
+    if place_id:
+        return f'PLACE-{place_id}'
+    return f'LEAD-{uuid.uuid4().hex[:12].upper()}'
 
 
 # ---------------------------------------------------------------------------

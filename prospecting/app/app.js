@@ -153,16 +153,52 @@ function loadLeads() {
     var raw = localStorage.getItem(LS_KEY);
     if (raw) {
       var parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      if (Array.isArray(parsed) && parsed.length > 0) return ensureLeadUids(parsed);
     }
   } catch (e) {}
-  return DEMO_LEADS.slice();
+  return ensureLeadUids(DEMO_LEADS.slice());
 }
 
 function saveLeads() {
   try {
     localStorage.setItem(LS_KEY, JSON.stringify(leads));
   } catch (e) {}
+}
+
+function ensureLeadUids(list) {
+  var seen = {};
+  return list.map(function(lead, index) {
+    if (!lead) lead = {};
+    var uid = lead._uid;
+    if (!uid || seen[uid]) {
+      uid = buildLeadUid(lead, index);
+    }
+    while (seen[uid]) {
+      uid = uid + '-' + index;
+    }
+    lead._uid = uid;
+    seen[uid] = true;
+    return lead;
+  });
+}
+
+function buildLeadUid(lead, index) {
+  var source = [
+    lead.telefono || '',
+    lead.web || '',
+    lead.nombre_empresa || '',
+    index
+  ].join('|').toLowerCase();
+  return 'lead-' + simpleHash(source);
+}
+
+function simpleHash(str) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash).toString(36);
 }
 
 /* ---- Stats ---- */
@@ -234,7 +270,7 @@ function renderCards(list) {
 function buildCard(lead) {
   var card = document.createElement('div');
   card.className = 'card';
-  card.setAttribute('data-id', lead.id);
+  card.setAttribute('data-uid', lead._uid);
 
   var prioClass = badgePrioridadClass(lead.prioridad);
   var estadoClass = badgeEstadoClass(lead.estado);
@@ -266,7 +302,7 @@ function buildCard(lead) {
 
   /* Eventos de la card */
   card.querySelector('.btn-ver').addEventListener('click', function() {
-    openModal(lead.id);
+    openModal(lead._uid);
   });
 
   card.querySelector('.btn-copy-tel').addEventListener('click', function() {
@@ -287,10 +323,10 @@ function buildCard(lead) {
 }
 
 /* ---- Modal ---- */
-function openModal(id) {
-  var lead = leads.find(function(l) { return l.id === id; });
+function openModal(uid) {
+  var lead = leads.find(function(l) { return l._uid === uid; });
   if (!lead) return;
-  currentLeadId = id;
+  currentLeadId = uid;
 
   var content = document.getElementById('modal-content');
   content.innerHTML = buildModalHTML(lead);
@@ -299,7 +335,7 @@ function openModal(id) {
   /* Estado */
   var estadoSelect = content.querySelector('#modal-estado-select');
   estadoSelect.addEventListener('change', function() {
-    updateLeadField(id, 'estado', this.value);
+    updateLeadField(uid, 'estado', this.value);
     /* Actualizar badge de la card en background */
     renderStats();
     applyFilters();
@@ -308,7 +344,7 @@ function openModal(id) {
   /* Notas */
   var notasTA = content.querySelector('#modal-notas');
   notasTA.addEventListener('blur', function() {
-    updateLeadField(id, 'notas', this.value);
+    updateLeadField(uid, 'notas', this.value);
   });
 
   /* Copiar guion llamada */
@@ -507,8 +543,8 @@ function buildCandidatosHTML(candidatos) {
 }
 
 /* ---- Actualizar lead ---- */
-function updateLeadField(id, key, value) {
-  var lead = leads.find(function(l) { return l.id === id; });
+function updateLeadField(uid, key, value) {
+  var lead = leads.find(function(l) { return l._uid === uid; });
   if (!lead) return;
   lead[key] = value;
   saveLeads();
@@ -612,7 +648,7 @@ function importJSON(file) {
     try {
       var data = JSON.parse(e.target.result);
       if (!Array.isArray(data)) throw new Error('El archivo no contiene un array de leads.');
-      leads = data;
+      leads = ensureLeadUids(data);
       saveLeads();
       reloadUI();
       showToast(data.length + ' leads importados');
@@ -634,7 +670,7 @@ function importLeadsReales(file) {
         showToast('El archivo está vacío (0 leads)');
         return;
       }
-      leads = data;
+      leads = ensureLeadUids(data);
       saveLeads();
       reloadUI();
       showToast(data.length + ' leads reales importados');
@@ -651,6 +687,17 @@ function reloadUI() {
   populateSectorFilter();
   renderStats();
   applyFilters();
+}
+
+function resetApp() {
+  try {
+    localStorage.removeItem(LS_KEY);
+  } catch (e) {}
+  leads = ensureLeadUids(DEMO_LEADS.slice());
+  filteredLeads = leads.slice();
+  closeModal();
+  reloadUI();
+  showToast('App restablecida');
 }
 
 /* ---- Eventos ---- */
@@ -694,6 +741,13 @@ function bindEvents() {
     filterActions.insertBefore(btnReales, filterActions.firstChild);
     filterActions.appendChild(fileReales);
 
+    var btnReset = document.createElement('button');
+    btnReset.className = 'btn btn-ghost';
+    btnReset.id = 'btn-reset-app';
+    btnReset.title = 'Borra solo los datos guardados en este navegador';
+    btnReset.textContent = 'Restablecer app';
+    filterActions.appendChild(btnReset);
+
     btnReales.addEventListener('click', function() {
       fileReales.click();
     });
@@ -705,6 +759,8 @@ function bindEvents() {
         this.value = '';
       }
     });
+
+    btnReset.addEventListener('click', resetApp);
   }
 
   /* Modal cierre */

@@ -4,6 +4,11 @@ EsarIA — Enriquecer decisores desde webs oficiales.
 
 Lee leads/reales/leads-reales.json y busca indicios del decisor solo en la
 web publica del negocio. No usa login, redes sociales ni scraping agresivo.
+
+Fuentes de datos (por orden de fiabilidad):
+  1. JSON-LD / schema.org (datos estructurados)
+  2. Meta tag <meta name="author">
+  3. Análisis de texto plano (patrones de cargo + nombre)
 """
 
 import html
@@ -40,6 +45,18 @@ CANDIDATE_PATHS = [
     "/nosotros",
     "/about",
     "/team",
+    # Rutas adicionales comunes en pymes españolas
+    "/quien-soy",
+    "/sobre-mi",
+    "/la-empresa",
+    "/empresa",
+    "/nuestro-equipo",
+    "/nuestro-centro",
+    "/el-centro",
+    "/staff",
+    "/profesionales",
+    "/gerencia",
+    "/direccion",
 ]
 
 BLOCKED_PATH_PARTS = (
@@ -75,16 +92,37 @@ TEAM_RE = re.compile(r"\b[Ee]quipo\b")
 DIRECTIVE_RE = re.compile(
     r"\b[Dd]irectora?\b|\b[Gg]erente\b|\b[Pp]ropietaria?o?\b|\b[Tt]itular\b|\bCEO\b"
 )
-DENTAL_RE = re.compile(r"\b[Dd]entista\b|\b[Oo]dont[oó]log[oa]\b|\b[Cc]l[ií]nica dental\b")
 STAFF_ROLE_RE = re.compile(
     r"\b[Dd]entista\b|\b[Oo]dont[oó]log[oa]\b|\b[Hh]igienista\b|\b[Aa]uxiliar\b|"
-    r"\b[Oo]rtodoncista\b|\b[Ii]mplant[oó]log[oa]\b|\b[Ee]ndodoncista\b|\b[Pp]eriodoncista\b"
+    r"\b[Oo]rtodoncista\b|\b[Ii]mplant[oó]log[oa]\b|\b[Ee]ndodoncista\b|\b[Pp]eriodoncista\b|"
+    r"\b[Ff]isioterapeuta\b|\b[Oo]ste[oó]pata\b|\b[Ff]isio\b|\b[Ee]ntrenador(?:a)?\b|"
+    r"\b[Mm]ec[aá]nico\b|\b[Pp]rofesor(?:a)?\b|\b[Tt]erapeuta\b|\b[Pp]sicologo\b|\b[Pp]sic[oó]logo\b|"
+    r"\b[Oo]ptico\b|\b[Óó]ptico\b|\b[Pp]eluquer[oa]\b|\b[Ee]steticista\b|\b[Ee]nfermero\b"
+)
+
+STAFF_ROLE_NAME_RE = re.compile(
+    r"(?P<role>[Ff]isioterapeuta|[Oo]ste[oó]pata|[Dd]entista|[Oo]dont[oó]log[oa]|"
+    r"[Ee]ntrenador[a]?|[Mm]ec[aá]nico|[Pp]rofesor[a]?|[Tt]erapeuta|[Óó]ptico|"
+    r"[Pp]eluquer[oa]|[Ee]steticista)"
 )
 ACADEMIC_CONTEXT_RE = re.compile(
     r"\b[Cc]olegio Oficial\b|\b[Uu]niversidad\b|\b[Ff]acultad\b|\b[Pp]osgrado\b|"
     r"\b[Mm][aá]ster\b|\b[Ff]ormaci[oó]n\b|\b[Cc]urso\b|\b[Cc]olegiad[oa]\b|"
     r"\b[Cc]entros? de radiodiagn[oó]stico\b"
 )
+
+# Palabras que si aparecen como PRIMERA PALABRA de un candidato indican que no es un nombre
+NOT_FIRST_NAME = {
+    "Método", "Metodo", "Técnica", "Tecnica", "Programa", "Tratamiento",
+    "Terapia", "Readaptación", "Readaptacion", "Prevención", "Prevencion",
+    "Rehabilitación", "Rehabilitacion", "Especialista", "Especialidad",
+    "Entrenamiento", "Pilates", "Yoga", "Fisioterapia", "Centro",
+    "Servicio", "Atención", "Atencion", "Gestión", "Gestion",
+    "Patología", "Patologia", "Lesión", "Lesiones", "Dolor",
+    "Columna", "Hombro", "Rodilla", "Cadera", "Espalda",
+    "Nuestro", "Nuestra", "Nuestros", "Nuestras",
+    "Todos", "Todas", "Cada", "Cualquier",
+}
 
 NAME_WORD = r"[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+"
 NAME_RE = re.compile(
@@ -215,27 +253,85 @@ TRAILING_PROFESSION_WORDS = {
     "Atención",
     "Atencion",
     "Buenas",
+    "Personal",
+    "Profesional",
+    "Especializado",
+    "Cualificado",
+    # Profesiones sectoriales
+    "Fisioterapeuta",
+    "Fisioterapeutas",
+    "Osteópata",
+    "Osteopata",
+    "Mecánico",
+    "Mecanico",
+    "Entrenador",
+    "Entrenadora",
+    "Instructor",
+    "Instructora",
+    "Terapeuta",
+    "Terapeuta",
+    "Óptico",
+    "Optico",
+    "Peluquero",
+    "Peluquera",
+    "Esteticista",
+    "Enfermero",
+    "Enfermera",
+    "Colaborador",
+    "Colaboradora",
+    "Coordinador",
+    "Coordinadora",
 }
 
 STATS = {"candidatos_descartados_basura": 0}
 
 
+# ---------------------------------------------------------------------------
+# Parser HTML: texto plano + JSON-LD + meta author
+# ---------------------------------------------------------------------------
+
 class TextExtractor(HTMLParser):
     def __init__(self):
         super().__init__()
         self.skip = False
+        self.capture_jsonld = False
         self.parts = []
+        self.jsonld_blocks = []
+        self.meta_author = ""
+        self._current_jsonld = []
 
     def handle_starttag(self, tag, attrs):
-        if tag in ("script", "style", "noscript", "svg"):
+        attrs_dict = dict(attrs)
+        if tag == "script":
+            stype = attrs_dict.get("type", "")
+            if stype == "application/ld+json":
+                self.capture_jsonld = True
+                self._current_jsonld = []
+            else:
+                self.skip = True
+        elif tag in ("style", "noscript", "svg"):
             self.skip = True
+        elif tag == "meta":
+            name = attrs_dict.get("name", "").lower()
+            if name == "author":
+                content = attrs_dict.get("content", "").strip()
+                if content and not self.meta_author:
+                    self.meta_author = content
 
     def handle_endtag(self, tag):
-        if tag in ("script", "style", "noscript", "svg"):
+        if tag == "script":
+            if self.capture_jsonld:
+                self.jsonld_blocks.append("".join(self._current_jsonld))
+                self._current_jsonld = []
+                self.capture_jsonld = False
+            self.skip = False
+        elif tag in ("style", "noscript", "svg"):
             self.skip = False
 
     def handle_data(self, data):
-        if not self.skip:
+        if self.capture_jsonld:
+            self._current_jsonld.append(data)
+        elif not self.skip:
             text = data.strip()
             if text:
                 self.parts.append(text)
@@ -283,17 +379,81 @@ def build_candidate_urls(web: str) -> list[str]:
     return urls[:MAX_PAGES_PER_DOMAIN]
 
 
-def fetch_text(url: str) -> str:
+def fetch_text(url: str) -> tuple[str, list[str], str]:
+    """Devuelve (texto_plano, bloques_jsonld, meta_author)."""
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
         content_type = resp.headers.get("content-type", "")
         if "text/html" not in content_type and "application/xhtml" not in content_type:
-            return ""
-        raw = resp.read(800_000).decode(resp.headers.get_content_charset() or "utf-8", errors="ignore")
+            return "", [], ""
+        raw = resp.read(800_000).decode(
+            resp.headers.get_content_charset() or "utf-8", errors="ignore"
+        )
     parser = TextExtractor()
     parser.feed(raw)
-    return normalize_space(parser.text())
+    return normalize_space(parser.text()), parser.jsonld_blocks, parser.meta_author
 
+
+# ---------------------------------------------------------------------------
+# Extracción de personas desde JSON-LD / schema.org
+# ---------------------------------------------------------------------------
+
+def extract_jsonld_persons(jsonld_blocks: list[str], source_url: str) -> list[dict]:
+    candidates = []
+    for block in jsonld_blocks:
+        try:
+            data = json.loads(block)
+        except (json.JSONDecodeError, ValueError):
+            continue
+        if isinstance(data, dict):
+            _jsonld_visit(data, source_url, candidates)
+        elif isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict):
+                    _jsonld_visit(item, source_url, candidates)
+    return candidates
+
+
+def _jsonld_visit(item: dict, source_url: str, candidates: list):
+    item_type = item.get("@type", "")
+    if isinstance(item_type, list):
+        item_type_str = " ".join(item_type)
+    else:
+        item_type_str = str(item_type)
+
+    if "Person" in item_type_str:
+        raw_name = item.get("name", "")
+        job_title = (item.get("jobTitle") or item.get("description") or "").strip()
+        if raw_name:
+            clean = clean_name(raw_name)
+            if clean:
+                role = role_from_text(job_title)
+                confianza = "Alta" if role else "Media"
+                add_candidate(candidates, {
+                    "nombre": clean,
+                    "cargo": job_title or role or "Responsable del negocio",
+                    "fuente": source_url,
+                    "confianza": confianza,
+                    "evidencia": f"JSON-LD: {raw_name} — {job_title}"[:260],
+                })
+
+    for prop in ("founder", "member", "employee", "contactPoint", "author"):
+        value = item.get(prop)
+        if isinstance(value, dict):
+            _jsonld_visit(value, source_url, candidates)
+        elif isinstance(value, list):
+            for v in value:
+                if isinstance(v, dict):
+                    _jsonld_visit(v, source_url, candidates)
+
+    for node in item.get("@graph", []):
+        if isinstance(node, dict):
+            _jsonld_visit(node, source_url, candidates)
+
+
+# ---------------------------------------------------------------------------
+# Utilidades
+# ---------------------------------------------------------------------------
 
 def short_fragment(text: str, start: int, end: int, size: int = 180) -> str:
     a = max(0, start - size // 2)
@@ -322,8 +482,16 @@ def canonical_name(value: str) -> str:
 def clean_name(value: str) -> str:
     value = normalize_space(value)
     value = re.sub(r"^(Dr\.|Dra\.)\s*", r"\1 ", value)
-    value = re.sub(r"\s+(Tratamientos|Instalaciones|Inicio|Conoce|Prevención|Endodoncia|Ortodoncia).*$", "", value)
-    value = re.sub(r"^(Odont[oó]log[oa]\s+General|Dentista|Directora\s*[-–]\s*Dentista|Director\s*[-–])\s+", "", value)
+    value = re.sub(
+        r"\s+(Tratamientos|Instalaciones|Inicio|Conoce|Prevención|Endodoncia|Ortodoncia).*$",
+        "",
+        value,
+    )
+    value = re.sub(
+        r"^(Odont[oó]log[oa]\s+General|Dentista|Directora\s*[-–]\s*Dentista|Director\s*[-–])\s+",
+        "",
+        value,
+    )
     value = re.sub(r"\b(Dra|Dr)$", "", value).strip()
 
     title_match = re.match(r"^(Dr\.|Dra\.)\s+(.+)$", value)
@@ -338,12 +506,18 @@ def clean_name(value: str) -> str:
         value = f"{title} {' '.join(words[:3])}"
     else:
         words = value.split()
-        while words and words[-1].strip(".,;:") in TRAILING_PROFESSION_WORDS:
-            words.pop()
-        if words and any(word.strip(".,;:") in NAME_STOPWORDS for word in words):
+        # Rechazar si la primera palabra es claramente un servicio o técnica
+        if words and words[0].strip(".,;:") in NOT_FIRST_NAME:
             STATS["candidatos_descartados_basura"] += 1
             return ""
-        value = " ".join(words[:4])
+        while words and words[-1].strip(".,;:") in TRAILING_PROFESSION_WORDS:
+            words.pop()
+        # Filtrar stopwords en lugar de descartar todo el candidato
+        clean_words = [w for w in words if w.strip(".,;:") not in NAME_STOPWORDS]
+        if len(clean_words) < 2:
+            STATS["candidatos_descartados_basura"] += 1
+            return ""
+        value = " ".join(clean_words[:4])
 
     blocked = {
         "Google Maps",
@@ -370,17 +544,47 @@ def clean_name(value: str) -> str:
 
 def source_priority(url: str) -> int:
     path = urllib.parse.urlparse(url).path.lower().strip("/")
-    if path in ("quienes-somos", "sobre-nosotros", "nosotros"):
+    if path in ("quienes-somos", "sobre-nosotros", "nosotros", "sobre-mi", "quien-soy"):
         return 4
-    if path in ("equipo", "team"):
+    if path in ("equipo", "team", "nuestro-equipo", "staff", "profesionales"):
         return 3
-    if path in ("", "/"):
+    if path in ("", "/", "la-empresa", "empresa", "el-centro", "nuestro-centro"):
         return 2
     return 1
 
 
 def confidence_score(value: str) -> int:
     return {"Alta": 3, "Media": 2, "Baja": 1}.get(value, 0)
+
+
+def role_score(role: str) -> int:
+    order = [
+        "Propietaria / Odontóloga",
+        "Propietario / Odontólogo",
+        "Gerente / Odontóloga",
+        "Gerente / Odontólogo",
+        "Directora / Odontóloga",
+        "Directora / Dentista",
+        "Director / Odontólogo",
+        "Director / Dentista",
+        "Propietaria",
+        "Propietario",
+        "Gerente",
+        "Directora",
+        "Director",
+        "Fundadora",
+        "Fundador",
+        "CEO",
+        "Titular",
+        "Responsable",
+        "Administrador",
+        "Doctora",
+        "Doctor",
+    ]
+    try:
+        return len(order) - order.index(role)
+    except ValueError:
+        return 0
 
 
 def candidate_rank(candidate: dict) -> tuple:
@@ -409,13 +613,19 @@ def add_candidate(candidates: list[dict], candidate: dict):
     candidates.append(candidate)
 
 
+# ---------------------------------------------------------------------------
+# Extracción desde texto plano
+# ---------------------------------------------------------------------------
+
 def cargo_for_medical_name(name: str, window: str) -> tuple[str, str]:
     name_pos = window.find(name)
     nearby_role_text = ""
     if name_pos >= 0 and not ACADEMIC_CONTEXT_RE.search(window):
         for match in DIRECTIVE_RE.finditer(window):
             if abs(match.start() - name_pos) <= 70:
-                nearby_role_text = window[max(0, match.start() - 20): min(len(window), name_pos + len(name) + 40)]
+                nearby_role_text = window[
+                    max(0, match.start() - 20): min(len(window), name_pos + len(name) + 40)
+                ]
                 break
     role = role_from_text(nearby_role_text) if nearby_role_text else ""
     title_is_dra = name.startswith("Dra.")
@@ -470,87 +680,86 @@ def extract_candidates(text: str, source_url: str) -> list[dict]:
         for name in names[:3]:
             if name.startswith(("Dr. ", "Dra. ")):
                 continue
-            cargo, confianza = role, "Alta" if role_score(role) >= role_score("Titular") else "Baja"
+            # Confianza escalonada según importancia del cargo
+            if role_score(role) >= role_score("Titular"):
+                confianza = "Alta"
+            elif role in ("Responsable", "Administrador"):
+                confianza = "Media"
+            else:
+                confianza = "Baja"
             add_candidate(
                 candidates,
                 {
                     "nombre": name,
-                    "cargo": cargo,
+                    "cargo": role,
                     "fuente": source_url,
                     "confianza": confianza,
                     "evidencia": short_fragment(text, window_start, window_end),
                 },
             )
 
-    if TEAM_RE.search(text):
-        for name_match in NAME_RE.finditer(text):
-            name = clean_name(name_match.group(0))
-            if not name:
-                continue
-            fragment = short_fragment(text, name_match.start(), name_match.end())
-            if ACADEMIC_CONTEXT_RE.search(fragment) or not STAFF_ROLE_RE.search(fragment):
-                continue
-            add_candidate(
-                candidates,
-                {
-                    "nombre": name,
-                    "cargo": "",
-                    "fuente": source_url,
-                    "confianza": "Baja",
-                    "evidencia": fragment,
-                },
-            )
-            if len(candidates) >= 10:
-                break
+    # Búsqueda rol-primero: encuentra nombre JUSTO ANTES del rol profesional.
+    # Ventana corta (50 chars) para evitar que servicios/técnicas se confundan con nombres.
+    for prof_match in STAFF_ROLE_RE.finditer(text):
+        window_start = max(0, prof_match.start() - 50)
+        window = text[window_start:prof_match.start()]
+        if ACADEMIC_CONTEXT_RE.search(window):
+            continue
+        name_matches = list(NAME_RE.finditer(window))
+        if not name_matches:
+            continue
+        closest = name_matches[-1]  # el nombre más cercano al rol
+        name = clean_name(closest.group(0))
+        if not name:
+            continue
+        role_text = prof_match.group(0).capitalize()
+        fragment = short_fragment(text, max(0, closest.start() - 20), prof_match.end() + 40)
+        add_candidate(
+            candidates,
+            {
+                "nombre": name,
+                "cargo": role_text,
+                "fuente": source_url,
+                "confianza": "Baja",
+                "evidencia": fragment,
+            },
+        )
+        if len(candidates) >= 10:
+            break
 
     return candidates[:10]
 
 
-def role_score(role: str) -> int:
-    order = [
-        "Propietaria / Odontóloga",
-        "Propietario / Odontólogo",
-        "Gerente / Odontóloga",
-        "Gerente / Odontólogo",
-        "Directora / Odontóloga",
-        "Directora / Dentista",
-        "Director / Odontólogo",
-        "Director / Dentista",
-        "Propietaria",
-        "Propietario",
-        "Gerente",
-        "Directora",
-        "Director",
-        "Fundadora",
-        "Fundador",
-        "CEO",
-        "Titular",
-        "Responsable",
-        "Administrador",
-        "Doctora",
-        "Doctor",
-    ]
-    try:
-        return len(order) - order.index(role)
-    except ValueError:
-        return 0
-
+# ---------------------------------------------------------------------------
+# Selección del decisor
+# ---------------------------------------------------------------------------
 
 def choose_decisor(candidates: list[dict]) -> dict:
+    # Alta confianza con cargo definido
     high = [c for c in candidates if c.get("confianza") == "Alta" and c.get("cargo")]
     if high:
         return sorted(high, key=candidate_rank, reverse=True)[0]
-    medium = [
-        c
-        for c in candidates
-        if c.get("confianza") == "Media"
-        and c.get("nombre", "").startswith(("Dr. ", "Dra. "))
-        and source_priority(c.get("fuente", "")) >= 2
-    ]
+    # Alta confianza sin cargo
+    high_any = [c for c in candidates if c.get("confianza") == "Alta"]
+    if high_any:
+        return sorted(high_any, key=candidate_rank, reverse=True)[0]
+    # Media confianza
+    medium = [c for c in candidates if c.get("confianza") == "Media"]
     if medium:
         return sorted(medium, key=candidate_rank, reverse=True)[0]
+    # Baja confianza pero con cargo identificado
+    baja_con_cargo = [c for c in candidates if c.get("confianza") == "Baja" and c.get("cargo")]
+    if baja_con_cargo:
+        return sorted(baja_con_cargo, key=candidate_rank, reverse=True)[0]
+    # Último recurso: cualquier candidato Baja (sin cargo) — mejor que nada para ventas
+    if candidates:
+        return sorted(candidates, key=candidate_rank, reverse=True)[0]
     return {}
 
+
+# ---------------------------------------------------------------------------
+# Guion y búsquedas recomendadas
+# ---------------------------------------------------------------------------
 
 def recommended_searches(lead: dict) -> list[str]:
     name = lead.get("nombre_empresa") or "nombre empresa"
@@ -579,6 +788,35 @@ def guion_recepcion(lead: dict) -> str:
     return "Hola, buenos días. ¿Podría hablar con la persona responsable del negocio?"
 
 
+# ---------------------------------------------------------------------------
+# Enriquecimiento de un lead
+# ---------------------------------------------------------------------------
+
+SECTOR_KEYWORDS_RE = re.compile(
+    r"\b([Ff]isioterapia|[Ff]isioterapeuta|[Cc]l[íi]nica|[Dd]ental|[Cc]entro|"
+    r"[Tt]aller|[Tt]alleres|[Gg]imnasio|[Aa]cademia|[Óó]ptica|[Ee]st[eé]tica|"
+    r"[Pp]eluquer[íi]a|[Cc]onsultorio|[Gg]abinete|[Cc]lube?)\b",
+    re.IGNORECASE,
+)
+
+
+def extract_name_from_business(nombre_empresa: str) -> str:
+    """Intenta extraer el nombre del propietario del nombre comercial.
+
+    'Fisioterapia Juan Pablo Díaz' → 'Juan Pablo Díaz'
+    'Clínica Dental García' → 'García' (solo 1 palabra → descartado)
+    """
+    cleaned = SECTOR_KEYWORDS_RE.sub("", nombre_empresa)
+    cleaned = re.sub(r"[|&,;()\[\]]+", " ", cleaned)
+    cleaned = normalize_space(cleaned)
+    names = [m.group(0) for m in NAME_RE.finditer(cleaned)]
+    for name in names:
+        result = clean_name(name)
+        if result:
+            return result
+    return ""
+
+
 def set_not_found(lead: dict, source: str):
     lead["decisor_nombre"] = ""
     lead["decisor_cargo"] = ""
@@ -601,12 +839,30 @@ def enrich_lead(lead: dict) -> dict:
     for url in build_candidate_urls(web):
         time.sleep(REQUEST_DELAY_SECONDS)
         try:
-            text = fetch_text(url)
+            text, jsonld_blocks, meta_author = fetch_text(url)
         except (urllib.error.URLError, TimeoutError, ValueError):
             continue
-        if not text:
+        if not text and not jsonld_blocks and not meta_author:
             continue
         pages_checked.append(url)
+
+        # 1. JSON-LD estructurado (más fiable)
+        for c in extract_jsonld_persons(jsonld_blocks, url):
+            add_candidate(candidates, c)
+
+        # 2. Meta author
+        if meta_author:
+            author_clean = clean_name(meta_author)
+            if author_clean:
+                add_candidate(candidates, {
+                    "nombre": author_clean,
+                    "cargo": "Responsable del negocio",
+                    "fuente": url,
+                    "confianza": "Media",
+                    "evidencia": f"Meta author: {meta_author}",
+                })
+
+        # 3. Análisis de texto plano
         for candidate in extract_candidates(text, url):
             add_candidate(candidates, candidate)
 
@@ -618,11 +874,21 @@ def enrich_lead(lead: dict) -> dict:
         lead["fuente_decisor"] = chosen.get("fuente", "")
         lead["evidencia_decisor"] = chosen.get("evidencia", "")
     else:
-        lead["decisor_nombre"] = ""
-        lead["decisor_cargo"] = ""
-        lead["confianza_decisor"] = "Baja" if candidates else "No encontrado"
-        lead["fuente_decisor"] = pages_checked[0] if pages_checked else "No encontrado en web oficial"
-        lead["evidencia_decisor"] = candidates[0].get("evidencia", "") if candidates else ""
+        # Fallback: extraer nombre del propio nombre comercial (ej: "Fisioterapia Juan Pablo Díaz")
+        nombre_negocio = lead.get("nombre_empresa", "")
+        nombre_extraido = extract_name_from_business(nombre_negocio) if nombre_negocio else ""
+        if nombre_extraido:
+            lead["decisor_nombre"] = nombre_extraido
+            lead["decisor_cargo"] = "Posible propietario (nombre del negocio)"
+            lead["confianza_decisor"] = "Baja"
+            lead["fuente_decisor"] = f"Nombre del negocio: {nombre_negocio}"
+            lead["evidencia_decisor"] = f"Nombre extraído de la denominación comercial"
+        else:
+            lead["decisor_nombre"] = ""
+            lead["decisor_cargo"] = ""
+            lead["confianza_decisor"] = "Baja" if candidates else "No encontrado"
+            lead["fuente_decisor"] = pages_checked[0] if pages_checked else "No encontrado en web oficial"
+            lead["evidencia_decisor"] = candidates[0].get("evidencia", "") if candidates else ""
 
     lead["candidatos_decisor"] = candidates
     lead["busquedas_recomendadas_decisor"] = [] if pages_checked else recommended_searches(lead)
@@ -654,12 +920,15 @@ def main():
         sys.exit(1)
 
     for i, lead in enumerate(leads):
+        nombre = lead.get("nombre_empresa", f"lead {i+1}")
+        print(f"  [{i+1}/{len(leads)}] {nombre}...")
         leads[i] = enrich_lead(lead)
 
     with open(path, "w", encoding="utf-8") as f:
         json.dump(leads, f, ensure_ascii=False, indent=2)
 
     summary = summarize(leads)
+    print()
     print("[OK] Enriquecimiento de decisores completado.")
     print(f"     Leads procesados : {len(leads)}")
     print(f"     Alta             : {summary['Alta']}")

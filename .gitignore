@@ -56,3 +56,4 @@ prospecting/leads/*.private.csv
 prospecting/leads/*.private.json
 prospecting/exports/
 prospecting/backups/
+prospecting/scripts/__pycache__/
