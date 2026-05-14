@@ -1,0 +1,13 @@
+{
+  "active": true,
+  "iteration": 1,
+  "minIterations": 1,
+  "maxIterations": 1,
+  "completionPromise": "COMPLETE",
+  "tasksMode": false,
+  "taskPromise": "READY_FOR_NEXT_TASK",
+  "prompt": "Di hola y escribe COMPLETE",
+  "startedAt": "2026-05-14T14:40:12.331Z",
+  "model": "",
+  "agent": "opencode"
+}

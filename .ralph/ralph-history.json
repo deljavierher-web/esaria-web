@@ -1,0 +1,27 @@
+{
+  "iterations": [
+    {
+      "iteration": 1,
+      "startedAt": "2026-05-14T14:40:13.849Z",
+      "endedAt": "2026-05-14T14:40:16.151Z",
+      "durationMs": 1230,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [],
+      "exitCode": 1,
+      "completionDetected": false,
+      "errors": [
+        "\u001b[91m\u001b[1mError: \u001b[0mSession not found"
+      ]
+    }
+  ],
+  "totalDurationMs": 1230,
+  "struggleIndicators": {
+    "repeatedErrors": {
+      "\u001b[91m\u001b[1mError: \u001b[0mSession not found": 1
+    },
+    "noProgressIterations": 1,
+    "shortIterations": 1
+  }
+}
