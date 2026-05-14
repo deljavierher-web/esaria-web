@@ -275,7 +275,9 @@ function buildCard(lead) {
   var prioClass = badgePrioridadClass(lead.prioridad);
   var estadoClass = badgeEstadoClass(lead.estado);
 
-  var webBtn = lead.web
+  var webUrl = safeHttpUrl(lead.web);
+
+  var webBtn = webUrl
     ? '<button class="btn btn-ghost btn-sm btn-web">Web</button>'
     : '';
 
@@ -313,9 +315,9 @@ function buildCard(lead) {
     openWhatsApp(lead.telefono, lead.mensaje_whatsapp_personalizado);
   });
 
-  if (lead.web) {
+  if (webUrl) {
     card.querySelector('.btn-web').addEventListener('click', function() {
-      window.open(lead.web, '_blank', 'noopener');
+      window.open(webUrl, '_blank', 'noopener');
     });
   }
 
@@ -399,16 +401,19 @@ function buildModalHTML(lead) {
     return '<option value="' + esc(s) + '"' + sel + '>' + esc(s) + '</option>';
   }).join('');
 
-  var webLink = lead.web
-    ? '<a href="' + esc(lead.web) + '" target="_blank" rel="noopener">' + esc(lead.web) + '</a>'
+  var webUrl = safeHttpUrl(lead.web);
+  var linkedInUrl = safeHttpUrl(lead.linkedin);
+
+  var webLink = webUrl
+    ? '<a href="' + esc(webUrl) + '" target="_blank" rel="noopener">' + esc(webUrl) + '</a>'
     : '<span>—</span>';
 
   var igLink = lead.instagram
     ? '<a href="https://instagram.com/' + encodeURIComponent(lead.instagram.replace('@','')) + '" target="_blank" rel="noopener">' + esc(lead.instagram) + '</a>'
     : '<span>—</span>';
 
-  var liLink = lead.linkedin
-    ? '<a href="' + esc(lead.linkedin) + '" target="_blank" rel="noopener">' + esc(lead.linkedin) + '</a>'
+  var liLink = linkedInUrl
+    ? '<a href="' + esc(linkedInUrl) + '" target="_blank" rel="noopener">' + esc(linkedInUrl) + '</a>'
     : '<span>—</span>';
 
   var candidatosHTML = buildCandidatosHTML(lead.candidatos_decisor);
@@ -626,6 +631,17 @@ function esc(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function safeHttpUrl(value) {
+  if (!value) return '';
+  try {
+    var url = new URL(String(value).trim());
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return '';
+    return url.href;
+  } catch (e) {
+    return '';
+  }
 }
 
 /* ---- Importar / Exportar JSON ---- */

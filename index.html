@@ -1188,7 +1188,7 @@
         <a href="#contacto" class="btn btn-primary">Diagnóstico gratuito</a>
       </div>
 
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
     </nav>
@@ -1196,13 +1196,13 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="#problemas"    onclick="closeMenu()">El problema</a></li>
-      <li><a href="#soluciones"   onclick="closeMenu()">Soluciones</a></li>
-      <li><a href="#como-trabajamos" onclick="closeMenu()">Cómo trabajamos</a></li>
-      <li><a href="#sectores"     onclick="closeMenu()">Ejemplos</a></li>
-      <li><a href="#contacto"     onclick="closeMenu()">Contacto</a></li>
+      <li><a href="#problemas">El problema</a></li>
+      <li><a href="#soluciones">Soluciones</a></li>
+      <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+      <li><a href="#sectores">Ejemplos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="btn btn-primary" onclick="closeMenu()" style="width:100%;justify-content:center;">
+    <a href="#contacto" class="btn btn-primary" style="width:100%;justify-content:center;">
       Diagnóstico gratuito
     </a>
   </div>
@@ -1428,10 +1428,10 @@
     </div>
 
     <div class="sector-tabs reveal" role="tablist" aria-label="Sectores">
-      <button class="sector-tab active" id="tab-clinica"  role="tab" aria-selected="true"  aria-controls="sector-clinica"  onclick="showSector('clinica', this)">🏥 Clínicas</button>
-      <button class="sector-tab"        id="tab-taller"   role="tab" aria-selected="false" aria-controls="sector-taller"   onclick="showSector('taller', this)">🔧 Talleres</button>
-      <button class="sector-tab"        id="tab-gimnasio" role="tab" aria-selected="false" aria-controls="sector-gimnasio" onclick="showSector('gimnasio', this)">💪 Gimnasios</button>
-      <button class="sector-tab"        id="tab-comercio" role="tab" aria-selected="false" aria-controls="sector-comercio" onclick="showSector('comercio', this)">🛍️ Comercios</button>
+      <button class="sector-tab active" id="tab-clinica"  role="tab" aria-selected="true"  aria-controls="sector-clinica"  data-sector="clinica">🏥 Clínicas</button>
+      <button class="sector-tab"        id="tab-taller"   role="tab" aria-selected="false" aria-controls="sector-taller"   data-sector="taller">🔧 Talleres</button>
+      <button class="sector-tab"        id="tab-gimnasio" role="tab" aria-selected="false" aria-controls="sector-gimnasio" data-sector="gimnasio">💪 Gimnasios</button>
+      <button class="sector-tab"        id="tab-comercio" role="tab" aria-selected="false" aria-controls="sector-comercio" data-sector="comercio">🛍️ Comercios</button>
     </div>
 
     <!-- CLÍNICA -->
@@ -1708,7 +1708,7 @@
           <p>Se ha abierto WhatsApp con tu mensaje preparado. Revisa el texto y pulsa enviar para que podamos responderte.</p>
         </div>
 
-        <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+        <form id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="name">Nombre *</label>
@@ -1828,158 +1828,7 @@
 <!-- ============================================================
      JAVASCRIPT
 ============================================================ -->
-<script>
-  /* ---- Número WhatsApp — cambiar aquí si cambia ---- */
-  const WA_PHONE = '34614918261';
-  const WA_DEFAULT_TEXT = encodeURIComponent('Hola, quiero información sobre automatización para mi negocio');
-
-  /* Actualiza todos los enlaces de WhatsApp a partir de WA_PHONE */
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
-      link.href = 'https://wa.me/' + WA_PHONE + '?text=' + WA_DEFAULT_TEXT;
-    });
-  });
-
-  /* ---- Mobile menu ---- */
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const btn  = document.getElementById('hamburger');
-    const open = menu.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-  }
-
-  function closeMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  }
-
-  document.addEventListener('click', e => {
-    const header = document.querySelector('header');
-    if (!header.contains(e.target)) closeMenu();
-  });
-
-  /* ---- Sector tabs ---- */
-  function showSector(id, btn) {
-    document.querySelectorAll('.sector-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.sector-tab').forEach(el => {
-      el.classList.remove('active');
-      el.setAttribute('aria-selected', 'false');
-    });
-    document.getElementById('sector-' + id).classList.add('active');
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-  }
-
-  /* ---- Contact form ---- */
-  function handleSubmit(e) {
-    e.preventDefault();
-    const name     = document.getElementById('name').value.trim();
-    const phone    = document.getElementById('phone').value.trim();
-    const email    = document.getElementById('email').value.trim();
-    const business = document.getElementById('business').value;
-    const message  = document.getElementById('message').value.trim();
-
-    if (!name)     { document.getElementById('name').focus();     return; }
-    if (!email)    { document.getElementById('email').focus();    return; }
-    if (!business) { document.getElementById('business').focus(); return; }
-    if (!message)  { document.getElementById('message').focus();  return; }
-
-    const text = [
-      'Hola, me llamo ' + name + ' y quiero un diagnóstico gratuito para mi negocio.',
-      'Sector: ' + business,
-      phone  ? 'Teléfono: ' + phone : '',
-      'Email: ' + email,
-      'Cuello de botella: ' + message
-    ].filter(Boolean).join('\n');
-
-    window.open('https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-  }
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- Scroll-reveal (elementos individuales no gestionados por stagger) ---- */
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  /* ---- Stagger reveal para grupos de cards ---- */
-  const staggeredEls = new Set();
-
-  if (!prefersReduced) {
-    const staggerGroups = [
-      { parent: '.grid-3',        cards: '.problem-card.reveal' },
-      { parent: '.solution-list', cards: '.solution-item.reveal' },
-      { parent: '.steps-grid',    cards: '.step.reveal'         },
-    ];
-
-    const staggerObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.querySelectorAll('.reveal').forEach((card, i) => {
-          card.style.transitionDelay = (i * 100) + 'ms';
-          card.classList.add('visible');
-        });
-        staggerObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    staggerGroups.forEach(({ parent, cards }) => {
-      const parentEl = document.querySelector(parent);
-      if (!parentEl) return;
-      parentEl.querySelectorAll(cards).forEach(el => staggeredEls.add(el));
-      staggerObserver.observe(parentEl);
-    });
-  }
-
-  document.querySelectorAll('.reveal').forEach(el => {
-    if (prefersReduced) {
-      el.classList.add('visible');
-    } else if (!staggeredEls.has(el)) {
-      revealObserver.observe(el);
-    }
-  });
-
-  /* ---- Metric bars (scaleX — solo compositor, sin layout recalc) ---- */
-  const barObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.metric-bar').forEach((bar, i) => {
-          const target = (bar.dataset.w || 0) / 100;
-          if (prefersReduced) {
-            bar.style.transform = 'scaleX(' + target + ')';
-          } else {
-            setTimeout(() => {
-              bar.style.transform = 'scaleX(' + target + ')';
-            }, 150 + i * 80);
-          }
-        });
-        barObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  const visual = document.querySelector('.solution-visual');
-  if (visual) barObserver.observe(visual);
-
-  /* ---- Hide/show header on scroll ---- */
-  let lastY = 0;
-  const siteHeader = document.getElementById('site-header');
-
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    siteHeader.style.transform = (y > lastY && y > 80) ? 'translateY(-100%)' : 'translateY(0)';
-    lastY = y;
-  }, { passive: true });
-</script>
+<script src="assets/js/site.js" defer></script>
 
 </body>
 </html>
