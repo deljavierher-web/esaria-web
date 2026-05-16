@@ -84,6 +84,34 @@ npm run setup   # descarga Chromium (~350 MB, única vez)
 
 Modo `auto`: prueba Gemini → Kokoro → Piper → macOS say.
 
+## Imágenes de fondo con IA (opcional)
+
+Puedes generar fondos para cada escena con Pollinations.ai — gratis, sin API key, sin registro.
+
+```bash
+# Genera 5 imágenes (sc1-sc5) basadas en scenes.json
+python scripts/make-images.py
+
+# O con escenas personalizadas
+python scripts/make-images.py mis-escenas.json
+```
+
+Las imágenes se guardan en `tmp/images/` y `build-timed-html.js` las detecta automáticamente. Si no hay imágenes, el reel usa el fondo por defecto (degradado oscuro).
+
+**Formato de scenes.json:**
+```json
+[
+  {"id": "sc1", "prompt": "descripción en inglés...", "width": 1080, "height": 1920},
+  {"id": "sc2", "prompt": "otra descripción..."}
+]
+```
+
+- `id` debe coincidir con los IDs de escena del HTML (sc1, sc2, sc3, sc4, sc5)
+- `prompt` en inglés, máx 200 chars. Añade "no text, no words, no logos" al final
+- `width`/`height` por defecto 1080x1920 (resolución real ~576x1024 en tier gratuito)
+- Modelo por defecto: `flux`. Alternativas: `sdxl`, `flux-realism`, `turbo`
+- Rate limit: ~5-10 imágenes/minuto. El script espera entre peticiones.
+
 ## Cambiar el guion
 
 Edita `GUION` en [scripts/make-voice.py](scripts/make-voice.py).

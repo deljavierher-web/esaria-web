@@ -276,6 +276,9 @@ function buildCard(lead) {
   var estadoClass = badgeEstadoClass(lead.estado);
 
   var webUrl = safeHttpUrl(lead.web);
+  var decisorResumen = lead.decisor_nombre
+    ? 'Decisor: ' + lead.decisor_nombre + (lead.confianza_decisor ? ' (' + lead.confianza_decisor + ')' : '')
+    : 'Decisor: No encontrado';
 
   var webBtn = webUrl
     ? '<button class="btn btn-ghost btn-sm btn-web">Web</button>'
@@ -292,7 +295,7 @@ function buildCard(lead) {
     '</div>' +
     '<div class="card-meta">' +
       '<span>' + esc(lead.ciudad) + '</span>' +
-      '<span>' + esc(lead.decisor_nombre) + '</span>' +
+      '<span>' + esc(decisorResumen) + '</span>' +
     '</div>' +
     '<div class="card-problema">' + esc(lead.problema_visible) + '</div>' +
     '<div class="card-actions">' +

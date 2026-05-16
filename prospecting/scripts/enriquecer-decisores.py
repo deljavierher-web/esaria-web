@@ -27,8 +27,19 @@ INPUT = BASE / "leads" / "reales" / "leads-reales.json"
 
 USER_AGENT = "EsarIAProspectingBot/1.0"
 TIMEOUT = 10
-MAX_PAGES_PER_DOMAIN = 6
-REQUEST_DELAY_SECONDS = 1.0
+MAX_PAGES_PER_DOMAIN = 12
+REQUEST_DELAY_SECONDS = 0.5
+MAX_DISCOVERED_LINKS = 8
+
+WEAK_PLATFORM_DOMAINS = (
+    "facebook.com",
+    "instagram.com",
+    "linkedin.com",
+    "linktr.ee",
+    "wodbuster.com",
+    "google.com",
+    "maps.google",
+)
 
 CANDIDATE_PATHS = [
     "/",
@@ -57,7 +68,23 @@ CANDIDATE_PATHS = [
     "/profesionales",
     "/gerencia",
     "/direccion",
+    "/conocenos",
+    "/conocenos/",
+    "/personas",
+    "/personas/",
+    "/profesorado",
+    "/profesorado/",
+    "/monitores",
+    "/monitores/",
+    "/entrenadores",
+    "/entrenadores/",
 ]
+
+DISCOVERY_LINK_KEYWORDS = (
+    "quienes", "nosotros", "sobre", "equipo", "staff", "profesional",
+    "direccion", "gerencia", "conocenos", "clinica", "centro", "empresa",
+    "profesor", "monitor", "entrenador", "fisioterapeuta", "optico",
+)
 
 BLOCKED_PATH_PARTS = (
     "login",
@@ -72,6 +99,7 @@ BLOCKED_PATH_PARTS = (
 )
 
 ROLE_PATTERNS = [
+    ("Dirección médica", r"\b[Dd]irecci[oó]n\s+m[eé]dica\b"),
     ("Directora", r"\b[Dd]irectora\b"),
     ("Director", r"\b[Dd]irector\b"),
     ("Gerente", r"\b[Gg]erente\b"),
@@ -90,7 +118,7 @@ ROLE_PATTERNS = [
 ROLE_RE = re.compile("|".join(f"(?:{pattern})" for _, pattern in ROLE_PATTERNS))
 TEAM_RE = re.compile(r"\b[Ee]quipo\b")
 DIRECTIVE_RE = re.compile(
-    r"\b[Dd]irectora?\b|\b[Gg]erente\b|\b[Pp]ropietaria?o?\b|\b[Tt]itular\b|\bCEO\b"
+    r"\b[Dd]irecci[oó]n\s+m[eé]dica\b|\b[Dd]irectora?\b|\b[Gg]erente\b|\b[Pp]ropietaria?o?\b|\b[Tt]itular\b|\bCEO\b"
 )
 STAFF_ROLE_RE = re.compile(
     r"\b[Dd]entista\b|\b[Oo]dont[oó]log[oa]\b|\b[Hh]igienista\b|\b[Aa]uxiliar\b|"
@@ -167,7 +195,63 @@ BLACKLIST_STRONG = (
     "Centros de radiodiagnóstico",
     "Centros de radiodiagnostico",
     "Santos Pilarica",
+    "Acceso Grado Medio",
+    "Grado Superior",
+    "Superior Idiomas",
+    "Idiomas Clases",
+    "León Oferta",
+    "Leon Oferta",
+    "Estado Administrativo",
+    "Servicio de Salud Castilla",
+    "Junta Castilla",
+    "Auxiliar Administrativo",
+    "Administrativo del Estado",
+    "Promoción Interna",
+    "Promocion Interna",
+    "Oferta 2020",
+    "Oferta 2021",
+    "Oferta 2022",
+    "Convocatoria",
+    "Temario",
+    "Oposiciones",
+    "EVAU",
+    "UNED",
+    "IGCSE",
+    "A-LEVEL",
+    "Planes de estudio",
+    "Universidad",
+    "Fuente Llevamos",
 )
+
+GENERIC_NAME_TOKENS = {
+    "Acceso", "Grado", "Medio", "Superior", "Idiomas", "Clases", "Oferta",
+    "Estado", "Administrativo", "Administrativa", "Administración", "Administracion",
+    "Servicio", "Salud", "Castilla", "León", "Leon", "Junta", "Auxiliar",
+    "Promoción", "Promocion", "Interna", "Convocatoria", "Plazas", "Información",
+    "Informacion", "Temario", "Oposición", "Oposicion", "Oposiciones", "Curso",
+    "Cursos", "Academia", "Universidad", "Graduado", "Bachillerato", "ESO",
+    "EVAU", "UNED", "IGCSE", "A-LEVEL", "Planes", "Estudio", "Estudios",
+    "Fuente", "Llevamos", "Pide", "Cita", "Más", "Mas", "Información",
+    "Inicio", "Equipo", "Nuestro", "Nuestros", "Nuestra", "Nuestras", "Conoce",
+    "Visitar", "Profesionalidad", "Médico", "Medico", "Las", "Los", "Una", "Un",
+    "Sanitario", "Registro", "Legal", "Privacidad", "Cookies", "Blog", "Home",
+    "Fray", "VIII", "Osteopatía", "Osteopatia", "Optica", "Óptica",
+}
+
+SPANISH_FIRST_NAMES = {
+    "aaron", "abel", "adrian", "agustin", "aitor", "alba", "alberto", "alejandro",
+    "alejandra", "alex", "alfonso", "alicia", "almudena", "alvaro", "ana", "andrea",
+    "andres", "angel", "angela", "antonio", "arantxa", "beatriz", "belen", "blanca",
+    "borja", "carmen", "carolina", "carlos", "catalina", "cesar", "clara", "claudia",
+    "cristina", "daniel", "david", "diego", "eduardo", "elena", "elisa", "elvira",
+    "emilio", "enrique", "eva", "fernando", "francisco", "gabriel", "gema", "gonzalo",
+    "guillermo", "hector", "ines", "irene", "isabel", "ivan", "javier", "jesus",
+    "joaquin", "jorge", "jose", "juan", "julia", "laura", "lucia", "luis", "luisa",
+    "manuel", "maria", "marina", "marta", "martin", "miguel", "monica", "natalia",
+    "noelia", "nuria", "oscar", "pablo", "patricia", "paula", "pedro", "pilar",
+    "raquel", "raul", "ricardo", "roberto", "rocio", "rosa", "ruben", "sandra",
+    "sara", "sergio", "sofia", "susana", "teresa", "victor", "virginia",
+}
 
 NAME_STOPWORDS = {
     "El",
@@ -281,6 +365,13 @@ TRAILING_PROFESSION_WORDS = {
     "Colaboradora",
     "Coordinador",
     "Coordinadora",
+    "Dirección",
+    "Direccion",
+    "Gerencia",
+    "Director",
+    "Directora",
+    "Responsable",
+    "Titular",
 }
 
 STATS = {"candidatos_descartados_basura": 0}
@@ -298,6 +389,7 @@ class TextExtractor(HTMLParser):
         self.parts = []
         self.jsonld_blocks = []
         self.meta_author = ""
+        self.links = []
         self._current_jsonld = []
 
     def handle_starttag(self, tag, attrs):
@@ -317,6 +409,10 @@ class TextExtractor(HTMLParser):
                 content = attrs_dict.get("content", "").strip()
                 if content and not self.meta_author:
                     self.meta_author = content
+        elif tag == "a":
+            href = attrs_dict.get("href", "").strip()
+            if href:
+                self.links.append(href)
 
     def handle_endtag(self, tag):
         if tag == "script":
@@ -357,6 +453,16 @@ def normalize_web(raw: str) -> str:
     return urllib.parse.urlunparse((parsed.scheme, parsed.netloc, path, "", "", ""))
 
 
+def is_weak_platform_url(raw: str) -> bool:
+    normalized = normalize_web(raw)
+    if not normalized:
+        return False
+    netloc = urllib.parse.urlparse(normalized).netloc.lower()
+    if netloc.startswith("www."):
+        netloc = netloc[4:]
+    return any(netloc == domain or netloc.endswith("." + domain) for domain in WEAK_PLATFORM_DOMAINS)
+
+
 def is_safe_candidate(url: str, base_netloc: str) -> bool:
     parsed = urllib.parse.urlparse(url)
     if parsed.netloc.lower() != base_netloc.lower():
@@ -372,6 +478,8 @@ def build_candidate_urls(web: str) -> list[str]:
     parsed = urllib.parse.urlparse(normalized)
     root = f"{parsed.scheme}://{parsed.netloc}"
     urls = []
+    if is_safe_candidate(normalized, parsed.netloc):
+        urls.append(normalized)
     for path in CANDIDATE_PATHS:
         url = urllib.parse.urljoin(root, path)
         if is_safe_candidate(url, parsed.netloc) and url not in urls:
@@ -379,19 +487,42 @@ def build_candidate_urls(web: str) -> list[str]:
     return urls[:MAX_PAGES_PER_DOMAIN]
 
 
-def fetch_text(url: str) -> tuple[str, list[str], str]:
-    """Devuelve (texto_plano, bloques_jsonld, meta_author)."""
+def discover_candidate_links(base_url: str, links: list[str], existing: list[str]) -> list[str]:
+    normalized = normalize_web(base_url)
+    if not normalized:
+        return []
+    parsed = urllib.parse.urlparse(normalized)
+    discovered = []
+    for href in links:
+        if href.startswith(("mailto:", "tel:", "javascript:", "#")):
+            continue
+        absolute = normalize_web(urllib.parse.urljoin(normalized, href))
+        if not absolute or absolute in existing or absolute in discovered:
+            continue
+        if not is_safe_candidate(absolute, parsed.netloc):
+            continue
+        path = urllib.parse.urlparse(absolute).path.lower()
+        compact = path.replace("-", "").replace("_", "")
+        if any(keyword in path or keyword in compact for keyword in DISCOVERY_LINK_KEYWORDS):
+            discovered.append(absolute)
+        if len(discovered) >= MAX_DISCOVERED_LINKS:
+            break
+    return discovered
+
+
+def fetch_text(url: str) -> tuple[str, list[str], str, list[str]]:
+    """Devuelve (texto_plano, bloques_jsonld, meta_author, links)."""
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
         content_type = resp.headers.get("content-type", "")
         if "text/html" not in content_type and "application/xhtml" not in content_type:
-            return "", [], ""
+            return "", [], "", []
         raw = resp.read(800_000).decode(
             resp.headers.get_content_charset() or "utf-8", errors="ignore"
         )
     parser = TextExtractor()
     parser.feed(raw)
-    return normalize_space(parser.text()), parser.jsonld_blocks, parser.meta_author
+    return normalize_space(parser.text()), parser.jsonld_blocks, parser.meta_author, parser.links
 
 
 # ---------------------------------------------------------------------------
@@ -473,6 +604,29 @@ def is_blacklisted_name(value: str) -> bool:
     return any(term.lower() in compact for term in BLACKLIST_STRONG)
 
 
+def strip_accents(value: str) -> str:
+    table = str.maketrans("áéíóúüñÁÉÍÓÚÜÑ", "aeiouunAEIOUUN")
+    return value.translate(table)
+
+
+def has_plausible_first_name(value: str) -> bool:
+    value = re.sub(r"^(Dr\.|Dra\.)\s+", "", normalize_space(value))
+    words = [strip_accents(w).lower() for w in re.findall(NAME_WORD, value)]
+    return any(word in SPANISH_FIRST_NAMES for word in words)
+
+
+def looks_like_generic_sequence(value: str) -> bool:
+    words = [w.strip(".,;:()[]") for w in normalize_space(value).split()]
+    if not words:
+        return True
+    generic_count = sum(1 for word in words if word in GENERIC_NAME_TOKENS)
+    if generic_count:
+        return True
+    if len(words) >= 3 and not has_plausible_first_name(value):
+        return True
+    return False
+
+
 def canonical_name(value: str) -> str:
     value = normalize_space(value)
     value = re.sub(r"^(Dr\.|Dra\.)\s+", "", value)
@@ -506,6 +660,10 @@ def clean_name(value: str) -> str:
         value = f"{title} {' '.join(words[:3])}"
     else:
         words = value.split()
+        if len(words) % 2 == 0:
+            half = len(words) // 2
+            if [strip_accents(w).lower() for w in words[:half]] == [strip_accents(w).lower() for w in words[half:]]:
+                words = words[:half]
         # Rechazar si la primera palabra es claramente un servicio o técnica
         if words and words[0].strip(".,;:") in NOT_FIRST_NAME:
             STATS["candidatos_descartados_basura"] += 1
@@ -531,6 +689,9 @@ def clean_name(value: str) -> str:
     if value in blocked or is_blacklisted_name(value):
         STATS["candidatos_descartados_basura"] += 1
         return ""
+    if looks_like_generic_sequence(value):
+        STATS["candidatos_descartados_basura"] += 1
+        return ""
     if len(value) > 80:
         STATS["candidatos_descartados_basura"] += 1
         return ""
@@ -539,7 +700,35 @@ def clean_name(value: str) -> str:
     if not has_title and len(words) < 2:
         STATS["candidatos_descartados_basura"] += 1
         return ""
+    if not has_title and not has_plausible_first_name(value):
+        STATS["candidatos_descartados_basura"] += 1
+        return ""
     return value
+
+
+def closest_names_to_role(window: str, role_start: int, role_end: int) -> list[str]:
+    matches = list(NAME_RE.finditer(window))
+    ranked = []
+    for match in matches:
+        raw = match.group(0)
+        name = clean_name(raw)
+        if not name or name.startswith(("Dr. ", "Dra. ")):
+            continue
+        if match.end() <= role_start:
+            distance = role_start - match.end()
+        elif match.start() >= role_end:
+            distance = match.start() - role_end
+        else:
+            distance = 0
+        if distance <= 80:
+            ranked.append((distance, name))
+    result = []
+    for _, name in sorted(ranked, key=lambda item: item[0]):
+        if canonical_name(name) not in {canonical_name(existing) for existing in result}:
+            result.append(name)
+        if len(result) >= 2:
+            break
+    return result
 
 
 def source_priority(url: str) -> int:
@@ -561,6 +750,8 @@ def role_score(role: str) -> int:
     order = [
         "Propietaria / Odontóloga",
         "Propietario / Odontólogo",
+        "Dirección médica / Odontólogo",
+        "Dirección médica / Odontóloga",
         "Gerente / Odontóloga",
         "Gerente / Odontólogo",
         "Directora / Odontóloga",
@@ -575,6 +766,7 @@ def role_score(role: str) -> int:
         "Fundadora",
         "Fundador",
         "CEO",
+        "Dirección médica",
         "Titular",
         "Responsable",
         "Administrador",
@@ -635,6 +827,8 @@ def cargo_for_medical_name(name: str, window: str) -> tuple[str, str]:
     ):
         professional = "Dentista"
 
+    if role == "Dirección médica":
+        return f"{role} / {professional}", "Alta"
     if role in ("Directora", "Director"):
         return f"{role} / {professional}", "Alta"
     if role in ("Gerente", "Propietaria", "Propietario", "Titular", "CEO"):
@@ -672,14 +866,12 @@ def extract_candidates(text: str, source_url: str) -> list[dict]:
         window = text[window_start:window_end]
         if ACADEMIC_CONTEXT_RE.search(window):
             continue
-        role = role_from_text(window)
+        role = role_from_text(role_match.group(0)) or role_from_text(window)
         if role in ("Doctor", "Doctora"):
             continue
-        names = [clean_name(m.group(0)) for m in NAME_RE.finditer(window)]
-        names = [name for name in names if name]
-        for name in names[:3]:
-            if name.startswith(("Dr. ", "Dra. ")):
-                continue
+        relative_start = role_match.start() - window_start
+        relative_end = role_match.end() - window_start
+        for name in closest_names_to_role(window, relative_start, relative_end):
             # Confianza escalonada según importancia del cargo
             if role_score(role) >= role_score("Titular"):
                 confianza = "Alta"
@@ -747,13 +939,7 @@ def choose_decisor(candidates: list[dict]) -> dict:
     medium = [c for c in candidates if c.get("confianza") == "Media"]
     if medium:
         return sorted(medium, key=candidate_rank, reverse=True)[0]
-    # Baja confianza pero con cargo identificado
-    baja_con_cargo = [c for c in candidates if c.get("confianza") == "Baja" and c.get("cargo")]
-    if baja_con_cargo:
-        return sorted(baja_con_cargo, key=candidate_rank, reverse=True)[0]
-    # Último recurso: cualquier candidato Baja (sin cargo) — mejor que nada para ventas
-    if candidates:
-        return sorted(candidates, key=candidate_rank, reverse=True)[0]
+    # No elegir candidatos de baja confianza desde web: nombre fiable o nada.
     return {}
 
 
@@ -794,7 +980,7 @@ def guion_recepcion(lead: dict) -> str:
 
 SECTOR_KEYWORDS_RE = re.compile(
     r"\b([Ff]isioterapia|[Ff]isioterapeuta|[Cc]l[íi]nica|[Dd]ental|[Cc]entro|"
-    r"[Tt]aller|[Tt]alleres|[Gg]imnasio|[Aa]cademia|[Óó]ptica|[Ee]st[eé]tica|"
+    r"[Oo]steopat[íi]a|[Tt]aller|[Tt]alleres|[Gg]imnasio|[Aa]cademia|[Óó]ptica|[Oo]ptica|[Ee]st[eé]tica|"
     r"[Pp]eluquer[íi]a|[Cc]onsultorio|[Gg]abinete|[Cc]lube?)\b",
     re.IGNORECASE,
 )
@@ -806,7 +992,13 @@ def extract_name_from_business(nombre_empresa: str) -> str:
     'Fisioterapia Juan Pablo Díaz' → 'Juan Pablo Díaz'
     'Clínica Dental García' → 'García' (solo 1 palabra → descartado)
     """
+    for paren in re.findall(r"\(([^()]+)\)", nombre_empresa or ""):
+        result = clean_name(paren)
+        if result:
+            return result
+
     cleaned = SECTOR_KEYWORDS_RE.sub("", nombre_empresa)
+    cleaned = re.sub(r"\b[A-ZÁÉÍÓÚÑ]\.?\s*[A-ZÁÉÍÓÚÑ]\.?(?=\s+[A-ZÁÉÍÓÚÑ])", "", cleaned)
     cleaned = re.sub(r"[|&,;()\[\]]+", " ", cleaned)
     cleaned = normalize_space(cleaned)
     names = [m.group(0) for m in NAME_RE.finditer(cleaned)]
@@ -826,25 +1018,66 @@ def set_not_found(lead: dict, source: str):
     lead["candidatos_decisor"] = []
 
 
+def apply_business_name_fallback(lead: dict) -> bool:
+    nombre_negocio = lead.get("nombre_empresa", "")
+    nombre_extraido = extract_name_from_business(nombre_negocio) if nombre_negocio else ""
+    if not nombre_extraido:
+        return False
+    candidate = {
+        "nombre": nombre_extraido,
+        "cargo": "Posible propietario (nombre del negocio)",
+        "fuente": f"Nombre del negocio: {nombre_negocio}",
+        "confianza": "Baja",
+        "evidencia": "Nombre extraído de la denominación comercial",
+    }
+    lead["decisor_nombre"] = candidate["nombre"]
+    lead["decisor_cargo"] = candidate["cargo"]
+    lead["confianza_decisor"] = candidate["confianza"]
+    lead["fuente_decisor"] = candidate["fuente"]
+    lead["evidencia_decisor"] = candidate["evidencia"]
+    lead["candidatos_decisor"] = [candidate]
+    return True
+
+
 def enrich_lead(lead: dict) -> dict:
     web = lead.get("web") or ""
     if not web:
-        set_not_found(lead, "No buscado automáticamente: lead sin web")
+        if not apply_business_name_fallback(lead):
+            set_not_found(lead, "No buscado automáticamente: lead sin web y sin nombre de persona claro en el negocio")
+        lead["busquedas_recomendadas_decisor"] = recommended_searches(lead)
+        lead["guion_recepcion_personalizado"] = guion_recepcion(lead)
+        return lead
+
+    if is_weak_platform_url(web):
+        if not apply_business_name_fallback(lead):
+            set_not_found(lead, "No buscado automáticamente: fuente no oficial o plataforma con login")
         lead["busquedas_recomendadas_decisor"] = recommended_searches(lead)
         lead["guion_recepcion_personalizado"] = guion_recepcion(lead)
         return lead
 
     candidates = []
     pages_checked = []
-    for url in build_candidate_urls(web):
+    urls_to_check = build_candidate_urls(web)
+    checked_set = set()
+    index = 0
+    while index < len(urls_to_check) and len(checked_set) < MAX_PAGES_PER_DOMAIN:
+        url = urls_to_check[index]
+        index += 1
+        if url in checked_set:
+            continue
+        checked_set.add(url)
         time.sleep(REQUEST_DELAY_SECONDS)
         try:
-            text, jsonld_blocks, meta_author = fetch_text(url)
+            text, jsonld_blocks, meta_author, links = fetch_text(url)
         except (urllib.error.URLError, TimeoutError, ValueError):
             continue
         if not text and not jsonld_blocks and not meta_author:
             continue
         pages_checked.append(url)
+
+        for discovered_url in discover_candidate_links(url, links, urls_to_check):
+            if discovered_url not in urls_to_check:
+                urls_to_check.append(discovered_url)
 
         # 1. JSON-LD estructurado (más fiable)
         for c in extract_jsonld_persons(jsonld_blocks, url):
@@ -874,23 +1107,17 @@ def enrich_lead(lead: dict) -> dict:
         lead["fuente_decisor"] = chosen.get("fuente", "")
         lead["evidencia_decisor"] = chosen.get("evidencia", "")
     else:
-        # Fallback: extraer nombre del propio nombre comercial (ej: "Fisioterapia Juan Pablo Díaz")
-        nombre_negocio = lead.get("nombre_empresa", "")
-        nombre_extraido = extract_name_from_business(nombre_negocio) if nombre_negocio else ""
-        if nombre_extraido:
-            lead["decisor_nombre"] = nombre_extraido
-            lead["decisor_cargo"] = "Posible propietario (nombre del negocio)"
-            lead["confianza_decisor"] = "Baja"
-            lead["fuente_decisor"] = f"Nombre del negocio: {nombre_negocio}"
-            lead["evidencia_decisor"] = f"Nombre extraído de la denominación comercial"
-        else:
+        if not apply_business_name_fallback(lead):
             lead["decisor_nombre"] = ""
             lead["decisor_cargo"] = ""
-            lead["confianza_decisor"] = "Baja" if candidates else "No encontrado"
-            lead["fuente_decisor"] = pages_checked[0] if pages_checked else "No encontrado en web oficial"
-            lead["evidencia_decisor"] = candidates[0].get("evidencia", "") if candidates else ""
+            lead["confianza_decisor"] = "No encontrado"
+            lead["fuente_decisor"] = (
+                "Sin evidencia suficiente en web oficial" if pages_checked else "No encontrado en web oficial"
+            )
+            lead["evidencia_decisor"] = "Candidatos descartados por baja confianza o por parecer contenido genérico"
 
-    lead["candidatos_decisor"] = candidates
+    if lead.get("confianza_decisor") != "Baja":
+        lead["candidatos_decisor"] = candidates
     lead["busquedas_recomendadas_decisor"] = [] if pages_checked else recommended_searches(lead)
     lead["guion_recepcion_personalizado"] = guion_recepcion(lead)
     return lead

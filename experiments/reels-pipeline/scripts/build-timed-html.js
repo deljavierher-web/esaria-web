@@ -5,6 +5,9 @@
  * de forma proporcional a la longitud de cada frase y genera
  * tmp/reel-timed.html con GSAP timings calculados.
  *
+ * Opcional: si existe tmp/images.json, usa imágenes de fondo generadas por IA
+ * (make-images.py con Pollinations.ai) para cada escena.
+ *
  * Reglas de transición:
  *   - Sin solapamiento: la escena anterior termina de salir ANTES de que entre la siguiente.
  *   - autoAlpha (opacity+visibility) garantiza que escenas ocultas no se vean.
@@ -78,7 +81,6 @@ if (sumDur > available) {
 }
 
 // ── 4. Calcular timestamps: sin solapamiento ──────────────────────────────────
-// cursor = cuando la anterior ha terminado de salir por completo
 let cursor = BRAND_INTRO;
 SLIDES.forEach((s, i) => {
   s.enterAt = cursor;
@@ -101,13 +103,65 @@ console.log(`  Anim: ${animDur.toFixed(2)}s`);
 // ── 6. Escribir timing.json ───────────────────────────────────────────────────
 fs.writeFileSync(OUT_JSON, JSON.stringify({ audioDur, animDur, ctaEnterAt }, null, 2));
 
-// ── 7. Template HTML ──────────────────────────────────────────────────────────
+// ── 7. Cargar imágenes de fondo (opcional, generadas con make-images.py) ──────
+const IMG_MANIFEST = path.join(TMP_DIR, 'images.json');
+let sceneImages = {};
+let hasImages = false;
+if (fs.existsSync(IMG_MANIFEST)) {
+  try {
+    const manifest = JSON.parse(fs.readFileSync(IMG_MANIFEST, 'utf8'));
+    for (const img of manifest.images || []) {
+      if (img.path && fs.existsSync(img.path)) {
+        // Ruta relativa desde tmp/reel-timed.html
+        sceneImages[img.id] = path.relative(TMP_DIR, img.path);
+      }
+    }
+    hasImages = Object.keys(sceneImages).length > 0;
+    if (hasImages) console.log(`[HTML] ${Object.keys(sceneImages).length} imágenes de fondo IA cargadas`);
+  } catch (e) {
+    console.log(`[HTML] No se pudieron cargar imágenes: ${e.message}`);
+  }
+}
+
+// ── 8. Template HTML ──────────────────────────────────────────────────────────
 const T = (n) => n.toFixed(3);
 const [sc1, sc2, sc3, sc4, sc5] = SLIDES;
 
-// Timing stagger sc4: el label aparece con el contenedor,
-// cada task-item entra 0.2s después del anterior
-const SC4_STAGGER_START = T(sc4.enterAt + 0.3);  // primer item entra 0.3s después del contenedor
+// Timing stagger sc4
+const SC4_STAGGER_START = T(sc4.enterAt + 0.3);
+
+// Genera CSS de fondo para cada slide
+function bgCSS(id) {
+  if (!sceneImages[id]) return '';
+  return `background-image: url('${sceneImages[id]}'); background-size: cover; background-position: center;`;
+}
+
+// Genera divs de fondo solo si hay imágenes
+const bgDivs = hasImages ? `
+  <div class="scene-bg" id="bg-sc1" style="${bgCSS('sc1')}"></div>
+  <div class="scene-bg" id="bg-sc2" style="${bgCSS('sc2')}"></div>
+  <div class="scene-bg" id="bg-sc3" style="${bgCSS('sc3')}"></div>
+  <div class="scene-bg" id="bg-sc4" style="${bgCSS('sc4')}"></div>
+  <div class="scene-bg" id="bg-sc5" style="${bgCSS('sc5')}"></div>
+` : '';
+
+// Genera animaciones GSAP de fondo
+const bgAnims = hasImages ? `
+    // Fondos IA: entran y salen con cada escena (opacidad 0.35)
+    .to('#bg-sc1', { autoAlpha: 0.35, duration: ${ENTER}, ease: E.enter }, ${T(sc1.enterAt)})
+    .to('#bg-sc1', { autoAlpha: 0,    duration: ${EXIT},  ease: E.exit  }, ${T(sc1.exitAt)})
+
+    .to('#bg-sc2', { autoAlpha: 0.35, duration: ${ENTER}, ease: E.enter }, ${T(sc2.enterAt)})
+    .to('#bg-sc2', { autoAlpha: 0,    duration: ${EXIT},  ease: E.exit  }, ${T(sc2.exitAt)})
+
+    .to('#bg-sc3', { autoAlpha: 0.35, duration: ${ENTER}, ease: E.enter }, ${T(sc3.enterAt)})
+    .to('#bg-sc3', { autoAlpha: 0,    duration: ${EXIT},  ease: E.exit  }, ${T(sc3.exitAt)})
+
+    .to('#bg-sc4', { autoAlpha: 0.35, duration: ${ENTER}, ease: E.enter }, ${T(sc4.enterAt)})
+    .to('#bg-sc4', { autoAlpha: 0,    duration: ${EXIT},  ease: E.exit  }, ${T(sc4.exitAt)})
+
+    .to('#bg-sc5', { autoAlpha: 0.35, duration: 0.8, ease: E.enter }, ${T(sc5.enterAt)})
+` : '';
 
 const html = `<!DOCTYPE html>
 <html lang="es">
@@ -127,6 +181,14 @@ const html = `<!DOCTYPE html>
       position: relative;
     }
 
+    /* Fondo generado por IA (opcional, opacidad baja para que el texto sea legible) */
+    .scene-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      visibility: hidden; opacity: 0;
+    }
+
     .bg-glow {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -134,12 +196,14 @@ const html = `<!DOCTYPE html>
         radial-gradient(ellipse 800px 600px at 50% 25%, rgba(99,102,241,0.07) 0%, transparent 70%),
         radial-gradient(ellipse 500px 400px at 80% 80%, rgba(99,102,241,0.04) 0%, transparent 60%);
       pointer-events: none;
+      z-index: 0;
     }
 
     .brand {
       position: absolute;
       top: 96px; left: 80px; right: 80px;
       display: flex; align-items: center; gap: 20px;
+      z-index: 2;
     }
     .brand-name { font-size: 62px; font-weight: 800; letter-spacing: -2.5px; color: #F8FAFC; }
     .brand-name .accent { color: #6366F1; }
@@ -152,14 +216,15 @@ const html = `<!DOCTYPE html>
       width: 0; height: 3px;
       background: linear-gradient(90deg, #6366F1 0%, rgba(99,102,241,0) 100%);
       border-radius: 2px;
+      z-index: 2;
     }
 
-    /* Todos los slides ocultos por defecto via GSAP autoAlpha */
     .slide {
       position: absolute;
       left: 80px; right: 80px;
       visibility: hidden;
       opacity: 0;
+      z-index: 1;
     }
 
     .slide-label {
@@ -199,6 +264,7 @@ const html = `<!DOCTYPE html>
       text-align: center;
       left: 0; right: 0;
       padding: 0 80px;
+      z-index: 1;
     }
     #sc5 .slide-label { text-align: center; }
     #sc5 .brand-hero {
@@ -215,6 +281,7 @@ const html = `<!DOCTYPE html>
       position: absolute;
       bottom: 200px; left: 80px; right: 80px;
       visibility: hidden; opacity: 0;
+      z-index: 2;
     }
     .cta-pill {
       display: inline-flex; align-items: center;
@@ -230,6 +297,7 @@ const html = `<!DOCTYPE html>
       bottom: 80px; left: 80px; right: 80px;
       display: flex; justify-content: space-between; align-items: center;
       visibility: hidden; opacity: 0;
+      z-index: 2;
     }
     .footer-url { font-size: 30px; font-weight: 600; color: #334155; }
     .footer-tag { font-size: 26px; color: #6366F1; font-weight: 500; }
@@ -237,6 +305,7 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
   <div class="bg-glow"></div>
+  ${bgDivs}
 
   <div class="brand" id="brand">
     <div class="brand-name">Esar<span class="accent">IA</span></div>
@@ -302,13 +371,11 @@ const html = `<!DOCTYPE html>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
-    // Estado inicial: todo invisible con autoAlpha (opacity=0 + visibility=hidden)
     gsap.set('.slide',                    { autoAlpha: 0, y: 55, scale: 0.97 });
     gsap.set(['#cta', '#footer'],         { autoAlpha: 0 });
     gsap.set('#brand',                    { autoAlpha: 0 });
     gsap.set('#accentLine',               { width: 0 });
-    // task-items ocultos individualmente para el stagger
-    gsap.set('#sc4 .task-item',           { autoAlpha: 0, x: -20 });
+    gsap.set('#sc4 .task-item',           { autoAlpha: 0, x: -20 });${hasImages ? "\n    gsap.set('.scene-bg',               { autoAlpha: 0 });" : ''}
 
     const E  = { enter: 'power3.out', exit: 'power2.in' };
     const tl = gsap.timeline();
@@ -316,17 +383,17 @@ const html = `<!DOCTYPE html>
     // Brand entry
     tl.to('#brand',      { autoAlpha: 1, y: 0, duration: 0.7, ease: E.enter }, 0.2)
       .to('#accentLine', { width: 240,   duration: 0.6, ease: 'power2.out'  }, 0.6)
-      .to('#footer',     { autoAlpha: 1, duration: 0.5, ease: 'none'        }, 1.0)
+      .to('#footer',     { autoAlpha: 1, duration: 0.5, ease: 'none'        }, 1.0)${bgAnims}
 
-    // sc1: entra — sale completamente — pausa GAP — sc2 entra
+    // sc1
       .to('#sc1', { autoAlpha: 1, y: 0, scale: 1, duration: ${ENTER}, ease: E.enter }, ${T(sc1.enterAt)})
       .to('#sc1', { autoAlpha: 0, y: -35,          duration: ${EXIT},  ease: E.exit  }, ${T(sc1.exitAt)})
 
-    // sc2: entra — sale
+    // sc2
       .to('#sc2', { autoAlpha: 1, y: 0, scale: 1, duration: ${ENTER}, ease: E.enter }, ${T(sc2.enterAt)})
       .to('#sc2', { autoAlpha: 0, y: -35,          duration: ${EXIT},  ease: E.exit  }, ${T(sc2.exitAt)})
 
-    // sc3: entra — sale
+    // sc3
       .to('#sc3', { autoAlpha: 1, y: 0, scale: 1, duration: ${ENTER}, ease: E.enter }, ${T(sc3.enterAt)})
       .to('#sc3', { autoAlpha: 0, y: -35,          duration: ${EXIT},  ease: E.exit  }, ${T(sc3.exitAt)})
 
@@ -338,7 +405,7 @@ const html = `<!DOCTYPE html>
     // sc5: hero — entra y se queda
       .to('#sc5', { autoAlpha: 1, y: 0, scale: 1, duration: 0.8, ease: E.enter }, ${T(sc5.enterAt)})
 
-    // CTA: entra cuando el audio dice "Diagnóstico gratuito"
+    // CTA
       .to('#cta', { autoAlpha: 1, y: 0, duration: 0.7, ease: E.enter }, ${T(ctaEnterAt)})
     ;
   </script>

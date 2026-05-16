@@ -1,0 +1,28 @@
+{
+  "name": "esaria-whatsapp-bot",
+  "version": "0.1.0",
+  "description": "Base tecnica modular para el bot de WhatsApp de EsarIA.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test:demo": "node scripts/test-demo.js",
+    "test:bot": "node scripts/test-bot.js",
+    "test:telegram": "node scripts/test-telegram.js",
+    "reset:contact": "node scripts/reset-contact.js",
+    "inspect:contact": "node scripts/inspect-contact.js",
+    "check": "for file in src/**/*.js scripts/*.js; do node --check \"$file\" || exit 1; done"
+  },
+  "keywords": [
+    "whatsapp",
+    "meta",
+    "bot",
+    "esaria"
+  ],
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
