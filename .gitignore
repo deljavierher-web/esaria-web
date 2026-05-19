@@ -15,6 +15,9 @@ exports/
 
 # IA / agentes
 .agents/
+.antigravitycli/
+.antigravity-cli/
+.opencode/
 skills-lock.json
 
 # Claude Code / Ruflo (archivos locales, no van al repo)
