@@ -1,0 +1,586 @@
+[
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0NBNDM2NTNCQjNFODBBRUE0NEM0REIxNzM3RThGRQA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola tengo una clinica",
+    "timestamp": "1778856803",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0NBNDM2NTNCQjNFODBBRUE0NEM0REIxNzM3RThGRQA=",
+      "timestamp": "1778856803",
+      "text": {
+        "body": "Hola tengo una clinica"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T14:53:24.478Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzQ1RDAwMjk0N0IwNTI3MkI2MEFCOTlDMkM5QTRCMwA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola buenas, me podrías explicar cómo funciona??, tengo un restaurante",
+    "timestamp": "1778857945",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzQ1RDAwMjk0N0IwNTI3MkI2MEFCOTlDMkM5QTRCMwA=",
+      "timestamp": "1778857945",
+      "text": {
+        "body": "Hola buenas, me podrías explicar cómo funciona??, tengo un restaurante"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:12:26.414Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzVGRUMwNzYyMDIxMzA2MTVFN0Q0NDdEQTM4MzRGNgA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Entonces funciona??",
+    "timestamp": "1778858047",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzVGRUMwNzYyMDIxMzA2MTVFN0Q0NDdEQTM4MzRGNgA=",
+      "timestamp": "1778858047",
+      "text": {
+        "body": "Entonces funciona??"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:14:08.996Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzdBQzE2NTVFQTRGMjA5QzVFN0EyNjdDMjdFMjlCQgA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola buenas me podrías explicar en que consiste, tengo un restaurante",
+    "timestamp": "1778857713",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzdBQzE2NTVFQTRGMjA5QzVFN0EyNjdDMjdFMjlCQgA=",
+      "timestamp": "1778857713",
+      "text": {
+        "body": "Hola buenas me podrías explicar en que consiste, tengo un restaurante"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:14:38.898Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzI1QUM5MjVCMzY0MzRENzMwNkI5OENDMzlCOTZCRgA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola, tengo un restaurante y recibo muchas reservas por correo",
+    "timestamp": "1778858756",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzI1QUM5MjVCMzY0MzRENzMwNkI5OENDMzlCOTZCRgA=",
+      "timestamp": "1778858756",
+      "text": {
+        "body": "Hola, tengo un restaurante y recibo muchas reservas por correo"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:25:57.911Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJGMzY0MjA5QzI2RUNERjgxMTYA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier. Gestionar reservas por correo en un restaurante suele consumir tiempo. ¿Te gustaría revisar cómo automatizarlo esta semana o más adelante?",
+    "timestamp": "1778858775",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzI1QUM5MjVCMzY0MzRENzMwNkI5OENDMzlCOTZCRgA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:26:15.341Z",
+    "deliveryStatusAt": "2026-05-15T15:26:17.167Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzY1RDZFQTZDMENGNDM2NDA1NzhBNkNFMDM3NENBNQA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Si por favor",
+    "timestamp": "1778858810",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzY1RDZFQTZDMENGNDM2NDA1NzhBNkNFMDM3NENBNQA=",
+      "timestamp": "1778858810",
+      "text": {
+        "body": "Si por favor"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:26:51.726Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwODZBMkRDRTBCNjJDRjVGRTMA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Entendido, Javier. Gestionar reservas por correo en hostelería puede ser lento y propenso a errores. ¿Cuántas reservas semanales recibís por esa vía?",
+    "timestamp": "1778858817",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzY1RDZFQTZDMENGNDM2NDA1NzhBNkNFMDM3NENBNQA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "sent",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:26:57.245Z",
+    "deliveryStatusAt": "2026-05-15T15:26:58.739Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0I2MTAzNzJCODk2MUJBRTJDMzUyMjAyQUVGMUU5QgA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "45",
+    "timestamp": "1778858834",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0I2MTAzNzJCODk2MUJBRTJDMzUyMjAyQUVGMUU5QgA=",
+      "timestamp": "1778858834",
+      "text": {
+        "body": "45"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:30:30.648Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJBODBBQUQzNjU4NzJGMTkwNDUA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier, gracias por tu interés. Gestionar reservas por correo puede ser tedioso en hostelería. ¿Te gustaría revisarlo esta semana o más adelante?",
+    "timestamp": "1778859036",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0I2MTAzNzJCODk2MUJBRTJDMzUyMjAyQUVGMUU5QgA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:30:36.648Z",
+    "deliveryStatusAt": "2026-05-15T15:30:38.079Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0U4NkQxRDAxN0U3MkI0OTJDRDM3RUNGOTcwRUM2OQA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola buenas tengo una clínica de dentistas y tengo un problema y es que paso mucho tiempo gestionando citas gestionando los gastos y todo eso no si me podréis ayudar",
+    "timestamp": "1778859606",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0U4NkQxRDAxN0U3MkI0OTJDRDM3RUNGOTcwRUM2OQA=",
+      "timestamp": "1778859606",
+      "text": {
+        "body": "Hola buenas tengo una clínica de dentistas y tengo un problema y es que paso mucho tiempo gestionando citas gestionando los gastos y todo eso no si me podréis ayudar"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:40:07.326Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwMTFEQUJERjkyQjZENjY2NTkA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier, gracias por tu mensaje. Entiendo que gestionar citas y gastos en tu clínica dental te consume tiempo. Dime, ¿cuál de estas dos tareas te resulta más repetitiva?",
+    "timestamp": "1778859621",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0U4NkQxRDAxN0U3MkI0OTJDRDM3RUNGOTcwRUM2OQA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:40:21.155Z",
+    "deliveryStatusAt": "2026-05-15T15:40:22.574Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBQzQyNTdENjQwQjUwNkYwOENFRTVDRkJFOTUzOAA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Pues la verdad es que la de las citas porque a lo mejor pasó varias horas un empleado mío o simplemente agenciándolas llamando para recordar cuando tienen cita gestionando alguno que la cancela con un poco de las citas me toca un poco más las narices",
+    "timestamp": "1778859662",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBQzQyNTdENjQwQjUwNkYwOENFRTVDRkJFOTUzOAA=",
+      "timestamp": "1778859662",
+      "text": {
+        "body": "Pues la verdad es que la de las citas porque a lo mejor pasó varias horas un empleado mío o simplemente agenciándolas llamando para recordar cuando tienen cita gestionando alguno que la cancela con un poco de las citas me toca un poco más las narices"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:41:03.764Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJGMkY5RDA3NDFDQTYxRTQwQzUA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier, entiendo que la gestión de citas os está restando mucho tiempo a ti o a tu equipo. En una clínica, optimizar ese proceso puede marcar la diferencia. ¿Te gustaría explorar cómo simplificarlo esta semana o más adelante?",
+    "timestamp": "1778859672",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBQzQyNTdENjQwQjUwNkYwOENFRTVDRkJFOTUzOAA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:41:12.654Z",
+    "deliveryStatusAt": "2026-05-15T15:41:14.302Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzMyM0Y1RjdFNzE0OUJFOEQ2OTEwRkQzRUNCMjBDOAA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "audio",
+    "text": "",
+    "timestamp": "1778859699",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzMyM0Y1RjdFNzE0OUJFOEQ2OTEwRkQzRUNCMjBDOAA=",
+      "timestamp": "1778859699",
+      "type": "audio",
+      "audio": {
+        "mime_type": "audio/ogg; codecs=opus",
+        "sha256": "1W8mQDHwW/CtsTg4ibexc4k893xXFpCwNX2diz2jeoc=",
+        "id": "1675007006738273",
+        "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1675007006738273&source=webhook&ext=1778860000&hash=ARkifHojOwQJnMnWoZEQ4mZFJz_KBqKS_gGLxvXTbfrfWw",
+        "voice": true
+      }
+    },
+    "savedAt": "2026-05-15T15:41:41.438Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJBODgzMTA2NEZBMkY1QkVDOTkA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Ahora mismo puedo ayudarte mejor si me escribes el caso en texto. ¿Qué tarea repetitiva te gustaría automatizar?",
+    "timestamp": "1778859702",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzMyM0Y1RjdFNzE0OUJFOEQ2OTEwRkQzRUNCMjBDOAA=",
+    "ai": {
+      "provider": "none",
+      "used": false
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:41:42.193Z",
+    "deliveryStatusAt": "2026-05-15T15:41:43.671Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzA4MURFMUFDMDdEMEE1NUFGOUQ3RDI2NTBFQTI2MgA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Vale sí eh puedo hablar con un humano por favor",
+    "timestamp": "1778859782",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzA4MURFMUFDMDdEMEE1NUFGOUQ3RDI2NTBFQTI2MgA=",
+      "timestamp": "1778859782",
+      "text": {
+        "body": "Vale sí eh puedo hablar con un humano por favor"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:43:03.572Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyMTAzQTUxMjU2RDA3NDQ1MjYA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Perfecto, lo dejo marcado para revisión humana. ¿Cuál es el mejor horario para contactarte?",
+    "timestamp": "1778859784",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzA4MURFMUFDMDdEMEE1NUFGOUQ3RDI2NTBFQTI2MgA=",
+    "ai": {
+      "provider": "fallback",
+      "used": false
+    },
+    "leadState": "requires_human",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:43:04.071Z",
+    "deliveryStatusAt": "2026-05-15T15:43:05.561Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGBQzQjBGRkY3RUUzNjBDRDM0NjNFNQA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola, tengo una clinica dental y pierdo mucho tiempo con las citas",
+    "timestamp": "1778860990",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGBQzQjBGRkY3RUUzNjBDRDM0NjNFNQA=",
+      "timestamp": "1778860990",
+      "text": {
+        "body": "Hola, tengo una clinica dental y pierdo mucho tiempo con las citas"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T16:03:11.981Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyNzMwMTE5NUE0Mzg4OTkzNEEA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier. Gestionar las citas en una clínica dental puede consumir mucho tiempo. ¿Cuántas citas manejáis aproximadamente a la semana?",
+    "timestamp": "1778860998",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGBQzQjBGRkY3RUUzNjBDRDM0NjNFNQA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T16:03:18.584Z",
+    "deliveryStatusAt": "2026-05-15T16:03:20.318Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBI4NzhFREVERDhCM0JEN0NERjQA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "type": "text",
+    "text": "Hola Javier, gracias por escribir.",
+    "timestamp": "1778861153",
+    "source": "telegram",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "savedAt": "2026-05-15T16:05:53.895Z",
+    "deliveryStatusAt": "2026-05-15T16:05:55.551Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0RDMkU0MUVEMEVGOEQ3QTQwMTYzOTRDQkQyNTZFMAA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola",
+    "timestamp": "1778861956",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0RDMkU0MUVEMEVGOEQ3QTQwMTYzOTRDQkQyNTZFMAA=",
+      "timestamp": "1778861956",
+      "text": {
+        "body": "Hola"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T16:24:30.218Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwMUY3Q0UyQTJDODQ5QzU4NkQA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Gracias, he recibido tu mensaje. Te responderemos lo antes posible.",
+    "timestamp": "1778862290",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0RDMkU0MUVEMEVGOEQ3QTQwMTYzOTRDQkQyNTZFMAA=",
+    "ai": {
+      "provider": "fallback",
+      "used": false
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "sent",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T16:24:50.972Z",
+    "deliveryStatusAt": "2026-05-15T16:24:52.671Z"
+  },
+  {
+    "id": "wamid.MANUAL_1778862472",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola",
+    "timestamp": "1778862472",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.MANUAL_1778862472",
+      "timestamp": "1778862472",
+      "text": {
+        "body": "Hola"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T16:27:52.070Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBI3NURDNjZGRjUxRkZGQjYyM0EA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Javier, entiendo que gestionas citas en tu clínica. ¿Te gustaría revisar cómo optimizar este proceso esta semana o prefieres más adelante?",
+    "timestamp": "1778862478",
+    "replyToMessageId": "wamid.MANUAL_1778862472",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T16:27:58.159Z",
+    "deliveryStatusAt": "2026-05-15T16:27:59.974Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJDNzYyNjZBRDRCQjVDOTQyNzkA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "type": "text",
+    "text": "hola",
+    "timestamp": "1778862789",
+    "source": "admin",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "savedAt": "2026-05-15T16:33:09.162Z",
+    "deliveryStatusAt": "2026-05-15T16:33:10.511Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBI5QzE5RjY5ODJBNEQ4MjY3OEYA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "type": "text",
+    "text": "klk",
+    "timestamp": "1778862797",
+    "source": "admin",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "savedAt": "2026-05-15T16:33:17.298Z",
+    "deliveryStatusAt": "2026-05-15T16:33:19.192Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyMkZEQTREMzdENTU2QTVFM0YA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "type": "text",
+    "text": "klk",
+    "timestamp": "1778862980",
+    "source": "admin",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "savedAt": "2026-05-15T16:36:20.095Z",
+    "deliveryStatusAt": "2026-05-15T16:36:22.165Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBOURDMjBGOTVGRTRDNjRGRjM5Qjc3QkY4MDdGRQA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola",
+    "timestamp": "1778861457",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBOURDMjBGOTVGRTRDNjRGRjM5Qjc3QkY4MDdGRQA=",
+      "timestamp": "1778861457",
+      "text": {
+        "body": "Hola"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T17:08:06.971Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJCNzY1ODgwRTk0MjJEMEZEQTIA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier, según lo que me comentaste, te interesa automatizar la gestión de citas en tu clínica. ¿Prefieres revisarlo esta semana o más adelante?",
+    "timestamp": "1778864899",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBOURDMjBGOTVGRTRDNjRGRjM5Qjc3QkY4MDdGRQA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "delivered",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T17:08:19.337Z",
+    "deliveryStatusAt": "2026-05-15T17:08:21.655Z"
+  }
+]

@@ -1,0 +1,53 @@
+Hola Claude. Diseña un CRM moderno y profesional para mi marca "EsarIA" — automatización e IA práctica para pequeñas empresas de Valladolid.
+
+He subido la carpeta con el sistema de diseño, los logos y los iconos. Lee SISTEMA-DE-DISEÑO.md antes de empezar — contiene paleta, tipografía, tono y restricciones.
+
+REFERENCIAS VISUALES: Linear, Attio, Folk, Pipedrive moderno, Vercel dashboard. Sobrio, B2B limpio, minimalista. Nada de cyberpunk, robots, gradientes neón o glassmorphism agresivo.
+
+USA: el logo `esaria-logo-horizontal.svg` en el header sobre fondo dark #0F172A. Tipografía Inter. Color de acento #6366F1 (indigo).
+
+EL CRM GESTIONA leads de prospección comercial (llamadas en frío a pymes). Cada lead tiene: empresa, sector, ciudad, decisor, teléfono, email, web, prioridad (Alta/Media/Baja), estado (Nuevo / Investigado / Llamado / Reunion agendada / Descartado), problema visible, oportunidad de automatización, guion de llamada, mensaje WhatsApp, tags, notas, e historial de llamadas con fecha + resultado + notas.
+
+PANTALLAS A INCLUIR (todas visibles en el mismo prototipo):
+
+1. Header: logo EsarIA a la izquierda + 4 estadísticas a la derecha (Total leads, Alta prioridad, Reunión agendada, Llamados hoy).
+
+2. Barra de filtros sticky: campo de búsqueda con operadores tipo "sector:dental estado:Nuevo", selects (sector, prioridad, estado, tag, orden), toggle de vista (Tarjetas / Tabla / Kanban), y botones a la derecha (+ Nuevo lead, Importar JSON, Exportar JSON, Exportar CSV).
+
+3. Vista Tarjetas (vista por defecto): grid responsive de cards. Cada card muestra checkbox, nombre empresa, badges de sector / prioridad / estado / tags, ciudad y decisor, indicador "última llamada hace X días", problema visible (truncado a 2 líneas), y fila de acciones (Ver/Editar, Registrar llamada, Copiar teléfono, WhatsApp, Web).
+
+4. Vista Tabla: filas densas con checkbox + columnas (Empresa, Sector, Ciudad, Decisor, Prioridad, Estado, Teléfono, Última llamada, Acciones).
+
+5. Vista Kanban: 5 columnas (Nuevo, Investigado, Llamado, Reunion agendada, Descartado) con tarjetas compactas arrastrables visualmente.
+
+6. Bulk action bar: aparece cuando hay leads seleccionados. Muestra "N seleccionados" y acciones (cambiar estado, cambiar prioridad, añadir tag, eliminar, limpiar selección).
+
+7. Modal Ver Lead: toolbar superior con Editar / Eliminar. Secciones: nombre empresa grande + badges, Tags editables (chips con × para quitar + input "añadir tag"), Empresa (datos contacto + decisor), Análisis (problema + oportunidad), Contacto (teléfono y email con botón copiar), Guion de llamada (caja con texto), WhatsApp (caja con texto + botón Abrir WhatsApp), Historial de llamadas (lista de entradas con fecha + resultado + notas + botón eliminar, y formulario para añadir nueva), Estado y notas (select de estado + textarea de notas).
+
+8. Modal Editar Lead: mismos campos como inputs / textareas / selects, con botones Cancelar y Guardar.
+
+9. Modal de confirmación (para eliminar).
+
+10. Toast de feedback en esquina inferior derecha.
+
+11. Empty state cuando no hay resultados.
+
+DATOS DEMO: usa 10-12 pymes plausibles de Valladolid (clínica dental, fisioterapia, taller mecánico, gimnasio, academia de idiomas, peluquería, asesoría, óptica, hostelería, veterinaria). Datos ficticios pero creíbles. NO inventes métricas tipo "+245% conversion" ni clientes reales — la marca todavía no tiene clientes. Pon historial de llamadas en 2-3 leads para que se vea cómo queda.
+
+ENTREGABLE: un único Artifact HTML autocontenido, con CSS embebido en <style>, JavaScript solo el mínimo para interactividad visual (cambiar de vista, abrir/cerrar modales, alternar entre "lead view" y "lead edit"). NO necesito lógica real ni persistencia — la funcionalidad la añado yo después.
+
+RESTRICCIONES TÉCNICAS:
+- Vanilla HTML/CSS/JS. NO React, NO Vue, NO Tailwind CDN en el final.
+- Iconos: Lucide o SVG inline. NO Font Awesome.
+- Sin librerías de gráficos. Sin imágenes externas (excepto los logos del pack).
+- El HTML debe verse igual abierto con file:// (sin servidor).
+- Solo light mode.
+
+ESTILO:
+- Bordes 8-10px, sombras suaves.
+- Badges pill con fondo pastel del color semántico.
+- Focus ring indigo en inputs.
+- Header y filters sticky.
+- Densidad informativa estilo Linear/Attio.
+
+Empieza ya. Si tienes alguna duda concreta, hazla en una sola pregunta y avanza con tus mejores decisiones para el resto.

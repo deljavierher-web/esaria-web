@@ -1,0 +1,26 @@
+<svg viewBox="0 0 200 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EsarIA logo (sobre fondo oscuro)">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Isotipo — versión clara para fondo oscuro -->
+  <g transform="translate(2, 2)">
+    <rect x="0" y="5"    width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+    <rect x="0" y="15.5" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+    <circle cx="31" cy="18" r="5" fill="#6D5EF3"/>
+    <rect x="0" y="26"   width="36" height="5" rx="2.5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text
+    x="50" y="31"
+    font-family="'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="24"
+    font-weight="800"
+    letter-spacing="-0.6"
+  >
+    <tspan fill="#FFFFFF">Esar</tspan><tspan fill="#6D5EF3">IA</tspan>
+  </text>
+</svg>

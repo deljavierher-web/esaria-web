@@ -1,0 +1,452 @@
+1
+00:00:00,000 --> 00:00:10,000
+ Vale, ahora voy a llamar a Clínica Atrium, Fisioterapia, Oseopatia, Suelo Pélvico y Pilates en Maya Oliv.
+
+2
+00:00:10,000 --> 00:00:18,000
+ Voy a llamarla y veo que hay dos co-directoras, por lo cual preguntaré por alguna de ellas.
+
+3
+00:00:20,000 --> 00:00:28,000
+ Seis uno siete, nueve cinco, cinco ocho, tres siete.
+
+4
+00:00:28,000 --> 00:00:42,000
+ Hola, graba tu nombre y el motivo de la llamada y comprobaréis si esta persona está disponible.
+
+5
+00:00:42,000 --> 00:00:48,000
+ Javier, soy de Saria y llamaba para una propuesta comercial.
+
+6
+00:00:50,000 --> 00:00:54,000
+ Gracias, Javier Fidesaria. No cuelgues, por favor.
+
+7
+00:01:20,000 --> 00:01:39,000
+ He llamado, me ha contestado un bot preguntándome que quién era y el motivo de la llamada. Le he dicho que era Javier de Saria.
+
+8
+00:01:39,000 --> 00:01:45,000
+ Y le llamaba por una propuesta comercial y me han colgado. No me ha llevado a coger nadie la llamada.
+
+9
+00:01:50,000 --> 00:01:52,000
+ No me ha llevado a coger nadie la llamada.
+
+10
+00:01:52,000 --> 00:01:54,000
+ No me ha llevado a coger nadie la llamada.
+
+11
+00:01:54,000 --> 00:01:56,000
+ No me ha llevado a coger nadie la llamada.
+
+12
+00:01:56,000 --> 00:01:58,000
+ No me ha llevado a coger nadie la llamada.
+
+13
+00:01:58,000 --> 00:02:00,000
+ No me ha llevado a coger nadie la llamada.
+
+14
+00:02:00,000 --> 00:02:02,000
+ No me he llevado a coger nadie la llamada.
+
+15
+00:02:02,000 --> 00:02:04,000
+ No me he llevado a coger nadie la llamada.
+
+16
+00:02:04,000 --> 00:02:06,000
+ No me he llevado a coger nadie la llamada.
+
+17
+00:02:06,000 --> 00:02:08,000
+ No me he llevado a coger nadie la llamada.
+
+18
+00:02:08,000 --> 00:02:10,000
+ No me he llevado a coger nadie la llamada.
+
+19
+00:02:10,000 --> 00:02:12,000
+ No me he llevado a coger nadie la llamada.
+
+20
+00:02:12,000 --> 00:02:14,000
+ No me he levado a coger nadie la llamada.
+
+21
+00:02:14,000 --> 00:02:16,000
+ No me he levado a coger nadie la llamada.
+
+22
+00:02:16,000 --> 00:02:18,000
+ No me he levado a coger nadie la llamada.
+
+23
+00:02:18,000 --> 00:02:20,000
+ No me he levado a coger nadie la llamada.
+
+24
+00:02:20,000 --> 00:02:22,000
+ No me he levado a coger nadie la llamada.
+
+25
+00:02:22,000 --> 00:02:24,000
+ No me he levado a coger nadie la llamada.
+
+26
+00:02:24,000 --> 00:02:26,000
+ No me he levado a coger nadie la llamada.
+
+27
+00:02:26,000 --> 00:02:28,000
+ No me he levado a coger nadie la llamada.
+
+28
+00:02:28,000 --> 00:02:30,000
+ No me he levado a coger nadie la llamada.
+
+29
+00:02:30,000 --> 00:02:32,000
+ No me he levado a coger nadie la llamada.
+
+30
+00:02:32,000 --> 00:02:34,000
+ No me he levado a coger nadie la llamada.
+
+31
+00:02:34,000 --> 00:02:36,000
+ No me he levado a coger nadie la llamada.
+
+32
+00:02:36,000 --> 00:02:38,000
+ No me he levado a coger nadie la llamada.
+
+33
+00:02:38,000 --> 00:02:40,000
+ No me he levado a coger nadie la llamada.
+
+34
+00:02:40,000 --> 00:02:42,000
+ No me he levado a coger nadie la llamada.
+
+35
+00:02:42,000 --> 00:02:44,000
+ No me he levado a coger nadie la llamada.
+
+36
+00:02:44,000 --> 00:02:46,000
+ No me he levado a coger nadie la llamada.
+
+37
+00:02:46,000 --> 00:02:48,000
+ No me he levado a coger nadie la llamada.
+
+38
+00:02:48,000 --> 00:02:50,000
+ No me he levado a coger nadie la llamada.
+
+39
+00:02:50,000 --> 00:02:52,000
+ No me he levado a coger nadie la llamada.
+
+40
+00:02:52,000 --> 00:02:54,000
+ No me he levado a coger nadie la llamada.
+
+41
+00:02:54,000 --> 00:02:56,000
+ No me he levado a coger nadie la llamada.
+
+42
+00:02:56,000 --> 00:02:58,000
+ No me he levado a coger nadie la llamada.
+
+43
+00:02:58,000 --> 00:03:00,000
+ No me he levado a coger nadie la llamada.
+
+44
+00:03:00,000 --> 00:03:02,000
+ No me he levado a coger nadie la llamada.
+
+45
+00:03:02,000 --> 00:03:04,000
+ No me he levado a coger nadie la llamada.
+
+46
+00:03:04,000 --> 00:03:06,000
+ No me he levado a coger nadie la llamada.
+
+47
+00:03:06,000 --> 00:03:08,000
+ No me he levado a coger nadie la llamada.
+
+48
+00:03:08,000 --> 00:03:10,000
+ No me he levado a coger nadie la llamada.
+
+49
+00:03:10,000 --> 00:03:12,000
+ No me he levado a coger nadie la llamada.
+
+50
+00:03:12,000 --> 00:03:14,000
+ No me he levado a coger nadie la llamada.
+
+51
+00:03:14,000 --> 00:03:16,000
+ No me he levado a coger nadie la llamada.
+
+52
+00:03:16,000 --> 00:03:18,000
+ No me he levado a coger nadie la llamada.
+
+53
+00:03:18,000 --> 00:03:20,000
+ No me he levado a coger nadie la llamada.
+
+54
+00:03:20,000 --> 00:03:22,000
+ No me he levado a coger nadie la llamada.
+
+55
+00:03:22,000 --> 00:03:24,000
+ No me he levado a coger nadie la llamada.
+
+56
+00:03:24,000 --> 00:03:26,000
+ No me he levado a coger nadie la llamada.
+
+57
+00:03:26,000 --> 00:03:28,000
+ No me he levado a coger nadie la llamada.
+
+58
+00:03:28,000 --> 00:03:30,000
+ No me he levado a coger nadie la llamada.
+
+59
+00:03:30,000 --> 00:03:32,000
+ No me he levado a coger nadie la llamada.
+
+60
+00:03:32,000 --> 00:03:34,000
+ No me he levado a coger nadie la llamada.
+
+61
+00:03:34,000 --> 00:03:36,000
+ No me he levado a coger nadie la llamada.
+
+62
+00:03:36,000 --> 00:03:38,000
+ No me he levado a coger nadie la llamada.
+
+63
+00:03:38,000 --> 00:03:40,000
+ No me he levado a coger nadie la llamada.
+
+64
+00:03:40,000 --> 00:03:42,000
+ No me he levado a coger nadie la llamada.
+
+65
+00:03:42,000 --> 00:03:44,000
+ No me he levado a coger nadie la llamada.
+
+66
+00:03:44,000 --> 00:03:46,000
+ No me he levado a coger nadie la llamada.
+
+67
+00:03:46,000 --> 00:03:48,000
+ No me he levado a coger nadie la llamada.
+
+68
+00:03:48,000 --> 00:03:50,000
+ No me he levado a coger nadie la llamada.
+
+69
+00:03:50,000 --> 00:03:52,000
+ No me he levado a coger nadie la llamada.
+
+70
+00:03:52,000 --> 00:03:54,000
+ No me he levado a coger nadie la llamada.
+
+71
+00:03:54,000 --> 00:03:56,000
+ No me he levado a coger nadie la llamada.
+
+72
+00:03:56,000 --> 00:03:58,000
+ No me he levado a coger nadie la llamada.
+
+73
+00:03:58,000 --> 00:04:00,000
+ No me he levado a coger nadie la llamada.
+
+74
+00:04:00,000 --> 00:04:02,000
+ No me he levado a coger nadie la llamada.
+
+75
+00:04:02,000 --> 00:04:04,000
+ No me he levado a coger nadie la llamada.
+
+76
+00:04:04,000 --> 00:04:06,000
+ No me he levado a coger nadie la llamada.
+
+77
+00:04:06,000 --> 00:04:08,000
+ No me he levado a coger nadie la llamada.
+
+78
+00:04:08,000 --> 00:04:10,000
+ No me he levado a coger nadie la llamada.
+
+79
+00:04:10,000 --> 00:04:12,000
+ No me he levado a coger nadie la llamada.
+
+80
+00:04:12,000 --> 00:04:14,000
+ No me he levado a coger nadie la llamada.
+
+81
+00:04:14,000 --> 00:04:16,000
+ No me he levado a coger nadie la llamada.
+
+82
+00:04:16,000 --> 00:04:18,000
+ No me he levado a coger nadie la llamada.
+
+83
+00:04:18,000 --> 00:04:20,000
+ No me he levado a coger nadie la llamada.
+
+84
+00:04:20,000 --> 00:04:22,000
+ No me he levado a coger nadie la llamada.
+
+85
+00:04:22,000 --> 00:04:24,000
+ No me he levado a coger nadie la llamada.
+
+86
+00:04:24,000 --> 00:04:26,000
+ No me he levado a coger nadie la llamada.
+
+87
+00:04:26,000 --> 00:04:28,000
+ No me he levado a coger nadie la llamada.
+
+88
+00:04:28,000 --> 00:04:30,000
+ No me he levado a coger nadie la llamada.
+
+89
+00:04:30,000 --> 00:04:32,000
+ No me he levado a coger nadie la llamada.
+
+90
+00:04:32,000 --> 00:04:34,000
+ No me he levado a coger nadie la llamada.
+
+91
+00:04:34,000 --> 00:04:36,000
+ No me he levado a coger nadie la llamada.
+
+92
+00:04:36,000 --> 00:04:38,000
+ No me he levado a coger nadie la llamada.
+
+93
+00:04:38,000 --> 00:04:40,000
+ No me he levado a coger nadie la llamada.
+
+94
+00:04:40,000 --> 00:04:42,000
+ No me he levado a coger nadie la llamada.
+
+95
+00:04:42,000 --> 00:04:44,000
+ No me he levado a coger nadie la llamada.
+
+96
+00:04:44,000 --> 00:04:46,000
+ No me he levado a coger nadie la llamada.
+
+97
+00:04:46,000 --> 00:04:48,000
+ No me he levado a coger nadie la llamada.
+
+98
+00:04:48,000 --> 00:04:50,000
+ No me he levado a coger nadie la llamada.
+
+99
+00:04:50,000 --> 00:04:52,000
+ No me he levado a coger nadie la llamada.
+
+100
+00:04:52,000 --> 00:04:54,000
+ No me he levado a coger nadie la llamada.
+
+101
+00:04:54,000 --> 00:04:56,000
+ No me he levado a coger nadie la llamada.
+
+102
+00:04:56,000 --> 00:04:58,000
+ No me he levado a coger nadie la llamada.
+
+103
+00:04:58,000 --> 00:05:00,000
+ No me he levado a coger nadie la llamada.
+
+104
+00:05:00,000 --> 00:05:02,000
+ No me he levado a coger nadie la llamada.
+
+105
+00:05:02,000 --> 00:05:04,000
+ No me he levado a coger nadie la llamada.
+
+106
+00:05:04,000 --> 00:05:06,000
+ No me he levado a coger nadie la llamada.
+
+107
+00:05:06,000 --> 00:05:08,000
+ No me he levado a coger nadie la llamada.
+
+108
+00:05:08,000 --> 00:05:10,000
+ No me he levado a coger nadie la llamada.
+
+109
+00:05:10,000 --> 00:05:12,000
+ No me he levado a coger nadie la llamada.
+
+110
+00:05:12,000 --> 00:05:14,000
+ No me he levado a coger nadie la llamada.
+
+111
+00:05:14,000 --> 00:05:16,000
+ No me he levado a coger nadie la llamada.
+
+112
+00:05:16,000 --> 00:05:18,000
+ No me he levado a coger nadie la llamada.
+
+113
+00:05:18,000 --> 00:05:20,000
+ No me he levado a coger nadie la llamada.
+

@@ -1,0 +1,52 @@
+1
+00:00:00,000 --> 00:00:13,000
+ Vale, voy a por mi segundo intento, voy a llamar a la clínica que se llama "clínica dental BIM Vázquez Maydagan"
+
+2
+00:00:13,000 --> 00:00:18,000
+ Es mi tercer lid, que salen la lista.
+
+3
+00:00:29,000 --> 00:00:34,000
+ Hola, buenos días, soy Javier de Saria. Podía hablar con el responsable de la gestión de la clínica, por favor.
+
+4
+00:00:34,000 --> 00:00:45,000
+ Es claro, a mí mismo le tengo ocupado el cielo, si puedes llamar por la tarde hoy sobre las 4 y media, lo mejor está libre.
+
+5
+00:00:45,000 --> 00:00:48,000
+ Vale, perfecto, y por saber su nombre para cuando llame, ¿cuál es?
+
+6
+00:00:48,000 --> 00:00:49,000
+ Mano.
+
+7
+00:00:49,000 --> 00:00:51,000
+ Vale, perfecto, muchísimas gracias. Que pases, buen día.
+
+8
+00:00:59,000 --> 00:01:20,000
+ Vale, el responsable de la clínica no estaba ahora mismo presente, se llama "manu" y me ha dicho que le llame por la tarde.
+
+9
+00:01:29,000 --> 00:01:56,000
+ Vale, lo acabo de llamar y me dice que he llamado la recepción y me ha dicho que el responsable de la clínica ahora mismo está ocupado, que se llama "manu" y que le llame por la tarde.
+
+10
+00:01:59,000 --> 00:02:28,000
+ "Dentalios Clínica Maydagan"
+
+11
+00:02:28,000 --> 00:02:31,000
+ Puedes hablar por ahí cuando queráis, no hay nadie.
+
+12
+00:02:58,000 --> 00:03:03,000
+ Puedes hablar por ahí cuando queráis, no hay nadie.
+
+13
+00:03:28,000 --> 00:03:38,000
+ Puedes hablar por ahí cuando queráis, no hay nadie.
+

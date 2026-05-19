@@ -52,6 +52,9 @@ contenido/reels/previews/
 # Prospección — archivos privados / generados (no van al repo)
 prospecting/pdf/*.pdf
 prospecting/leads/reales/
+prospecting/leads/hoja-llamadas-*.csv
+prospecting/leads/hoja-llamadas-*.xlsx
+prospecting/app/leads-campana.js
 prospecting/leads/*.private.csv
 prospecting/leads/*.private.json
 prospecting/leads/*real*.csv

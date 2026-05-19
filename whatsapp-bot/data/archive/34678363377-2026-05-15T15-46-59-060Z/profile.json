@@ -1,0 +1,16 @@
+{
+  "from": "34678363377",
+  "profileName": "Javier",
+  "phone": "34678363377",
+  "name": "Javier",
+  "sector": "clinica",
+  "negocio": "clinica",
+  "problema": "citas porque a lo mejor pasó varias horas un empleado mío o simplemente agenciándolas llamando para recordar cuando tienen cita gestionando alguno que la cancela con un poco de las",
+  "resumen": "Sector: clinica. Negocio: clinica. Problema: citas porque a lo mejor pasó varias horas un empleado mío o simplemente agenciándolas llamando para recordar cuando tienen cita gestionando alguno que la cancela con un poco de las",
+  "state": "requires_human",
+  "lastMessage": "Vale sí eh puedo hablar con un humano por favor",
+  "lastSource": "whatsapp",
+  "createdAt": "2026-05-15T15:40:07.328Z",
+  "updatedAt": "2026-05-15T15:43:03.574Z",
+  "requiresHumanReason": "requested_human"
+}

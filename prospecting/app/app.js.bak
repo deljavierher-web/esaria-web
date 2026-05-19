@@ -1,0 +1,1544 @@
+/* ============================================================
+   EsarIA CRM — app.js
+   Vanilla JS, sin frameworks, compatible con file://
+   ============================================================ */
+
+'use strict';
+
+/* ---- Datos demo ---- */
+var DEMO_LEADS = [
+  {
+    id: "DEMO-001",
+    nombre_empresa: "[DEMO] Clinica Dental Sonrisa",
+    sector: "Clinica dental",
+    ciudad: "Valladolid",
+    telefono: "000 000 001",
+    email: "demo@clinicasonrisa.ejemplo",
+    web: "https://ejemplo.com/clinica",
+    instagram: "@clinicasonrisa_demo",
+    linkedin: "",
+    direccion: "Calle Mayor, 10, 47001 Valladolid",
+    decisor_nombre: "Dra. Ana Garcia",
+    decisor_cargo: "Directora / Propietaria",
+    fuente_datos: "DEMO — dato ficticio, no contactar",
+    problema_visible: "Gestion manual de citas por telefono y muchas cancelaciones de ultima hora",
+    oportunidad_automatizacion: "Sistema de citas online + recordatorios automaticos por WhatsApp + respuesta a FAQ habituales",
+    prioridad: "Alta",
+    facilidad_contacto: "Media",
+    tipo_reunion_recomendada: "Presencial",
+    mensaje_llamada_personalizado: "Hola Ana, soy Javier de EsarIA. He visto que gestionais las citas principalmente por telefono. Tenemos una solucion que reduce cancelaciones y ahorra tiempo al equipo en la agenda. ¿Te puedo comentar en 2 minutos?",
+    mensaje_whatsapp_personalizado: "Hola Ana, soy Javier de EsarIA. Te he llamado antes. Trabajamos con clinicas dentales para automatizar la gestion de citas y recordatorios. ¿Le viene bien esta semana 20 minutos para un diagnostico gratuito? Sin compromiso.",
+    estado: "Nuevo",
+    notas: "Lead de demostracion. No contactar.",
+    tags: ["demo"],
+    historial: []
+  },
+  {
+    id: "DEMO-002",
+    nombre_empresa: "[DEMO] Taller Mecanico AutoFix",
+    sector: "Taller mecanico",
+    ciudad: "Valladolid",
+    telefono: "000 000 002",
+    email: "demo@autofix.ejemplo",
+    web: "https://ejemplo.com/taller",
+    instagram: "@autofix_demo",
+    linkedin: "",
+    direccion: "Poligono Industrial Norte, 47009 Valladolid",
+    decisor_nombre: "Carlos Martinez",
+    decisor_cargo: "Gerente / Propietario",
+    fuente_datos: "DEMO — dato ficticio, no contactar",
+    problema_visible: "Los clientes llaman para saber el estado de su coche y no hay sistema de avisos automaticos",
+    oportunidad_automatizacion: "Avisos automaticos de estado de reparacion + envio de presupuestos por WhatsApp + recordatorios de ITV",
+    prioridad: "Media",
+    facilidad_contacto: "Alta",
+    tipo_reunion_recomendada: "Presencial",
+    mensaje_llamada_personalizado: "Hola Carlos, soy Javier de EsarIA. He visto que en vuestro taller recibis muchas llamadas para saber el estado de los coches. Tenemos una solucion para avisarles automaticamente. ¿Te cuento en 2 minutos?",
+    mensaje_whatsapp_personalizado: "Hola Carlos, soy Javier de EsarIA. Trabajamos con talleres para automatizar avisos de reparacion y presupuestos por WhatsApp. ¿Tienes 20 minutos esta semana para un diagnostico gratuito?",
+    estado: "Nuevo",
+    notas: "Lead de demostracion. No contactar.",
+    tags: ["demo"],
+    historial: []
+  },
+  {
+    id: "DEMO-003",
+    nombre_empresa: "[DEMO] Gym Valladolid Center",
+    sector: "Gimnasio",
+    ciudad: "Valladolid",
+    telefono: "000 000 003",
+    email: "demo@gymvlc.ejemplo",
+    web: "https://ejemplo.com/gym",
+    instagram: "@gymvlc_demo",
+    linkedin: "",
+    direccion: "Avenida del Deporte, 5, 47011 Valladolid",
+    decisor_nombre: "Pedro Sanchez",
+    decisor_cargo: "Director / Propietario",
+    fuente_datos: "DEMO — dato ficticio, no contactar",
+    problema_visible: "Alta tasa de bajas de socios y proceso de captacion totalmente manual",
+    oportunidad_automatizacion: "Automatizacion de captacion + onboarding de nuevos socios + recordatorios de renovacion",
+    prioridad: "Alta",
+    facilidad_contacto: "Alta",
+    tipo_reunion_recomendada: "Presencial",
+    mensaje_llamada_personalizado: "Hola Pedro, soy Javier de EsarIA. He visto que teneis un gimnasio con buena presencia en Instagram. Trabajamos con centros deportivos para automatizar la captacion de nuevos socios y evitar bajas. ¿Te puedo contar en 2 minutos?",
+    mensaje_whatsapp_personalizado: "Hola Pedro, soy Javier de EsarIA. Ayudamos a gimnasios a automatizar captacion de socios y reducir bajas. ¿Tienes 20 minutos esta semana para un diagnostico gratuito?",
+    estado: "Investigado",
+    notas: "Lead de demostracion. No contactar.",
+    tags: ["demo"],
+    historial: []
+  },
+  {
+    id: "DEMO-004",
+    nombre_empresa: "[DEMO] Fisioterapia Activa Valladolid",
+    sector: "Fisioterapia",
+    ciudad: "Valladolid",
+    telefono: "000 000 004",
+    email: "demo@fisioactiva.ejemplo",
+    web: "https://ejemplo.com/fisio",
+    instagram: "@fisioactiva_demo",
+    linkedin: "",
+    direccion: "Calle Reconquista, 22, 47005 Valladolid",
+    decisor_nombre: "Laura Gomez",
+    decisor_cargo: "Fisioterapeuta / Propietaria",
+    fuente_datos: "DEMO — dato ficticio, no contactar",
+    problema_visible: "Agenda gestionada por WhatsApp y telefono con muchas horas perdidas en coordinacion",
+    oportunidad_automatizacion: "Sistema de citas online + recordatorios automaticos + respuestas a FAQ por WhatsApp",
+    prioridad: "Alta",
+    facilidad_contacto: "Alta",
+    tipo_reunion_recomendada: "Presencial",
+    mensaje_llamada_personalizado: "Hola Laura, soy Javier de EsarIA. He visto que gestionais las citas por WhatsApp. Tenemos una solucion que automatiza eso y os libera tiempo para atender pacientes. ¿Te cuento en 2 minutos?",
+    mensaje_whatsapp_personalizado: "Hola Laura, soy Javier de EsarIA. Trabajamos con fisioterapeutas para automatizar citas y recordatorios. ¿Tienes 20 minutos esta semana para un diagnostico gratuito? Sin compromiso.",
+    estado: "Llamado",
+    notas: "Lead de demostracion. No contactar.",
+    tags: ["demo"],
+    historial: []
+  },
+  {
+    id: "DEMO-005",
+    nombre_empresa: "[DEMO] Academia Idiomas Plus",
+    sector: "Academia",
+    ciudad: "Valladolid",
+    telefono: "000 000 005",
+    email: "demo@idiomasplus.ejemplo",
+    web: "https://ejemplo.com/academia",
+    instagram: "@idiomasplus_demo",
+    linkedin: "",
+    direccion: "Plaza de Espana, 3, 47002 Valladolid",
+    decisor_nombre: "Isabel Torres",
+    decisor_cargo: "Directora / Propietaria",
+    fuente_datos: "DEMO — dato ficticio, no contactar",
+    problema_visible: "Proceso de matriculacion manual y sin seguimiento sistematizado de alumnos interesados",
+    oportunidad_automatizacion: "Automatizacion de matriculacion + seguimiento de leads + recordatorios de inicio de curso",
+    prioridad: "Media",
+    facilidad_contacto: "Media",
+    tipo_reunion_recomendada: "Videollamada",
+    mensaje_llamada_personalizado: "Hola Isabel, soy Javier de EsarIA. He visto que teneis una academia de idiomas en el centro. Trabajamos con academias para automatizar captacion y matriculacion. ¿Te puedo comentar en 2 minutos?",
+    mensaje_whatsapp_personalizado: "Hola Isabel, soy Javier de EsarIA. Ayudamos a academias a automatizar matriculacion y seguimiento de alumnos interesados. ¿Tienes 20 minutos esta semana para un diagnostico gratuito?",
+    estado: "Nuevo",
+    notas: "Lead de demostracion. No contactar.",
+    tags: ["demo"],
+    historial: []
+  }
+];
+
+/* ---- Constantes ---- */
+var LS_KEY = 'esaria_leads';
+var LS_FILTERS_KEY = 'esaria_filters';
+var LS_VIEW_KEY = 'esaria_view';
+var ESTADOS = ['Nuevo', 'Investigado', 'Llamado', 'Reunion agendada', 'Descartado'];
+var PRIORIDADES = ['Alta', 'Media', 'Baja'];
+var ESTADO_ORDER = { 'Nuevo': 0, 'Investigado': 1, 'Llamado': 2, 'Reunion agendada': 3, 'Descartado': 4 };
+var PRIORIDAD_ORDER = { 'Alta': 0, 'Media': 1, 'Baja': 2 };
+var RESULTADO_LLAMADA = ['Contactado', 'No contesta', 'Ocupado', 'Volver a llamar', 'Reunion agendada', 'No interesado'];
+
+/* ---- Estado global ---- */
+var leads = [];
+var filteredLeads = [];
+var currentLeadId = null;
+var editMode = false;
+var selectedUids = {};
+var currentView = 'cards';
+var confirmCallback = null;
+
+/* ---- Inicializacion ---- */
+function init() {
+  leads = loadLeads();
+  loadView();
+  loadFiltersFromLS();
+
+  populateSectorFilter();
+  populateTagFilter();
+  renderStats();
+  applyFilters();
+  bindEvents();
+  updateViewToggle();
+}
+
+/* ---- LocalStorage ---- */
+function loadLeads() {
+  try {
+    var raw = localStorage.getItem(LS_KEY);
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) return ensureLeadUids(parsed);
+    }
+  } catch (e) {}
+  return ensureLeadUids(DEMO_LEADS.slice());
+}
+
+function saveLeads() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(leads));
+  } catch (e) {}
+}
+
+function loadView() {
+  try {
+    var v = localStorage.getItem(LS_VIEW_KEY);
+    if (v === 'cards' || v === 'table' || v === 'kanban') currentView = v;
+  } catch (e) {}
+}
+
+function saveView() {
+  try { localStorage.setItem(LS_VIEW_KEY, currentView); } catch (e) {}
+}
+
+function loadFiltersFromLS() {
+  try {
+    var raw = localStorage.getItem(LS_FILTERS_KEY);
+    if (!raw) return;
+    var f = JSON.parse(raw);
+    if (!f) return;
+    if (f.q) document.getElementById('search-input').value = f.q;
+    if (f.sector) setSelectIfExists('filter-sector', f.sector);
+    if (f.prioridad) setSelectIfExists('filter-prioridad', f.prioridad);
+    if (f.estado) setSelectIfExists('filter-estado', f.estado);
+    if (f.tag) setSelectIfExists('filter-tag', f.tag);
+    if (f.sort) setSelectIfExists('sort-by', f.sort);
+  } catch (e) {}
+}
+
+function saveFiltersToLS() {
+  try {
+    var f = {
+      q: document.getElementById('search-input').value,
+      sector: document.getElementById('filter-sector').value,
+      prioridad: document.getElementById('filter-prioridad').value,
+      estado: document.getElementById('filter-estado').value,
+      tag: document.getElementById('filter-tag').value,
+      sort: document.getElementById('sort-by').value
+    };
+    localStorage.setItem(LS_FILTERS_KEY, JSON.stringify(f));
+  } catch (e) {}
+}
+
+function setSelectIfExists(id, val) {
+  var sel = document.getElementById(id);
+  if (!sel) return;
+  for (var i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].value === val) { sel.value = val; return; }
+  }
+  // si no existe la opción aún (sector/tag dinámico), añadirla
+  var opt = document.createElement('option');
+  opt.value = val; opt.textContent = val; sel.appendChild(opt);
+  sel.value = val;
+}
+
+function ensureLeadUids(list) {
+  var seen = {};
+  return list.map(function(lead, index) {
+    if (!lead) lead = {};
+    if (!Array.isArray(lead.tags)) lead.tags = [];
+    if (!Array.isArray(lead.historial)) lead.historial = [];
+    var uid = lead._uid;
+    if (!uid || seen[uid]) uid = buildLeadUid(lead, index);
+    while (seen[uid]) uid = uid + '-' + index;
+    lead._uid = uid;
+    seen[uid] = true;
+    return lead;
+  });
+}
+
+function buildLeadUid(lead, index) {
+  var source = [lead.telefono || '', lead.web || '', lead.nombre_empresa || '', index, Date.now()].join('|').toLowerCase();
+  return 'lead-' + simpleHash(source);
+}
+
+function simpleHash(str) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash).toString(36);
+}
+
+/* ---- Stats ---- */
+function renderStats() {
+  var total = leads.length;
+  var alta = leads.filter(function(l) { return l.prioridad === 'Alta'; }).length;
+  var reunion = leads.filter(function(l) { return l.estado === 'Reunion agendada'; }).length;
+  var hoy = todayISO();
+  var llamadosHoy = leads.filter(function(l) {
+    return (l.historial || []).some(function(h) { return (h.fecha || '').slice(0, 10) === hoy; });
+  }).length;
+
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-alta').textContent = alta;
+  document.getElementById('stat-reunion').textContent = reunion;
+  var hoyEl = document.getElementById('stat-llamados');
+  if (hoyEl) hoyEl.textContent = llamadosHoy;
+}
+
+function todayISO() {
+  var d = new Date();
+  var y = d.getFullYear();
+  var m = String(d.getMonth() + 1).padStart(2, '0');
+  var day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+
+/* ---- Filtros dinámicos ---- */
+function populateSectorFilter() {
+  var select = document.getElementById('filter-sector');
+  var current = select.value;
+  while (select.options.length > 1) select.remove(1);
+  var sectores = [];
+  leads.forEach(function(l) {
+    if (l.sector && sectores.indexOf(l.sector) === -1) sectores.push(l.sector);
+  });
+  sectores.sort();
+  sectores.forEach(function(s) {
+    var opt = document.createElement('option');
+    opt.value = s; opt.textContent = s;
+    select.appendChild(opt);
+  });
+  if (current) select.value = current;
+}
+
+function populateTagFilter() {
+  var select = document.getElementById('filter-tag');
+  if (!select) return;
+  var current = select.value;
+  while (select.options.length > 1) select.remove(1);
+  var tags = [];
+  leads.forEach(function(l) {
+    (l.tags || []).forEach(function(t) {
+      if (t && tags.indexOf(t) === -1) tags.push(t);
+    });
+  });
+  tags.sort();
+  tags.forEach(function(t) {
+    var opt = document.createElement('option');
+    opt.value = t; opt.textContent = t;
+    select.appendChild(opt);
+  });
+  if (current) select.value = current;
+}
+
+/* ---- Búsqueda avanzada con operadores ---- */
+function parseQuery(raw) {
+  var ops = {};
+  var freeText = [];
+  var tokens = (raw || '').trim().split(/\s+/);
+  var opRegex = /^(sector|estado|prioridad|tag|ciudad|decisor):(.+)$/i;
+  tokens.forEach(function(t) {
+    if (!t) return;
+    var m = t.match(opRegex);
+    if (m) {
+      var k = m[1].toLowerCase();
+      var v = m[2].replace(/^"|"$/g, '').toLowerCase();
+      if (!ops[k]) ops[k] = [];
+      ops[k].push(v);
+    } else {
+      freeText.push(t.toLowerCase());
+    }
+  });
+  return { ops: ops, freeText: freeText.join(' ').trim() };
+}
+
+function matchesOp(value, candidates) {
+  if (!candidates || candidates.length === 0) return true;
+  var v = String(value || '').toLowerCase();
+  return candidates.some(function(c) { return v.indexOf(c) !== -1; });
+}
+
+/* ---- Filtrado + Ordenamiento ---- */
+function applyFilters() {
+  var rawQ = document.getElementById('search-input').value;
+  var parsed = parseQuery(rawQ);
+  var sector = document.getElementById('filter-sector').value;
+  var prioridad = document.getElementById('filter-prioridad').value;
+  var estado = document.getElementById('filter-estado').value;
+  var tag = document.getElementById('filter-tag').value;
+  var sortBy = document.getElementById('sort-by').value;
+
+  filteredLeads = leads.filter(function(l) {
+    if (parsed.freeText) {
+      var hay = [
+        l.nombre_empresa, l.sector, l.ciudad, l.decisor_nombre,
+        l.problema_visible, l.email, l.telefono, (l.tags || []).join(' '), l.notas
+      ].join(' ').toLowerCase();
+      if (hay.indexOf(parsed.freeText) === -1) return false;
+    }
+    if (!matchesOp(l.sector, parsed.ops.sector)) return false;
+    if (!matchesOp(l.estado, parsed.ops.estado)) return false;
+    if (!matchesOp(l.prioridad, parsed.ops.prioridad)) return false;
+    if (!matchesOp(l.ciudad, parsed.ops.ciudad)) return false;
+    if (!matchesOp(l.decisor_nombre, parsed.ops.decisor)) return false;
+    if (parsed.ops.tag) {
+      var tagsLow = (l.tags || []).map(function(t) { return t.toLowerCase(); });
+      var ok = parsed.ops.tag.every(function(needed) { return tagsLow.indexOf(needed) !== -1; });
+      if (!ok) return false;
+    }
+    if (sector && l.sector !== sector) return false;
+    if (prioridad && l.prioridad !== prioridad) return false;
+    if (estado && l.estado !== estado) return false;
+    if (tag && (l.tags || []).indexOf(tag) === -1) return false;
+    return true;
+  });
+
+  sortLeads(filteredLeads, sortBy);
+  saveFiltersToLS();
+  renderCurrentView();
+}
+
+function sortLeads(arr, sortBy) {
+  arr.sort(function(a, b) {
+    if (sortBy === 'nombre') return (a.nombre_empresa || '').localeCompare(b.nombre_empresa || '');
+    if (sortBy === 'sector') return (a.sector || '').localeCompare(b.sector || '');
+    if (sortBy === 'prioridad') {
+      return (PRIORIDAD_ORDER[a.prioridad] ?? 9) - (PRIORIDAD_ORDER[b.prioridad] ?? 9);
+    }
+    if (sortBy === 'estado') {
+      return (ESTADO_ORDER[a.estado] ?? 9) - (ESTADO_ORDER[b.estado] ?? 9);
+    }
+    if (sortBy === 'ultima_llamada') {
+      return ultimaLlamada(b) - ultimaLlamada(a);
+    }
+    // smart: prioridad asc, estado asc, nombre asc
+    var p = (PRIORIDAD_ORDER[a.prioridad] ?? 9) - (PRIORIDAD_ORDER[b.prioridad] ?? 9);
+    if (p !== 0) return p;
+    var e = (ESTADO_ORDER[a.estado] ?? 9) - (ESTADO_ORDER[b.estado] ?? 9);
+    if (e !== 0) return e;
+    return (a.nombre_empresa || '').localeCompare(b.nombre_empresa || '');
+  });
+}
+
+function ultimaLlamada(lead) {
+  var h = lead.historial || [];
+  if (h.length === 0) return 0;
+  var max = 0;
+  h.forEach(function(x) {
+    var t = Date.parse(x.fecha || '') || 0;
+    if (t > max) max = t;
+  });
+  return max;
+}
+
+/* ---- Render vistas ---- */
+function renderCurrentView() {
+  document.getElementById('leads-grid').classList.toggle('hidden', currentView !== 'cards');
+  document.getElementById('leads-table').classList.toggle('hidden', currentView !== 'table');
+  document.getElementById('leads-kanban').classList.toggle('hidden', currentView !== 'kanban');
+
+  if (currentView === 'cards') renderCards(filteredLeads);
+  else if (currentView === 'table') renderTable(filteredLeads);
+  else renderKanban(filteredLeads);
+
+  updateBulkBar();
+}
+
+function updateViewToggle() {
+  var btns = document.querySelectorAll('.view-btn');
+  btns.forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-view') === currentView);
+  });
+}
+
+/* ---- Render tarjetas ---- */
+function renderCards(list) {
+  var grid = document.getElementById('leads-grid');
+  grid.innerHTML = '';
+
+  if (list.length === 0) {
+    var empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.innerHTML = '<strong>Sin resultados</strong><p>Ajusta los filtros, crea un lead o importa un fichero JSON.</p>';
+    grid.appendChild(empty);
+    return;
+  }
+
+  list.forEach(function(lead) { grid.appendChild(buildCard(lead)); });
+}
+
+function buildCard(lead) {
+  var card = document.createElement('div');
+  card.className = 'card';
+  card.setAttribute('data-uid', lead._uid);
+  if (selectedUids[lead._uid]) card.classList.add('selected');
+
+  var prioClass = badgePrioridadClass(lead.prioridad);
+  var estadoClass = badgeEstadoClass(lead.estado);
+  var webUrl = safeHttpUrl(lead.web);
+  var decisorResumen = lead.decisor_nombre
+    ? 'Decisor: ' + lead.decisor_nombre + (lead.confianza_decisor ? ' (' + lead.confianza_decisor + ')' : '')
+    : 'Decisor: No encontrado';
+
+  var webBtn = webUrl ? '<button class="btn btn-ghost btn-sm btn-web">Web</button>' : '';
+  var tagsHTML = renderTagsInline(lead.tags);
+  var ultLlamada = ultimaLlamada(lead);
+  var ultStr = ultLlamada ? '<span title="Última llamada">📞 ' + relativeDate(ultLlamada) + '</span>' : '';
+
+  card.innerHTML =
+    '<div class="card-select"><input type="checkbox" class="card-checkbox" ' + (selectedUids[lead._uid] ? 'checked' : '') + '></div>' +
+    '<div class="card-header">' +
+      '<div class="card-title">' + esc(lead.nombre_empresa) + '</div>' +
+      '<div class="card-badges">' +
+        '<span class="badge badge-sector">' + esc(lead.sector) + '</span>' +
+        '<span class="badge ' + prioClass + '">' + esc(lead.prioridad) + '</span>' +
+        '<span class="badge ' + estadoClass + '">' + esc(lead.estado) + '</span>' +
+        tagsHTML +
+      '</div>' +
+    '</div>' +
+    '<div class="card-meta">' +
+      '<span>' + esc(lead.ciudad) + '</span>' +
+      '<span>' + esc(decisorResumen) + '</span>' +
+      ultStr +
+    '</div>' +
+    '<div class="card-problema">' + esc(lead.problema_visible) + '</div>' +
+    '<div class="card-actions">' +
+      '<button class="btn btn-primary btn-sm btn-ver">Ver / Editar</button>' +
+      '<button class="btn btn-ghost btn-sm btn-log-call">Registrar llamada</button>' +
+      '<button class="btn btn-ghost btn-sm btn-copy-tel">Copiar tel</button>' +
+      '<button class="btn btn-ghost btn-sm btn-whatsapp">WhatsApp</button>' +
+      webBtn +
+    '</div>';
+
+  card.querySelector('.card-checkbox').addEventListener('change', function(e) {
+    e.stopPropagation();
+    toggleSelected(lead._uid, this.checked);
+    card.classList.toggle('selected', this.checked);
+  });
+  card.querySelector('.btn-ver').addEventListener('click', function() { openModal(lead._uid); });
+  card.querySelector('.btn-log-call').addEventListener('click', function() { openModal(lead._uid, 'historial'); });
+  card.querySelector('.btn-copy-tel').addEventListener('click', function() { copyText(lead.telefono, 'Telefono copiado'); });
+  card.querySelector('.btn-whatsapp').addEventListener('click', function() {
+    openWhatsApp(lead.telefono, lead.mensaje_whatsapp_personalizado);
+  });
+  if (webUrl) {
+    card.querySelector('.btn-web').addEventListener('click', function() {
+      window.open(webUrl, '_blank', 'noopener');
+    });
+  }
+
+  return card;
+}
+
+function renderTagsInline(tags) {
+  if (!Array.isArray(tags) || tags.length === 0) return '';
+  return tags.map(function(t) {
+    return '<span class="badge badge-tag">' + esc(t) + '</span>';
+  }).join('');
+}
+
+function relativeDate(ts) {
+  var diff = Date.now() - ts;
+  var d = Math.floor(diff / 86400000);
+  if (d === 0) return 'hoy';
+  if (d === 1) return 'ayer';
+  if (d < 7) return 'hace ' + d + ' d';
+  if (d < 30) return 'hace ' + Math.floor(d / 7) + ' sem';
+  return new Date(ts).toLocaleDateString('es-ES');
+}
+
+/* ---- Render Tabla ---- */
+function renderTable(list) {
+  var wrap = document.getElementById('leads-table');
+  if (list.length === 0) {
+    wrap.innerHTML = '<div class="empty-state"><strong>Sin resultados</strong></div>';
+    return;
+  }
+  var rows = list.map(function(l) {
+    var checked = selectedUids[l._uid] ? 'checked' : '';
+    var ult = ultimaLlamada(l) ? relativeDate(ultimaLlamada(l)) : '—';
+    return '<tr data-uid="' + esc(l._uid) + '" class="' + (selectedUids[l._uid] ? 'row-selected' : '') + '">' +
+      '<td><input type="checkbox" class="row-checkbox" ' + checked + '></td>' +
+      '<td><strong>' + esc(l.nombre_empresa) + '</strong></td>' +
+      '<td>' + esc(l.sector) + '</td>' +
+      '<td>' + esc(l.ciudad) + '</td>' +
+      '<td>' + esc(l.decisor_nombre || '—') + '</td>' +
+      '<td><span class="badge ' + badgePrioridadClass(l.prioridad) + '">' + esc(l.prioridad) + '</span></td>' +
+      '<td><span class="badge ' + badgeEstadoClass(l.estado) + '">' + esc(l.estado) + '</span></td>' +
+      '<td>' + esc(l.telefono || '—') + '</td>' +
+      '<td>' + esc(ult) + '</td>' +
+      '<td>' +
+        '<button class="btn btn-ghost btn-sm btn-row-ver">Ver</button> ' +
+        '<button class="btn btn-ghost btn-sm btn-row-call">📞</button> ' +
+        '<button class="btn btn-ghost btn-sm btn-row-wa">WA</button>' +
+      '</td>' +
+    '</tr>';
+  }).join('');
+
+  wrap.innerHTML =
+    '<table class="data-table"><thead><tr>' +
+      '<th><input type="checkbox" id="select-all"></th>' +
+      '<th>Empresa</th><th>Sector</th><th>Ciudad</th><th>Decisor</th>' +
+      '<th>Prioridad</th><th>Estado</th><th>Teléfono</th><th>Última llamada</th><th></th>' +
+    '</tr></thead><tbody>' + rows + '</tbody></table>';
+
+  wrap.querySelector('#select-all').addEventListener('change', function() {
+    var v = this.checked;
+    list.forEach(function(l) { toggleSelected(l._uid, v); });
+    renderCurrentView();
+  });
+
+  wrap.querySelectorAll('tr[data-uid]').forEach(function(tr) {
+    var uid = tr.getAttribute('data-uid');
+    tr.querySelector('.row-checkbox').addEventListener('change', function() {
+      toggleSelected(uid, this.checked);
+      tr.classList.toggle('row-selected', this.checked);
+      updateBulkBar();
+    });
+    tr.querySelector('.btn-row-ver').addEventListener('click', function() { openModal(uid); });
+    tr.querySelector('.btn-row-call').addEventListener('click', function() { openModal(uid, 'historial'); });
+    tr.querySelector('.btn-row-wa').addEventListener('click', function() {
+      var l = leads.find(function(x) { return x._uid === uid; });
+      if (l) openWhatsApp(l.telefono, l.mensaje_whatsapp_personalizado);
+    });
+  });
+}
+
+/* ---- Render Kanban ---- */
+function renderKanban(list) {
+  var wrap = document.getElementById('leads-kanban');
+  var cols = ESTADOS.map(function(estado) {
+    var items = list.filter(function(l) { return l.estado === estado; });
+    var cards = items.map(function(l) {
+      return '<div class="kanban-card" data-uid="' + esc(l._uid) + '" draggable="true">' +
+        '<div class="kanban-card-title">' + esc(l.nombre_empresa) + '</div>' +
+        '<div class="kanban-card-meta">' +
+          '<span class="badge ' + badgePrioridadClass(l.prioridad) + '">' + esc(l.prioridad) + '</span>' +
+          '<span>' + esc(l.sector) + '</span>' +
+        '</div>' +
+        '<div class="kanban-card-decisor">' + esc(l.decisor_nombre || '—') + '</div>' +
+      '</div>';
+    }).join('');
+    return '<div class="kanban-col" data-estado="' + esc(estado) + '">' +
+      '<div class="kanban-col-header"><span class="badge ' + badgeEstadoClass(estado) + '">' + esc(estado) + '</span>' +
+      '<span class="kanban-count">' + items.length + '</span></div>' +
+      '<div class="kanban-col-body">' + (cards || '<div class="kanban-empty">—</div>') + '</div>' +
+    '</div>';
+  }).join('');
+  wrap.innerHTML = '<div class="kanban-board">' + cols + '</div>';
+
+  wrap.querySelectorAll('.kanban-card').forEach(function(card) {
+    var uid = card.getAttribute('data-uid');
+    card.addEventListener('click', function() { openModal(uid); });
+    card.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('text/plain', uid);
+      card.classList.add('dragging');
+    });
+    card.addEventListener('dragend', function() { card.classList.remove('dragging'); });
+  });
+
+  wrap.querySelectorAll('.kanban-col').forEach(function(col) {
+    col.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      col.classList.add('drop-target');
+    });
+    col.addEventListener('dragleave', function() { col.classList.remove('drop-target'); });
+    col.addEventListener('drop', function(e) {
+      e.preventDefault();
+      col.classList.remove('drop-target');
+      var uid = e.dataTransfer.getData('text/plain');
+      var nuevoEstado = col.getAttribute('data-estado');
+      updateLeadField(uid, 'estado', nuevoEstado);
+      renderStats();
+      applyFilters();
+      showToast('Movido a "' + nuevoEstado + '"');
+    });
+  });
+}
+
+/* ---- Selección múltiple ---- */
+function toggleSelected(uid, on) {
+  if (on) selectedUids[uid] = true;
+  else delete selectedUids[uid];
+  updateBulkBar();
+}
+
+function clearSelection() {
+  selectedUids = {};
+  renderCurrentView();
+}
+
+function selectedUidList() {
+  return Object.keys(selectedUids);
+}
+
+function updateBulkBar() {
+  var bar = document.getElementById('bulk-bar');
+  var list = selectedUidList();
+  document.getElementById('bulk-count').textContent = list.length;
+  bar.classList.toggle('hidden', list.length === 0);
+}
+
+/* ---- Modal ---- */
+function openModal(uid, scrollTo) {
+  var lead = leads.find(function(l) { return l._uid === uid; });
+  if (!lead) return;
+  currentLeadId = uid;
+  editMode = false;
+  renderModal(lead);
+  document.getElementById('modal-overlay').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  if (scrollTo === 'historial') {
+    setTimeout(function() {
+      var el = document.getElementById('modal-historial-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.add('hidden');
+  document.body.style.overflow = '';
+  currentLeadId = null;
+  editMode = false;
+}
+
+function renderModal(lead) {
+  var content = document.getElementById('modal-content');
+  content.innerHTML = editMode ? buildEditHTML(lead) : buildViewHTML(lead);
+  bindModalEvents(lead);
+}
+
+/* ---- Modal: vista ---- */
+function buildViewHTML(lead) {
+  var estadoOptions = ESTADOS.map(function(s) {
+    return '<option value="' + esc(s) + '"' + (s === lead.estado ? ' selected' : '') + '>' + esc(s) + '</option>';
+  }).join('');
+
+  var webUrl = safeHttpUrl(lead.web);
+  var linkedInUrl = safeHttpUrl(lead.linkedin);
+  var webLink = webUrl ? '<a href="' + esc(webUrl) + '" target="_blank" rel="noopener">' + esc(webUrl) + '</a>' : '<span>—</span>';
+  var igLink = lead.instagram
+    ? '<a href="https://instagram.com/' + encodeURIComponent(lead.instagram.replace('@','')) + '" target="_blank" rel="noopener">' + esc(lead.instagram) + '</a>'
+    : '<span>—</span>';
+  var liLink = linkedInUrl ? '<a href="' + esc(linkedInUrl) + '" target="_blank" rel="noopener">' + esc(linkedInUrl) + '</a>' : '<span>—</span>';
+
+  var candidatosHTML = buildCandidatosHTML(lead.candidatos_decisor);
+  var tagsHTML = renderTagsEditable(lead.tags || []);
+  var historialHTML = buildHistorialHTML(lead.historial || []);
+
+  return (
+    '<div class="modal-toolbar">' +
+      '<button class="btn btn-secondary btn-sm" id="btn-edit-lead">✏️ Editar</button>' +
+      '<button class="btn btn-ghost btn-sm" id="btn-delete-lead">🗑️ Eliminar</button>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-empresa-name">' + esc(lead.nombre_empresa) + '</div>' +
+      '<div class="card-badges" style="margin-bottom:12px;">' +
+        '<span class="badge badge-sector">' + esc(lead.sector) + '</span>' +
+        '<span class="badge ' + badgePrioridadClass(lead.prioridad) + '">' + esc(lead.prioridad) + '</span>' +
+        '<span class="badge ' + badgeEstadoClass(lead.estado) + '">' + esc(lead.estado) + '</span>' +
+      '</div>' +
+
+      '<div class="modal-section-title">Tags</div>' +
+      '<div id="tags-wrapper">' + tagsHTML + '</div>' +
+
+      '<div class="modal-section-title" style="margin-top:18px;">Empresa</div>' +
+      '<div class="modal-grid">' +
+        field('Ciudad', lead.ciudad) +
+        field('Sector', lead.sector) +
+        fieldFull('Direccion', lead.direccion || '—') +
+        fieldHTML('Web', webLink) +
+        fieldHTML('Instagram', igLink) +
+        fieldHTML('LinkedIn', liLink) +
+        field('Decisor', lead.decisor_nombre) +
+        field('Cargo', lead.decisor_cargo) +
+        field('Confianza decisor', lead.confianza_decisor) +
+        fieldFull('Fuente decisor', lead.fuente_decisor) +
+        fieldFull('Evidencia decisor', lead.evidencia_decisor) +
+        fieldHTMLFull('Candidatos decisor', candidatosHTML) +
+      '</div>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Analisis</div>' +
+      '<div class="modal-grid">' +
+        fieldFull('Problema visible', lead.problema_visible) +
+        fieldFull('Oportunidad de automatizacion', lead.oportunidad_automatizacion) +
+        field('Prioridad', lead.prioridad) +
+        field('Facilidad de contacto', lead.facilidad_contacto) +
+        field('Tipo de reunion recomendada', lead.tipo_reunion_recomendada) +
+      '</div>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Contacto</div>' +
+      '<div class="modal-grid">' +
+        '<div class="modal-field"><label>Telefono</label>' +
+          '<div class="copy-field"><span>' + esc(lead.telefono) + '</span>' +
+          '<button class="btn btn-ghost btn-sm" id="btn-copy-tel-modal">Copiar</button></div></div>' +
+        '<div class="modal-field"><label>Email</label>' +
+          '<div class="copy-field"><span>' + esc(lead.email) + '</span>' +
+          '<button class="btn btn-ghost btn-sm" id="btn-copy-email">Copiar</button></div></div>' +
+        fieldFull('Fuente de datos', lead.fuente_datos) +
+      '</div>' +
+    '</div>' +
+
+    (lead.guion_recepcion_personalizado ?
+      '<div class="modal-section">' +
+        '<div class="modal-section-title">Guion recepcion</div>' +
+        '<div class="script-box">' + esc(lead.guion_recepcion_personalizado) + '</div>' +
+        '<div class="copy-row"><button class="btn btn-secondary btn-sm" id="btn-copy-recepcion">Copiar guion recepción</button></div>' +
+      '</div>' : '') +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Guion de llamada</div>' +
+      '<div class="script-box">' + esc(lead.mensaje_llamada_personalizado) + '</div>' +
+      '<div class="copy-row"><button class="btn btn-secondary btn-sm" id="btn-copy-llamada">Copiar guion</button></div>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">WhatsApp</div>' +
+      '<div class="script-box">' + esc(lead.mensaje_whatsapp_personalizado) + '</div>' +
+      '<div class="copy-row">' +
+        '<button class="btn btn-secondary btn-sm" id="btn-copy-wa">Copiar mensaje</button>' +
+        '<button class="btn btn-primary btn-sm" id="btn-open-wa">Abrir WhatsApp</button>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="modal-section" id="modal-historial-section">' +
+      '<div class="modal-section-title">Historial de llamadas</div>' +
+      '<div id="historial-list">' + historialHTML + '</div>' +
+      '<div class="historial-form">' +
+        '<select id="hist-resultado" class="filter-select">' +
+          RESULTADO_LLAMADA.map(function(r) { return '<option value="' + esc(r) + '">' + esc(r) + '</option>'; }).join('') +
+        '</select>' +
+        '<input type="datetime-local" id="hist-fecha" class="filter-select" value="' + nowDateTimeLocal() + '">' +
+        '<input type="text" id="hist-notas" class="filter-search" placeholder="Notas de la llamada...">' +
+        '<button class="btn btn-primary btn-sm" id="btn-add-historial">+ Añadir</button>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Estado y notas</div>' +
+      '<div class="estado-row">' +
+        '<select class="estado-select" id="modal-estado-select">' + estadoOptions + '</select>' +
+      '</div>' +
+      '<textarea class="notas-textarea" id="modal-notas" placeholder="Notas internas...">' + esc(lead.notas || '') + '</textarea>' +
+    '</div>'
+  );
+}
+
+function nowDateTimeLocal() {
+  var d = new Date();
+  var pad = function(n) { return String(n).padStart(2, '0'); };
+  return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) +
+    'T' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+}
+
+/* ---- Modal: edición ---- */
+function buildEditHTML(lead) {
+  var f = function(label, key, type, val) {
+    return '<div class="modal-field"><label>' + label + '</label>' +
+      '<input type="' + (type || 'text') + '" data-field="' + key + '" class="edit-input" value="' + esc(val == null ? '' : val) + '"></div>';
+  };
+  var ff = function(label, key, val) {
+    return '<div class="modal-field modal-field-full"><label>' + label + '</label>' +
+      '<input type="text" data-field="' + key + '" class="edit-input" value="' + esc(val == null ? '' : val) + '"></div>';
+  };
+  var fta = function(label, key, val) {
+    return '<div class="modal-field modal-field-full"><label>' + label + '</label>' +
+      '<textarea data-field="' + key + '" class="edit-textarea">' + esc(val || '') + '</textarea></div>';
+  };
+  var fsel = function(label, key, val, opts) {
+    var options = opts.map(function(o) {
+      return '<option value="' + esc(o) + '"' + (o === val ? ' selected' : '') + '>' + esc(o) + '</option>';
+    }).join('');
+    return '<div class="modal-field"><label>' + label + '</label>' +
+      '<select data-field="' + key + '" class="edit-input">' + options + '</select></div>';
+  };
+
+  return (
+    '<div class="modal-toolbar">' +
+      '<strong style="flex:1;">' + (lead._isNew ? 'Nuevo lead' : 'Editar lead') + '</strong>' +
+      '<button class="btn btn-secondary btn-sm" id="btn-cancel-edit">Cancelar</button>' +
+      '<button class="btn btn-primary btn-sm" id="btn-save-edit">Guardar</button>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Empresa</div>' +
+      '<div class="modal-grid">' +
+        ff('Nombre empresa', 'nombre_empresa', lead.nombre_empresa) +
+        f('Sector', 'sector', 'text', lead.sector) +
+        f('Ciudad', 'ciudad', 'text', lead.ciudad) +
+        ff('Direccion', 'direccion', lead.direccion) +
+        f('Web', 'web', 'url', lead.web) +
+        f('Instagram', 'instagram', 'text', lead.instagram) +
+        f('LinkedIn', 'linkedin', 'url', lead.linkedin) +
+        f('Decisor', 'decisor_nombre', 'text', lead.decisor_nombre) +
+        f('Cargo', 'decisor_cargo', 'text', lead.decisor_cargo) +
+      '</div>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Análisis</div>' +
+      '<div class="modal-grid">' +
+        fta('Problema visible', 'problema_visible', lead.problema_visible) +
+        fta('Oportunidad', 'oportunidad_automatizacion', lead.oportunidad_automatizacion) +
+        fsel('Prioridad', 'prioridad', lead.prioridad || 'Media', PRIORIDADES) +
+        fsel('Estado', 'estado', lead.estado || 'Nuevo', ESTADOS) +
+        f('Facilidad contacto', 'facilidad_contacto', 'text', lead.facilidad_contacto) +
+        f('Tipo reunion', 'tipo_reunion_recomendada', 'text', lead.tipo_reunion_recomendada) +
+      '</div>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Contacto</div>' +
+      '<div class="modal-grid">' +
+        f('Telefono', 'telefono', 'tel', lead.telefono) +
+        f('Email', 'email', 'email', lead.email) +
+        ff('Fuente datos', 'fuente_datos', lead.fuente_datos) +
+      '</div>' +
+    '</div>' +
+
+    '<div class="modal-section">' +
+      '<div class="modal-section-title">Mensajes</div>' +
+      '<div class="modal-grid">' +
+        fta('Guion llamada', 'mensaje_llamada_personalizado', lead.mensaje_llamada_personalizado) +
+        fta('Mensaje WhatsApp', 'mensaje_whatsapp_personalizado', lead.mensaje_whatsapp_personalizado) +
+        fta('Notas internas', 'notas', lead.notas) +
+        ff('Tags (separados por coma)', '_tags_csv', (lead.tags || []).join(', ')) +
+      '</div>' +
+    '</div>'
+  );
+}
+
+function bindModalEvents(lead) {
+  var content = document.getElementById('modal-content');
+
+  if (editMode) {
+    content.querySelector('#btn-cancel-edit').addEventListener('click', function() {
+      if (lead._isNew) { closeModal(); return; }
+      editMode = false;
+      renderModal(lead);
+    });
+    content.querySelector('#btn-save-edit').addEventListener('click', function() {
+      saveEditFromForm(lead);
+    });
+    return;
+  }
+
+  // Modo vista
+  content.querySelector('#btn-edit-lead').addEventListener('click', function() {
+    editMode = true;
+    renderModal(lead);
+  });
+  content.querySelector('#btn-delete-lead').addEventListener('click', function() {
+    confirmDialog('¿Eliminar el lead "' + lead.nombre_empresa + '"?', function() {
+      deleteLead(lead._uid);
+      closeModal();
+    });
+  });
+
+  var estadoSelect = content.querySelector('#modal-estado-select');
+  estadoSelect.addEventListener('change', function() {
+    updateLeadField(lead._uid, 'estado', this.value);
+    renderStats(); applyFilters();
+  });
+
+  var notasTA = content.querySelector('#modal-notas');
+  notasTA.addEventListener('blur', function() {
+    updateLeadField(lead._uid, 'notas', this.value);
+  });
+
+  bindCopyBtn(content, '#btn-copy-llamada', lead.mensaje_llamada_personalizado, 'Guion copiado');
+  bindCopyBtn(content, '#btn-copy-recepcion', lead.guion_recepcion_personalizado, 'Guion recepcion copiado');
+  bindCopyBtn(content, '#btn-copy-wa', lead.mensaje_whatsapp_personalizado, 'Mensaje copiado');
+  bindCopyBtn(content, '#btn-copy-tel-modal', lead.telefono, 'Telefono copiado');
+  bindCopyBtn(content, '#btn-copy-email', lead.email, 'Email copiado');
+
+  content.querySelector('#btn-open-wa').addEventListener('click', function() {
+    openWhatsApp(lead.telefono, lead.mensaje_whatsapp_personalizado);
+  });
+
+  // Tags
+  bindTagsEvents(lead);
+
+  // Historial
+  content.querySelector('#btn-add-historial').addEventListener('click', function() {
+    var entry = {
+      fecha: content.querySelector('#hist-fecha').value || nowDateTimeLocal(),
+      resultado: content.querySelector('#hist-resultado').value,
+      notas: content.querySelector('#hist-notas').value
+    };
+    if (!Array.isArray(lead.historial)) lead.historial = [];
+    lead.historial.unshift(entry);
+    // Si resultado sugiere cambio de estado, sugerirlo
+    if (entry.resultado === 'Reunion agendada') lead.estado = 'Reunion agendada';
+    else if (entry.resultado === 'No interesado') lead.estado = 'Descartado';
+    else if (lead.estado === 'Nuevo' || lead.estado === 'Investigado') lead.estado = 'Llamado';
+    saveLeads();
+    renderModal(lead);
+    renderStats();
+    applyFilters();
+    showToast('Llamada registrada');
+  });
+}
+
+function bindCopyBtn(scope, sel, text, msg) {
+  var el = scope.querySelector(sel);
+  if (!el) return;
+  el.addEventListener('click', function() { copyText(text, msg); });
+}
+
+function buildHistorialHTML(historial) {
+  if (!Array.isArray(historial) || historial.length === 0) {
+    return '<div class="empty-hist">Sin llamadas registradas todavía.</div>';
+  }
+  return historial.map(function(h, i) {
+    var fecha = h.fecha ? new Date(h.fecha).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' }) : '—';
+    return '<div class="hist-item">' +
+      '<div class="hist-head"><strong>' + esc(h.resultado || '—') + '</strong>' +
+      '<span class="hist-fecha">' + esc(fecha) + '</span>' +
+      '<button class="btn btn-ghost btn-sm hist-del" data-i="' + i + '" title="Eliminar">×</button></div>' +
+      (h.notas ? '<div class="hist-notas">' + esc(h.notas) + '</div>' : '') +
+    '</div>';
+  }).join('');
+}
+
+function renderTagsEditable(tags) {
+  var chips = tags.map(function(t, i) {
+    return '<span class="badge badge-tag">' + esc(t) +
+      '<button class="tag-remove" data-i="' + i + '" title="Quitar">×</button></span>';
+  }).join('');
+  return '<div class="tags-row">' + chips +
+    '<input type="text" id="tag-new" class="tag-input" placeholder="+ tag y Enter">' +
+    '</div>';
+}
+
+function bindTagsEvents(lead) {
+  var wrap = document.getElementById('tags-wrapper');
+  if (!wrap) return;
+  wrap.querySelectorAll('.tag-remove').forEach(function(b) {
+    b.addEventListener('click', function() {
+      var i = parseInt(this.getAttribute('data-i'), 10);
+      lead.tags.splice(i, 1);
+      saveLeads();
+      wrap.innerHTML = renderTagsEditable(lead.tags);
+      bindTagsEvents(lead);
+      populateTagFilter();
+      applyFilters();
+    });
+  });
+  var input = wrap.querySelector('#tag-new');
+  if (input) {
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        var v = this.value.trim();
+        if (!v) return;
+        if (!Array.isArray(lead.tags)) lead.tags = [];
+        if (lead.tags.indexOf(v) === -1) lead.tags.push(v);
+        this.value = '';
+        saveLeads();
+        wrap.innerHTML = renderTagsEditable(lead.tags);
+        bindTagsEvents(lead);
+        populateTagFilter();
+        applyFilters();
+      }
+    });
+  }
+  // delegación para eliminar items historial
+  var histList = document.getElementById('historial-list');
+  if (histList) {
+    histList.querySelectorAll('.hist-del').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var i = parseInt(this.getAttribute('data-i'), 10);
+        lead.historial.splice(i, 1);
+        saveLeads();
+        renderModal(lead);
+        renderStats();
+        applyFilters();
+      });
+    });
+  }
+}
+
+/* ---- Guardar edición ---- */
+function saveEditFromForm(lead) {
+  var content = document.getElementById('modal-content');
+  var inputs = content.querySelectorAll('[data-field]');
+  inputs.forEach(function(el) {
+    var key = el.getAttribute('data-field');
+    var val = el.value;
+    if (key === '_tags_csv') {
+      lead.tags = val.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+    } else {
+      lead[key] = val;
+    }
+  });
+
+  if (!lead.nombre_empresa || !lead.nombre_empresa.trim()) {
+    alert('El nombre de empresa es obligatorio.');
+    return;
+  }
+
+  if (lead._isNew) {
+    delete lead._isNew;
+    leads.unshift(lead);
+  }
+  saveLeads();
+  populateSectorFilter();
+  populateTagFilter();
+  renderStats();
+  applyFilters();
+  editMode = false;
+  renderModal(lead);
+  showToast('Lead guardado');
+}
+
+/* ---- Crear / Eliminar ---- */
+function newLead() {
+  var lead = {
+    _uid: 'lead-' + simpleHash(String(Date.now()) + Math.random()),
+    _isNew: true,
+    nombre_empresa: '',
+    sector: '',
+    ciudad: 'Valladolid',
+    telefono: '',
+    email: '',
+    web: '',
+    instagram: '',
+    linkedin: '',
+    direccion: '',
+    decisor_nombre: '',
+    decisor_cargo: '',
+    fuente_datos: '',
+    problema_visible: '',
+    oportunidad_automatizacion: '',
+    prioridad: 'Media',
+    facilidad_contacto: '',
+    tipo_reunion_recomendada: '',
+    mensaje_llamada_personalizado: '',
+    mensaje_whatsapp_personalizado: '',
+    estado: 'Nuevo',
+    notas: '',
+    tags: [],
+    historial: []
+  };
+  currentLeadId = lead._uid;
+  editMode = true;
+  document.getElementById('modal-content').innerHTML = buildEditHTML(lead);
+  bindModalEvents(lead);
+  document.getElementById('modal-overlay').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function deleteLead(uid) {
+  var idx = leads.findIndex(function(l) { return l._uid === uid; });
+  if (idx === -1) return;
+  leads.splice(idx, 1);
+  delete selectedUids[uid];
+  saveLeads();
+  populateSectorFilter();
+  populateTagFilter();
+  renderStats();
+  applyFilters();
+  showToast('Lead eliminado');
+}
+
+function bulkDelete() {
+  var ids = selectedUidList();
+  if (ids.length === 0) return;
+  confirmDialog('¿Eliminar ' + ids.length + ' leads seleccionados?', function() {
+    leads = leads.filter(function(l) { return !selectedUids[l._uid]; });
+    selectedUids = {};
+    saveLeads();
+    populateSectorFilter();
+    populateTagFilter();
+    renderStats();
+    applyFilters();
+    showToast(ids.length + ' leads eliminados');
+  });
+}
+
+function bulkSetField(field, value) {
+  var ids = selectedUidList();
+  if (ids.length === 0 || !value) return;
+  leads.forEach(function(l) {
+    if (selectedUids[l._uid]) l[field] = value;
+  });
+  saveLeads();
+  renderStats();
+  applyFilters();
+  showToast(ids.length + ' leads actualizados');
+}
+
+function bulkAddTag() {
+  var ids = selectedUidList();
+  if (ids.length === 0) return;
+  var tag = prompt('Tag a añadir a los ' + ids.length + ' leads seleccionados:');
+  if (!tag) return;
+  tag = tag.trim();
+  if (!tag) return;
+  leads.forEach(function(l) {
+    if (selectedUids[l._uid]) {
+      if (!Array.isArray(l.tags)) l.tags = [];
+      if (l.tags.indexOf(tag) === -1) l.tags.push(tag);
+    }
+  });
+  saveLeads();
+  populateTagFilter();
+  applyFilters();
+  showToast('Tag "' + tag + '" añadido a ' + ids.length + ' leads');
+}
+
+/* ---- Confirm modal ---- */
+function confirmDialog(msg, onOk) {
+  document.getElementById('confirm-content').textContent = msg;
+  confirmCallback = onOk;
+  document.getElementById('confirm-overlay').classList.remove('hidden');
+}
+
+function closeConfirm() {
+  document.getElementById('confirm-overlay').classList.add('hidden');
+  confirmCallback = null;
+}
+
+/* ---- Helpers HTML ---- */
+function field(label, value) {
+  return '<div class="modal-field"><label>' + label + '</label><span>' + esc(value || '—') + '</span></div>';
+}
+function fieldFull(label, value) {
+  return '<div class="modal-field modal-field-full"><label>' + label + '</label><span>' + esc(value || '—') + '</span></div>';
+}
+function fieldHTML(label, html) {
+  return '<div class="modal-field"><label>' + label + '</label>' + html + '</div>';
+}
+function fieldHTMLFull(label, html) {
+  return '<div class="modal-field modal-field-full"><label>' + label + '</label>' + html + '</div>';
+}
+
+function buildCandidatosHTML(candidatos) {
+  if (!Array.isArray(candidatos) || candidatos.length === 0) return '<span>—</span>';
+  return '<div class="script-box">' + candidatos.map(function(c) {
+    var parts = [];
+    if (c.nombre) parts.push(c.nombre);
+    if (c.cargo) parts.push(c.cargo);
+    if (c.confianza) parts.push('Confianza: ' + c.confianza);
+    if (c.fuente) parts.push('Fuente: ' + c.fuente);
+    if (c.evidencia) parts.push('Evidencia: ' + c.evidencia);
+    return esc(parts.join(' | '));
+  }).join('<br><br>') + '</div>';
+}
+
+/* ---- Actualizar lead ---- */
+function updateLeadField(uid, key, value) {
+  var lead = leads.find(function(l) { return l._uid === uid; });
+  if (!lead) return;
+  lead[key] = value;
+  saveLeads();
+}
+
+/* ---- Clipboard ---- */
+function copyText(text, msg) {
+  if (!text) return;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      showToast(msg || 'Copiado');
+    }).catch(function() { fallbackCopy(text, msg); });
+  } else {
+    fallbackCopy(text, msg);
+  }
+}
+function fallbackCopy(text, msg) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed'; ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); showToast(msg || 'Copiado'); } catch (e) {}
+  document.body.removeChild(ta);
+}
+
+/* ---- WhatsApp ---- */
+function openWhatsApp(telefono, mensaje) {
+  var num = (telefono || '').replace(/\s/g, '').replace(/[^\d+]/g, '');
+  var url = 'https://wa.me/' + encodeURIComponent(num) + '?text=' + encodeURIComponent(mensaje || '');
+  window.open(url, '_blank', 'noopener');
+}
+
+/* ---- Toast ---- */
+var toastTimer = null;
+function showToast(msg) {
+  var toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.remove('hidden');
+  toast.style.opacity = '1';
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() {
+    toast.style.opacity = '0';
+    setTimeout(function() { toast.classList.add('hidden'); }, 300);
+  }, 2000);
+}
+
+/* ---- Badges ---- */
+function badgePrioridadClass(p) {
+  if (p === 'Alta') return 'badge-alta';
+  if (p === 'Baja') return 'badge-baja';
+  return 'badge-media';
+}
+function badgeEstadoClass(e) {
+  var map = {
+    'Nuevo': 'badge-nuevo',
+    'Investigado': 'badge-investigado',
+    'Llamado': 'badge-llamado',
+    'Reunion agendada': 'badge-reunion',
+    'Descartado': 'badge-descartado'
+  };
+  return map[e] || 'badge-nuevo';
+}
+
+/* ---- Escape ---- */
+function esc(str) {
+  if (str == null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+function safeHttpUrl(value) {
+  if (!value) return '';
+  try {
+    var url = new URL(String(value).trim());
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return '';
+    return url.href;
+  } catch (e) { return ''; }
+}
+
+/* ---- Importar / Exportar ---- */
+function exportJSON() {
+  var clean = leads.map(function(l) {
+    var c = Object.assign({}, l);
+    delete c._isNew;
+    return c;
+  });
+  var blob = new Blob([JSON.stringify(clean, null, 2)], { type: 'application/json' });
+  triggerDownload(blob, 'esaria-leads.json');
+  showToast('JSON exportado');
+}
+
+function exportCSV() {
+  if (leads.length === 0) { showToast('No hay leads'); return; }
+  var cols = [
+    'nombre_empresa', 'sector', 'ciudad', 'telefono', 'email', 'web',
+    'direccion', 'decisor_nombre', 'decisor_cargo',
+    'prioridad', 'estado', 'facilidad_contacto', 'tipo_reunion_recomendada',
+    'problema_visible', 'oportunidad_automatizacion',
+    'tags', 'ultima_llamada', 'num_llamadas', 'notas'
+  ];
+  var header = cols.join(';');
+  var rows = leads.map(function(l) {
+    var ult = ultimaLlamada(l) ? new Date(ultimaLlamada(l)).toISOString() : '';
+    return cols.map(function(c) {
+      var v;
+      if (c === 'tags') v = (l.tags || []).join(',');
+      else if (c === 'ultima_llamada') v = ult;
+      else if (c === 'num_llamadas') v = (l.historial || []).length;
+      else v = l[c] != null ? l[c] : '';
+      return csvCell(v);
+    }).join(';');
+  });
+  var bom = '﻿';
+  var blob = new Blob([bom + header + '\n' + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+  triggerDownload(blob, 'esaria-leads.csv');
+  showToast('CSV exportado');
+}
+
+function csvCell(v) {
+  var s = String(v == null ? '' : v).replace(/\r?\n/g, ' ');
+  if (s.indexOf(';') !== -1 || s.indexOf('"') !== -1) {
+    s = '"' + s.replace(/"/g, '""') + '"';
+  }
+  return s;
+}
+
+function triggerDownload(blob, filename) {
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importJSON(file) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var data = JSON.parse(e.target.result);
+      if (!Array.isArray(data)) throw new Error('El archivo no contiene un array de leads.');
+      leads = ensureLeadUids(data);
+      saveLeads();
+      reloadUI();
+      showToast(data.length + ' leads importados');
+    } catch (err) {
+      alert('Error al importar: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function importLeadsReales(file) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var data = JSON.parse(e.target.result);
+      if (!Array.isArray(data)) throw new Error('El archivo no contiene un array de leads.');
+      if (data.length === 0) { showToast('El archivo está vacío (0 leads)'); return; }
+      leads = ensureLeadUids(data);
+      saveLeads();
+      reloadUI();
+      showToast(data.length + ' leads reales importados');
+    } catch (err) {
+      alert('Error al importar leads reales: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function reloadUI() {
+  populateSectorFilter();
+  populateTagFilter();
+  renderStats();
+  applyFilters();
+}
+
+function resetApp() {
+  confirmDialog('¿Restablecer la app a los datos demo? Se borran los datos locales.', function() {
+    try { localStorage.removeItem(LS_KEY); } catch (e) {}
+    leads = ensureLeadUids(DEMO_LEADS.slice());
+    selectedUids = {};
+    closeModal();
+    reloadUI();
+    showToast('App restablecida');
+  });
+}
+
+/* ---- Eventos ---- */
+function bindEvents() {
+  /* Filtros */
+  document.getElementById('search-input').addEventListener('input', applyFilters);
+  document.getElementById('filter-sector').addEventListener('change', applyFilters);
+  document.getElementById('filter-prioridad').addEventListener('change', applyFilters);
+  document.getElementById('filter-estado').addEventListener('change', applyFilters);
+  document.getElementById('filter-tag').addEventListener('change', applyFilters);
+  document.getElementById('sort-by').addEventListener('change', applyFilters);
+
+  /* Vistas */
+  document.querySelectorAll('.view-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      currentView = btn.getAttribute('data-view');
+      saveView();
+      updateViewToggle();
+      renderCurrentView();
+    });
+  });
+
+  /* Nuevo */
+  document.getElementById('btn-new-lead').addEventListener('click', newLead);
+
+  /* Import / Export */
+  document.getElementById('btn-export').addEventListener('click', exportJSON);
+  document.getElementById('btn-export-csv').addEventListener('click', exportCSV);
+  document.getElementById('btn-import').addEventListener('click', function() {
+    document.getElementById('file-import').click();
+  });
+  document.getElementById('file-import').addEventListener('change', function(e) {
+    var file = e.target.files && e.target.files[0];
+    if (file) { importJSON(file); this.value = ''; }
+  });
+
+  /* Botón "Importar leads reales" + reset, inyectados */
+  var filterActions = document.querySelector('.filter-actions');
+  if (filterActions && !document.getElementById('btn-import-reales')) {
+    var btnReales = document.createElement('button');
+    btnReales.className = 'btn btn-secondary';
+    btnReales.id = 'btn-import-reales';
+    btnReales.title = 'Selecciona prospecting/leads/reales/leads-reales.json';
+    btnReales.textContent = 'Importar leads reales';
+
+    var fileReales = document.createElement('input');
+    fileReales.type = 'file'; fileReales.id = 'file-import-reales';
+    fileReales.accept = '.json'; fileReales.style.display = 'none';
+
+    filterActions.appendChild(btnReales);
+    filterActions.appendChild(fileReales);
+
+    var btnReset = document.createElement('button');
+    btnReset.className = 'btn btn-ghost';
+    btnReset.id = 'btn-reset-app';
+    btnReset.title = 'Borra los datos guardados en este navegador';
+    btnReset.textContent = 'Restablecer';
+    filterActions.appendChild(btnReset);
+
+    btnReales.addEventListener('click', function() { fileReales.click(); });
+    fileReales.addEventListener('change', function(e) {
+      var file = e.target.files && e.target.files[0];
+      if (file) { importLeadsReales(file); this.value = ''; }
+    });
+    btnReset.addEventListener('click', resetApp);
+  }
+
+  /* Bulk bar */
+  document.getElementById('bulk-clear').addEventListener('click', clearSelection);
+  document.getElementById('bulk-delete').addEventListener('click', bulkDelete);
+  document.getElementById('bulk-add-tag').addEventListener('click', bulkAddTag);
+  document.getElementById('bulk-estado').addEventListener('change', function() {
+    if (this.value) { bulkSetField('estado', this.value); this.value = ''; }
+  });
+  document.getElementById('bulk-prioridad').addEventListener('change', function() {
+    if (this.value) { bulkSetField('prioridad', this.value); this.value = ''; }
+  });
+
+  /* Modal */
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  /* Confirm */
+  document.getElementById('confirm-cancel').addEventListener('click', closeConfirm);
+  document.getElementById('confirm-ok').addEventListener('click', function() {
+    var cb = confirmCallback;
+    closeConfirm();
+    if (cb) cb();
+  });
+  document.getElementById('confirm-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeConfirm();
+  });
+
+  /* Tecla escape */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (!document.getElementById('confirm-overlay').classList.contains('hidden')) closeConfirm();
+      else closeModal();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      document.getElementById('search-input').focus();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'n') {
+      e.preventDefault();
+      newLead();
+    }
+  });
+}
+
+/* ---- Arranque ---- */
+document.addEventListener('DOMContentLoaded', init);

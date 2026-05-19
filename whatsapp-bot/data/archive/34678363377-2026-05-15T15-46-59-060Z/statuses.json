@@ -1,0 +1,218 @@
+[
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwMTFEQUJERjkyQjZENjY2NTkA",
+    "recipientId": "34678363377",
+    "status": "sent",
+    "timestamp": "1778859621",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwMTFEQUJERjkyQjZENjY2NTkA",
+      "status": "sent",
+      "timestamp": "1778859621",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:40:22.171Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwMTFEQUJERjkyQjZENjY2NTkA",
+    "recipientId": "34678363377",
+    "status": "delivered",
+    "timestamp": "1778859621",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwMTFEQUJERjkyQjZENjY2NTkA",
+      "status": "delivered",
+      "timestamp": "1778859621",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:40:22.571Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJGMkY5RDA3NDFDQTYxRTQwQzUA",
+    "recipientId": "34678363377",
+    "status": "sent",
+    "timestamp": "1778859673",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJGMkY5RDA3NDFDQTYxRTQwQzUA",
+      "status": "sent",
+      "timestamp": "1778859673",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:41:13.891Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJGMkY5RDA3NDFDQTYxRTQwQzUA",
+    "recipientId": "34678363377",
+    "status": "delivered",
+    "timestamp": "1778859673",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJGMkY5RDA3NDFDQTYxRTQwQzUA",
+      "status": "delivered",
+      "timestamp": "1778859673",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:41:14.299Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJBODgzMTA2NEZBMkY1QkVDOTkA",
+    "recipientId": "34678363377",
+    "status": "sent",
+    "timestamp": "1778859702",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJBODgzMTA2NEZBMkY1QkVDOTkA",
+      "status": "sent",
+      "timestamp": "1778859702",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:41:43.454Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJBODgzMTA2NEZBMkY1QkVDOTkA",
+    "recipientId": "34678363377",
+    "status": "delivered",
+    "timestamp": "1778859703",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJBODgzMTA2NEZBMkY1QkVDOTkA",
+      "status": "delivered",
+      "timestamp": "1778859703",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:41:43.669Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyMTAzQTUxMjU2RDA3NDQ1MjYA",
+    "recipientId": "34678363377",
+    "status": "sent",
+    "timestamp": "1778859784",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyMTAzQTUxMjU2RDA3NDQ1MjYA",
+      "status": "sent",
+      "timestamp": "1778859784",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:43:05.405Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyMTAzQTUxMjU2RDA3NDQ1MjYA",
+    "recipientId": "34678363377",
+    "status": "delivered",
+    "timestamp": "1778859784",
+    "conversation": null,
+    "pricing": {
+      "billable": false,
+      "pricing_model": "PMP",
+      "category": "service",
+      "type": "free_customer_service"
+    },
+    "raw": {
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyMTAzQTUxMjU2RDA3NDQ1MjYA",
+      "status": "delivered",
+      "timestamp": "1778859784",
+      "recipient_id": "34678363377",
+      "recipient_user_id": "ES.2510181746064533",
+      "pricing": {
+        "billable": false,
+        "pricing_model": "PMP",
+        "category": "service",
+        "type": "free_customer_service"
+      }
+    },
+    "savedAt": "2026-05-15T15:43:05.560Z"
+  }
+]

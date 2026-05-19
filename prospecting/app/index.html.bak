@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EsarIA — CRM Leads</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="brand-name">EsarIA</span>
+        <span class="brand-badge">CRM Leads</span>
+      </div>
+      <div class="header-stats">
+        <div class="stat">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-alta">0</span>
+          <span class="stat-label">Alta prioridad</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-reunion">0</span>
+          <span class="stat-label">Reunion agendada</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-llamados">0</span>
+          <span class="stat-label">Llamados hoy</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="filters" id="filters">
+    <div class="filters-inner">
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Buscar... usa sector:X estado:Y prioridad:Alta tag:vip ciudad:Valladolid"
+        class="filter-search"
+        title="Operadores: sector:, estado:, prioridad:, tag:, ciudad:, decisor:"
+      >
+      <select id="filter-sector" class="filter-select">
+        <option value="">Todos los sectores</option>
+      </select>
+      <select id="filter-prioridad" class="filter-select">
+        <option value="">Prioridad</option>
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
+      </select>
+      <select id="filter-estado" class="filter-select">
+        <option value="">Estado</option>
+        <option value="Nuevo">Nuevo</option>
+        <option value="Investigado">Investigado</option>
+        <option value="Llamado">Llamado</option>
+        <option value="Reunion agendada">Reunion agendada</option>
+        <option value="Descartado">Descartado</option>
+      </select>
+      <select id="filter-tag" class="filter-select">
+        <option value="">Todos los tags</option>
+      </select>
+      <select id="sort-by" class="filter-select" title="Ordenar">
+        <option value="smart">Orden recomendado</option>
+        <option value="prioridad">Prioridad</option>
+        <option value="estado">Estado</option>
+        <option value="nombre">Nombre A-Z</option>
+        <option value="sector">Sector</option>
+        <option value="ultima_llamada">Última llamada</option>
+      </select>
+
+      <div class="view-toggle" role="tablist" aria-label="Vista">
+        <button class="view-btn active" data-view="cards" title="Tarjetas">Tarjetas</button>
+        <button class="view-btn" data-view="table" title="Tabla">Tabla</button>
+        <button class="view-btn" data-view="kanban" title="Kanban">Kanban</button>
+      </div>
+
+      <div class="filter-actions">
+        <button class="btn btn-primary" id="btn-new-lead">+ Nuevo lead</button>
+        <button class="btn btn-secondary" id="btn-import">Importar JSON</button>
+        <button class="btn btn-secondary" id="btn-export">Exportar JSON</button>
+        <button class="btn btn-secondary" id="btn-export-csv">Exportar CSV</button>
+        <input type="file" id="file-import" accept=".json" style="display:none">
+      </div>
+    </div>
+
+    <div class="bulk-bar hidden" id="bulk-bar">
+      <span class="bulk-count"><span id="bulk-count">0</span> seleccionados</span>
+      <select id="bulk-estado" class="filter-select">
+        <option value="">Cambiar estado a...</option>
+        <option value="Nuevo">Nuevo</option>
+        <option value="Investigado">Investigado</option>
+        <option value="Llamado">Llamado</option>
+        <option value="Reunion agendada">Reunion agendada</option>
+        <option value="Descartado">Descartado</option>
+      </select>
+      <select id="bulk-prioridad" class="filter-select">
+        <option value="">Cambiar prioridad a...</option>
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
+      </select>
+      <button class="btn btn-ghost btn-sm" id="bulk-add-tag">+ Tag</button>
+      <button class="btn btn-ghost btn-sm" id="bulk-delete">Eliminar</button>
+      <button class="btn btn-ghost btn-sm" id="bulk-clear">Limpiar selección</button>
+    </div>
+  </section>
+
+  <main id="leads-main">
+    <div id="leads-grid" class="leads-grid"></div>
+    <div id="leads-table" class="leads-table hidden"></div>
+    <div id="leads-kanban" class="leads-kanban hidden"></div>
+  </main>
+
+  <!-- Modal lead (ver/editar) -->
+  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación -->
+  <div id="confirm-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal modal-small">
+      <div id="confirm-content"></div>
+      <div class="copy-row" style="justify-content:flex-end; margin-top:18px;">
+        <button class="btn btn-ghost btn-sm" id="confirm-cancel">Cancelar</button>
+        <button class="btn btn-primary btn-sm" id="confirm-ok">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

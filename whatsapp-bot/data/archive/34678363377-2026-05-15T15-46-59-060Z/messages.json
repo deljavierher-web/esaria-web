@@ -1,0 +1,164 @@
+[
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0U4NkQxRDAxN0U3MkI0OTJDRDM3RUNGOTcwRUM2OQA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola buenas tengo una clínica de dentistas y tengo un problema y es que paso mucho tiempo gestionando citas gestionando los gastos y todo eso no si me podréis ayudar",
+    "timestamp": "1778859606",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0U4NkQxRDAxN0U3MkI0OTJDRDM3RUNGOTcwRUM2OQA=",
+      "timestamp": "1778859606",
+      "text": {
+        "body": "Hola buenas tengo una clínica de dentistas y tengo un problema y es que paso mucho tiempo gestionando citas gestionando los gastos y todo eso no si me podréis ayudar"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:40:07.326Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIwMTFEQUJERjkyQjZENjY2NTkA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier, gracias por tu mensaje. Entiendo que gestionar citas y gastos en tu clínica dental te consume tiempo. Dime, ¿cuál de estas dos tareas te resulta más repetitiva?",
+    "timestamp": "1778859621",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQ0U4NkQxRDAxN0U3MkI0OTJDRDM3RUNGOTcwRUM2OQA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "accepted",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:40:21.155Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBQzQyNTdENjQwQjUwNkYwOENFRTVDRkJFOTUzOAA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Pues la verdad es que la de las citas porque a lo mejor pasó varias horas un empleado mío o simplemente agenciándolas llamando para recordar cuando tienen cita gestionando alguno que la cancela con un poco de las citas me toca un poco más las narices",
+    "timestamp": "1778859662",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBQzQyNTdENjQwQjUwNkYwOENFRTVDRkJFOTUzOAA=",
+      "timestamp": "1778859662",
+      "text": {
+        "body": "Pues la verdad es que la de las citas porque a lo mejor pasó varias horas un empleado mío o simplemente agenciándolas llamando para recordar cuando tienen cita gestionando alguno que la cancela con un poco de las citas me toca un poco más las narices"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:41:03.764Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJGMkY5RDA3NDFDQTYxRTQwQzUA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Hola Javier, entiendo que la gestión de citas os está restando mucho tiempo a ti o a tu equipo. En una clínica, optimizar ese proceso puede marcar la diferencia. ¿Te gustaría explorar cómo simplificarlo esta semana o más adelante?",
+    "timestamp": "1778859672",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzJBQzQyNTdENjQwQjUwNkYwOENFRTVDRkJFOTUzOAA=",
+    "ai": {
+      "provider": "opencode_go",
+      "model": "deepseek-v4-flash",
+      "used": true
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "accepted",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:41:12.654Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzMyM0Y1RjdFNzE0OUJFOEQ2OTEwRkQzRUNCMjBDOAA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "audio",
+    "text": "",
+    "timestamp": "1778859699",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzMyM0Y1RjdFNzE0OUJFOEQ2OTEwRkQzRUNCMjBDOAA=",
+      "timestamp": "1778859699",
+      "type": "audio",
+      "audio": {
+        "mime_type": "audio/ogg; codecs=opus",
+        "sha256": "1W8mQDHwW/CtsTg4ibexc4k893xXFpCwNX2diz2jeoc=",
+        "id": "1675007006738273",
+        "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1675007006738273&source=webhook&ext=1778860000&hash=ARkifHojOwQJnMnWoZEQ4mZFJz_KBqKS_gGLxvXTbfrfWw",
+        "voice": true
+      }
+    },
+    "savedAt": "2026-05-15T15:41:41.438Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBJBODgzMTA2NEZBMkY1QkVDOTkA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Ahora mismo puedo ayudarte mejor si me escribes el caso en texto. ¿Qué tarea repetitiva te gustaría automatizar?",
+    "timestamp": "1778859702",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzMyM0Y1RjdFNzE0OUJFOEQ2OTEwRkQzRUNCMjBDOAA=",
+    "ai": {
+      "provider": "none",
+      "used": false
+    },
+    "leadState": "qualified",
+    "deliveryStatus": "accepted",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:41:42.193Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzA4MURFMUFDMDdEMEE1NUFGOUQ3RDI2NTBFQTI2MgA=",
+    "from": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Vale sí eh puedo hablar con un humano por favor",
+    "timestamp": "1778859782",
+    "source": "whatsapp",
+    "raw": {
+      "from": "34678363377",
+      "from_user_id": "ES.2510181746064533",
+      "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzA4MURFMUFDMDdEMEE1NUFGOUQ3RDI2NTBFQTI2MgA=",
+      "timestamp": "1778859782",
+      "text": {
+        "body": "Vale sí eh puedo hablar con un humano por favor"
+      },
+      "type": "text"
+    },
+    "savedAt": "2026-05-15T15:43:03.572Z"
+  },
+  {
+    "id": "wamid.HBgLMzQ2NzgzNjMzNzcVAgARGBIyMTAzQTUxMjU2RDA3NDQ1MjYA",
+    "from": "1077395448796449",
+    "to": "34678363377",
+    "profileName": "Javier",
+    "type": "text",
+    "text": "Perfecto, lo dejo marcado para revisión humana. ¿Cuál es el mejor horario para contactarte?",
+    "timestamp": "1778859784",
+    "replyToMessageId": "wamid.HBgLMzQ2NzgzNjMzNzcVAgASGCBBQzA4MURFMUFDMDdEMEE1NUFGOUQ3RDI2NTBFQTI2MgA=",
+    "ai": {
+      "provider": "fallback",
+      "used": false
+    },
+    "leadState": "requires_human",
+    "deliveryStatus": "accepted",
+    "direction": "outbound",
+    "source": "whatsapp",
+    "savedAt": "2026-05-15T15:43:04.071Z"
+  }
+]

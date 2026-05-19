@@ -1,0 +1,19 @@
+EsarIA — Pack para Claude Design
+
+CONTENIDO DE LA CARPETA:
+- SISTEMA-DE-DISEÑO.md → paleta, tipografía, tono, espaciado, restricciones
+- PROMPT.txt → el texto que vas a pegar en Claude
+- LEEME.txt → este archivo
+- /logos/ → logos SVG (horizontal claro, horizontal oscuro, wordmark...)
+- /iconos/ → icono símbolo de marca + favicon SVG
+
+QUÉ HACER:
+1. Arrastra esta carpeta entera al panel "DROP FILES HERE" de Claude Design.
+2. Espera a que Claude indexe los archivos.
+3. Abre PROMPT.txt, copia todo el texto.
+4. Pégalo en el recuadro "Describe what you want to create..." y dale a Send.
+5. Claude te devolverá un mockup interactivo. Itera con él.
+6. Cuando esté listo, copia el HTML resultante y pásamelo (Claude Code) para convertirlo en funcional.
+
+NOTA: esta carpeta NO contiene los archivos del CRM funcional ni los leads.
+Solo contiene lo necesario para el DISEÑO. La funcionalidad la conecto yo después.

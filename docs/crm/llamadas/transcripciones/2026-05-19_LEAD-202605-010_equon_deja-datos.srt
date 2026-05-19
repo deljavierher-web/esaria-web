@@ -1,0 +1,52 @@
+1
+00:00:00,000 --> 00:00:04,640
+ Vale, ahora voy a llamar a Equon Physioterapia y Salud
+
+2
+00:00:04,640 --> 00:00:12,200
+ que el número de teléfono es 660304426
+
+3
+00:00:30,000 --> 00:00:39,000
+ Hola, buenos días. Soy Javier de Saria, ¿podía hablar con el responsable de la gestión de la clínica?
+
+4
+00:00:39,000 --> 00:00:45,000
+ Pues no, ahora mismo no, no se encuentra disponible. Si quieres dejarme tus datos y le aviso cuando llegue.
+
+5
+00:00:45,000 --> 00:00:54,000
+ Vale, soy Javier de Saria y pues cuando me dices "cuando va a estar" le llamo yo "más tarde".
+
+6
+00:00:54,000 --> 00:00:57,000
+ No, dame el teléfono y que se comunique él. ¿Para qué es?
+
+7
+00:00:57,000 --> 00:01:08,000
+ Para, es un tema de la gestión, estoy montando una agencia para gestionar el tema de citas en pequeños negocios,
+
+8
+00:01:08,000 --> 00:01:15,000
+ citas, recordatorios para clientes y pues más que nada, pues si podía llegar a estar interesado, pues hablar con él.
+
+9
+00:01:15,000 --> 00:01:17,000
+ Dime tu teléfono, yo se lo comunico.
+
+10
+00:01:17,000 --> 00:01:28,000
+ ¿6, 7, 8? Sí. ¿36? Sí. ¿33? Sí. ¿77? Vale. De todas formas, estoy por WhatsApp ahora también.
+
+11
+00:01:28,000 --> 00:01:33,000
+ Vale, perfecto, pues así tenemos tus datos. Perfecto, muchas gracias. ¿Qué pasa, buen día?
+
+12
+00:01:33,000 --> 00:01:35,000
+ Nada, igual, hasta luego.
+
+13
+00:01:35,000 --> 00:01:38,000
+ Bueno, al contexto de una chica.
+

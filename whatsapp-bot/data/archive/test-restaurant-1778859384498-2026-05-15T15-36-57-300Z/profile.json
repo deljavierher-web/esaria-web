@@ -1,0 +1,15 @@
+{
+  "from": "test-restaurant-1778859384498",
+  "profileName": "Test Restaurante",
+  "phone": "test-restaurant-1778859384498",
+  "name": "Test Restaurante",
+  "sector": "hosteleria",
+  "negocio": "hosteleria",
+  "problema": "reservas por WhatsApp",
+  "resumen": "Sector: hosteleria. Negocio: hosteleria. Problema: reservas por WhatsApp",
+  "state": "qualified",
+  "lastMessage": "Tengo un restaurante y recibo muchas reservas por WhatsApp",
+  "lastSource": "test",
+  "createdAt": "2026-05-15T15:36:31.854Z",
+  "updatedAt": "2026-05-15T15:36:31.854Z"
+}

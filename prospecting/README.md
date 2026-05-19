@@ -36,6 +36,32 @@ prospecting/
 
 ## Inicio rápido
 
+### Pack para empezar llamadas
+
+- `plan-llamadas-lunes.md` — rutina concreta para preparar y ejecutar las primeras llamadas.
+- `templates/guion-llamada-en-frio.md` — guion corto con aperturas, cierres y objeciones.
+- `templates/checklist-prellamada.md` — revisión rápida de cada negocio antes de llamar.
+- `templates/autoevaluacion-llamada.md` — plantilla para analizar llamadas sin necesidad de grabarlas.
+- `tareas-sabado-preparacion.md` — checklist concreta para dejar listo el martes.
+- `leads/hoja-llamadas-martes.xlsx` — Excel principal para llamar, marcar estados y registrar citas.
+
+Para generar o actualizar el Excel de llamadas desde leads reales:
+
+```bash
+python3 prospecting/scripts/exportar-excel-llamadas.py
+open prospecting/leads/hoja-llamadas-martes.xlsx
+```
+
+El Excel conserva los campos editables si lo regeneras: `Llamar`, `Estado llamada`, `Resultado`, `Fecha cita`, `Hora cita`, `Fecha seguimiento`, `Proximo paso` y `Notas`.
+
+Para cambiar el numero de leads:
+
+```bash
+python3 prospecting/scripts/exportar-excel-llamadas.py --limite 40
+```
+
+---
+
 ### 1. Abrir el CRM local
 
 ```bash
