@@ -33,12 +33,16 @@ document.addEventListener('click', e => {
 
 /* ---- Sector tabs ---- */
 function showSector(id, btn) {
-  document.querySelectorAll('.sector-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.sector-content').forEach(el => {
+    el.classList.remove('active', 'sector-entering');
+  });
   document.querySelectorAll('.sector-tab').forEach(el => {
     el.classList.remove('active');
     el.setAttribute('aria-selected', 'false');
   });
-  document.getElementById('sector-' + id).classList.add('active');
+  const panel = document.getElementById('sector-' + id);
+  panel.classList.add('active', 'sector-entering');
+  panel.addEventListener('animationend', () => panel.classList.remove('sector-entering'), { once: true });
   btn.classList.add('active');
   btn.setAttribute('aria-selected', 'true');
 }
@@ -148,12 +152,33 @@ const barObserver = new IntersectionObserver(entries => {
 const visual = document.querySelector('.solution-visual');
 if (visual) barObserver.observe(visual);
 
-/* ---- Hide/show header on scroll ---- */
+/* ---- Hide/show header on scroll + reading progress ---- */
 let lastY = 0;
 const siteHeader = document.getElementById('site-header');
+const progressBar = document.getElementById('readingProgress');
 
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   siteHeader.style.transform = (y > lastY && y > 80) ? 'translateY(-100%)' : 'translateY(0)';
   lastY = y;
+  if (progressBar) {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? Math.min((y / docHeight) * 100, 100) : 0) + '%';
+  }
 }, { passive: true });
+
+/* ---- FAQ accordion ---- */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});

@@ -1132,6 +1132,183 @@
       }
     }
 
+    /* ============================================================
+       READING PROGRESS BAR
+    ============================================================ */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #818CF8, var(--accent));
+      background-size: 200% 100%;
+      width: 0%;
+      z-index: 150;
+      transition: width 0.15s linear;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       GLOW & DEPTH ENHANCEMENTS
+    ============================================================ */
+    .solution-visual,
+    .form-card,
+    .mockup {
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .solution-visual:hover,
+    .form-card:hover,
+    .mockup:hover {
+      box-shadow: 0 8px 32px rgba(99,102,241,0.10), 0 1px 3px rgba(0,0,0,0.06);
+      border-color: rgba(99,102,241,0.18);
+    }
+
+    .step-number {
+      transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .step:hover .step-number {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 0 6px var(--bg-white), 0 0 20px rgba(99,102,241,0.25);
+    }
+
+    /* ============================================================
+       SHIMMER ON CTA BUTTONS
+    ============================================================ */
+    @keyframes btnShimmer {
+      0%   { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    .btn-wa,
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-wa::after,
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      animation: btnShimmer 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .btn-wa::after {
+      animation-delay: 2s;
+    }
+
+    /* ============================================================
+       SECTOR FADE-IN TRANSITION
+    ============================================================ */
+    @keyframes sectorFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .sector-content.sector-entering {
+      animation: sectorFadeIn 0.3s ease forwards;
+    }
+
+    /* ============================================================
+       FAQ ACCORDION
+    ============================================================ */
+    .faq { background: var(--bg-white); }
+
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(99,102,241,0.25);
+    }
+
+    .faq-item.open {
+      border-color: var(--accent);
+      box-shadow: 0 2px 16px rgba(99,102,241,0.08);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-align: left;
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.3s ease;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 24px 20px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reading-progress { transition: none; }
+      .sector-content.sector-entering { animation: none; }
+      .btn-wa::after, .btn-primary::after { animation: none; display: none; }
+      .faq-answer { transition: none; }
+    }
+
   </style>
 
   <script type="application/ld+json">
@@ -1207,6 +1384,9 @@
     </a>
   </div>
 </header>
+
+<!-- Reading progress bar -->
+<div class="reading-progress" id="readingProgress"></div>
 
 
 <!-- ============================================================
@@ -1645,6 +1825,139 @@
 
     </div>
   </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="section-label">Preguntas frecuentes</span>
+      <h2>Dudas que solemos resolver</h2>
+      <p>Si tienes alguna otra pregunta, escríbenos sin compromiso.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Cuánto cuesta automatizar mi negocio?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Depende de lo que necesites. El diagnóstico inicial es gratuito y sin compromiso. A partir de ahí, te damos un presupuesto claro con lo que incluye y lo que no. No hay sorpresas ni costes ocultos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Necesito conocimientos técnicos?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. Nos encargamos de todo lo técnico. Tú solo nos explicas cómo funciona tu negocio y qué te quita más tiempo. Las herramientas que montamos son fáciles de usar en el día a día.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Cuánto tiempo tarda en estar listo?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Normalmente, en 2 semanas tienes un prototipo funcional que puedes probar con datos reales. La implementación completa suele estar lista en 4-6 semanas, dependiendo de la complejidad.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Qué pasa si no me convence el resultado?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Para eso existe el prototipo. Lo pruebas antes de comprometerte con nada. Si no te convence, no sigues adelante y no tiene coste. Así de simple.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Trabajáis solo con negocios de Valladolid?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Nuestra prioridad son negocios de Valladolid y alrededores, porque creemos en el trato cercano y las reuniones presenciales. Pero si tienes un negocio fuera de la zona, escríbenos igualmente y vemos cómo ayudarte.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Es seguro compartir datos de mi negocio?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sí. Tratamos los datos con total confidencialidad y cumplimos con la normativa de protección de datos (RGPD). No compartimos información con terceros ni la usamos para otros fines.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta automatizar mi negocio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende de lo que necesites. El diagnóstico inicial es gratuito y sin compromiso. A partir de ahí, te damos un presupuesto claro con lo que incluye y lo que no. No hay sorpresas ni costes ocultos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito conocimientos técnicos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Nos encargamos de todo lo técnico. Tú solo nos explicas cómo funciona tu negocio y qué te quita más tiempo. Las herramientas que montamos son fáciles de usar en el día a día."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tiempo tarda en estar listo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Normalmente, en 2 semanas tienes un prototipo funcional que puedes probar con datos reales. La implementación completa suele estar lista en 4-6 semanas, dependiendo de la complejidad."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si no me convence el resultado?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para eso existe el prototipo. Lo pruebas antes de comprometerte con nada. Si no te convence, no sigues adelante y no tiene coste. Así de simple."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajáis solo con negocios de Valladolid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestra prioridad son negocios de Valladolid y alrededores, porque creemos en el trato cercano y las reuniones presenciales. Pero si tienes un negocio fuera de la zona, escríbenos igualmente y vemos cómo ayudarte."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es seguro compartir datos de mi negocio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Tratamos los datos con total confidencialidad y cumplimos con la normativa de protección de datos (RGPD). No compartimos información con terceros ni la usamos para otros fines."
+        }
+      }
+    ]
+  }
+  </script>
 </section>
 
 
