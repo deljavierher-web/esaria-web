@@ -325,60 +325,101 @@ a:hover{color:#A78BFA}
 'use strict';
 
 /* ── Chat Flow Data ── */
-const FLOW = [{"id": "btn-reservar", "label": "📅 Reservar clase de las 19:30", "userMsg": "Me gustaría reservar la clase de CrossFit de las 19:30", "botResponses": ["¡Perfecto! Déjame comprobarlo... 🔍", "✅ <b>Reserva confirmada</b><br><br>📋 Clase: CrossFit PRO<br>⏰ Hora: 19:30<br>📍 Sala principal<br><br>¡Nos vemos! 💪"], "backendAction": "reserve_class"}, {"id": "btn-tarifas", "label": "💰 Consultar tarifas", "userMsg": "¿Cuáles son las tarifas del gimnasio?", "botResponses": ["¡Claro! Aquí tienes nuestras tarifas:", "🏋️ <b>Plan Básico</b>: 39€/mes<br>🔥 <b>Plan Premium</b>: 59€/mes<br>⭐ <b>Plan VIP</b>: 79€/mes<br><br>Todos incluyen acceso libre. ¿Te apuntas a una clase de prueba gratis? 😊"], "backendAction": null}];
-const ACTIONS = {"reserve_class": [{"id": "s-1930", "prop": "textContent", "val": "COMPLETO 15/15"}, {"id": "s-1930", "prop": "className", "val": "bp-slots full"}, {"id": "class-1930", "prop": "addclass", "val": "bp-updated"}]};
-const NOMBRE = 'Racksrooster Box';
+var FLOW = [{"id": "btn-reservar", "label": "📅 Reservar clase de las 19:30", "userMsg": "Me gustaría reservar la clase de CrossFit de las 19:30", "botResponses": ["¡Perfecto! Déjame comprobarlo... 🔍", "✅ <b>Reserva confirmada</b><br><br>📋 Clase: CrossFit PRO<br>⏰ Hora: 19:30<br>📍 Sala principal<br><br>¡Nos vemos! 💪"], "backendAction": "reserve_class"}, {"id": "btn-tarifas", "label": "💰 Consultar tarifas", "userMsg": "¿Cuáles son las tarifas del gimnasio?", "botResponses": ["¡Claro! Aquí tienes nuestras tarifas:", "🏋️ <b>Plan Básico</b>: 39€/mes<br>🔥 <b>Plan Premium</b>: 59€/mes<br>⭐ <b>Plan VIP</b>: 79€/mes<br><br>Todos incluyen acceso libre. ¿Te apuntas a una clase de prueba gratis? 😊"], "backendAction": null}];
+var ACTIONS = {"reserve_class": [{"id": "s-1930", "prop": "textContent", "val": "COMPLETO 15/15"}, {"id": "s-1930", "prop": "className", "val": "bp-slots full"}, {"id": "class-1930", "prop": "addclass", "val": "bp-updated"}]};
+var NOMBRE = 'Racksrooster Box';
 
 /* ── State ── */
-let busy = false;
+var busy = false;
 
 /* ── DOM ── */
-const chat = document.getElementById('wa-msgs');
-const btnsWrap = document.getElementById('wa-btns');
+var chat = document.getElementById('wa-msgs');
+var btnsWrap = document.getElementById('wa-btns');
 
 /* ── Init ── */
 function init() {
-  renderButtons();
-  addMsg('¡Hola! 👋 Soy el asistente de <b>' + NOMBRE + '</b>. ¿En qué puedo ayudarte?', 'recv');
-  observeFadeUps();
-  initCalc();
+  try {
+    renderButtons();
+    addMsg('¡Hola! 👋 Soy el asistente de <b>' + NOMBRE + '</b>. ¿En qué puedo ayudarte?', 'recv');
+  } catch (e) {
+    console.error('Error in chat init:', e);
+  }
+  
+  try {
+    observeFadeUps();
+  } catch (e) {
+    console.error('Error in fade-up init:', e);
+    // Fallback inmediato si observeFadeUps falla
+    var els = document.querySelectorAll('.fade-up');
+    for (var i = 0; i < els.length; i++) {
+      els[i].classList.add('visible');
+    }
+  }
+
+  try {
+    initCalc();
+  } catch (e) {
+    console.error('Error in calc init:', e);
+  }
 }
 
 /* ── Buttons ── */
 function renderButtons() {
+  if (!btnsWrap) return;
   btnsWrap.innerHTML = FLOW.map(function(b, i) {
     return '<button class="wa-btn" data-i="' + i + '">' + b.label + '</button>';
   }).join('');
-  btnsWrap.querySelectorAll('.wa-btn').forEach(function(el) {
-    el.addEventListener('click', function() { handleBtn(+el.dataset.i); });
-  });
+  
+  var buttons = btnsWrap.querySelectorAll('.wa-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    (function(idx) {
+      buttons[idx].addEventListener('click', function() { handleBtn(idx); });
+    })(i);
+  }
 }
 
 /* ── Handle Button Click ── */
-async function handleBtn(i) {
+function handleBtn(i) {
   if (busy) return;
   busy = true;
-  const b = FLOW[i];
-  const btn = btnsWrap.querySelector('[data-i="' + i + '"]');
-  if (btn) { btn.disabled = true; btn.classList.add('used'); }
-
-  addMsg(b.userMsg, 'sent');
-  await wait(700);
-  showTyping();
-
-  for (let r = 0; r < b.botResponses.length; r++) {
-    await wait(1200);
-    hideTyping();
-    addMsg(b.botResponses[r], 'recv');
-    if (r < b.botResponses.length - 1) { await wait(400); showTyping(); }
+  var b = FLOW[i];
+  var btn = btnsWrap.querySelector('[data-i="' + i + '"]');
+  if (btn) { 
+    btn.disabled = true; 
+    btn.classList.add('used'); 
   }
 
-  if (b.backendAction) execAction(b.backendAction);
-  busy = false;
+  addMsg(b.userMsg, 'sent');
+  
+  setTimeout(function() {
+    showTyping();
+    
+    var r = 0;
+    function nextResponse() {
+      if (r < b.botResponses.length) {
+        setTimeout(function() {
+          hideTyping();
+          addMsg(b.botResponses[r], 'recv');
+          r++;
+          if (r < b.botResponses.length) {
+            setTimeout(function() {
+              showTyping();
+              nextResponse();
+            }, 400);
+          } else {
+            if (b.backendAction) execAction(b.backendAction);
+            busy = false;
+          }
+        }, 1200);
+      }
+    }
+    nextResponse();
+  }, 700);
 }
 
 /* ── Messages ── */
 function addMsg(html, type) {
+  if (!chat) return;
   var d = document.createElement('div');
   d.className = 'wa-msg ' + type;
   var now = new Date();
@@ -390,17 +431,19 @@ function addMsg(html, type) {
 }
 
 function showTyping() {
+  if (!chat) return;
   var d = document.createElement('div');
-  d.className = 'wa-typing'; d.id = 'typing-ind';
+  d.className = 'wa-typing'; 
+  d.id = 'typing-ind';
   d.innerHTML = '<span></span><span></span><span></span>';
   chat.appendChild(d);
   chat.scrollTop = chat.scrollHeight;
 }
+
 function hideTyping() {
   var el = document.getElementById('typing-ind');
   if (el) el.remove();
 }
-function wait(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
 
 /* ── Backend Actions ── */
 function execAction(actionId) {
@@ -420,14 +463,21 @@ function initCalc() {
   var s1 = document.getElementById('sl1');
   var s2 = document.getElementById('sl2');
   var s3 = document.getElementById('sl3');
-  if (!s1) return;
+  if (!s1 || !s2 || !s3) return;
 
   function calc() {
     var m = +s1.value, mins = +s2.value, rate = +s3.value;
-    document.getElementById('sv1').textContent = m;
-    document.getElementById('sv2').textContent = mins + ' min';
-    document.getElementById('sv3').textContent = rate + '€';
-    updSlider(s1); updSlider(s2); updSlider(s3);
+    
+    var sv1 = document.getElementById('sv1');
+    var sv2 = document.getElementById('sv2');
+    var sv3 = document.getElementById('sv3');
+    if (sv1) sv1.textContent = m;
+    if (sv2) sv2.textContent = mins + ' min';
+    if (sv3) sv3.textContent = rate + '€';
+    
+    updSlider(s1); 
+    updSlider(s2); 
+    updSlider(s3);
 
     var hours = (m * mins * 22) / 60;
     var money = hours * rate;
@@ -452,32 +502,52 @@ function initCalc() {
     el.classList.add('pop');
   }
 
-  [s1, s2, s3].forEach(function(s) {
-    s.addEventListener('input', calc);
-    updSlider(s);
-  });
+  var sliders = [s1, s2, s3];
+  for (var i = 0; i < sliders.length; i++) {
+    sliders[i].addEventListener('input', calc);
+    updSlider(sliders[i]);
+  }
   calc();
 }
 
 /* ── Scroll Animations ── */
 function observeFadeUps() {
   var els = document.querySelectorAll('.fade-up');
+  
+  // Fallback temporal de seguridad: A los 350ms forzamos visibilidad de todo por si falla el scroll/IntersectionObserver
+  setTimeout(function() {
+    for (var i = 0; i < els.length; i++) {
+      els[i].classList.add('visible');
+    }
+  }, 350);
+
   if (!('IntersectionObserver' in window)) {
-    els.forEach(function(e) { e.classList.add('visible'); });
+    for (var i = 0; i < els.length; i++) {
+      els[i].classList.add('visible');
+    }
     return;
   }
+  
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      if (e.isIntersecting) { 
+        e.target.classList.add('visible'); 
+        obs.unobserve(e.target); 
+      }
     });
   }, { threshold: 0.15 });
-  els.forEach(function(e) { obs.observe(e); });
+  
+  for (var i = 0; i < els.length; i++) {
+    obs.observe(els[i]);
+  }
 }
 
 /* ── Boot ── */
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
-} else { init(); }
+} else { 
+  init(); 
+}
 
 })();
 
