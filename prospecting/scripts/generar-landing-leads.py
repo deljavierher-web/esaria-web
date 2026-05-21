@@ -946,12 +946,10 @@ def compilar_html(lead, config):
   <p><a href="https://esaria.es" target="_blank">esaria.es</a></p>
 </footer>
 
-<script>
-{js}
-</script>
+<script src="app.js"></script>
 </body>
 </html>"""
-    return html
+    return html, js
 
 
 # ── Main ─────────────────────────────────────────────────────
@@ -962,9 +960,12 @@ def generar_para_lead(lead):
     out_dir = OUTPUT_DIR / slug
     out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / 'index.html'
-    html = compilar_html(lead, config)
+    js_file = out_dir / 'app.js'
+    html, js = compilar_html(lead, config)
     with open(out_file, 'w', encoding='utf-8') as f:
         f.write(html)
+    with open(js_file, 'w', encoding='utf-8') as f:
+        f.write(js)
     print(f"  ✅ {lead['nombre_empresa']}")
     print(f"     → {out_file.relative_to(PROJECT_ROOT)}")
     return out_file
