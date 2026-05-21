@@ -224,3 +224,11 @@ Formato breve:
 - Archivos creados/modificados
 - Cómo probarlo
 - Pendientes reales
+
+## Demo de Telegram (Gimnasios / Citas)
+
+El bot de demostración de citas de Telegram está configurado en `whatsapp-bot/scripts/demo-flujo-telegram.js` (Whisper local + OpenCode Cloud).
+
+* **Para encender la demo**: Ejecuta el comando `npm run demo:telegram-live` dentro de la carpeta `/Users/javidel/Library/CloudStorage/GoogleDrive-deljavierher@gmail.com/Mi unidad/EsarIA/whatsapp-bot` y déjalo corriendo en segundo plano como una tarea.
+* **Para apagar la demo**: Busca el proceso o tarea ejecutando `npm run demo:telegram-live` y cancélalo (mátalo).
+

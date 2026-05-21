@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>EsarIA - Automatización Práctica para tu Negocio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #0F172A;
+      margin: 0;
+      padding: 0;
+      background-color: #FFFFFF;
+      line-height: 1.4;
+      font-size: 11.5px;
+    }
+    h1, h2, h3 {
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      color: #0F172A;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+    }
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0F172A;
+      letter-spacing: -0.5px;
+    }
+    .logo-accent {
+      color: #6D5EF3;
+    }
+    .tagline {
+      font-size: 11px;
+      color: #64748B;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: right;
+    }
+    .intro {
+      font-size: 13px;
+      color: #334155;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .intro strong {
+      color: #6D5EF3;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-problem .card-title {
+      color: #0F172A;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding-bottom: 4px;
+    }
+    .card-solution .card-title {
+      color: #6D5EF3;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding-bottom: 4px;
+    }
+    ul {
+      margin: 0;
+      padding-left: 15px;
+    }
+    li {
+      margin-bottom: 6px;
+      color: #334155;
+    }
+    li strong {
+      color: #0F172A;
+    }
+    .demo-box {
+      background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+      border: 1.5px dashed #6D5EF3;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .demo-title {
+      font-size: 13px;
+      color: #6D5EF3;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .demo-steps {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .step {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 10px;
+      text-align: center;
+    }
+    .step-number {
+      font-weight: 700;
+      color: #6D5EF3;
+      margin-bottom: 2px;
+    }
+    .value-bullets {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .value-card {
+      flex: 1;
+      border-top: 3px solid #6D5EF3;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-radius: 4px;
+      padding: 8px;
+      text-align: center;
+    }
+    .value-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: #6D5EF3;
+      font-weight: 700;
+    }
+    .value-txt {
+      font-size: 10px;
+      color: #64748B;
+      font-weight: 500;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0F172A;
+      color: #FFFFFF;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-top: auto;
+    }
+    .footer-left h3 {
+      color: #FFFFFF;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .footer-left p {
+      margin: 0;
+      font-size: 10px;
+      color: #94A3B8;
+    }
+    .footer-right {
+      text-align: right;
+      font-size: 10.5px;
+      color: #E2E8F0;
+    }
+    .footer-right a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .highlight {
+      background: #ECE9FE;
+      color: #6D5EF3;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo-container">
+      <!-- Icono EsarIA inline SVG -->
+      <svg class="logo-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="7" width="36" height="5" rx="2.5" fill="#0F172A"/>
+        <rect x="2" y="17.5" width="22" height="5" rx="2.5" fill="#0F172A"/>
+        <circle cx="33" cy="20" r="5" fill="#6D5EF3"/>
+        <rect x="2" y="28" width="36" height="5" rx="2.5" fill="#0F172A"/>
+      </svg>
+      <div class="logo-text">Esar<span class="logo-accent">IA</span></div>
+    </div>
+    <div class="tagline">Automatización Práctica • Valladolid</div>
+  </div>
+
+  <div class="intro">
+    <strong>¿Cuánto tiempo dedicas a la semana a tareas administrativas que no te aportan dinero?</strong><br>
+    En EsarIA ayudamos a autónomos, pymes y negocios locales de Valladolid a liberar horas de trabajo administrativo y eliminar errores humanos. Sin tecnicismos complejos ni humo: creamos soluciones sencillas y a medida de tu negocio para hacerlo trabajar en piloto automático.
+  </div>
+
+  <div class="grid">
+    <div class="card card-problem">
+      <div class="card-title">
+        <span>🚫 El sumidero de horas de tu semana</span>
+      </div>
+      <ul>
+        <li><strong>Gestión manual de citas:</strong> Perder tiempo agendando, cancelando o moviendo reservas por teléfono o chat.</li>
+        <li><strong>Llamadas y chats perdidos:</strong> Clientes que escriben fuera de horario o cuando estás ocupado y no reciben respuesta.</li>
+        <li><strong>Falta de recordatorios:</strong> Huecos vacíos en tu agenda debido a clientes que olvidan asistir a su cita.</li>
+        <li><strong>Papeleo manual repetitivo:</strong> Copiar datos a mano, rellenar hojas de cálculo y enviar correos uno a uno.</li>
+      </ul>
+    </div>
+
+    <div class="card card-solution">
+      <div class="card-title">
+        <span>🚀 Soluciones prácticas que funcionan solas</span>
+      </div>
+      <ul>
+        <li><strong>Agendado inteligente 24/7:</strong> Tus clientes reservan solos en tu calendario mediante un bot de WhatsApp o Telegram.</li>
+        <li><strong>Recordatorios de asistencia:</strong> Envíos automáticos personalizados para reducir las inasistencias a cero.</li>
+        <li><strong>Captación de reseñas automática:</strong> Filtro de satisfacción que pide reseña de 5 estrellas en tu Google Maps solo si les encantó.</li>
+        <li><strong>Sincronización instantánea:</strong> Todo se registra de forma automática en tu Google Sheets o CRM en tiempo real.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="value-bullets">
+    <div class="value-card">
+      <div class="value-num">+10 Horas</div>
+      <div class="value-txt">Libres cada semana</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">0 Errores</div>
+      <div class="value-txt">En reservas o datos</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">24 / 7</div>
+      <div class="value-txt">Negocio activo recibiendo citas</div>
+    </div>
+    <div class="value-card">
+      <div class="value-num">+5 Estrellas</div>
+      <div class="value-txt">Reputación automática en Google</div>
+    </div>
+  </div>
+
+  <div class="demo-box">
+    <div class="demo-title">
+      <span>🎙️ ¡Pruébalo ahora en 3 minutos desde tu móvil!</span>
+    </div>
+    <div style="font-size: 10.5px; color: #334155;">
+      Hemos diseñado una demostración interactiva real para que sientas la experiencia de tus clientes en primera persona:
+    </div>
+    <div class="demo-steps">
+      <div class="step">
+        <div class="step-number">Paso 1</div>
+        Abre <b>Telegram</b> en tu móvil
+      </div>
+      <div class="step">
+        <div class="step-number">Paso 2</div>
+        Busca al asistente: <b>@DemoEsarBot</b>
+      </div>
+      <div class="step">
+        <div class="step-number">Paso 3</div>
+        Mándale un audio o texto: <i>"Cita de boxeo a las 6 pm"</i>
+      </div>
+      <div class="step">
+        <div class="step-number">Paso 4</div>
+        Experimenta el flujo y la reseña en 10s
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <h3>¿Hablamos? Diagnóstico Gratuito</h3>
+      <p>Analizamos los procesos de tu negocio y te decimos honestamente si tiene sentido automatizar. Sin compromiso.</p>
+    </div>
+    <div class="footer-right">
+      <b>Contacto:</b> Javier Del Her<br>
+      <b>Web:</b> <a href="https://esaria.es">esaria.es</a><br>
+      <b>Email:</b> deljavierher@gmail.com<br>
+      <b>Soporte:</b> Valladolid y provincia
+    </div>
+  </div>
+
+</body>
+</html>

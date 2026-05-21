@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "id": "e0bfa990-28bf-4a37-b6f1-ef0db32e4d0d",
+      "name": "Google Calendar Trigger",
+      "type": "n8n-nodes-base.googleCalendarTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "TU_CHAT_ID_AQUÍ",
+        "text": "=🔔 AVISO DE RESERVA (Simulación)\n\nHola, te confirmamos que tu sesión de Pilates está agendada para el día {{ $json.start.dateTime }} en nuestro centro. \n\nRecuerda que puedes cancelar con 24 horas de antelación para que otro compañero pueda aprovechar el hueco. ¡Te esperamos!",
+        "additionalFields": {}
+      },
+      "id": "098e9ad3-ef06-4927-99e5-900eb480bf1b",
+      "name": "Telegram Bot",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Google Calendar Trigger": {
+      "main": [
+        [
+          {
+            "node": "Telegram Bot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "f784e1b8-67fa-47dc-9d41-e94511ef932c",
+  "meta": {
+    "instanceId": "e5bfa780d6ebcd038a8e32c02c63ef508fbbe783d73bc27181c00224d081b3d5"
+  }
+}

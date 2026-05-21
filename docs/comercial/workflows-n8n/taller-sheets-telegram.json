@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "TU_SPREADSHEET_ID_DE_GOOGLE_SHEETS",
+          "mode": "list",
+          "cachedResultName": "Demo Taller EsarIA"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Hoja 1",
+          "mode": "list",
+          "cachedResultName": "Hoja 1"
+        },
+        "options": {}
+      },
+      "id": "c1f7b0e4-98da-4e41-9fb0-f1db4283ee91",
+      "name": "Google Sheets Trigger",
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "TU_CHAT_ID_AQUÍ",
+        "text": "=🚗 TALLER MECÁNICO (Simulación)\n\nHola {{ $json.Cliente }}, te informamos de que el presupuesto para tu {{ $json.Coche }} ya está listo y asciende a {{ $json.Importe }}€.\n\nPor favor, confírmanos si damos luz verde a la reparación respondiendo a este mensaje. ¡Gracias!",
+        "additionalFields": {}
+      },
+      "id": "b3e0a1f2-1a2c-4e89-8d77-6f8e7a6b5c4d",
+      "name": "Telegram Bot",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Telegram Bot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "f784e1b8-67fa-47dc-9d41-e94511ef932c",
+  "meta": {
+    "instanceId": "e5bfa780d6ebcd038a8e32c02c63ef508fbbe783d73bc27181c00224d081b3d5"
+  }
+}

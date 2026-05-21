@@ -9,6 +9,9 @@
     "test:demo": "node scripts/test-demo.js",
     "test:bot": "node scripts/test-bot.js",
     "test:telegram": "node scripts/test-telegram.js",
+    "demo:telegram-live": "node scripts/demo-flujo-telegram.js",
+    "demo:gym": "node scripts/demo-gym.js",
+    "demo:taller": "node scripts/demo-taller.js",
     "reset:contact": "node scripts/reset-contact.js",
     "inspect:contact": "node scripts/inspect-contact.js",
     "check": "for file in src/**/*.js scripts/*.js; do node --check \"$file\" || exit 1; done"

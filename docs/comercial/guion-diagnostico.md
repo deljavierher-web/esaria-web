@@ -1,91 +1,97 @@
-# Guión de diagnóstico inicial — EsarIA
+# Guion de diagnóstico inicial — EsarIA
 
 Duración estimada: 30–45 minutos  
-Formato: presencial o videollamada  
-Objetivo: entender cómo funciona el negocio, detectar tareas repetitivas y valorar si hay algo útil que automatizar.
+Formato: presencial (recomendado en Valladolid para generar confianza) o videollamada  
+Objetivo: entender el día a día del negocio, detectar las tareas administrativas que más tiempo consumen y valorar si podemos implantar una solución sencilla que las resuelva solas para liberar horas de trabajo.
+
+**Regla de oro de la sesión (Cero Jerga):**
+- **NUNCA** hables de *"automatizaciones"*, *"integraciones"*, *"APIs"*, *"Make"*, *"CRM"* ni *"IA"*.
+- **SIEMPRE** habla de *"tareas manuales"*, *"papeleo de oficina"*, *"avisos automáticos"*, *"ordenar la agenda"* o *"sistemas que funcionan solos"*.
+- Escucha el 80% del tiempo y habla solo el 20%. Tu labor es entender el dolor, no vender una tecnología en esta fase.
 
 ---
 
-## Antes de la reunión
+## 1. Apertura y encuadre (2–3 min)
 
-- Revisar brevemente el negocio (web, Google Maps, Instagram si tiene).
-- Anotar el sector y posibles procesos típicos del sector.
-- Llevar papel o abrir un documento para tomar notas durante la conversación.
-
----
-
-## Apertura (2–3 min)
-
-"Gracias por recibirme / por el rato. La idea de hoy no es venderte nada, sino entender cómo funciona tu negocio y ver si hay algo en lo que podamos ayudarte de verdad. Voy a hacerte algunas preguntas sobre el día a día y al final te cuento qué podríamos hacer, si es que hay algo que tenga sentido."
+> "Muchas gracias por recibirme hoy, [NOMBRE]. Como te comenté, la idea de este rato no es venderte nada, sino entender bien cómo gestionáis el día a día aquí en [NOMBRE DEL NEGOCIO] y ver si hay tareas repetitivas de oficina que os estén quitando tiempo de vuestro verdadero trabajo.
+> 
+> Voy a hacerte unas preguntas rápidas sobre cómo os organizáis. Si veo que hay alguna forma sencilla de ahorraros horas semanales o evitar despistes con clientes, te lo diré al final. Si no veo una mejora clara, también te lo diré con total honestidad. ¿Te parece bien?"
 
 ---
 
-## Bloque 1 — El negocio (5–10 min)
+## 2. Bloque 1 — Contexto del negocio (5–10 min)
 
-Objetivo: entender el contexto general antes de hablar de procesos.
+*Objetivo: entender el tamaño, volumen y flujo de clientes.*
 
-- ¿Cuántas personas trabajáis en el negocio?
-- ¿Cuántos clientes atendéis aproximadamente a la semana?
-- ¿Trabajáis solo con cita previa, o también con clientes que llegan sin cita?
-- ¿Tenéis clientes que repiten o principalmente son nuevos?
-
----
-
-## Bloque 2 — Tareas del día a día (10–15 min)
-
-Objetivo: encontrar los procesos que más tiempo consumen y que se repiten.
-
-- Si te pregunto qué es lo más pesado o repetitivo de tu semana, ¿qué me dices?
-- ¿Cómo gestionáis las citas ahora mismo? ¿Por teléfono, WhatsApp, alguna app?
-- ¿Cuántos WhatsApps o llamadas recibís al día para cosas como horarios, precios o dudas habituales?
-- ¿Enviáis presupuestos? ¿Cómo hacéis el seguimiento?
-- ¿Tenéis algún proceso de recogida de datos de clientes (fichas, formularios, papel)?
-- ¿Hay algo que hagáis siempre igual, semana tras semana, que os gustaría no tener que hacer manualmente?
+- Para ponerme en situación, ¿cuántos estáis ahora mismo trabajando en el negocio? (¿Quién se encarga de las llamadas y el papeleo?).
+- ¿A cuántos clientes atendéis aproximadamente en una semana normal?
+- ¿Trabajáis siempre con cita reservada previamente o la gente entra directamente?
+- ¿Vuestros clientes son principalmente recurrentes (vuelven todas las semanas/meses) o es gente nueva que viene una sola vez?
 
 ---
 
-## Bloque 3 — Herramientas actuales (5 min)
+## 3. Bloque 2 — El día a día y tareas pesadas (15–20 min)
 
-Objetivo: saber con qué trabajan para no proponer cosas incompatibles.
+*Objetivo: localizar los dolores específicos en los procesos que se pueden resolver.*
 
-- ¿Usáis algún software para gestionar el negocio? ¿Cuál?
-- ¿Tenéis agenda digital o en papel?
-- ¿Usáis correo electrónico para comunicaros con clientes?
-- ¿Usáis WhatsApp Business o WhatsApp normal?
-- ¿Tenéis web o ficha en Google?
+### Pregunta rompehielos (Dolor principal)
+- "Si tuvieras que elegir **una sola tarea de oficina o papeleo** que consideres la más pesada, aburrida o que más pereza te da de toda tu semana... ¿cuál sería?"
 
----
-
-## Bloque 4 — Objetivos y expectativas (5 min)
-
-Objetivo: entender qué espera el cliente y ajustar expectativas.
-
-- Si pudiéramos quitarte una tarea de encima, ¿cuál sería?
-- ¿Qué sería para ti un resultado exitoso en los próximos tres meses?
-- ¿Has probado antes alguna herramienta de este tipo? ¿Qué pasó?
-- ¿Hay algo que te preocupe de automatizar cosas?
-
----
-
-## Cierre (2–3 min)
-
-"Con lo que me has contado, ya tengo bastante. Voy a analizar qué tendría sentido proponer en tu caso concreto y te envío una propuesta en los próximos días. No va a ser nada genérico, va a estar basado en lo que me has explicado hoy."
-
-Si hay algo claro ya: "Creo que hay una oportunidad concreta en [X proceso]. Te lo desarrollo por escrito y te cuento exactamente qué haríamos y cuánto costaría."
-
-Si no hay nada claro: "Seré honesto: no veo ahora mismo algo que tenga mucho sentido automatizar sin que sea forzado. Si en algún momento cambia la situación o creces, volvemos a hablar."
+### Profundizando en procesos clave (Bajo Riesgo RGPD)
+- **Gestión de citas (Gimnasios / Talleres):**
+  - ¿Cómo os piden cita o reservan los clientes ahora mismo? (¿Por teléfono, WhatsApp, os mandan audios, lo apuntáis en papel o en algún programa?).
+  - ¿Cuánto tiempo al día le dedicáis a confirmar que la cita es correcta o a recordarles que tienen que venir?
+  - ¿Qué pasa si un cliente no se presenta o avisa tarde? ¿Cuántas citas de este tipo perdéis al mes?
+- **Presupuestos y entregas (Talleres / Servicios):**
+  - Cuando hacéis un presupuesto, ¿cómo se lo enviáis al cliente? ¿Cómo hacéis el seguimiento si no os responde en unos días? ¿Tenéis que llamarle a mano uno a uno?
+  - ¿Cómo le avisáis de que ya puede pasar a recoger su coche/pedido? ¿Qué pasa si no responde al momento?
+- **Atención a dudas habituales:**
+  - ¿Cuántas veces al día os entra el mismo mensaje o llamada preguntando por horarios, dónde estáis, precios de clases o si tenéis hueco libre? ¿Quién responde a eso y cuánto tiempo le quita?
+- **Fichas de clientes y papeleo:**
+  - Cuando entra un cliente nuevo, ¿cómo apuntáis sus datos? ¿Hay que pasarlos a mano de un papel al ordenador o de un programa a otro?
 
 ---
 
-## Notas post-diagnóstico
+## 4. Bloque 3 — Comodidad tecnológica (5 min)
 
-Antes de escribir la propuesta, anotar:
+*Objetivo: saber con qué herramientas trabajan para proponer soluciones invisibles.*
 
-- [ ] Proceso principal detectado
-- [ ] Herramientas actuales que usan
-- [ ] Volumen aproximado (citas/semana, mensajes/día...)
-- [ ] Nivel de comodidad tecnológica del cliente
-- [ ] Objeciones o miedos que aparecieron
-- [ ] Estimación de tiempo que ahorraría
-- [ ] Servicio encajable de la oferta
-- [ ] Precio orientativo a proponer
+- ¿Qué programas o herramientas utilizáis en vuestro día a día para gestionar el negocio (agenda, correo, programa de facturación)?
+- ¿La agenda es digital o seguís usando la clásica libreta de papel? (Ninguna es mala, es solo por saber).
+- ¿Utilizáis WhatsApp Business (el de empresa con logo) o el WhatsApp normal de toda la vida?
+- ¿Quién de vosotros se encarga de tocar estos programas? ¿Os da guerra la tecnología o la manejáis sin problemas?
+
+---
+
+## 5. Bloque 4 — Expectativas y límites (5 min)
+
+*Objetivo: acotar el valor y alinear objetivos.*
+
+- Si mañana pudieras chasquear los dedos y hacer que una de estas tareas rutinarias se hiciera sola a partir de ahora... ¿cuál elegirías?
+- ¿Qué tendría que pasar en los próximos 2 o 3 meses para que sientas que el tiempo que hemos dedicado hoy ha valido la pena de verdad? (Ej: *"que los clientes dejen de faltar a las citas"*, *"no tener que responder WhatsApps por la noche"*).
+- ¿Hay algo que te dé miedo o te preocupe a la hora de cambiar la forma de gestionar estas tareas? (Ej: *"perder el trato cercano con el cliente"*, *"que el sistema falle"*, *"que sea muy complicado de usar"*).
+
+---
+
+## 6. Cierre honesto y profesional (3 min)
+
+> "Pues con esto tengo todo muy claro, [NOMBRE]. No te robo más tiempo.
+> 
+> **[Opción A: Hay una oportunidad clara]**
+> Veo muy claro que en la gestión de [ej: confirmaciones de presupuestos en el taller / reservas de las clases de pilates] estáis perdiendo varias horas a la semana y que hay algún que otro despiste de comunicación.
+> Lo que voy a hacer es analizar tu caso concreto y redactar una propuesta muy sencilla. En ella te explicaré: qué sistema dejaríamos montado, cómo os va a ahorrar tiempo en vuestro día a día y cuánto os costará (con precio cerrado, sin sorpresas). Te la envío por WhatsApp antes del [DÍA DE LA SEMANA]. ¿Te parece bien?"
+> 
+> **[Opción B: No hay oportunidad clara o es muy complejo]**
+> Te soy completamente honesto: con la estructura que tenéis ahora mismo y vuestro volumen actual, no veo que os merezca la pena cambiar nada. Lo tenéis bastante bien organizado y cualquier sistema que os monte os va a dar más trabajo que beneficio. Mi recomendación es que sigáis haciéndolo como hasta ahora. Si en unos meses crecéis en personal o volumen de clientes, nos volvemos a tomar un café y lo valoramos. ¡Muchas gracias por tu transparencia!"
+
+---
+
+## Tareas operativas post-reunión
+
+1. **Anotaciones rápidas en caliente**: Escribir en la ficha del lead:
+   - Dolor principal exacto (en palabras del cliente).
+   - Herramientas actuales.
+   - Nivel digital del dueño/equipo (bajo, medio, alto).
+   - Datos clave del volumen (ej: *30 presupuestos/semana*, *15 cancelaciones/mes*).
+2. **Definir la propuesta**: Buscar una solución que encaje en la oferta básica, con foco prioritario en **cero fricción RGPD** (datos mínimos, consentimiento explícito sencillo).
+3. **Plazo de entrega**: Cumplir rigurosamente la fecha de entrega prometida. En Valladolid, la seriedad en los plazos define al profesional.
