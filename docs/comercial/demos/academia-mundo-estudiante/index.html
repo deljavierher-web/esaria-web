@@ -155,8 +155,8 @@ a:hover{color:#A78BFA}
 @keyframes valPop{0%{transform:scale(1)}50%{transform:scale(1.12);color:#6D5EF3}100%{transform:scale(1)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{opacity:1;transition:opacity .6s ease,transform .6s ease}
-.fade-up.visible{opacity:1}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
 
 /* ─ Responsive ─ */
 @media(max-width:900px){
@@ -331,11 +331,15 @@ var NOMBRE = 'Academia Mundo estudiante';
 var busy = false;
 
 /* ── DOM ── */
-var chat = document.getElementById('wa-msgs');
-var btnsWrap = document.getElementById('wa-btns');
+var chat = null;
+var btnsWrap = null;
 
 /* ── Init ── */
 function init() {
+  // Re-evaluamos el DOM aquí para asegurar que los elementos ya existen en el navegador
+  chat = document.getElementById('wa-msgs');
+  btnsWrap = document.getElementById('wa-btns');
+
   try {
     renderButtons();
     addMsg('¡Hola! 👋 Soy el asistente de <b>' + NOMBRE + '</b>. ¿En qué puedo ayudarte?', 'recv');
