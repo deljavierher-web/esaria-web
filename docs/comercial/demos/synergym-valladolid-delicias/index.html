@@ -18,7 +18,7 @@ a:hover{color:#A78BFA}
 
 /* ─ Navbar ─ */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em}
+.nav-logo{font-size:1.4rem;font-weight:800;color:#A78BFA;background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;background-clip:text;letter-spacing:-.02em}
 .nav-links{display:flex;gap:1.5rem}
 .nav-links a{color:#94A3B8;font-size:.875rem;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:#F8FAFC}
@@ -29,7 +29,7 @@ a:hover{color:#A78BFA}
 .hero::after{content:'';position:absolute;bottom:-30%;right:-10%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(139,124,246,.08) 0%,transparent 70%);pointer-events:none}
 .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(109,94,243,.15);color:#A78BFA;font-size:.8rem;font-weight:600;letter-spacing:.02em;margin-bottom:1.5rem;border:1px solid rgba(109,94,243,.2)}
 .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.15;max-width:800px;letter-spacing:-.03em;margin-bottom:1rem}
-.hero h1 .hl{background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .hl{color:#A78BFA;background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;background-clip:text}
 .hero .sub{color:#94A3B8;font-size:1.1rem;max-width:600px;margin:0 auto 2rem}
 .rating-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.2rem;border-radius:12px;background:rgba(255,255,255,.05);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);font-size:.95rem;color:#E2E8F0}
 .rating-badge .stars{color:#FBBF24}
@@ -133,7 +133,7 @@ a:hover{color:#A78BFA}
 .proposal{text-align:center;max-width:700px;margin:0 auto}
 .p-card{padding:3rem;border-radius:24px;background:rgba(255,255,255,.04);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 50px rgba(0,0,0,.2)}
 .p-card h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;margin-bottom:2rem;letter-spacing:-.02em}
-.p-card h2 .hl{background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.p-card h2 .hl{color:#A78BFA;background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;background-clip:text}
 .p-feats{text-align:left;max-width:440px;margin:0 auto 2rem;display:flex;flex-direction:column;gap:.75rem}
 .p-feat{font-size:1rem;padding:.6rem 1rem;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.05)}
 .p-feat.free{background:rgba(109,94,243,.1);border-color:rgba(109,94,243,.2);color:#A78BFA;font-weight:600}
@@ -144,7 +144,7 @@ a:hover{color:#A78BFA}
 
 /* ─ Footer ─ */
 .footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06)}
-.footer-logo{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem}
+.footer-logo{font-size:1.2rem;font-weight:800;color:#A78BFA;background:linear-gradient(135deg,#6D5EF3,#A78BFA);-webkit-background-clip:text;background-clip:text;margin-bottom:.5rem}
 .footer p{color:#64748B;font-size:.85rem}
 
 /* ─ Animations ─ */
@@ -157,6 +157,8 @@ a:hover{color:#A78BFA}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
+/* Degradado en texto solo si el WebView soporta background-clip:text; si no, queda el color solido de respaldo */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){.nav-logo,.hero h1 .hl,.p-card h2 .hl,.footer-logo{-webkit-text-fill-color:transparent}}
 
 /* ─ Responsive ─ */
 @media(max-width:900px){
@@ -427,7 +429,9 @@ function addMsg(html, type) {
   var d = document.createElement('div');
   d.className = 'wa-msg ' + type;
   var now = new Date();
-  var t = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+  var hrs = now.getHours();
+  var mins = now.getMinutes();
+  var t = (hrs < 10 ? '0' + hrs : hrs) + ':' + (mins < 10 ? '0' + mins : mins);
   var tick = type === 'sent' ? ' ✓✓' : '';
   d.innerHTML = '<p>' + html + '</p><span class="wa-t">' + t + tick + '</span>';
   chat.appendChild(d);
@@ -446,7 +450,7 @@ function showTyping() {
 
 function hideTyping() {
   var el = document.getElementById('typing-ind');
-  if (el) el.remove();
+  if (el && el.parentNode) el.parentNode.removeChild(el);
 }
 
 /* ── Backend Actions ── */
