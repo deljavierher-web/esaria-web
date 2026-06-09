@@ -79,4 +79,16 @@
   > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
   > My GitHub: https://github.com/deljavierher-web"
 
+### 7. **China Three Gorges (CTG) — AI & Automation Intern (Híbrido, Madrid)**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "China Three Gorges AI Automation Intern")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** en LinkedIn.
+* **Pitch en inglés para CTG Europe:**
+  > "Hi Lara and CTG Europe Team,
+  > I am writing to apply for the AI & Automation Internship position.
+  > As an Engineering student at the University of Valladolid (UVa) with hands-on experience developing AI integrations, I am very excited about the opportunity to support your Digital Center. I am proficient with **Python, APIs, JSON, and GitHub**, and I have built production-level automation workflows using **n8n and Make**, as well as custom **AI agents** utilizing LLM APIs (OpenAI/Claude) and speech processing (Whisper).
+  > I am passionate about renewable energy and how digital automation can drive efficiency in this sector.
+  > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > My GitHub: https://github.com/deljavierher-web"
+
+
 
