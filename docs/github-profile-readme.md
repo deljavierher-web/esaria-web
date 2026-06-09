@@ -1,6 +1,6 @@
 # ¡Hola! Soy Javier Delgado Hernández 👋
 
-Soy desarrollador de software y especialista en automatización de procesos, enfocado en conectar sistemas operativos con Inteligencia Artificial (LLMs) para eliminar tareas manuales e ineficiencias. Actualmente estudio Ingeniería Mecánica en la Universidad de Valladolid (UVa) y aplico principios ingenieriles y analíticos al diseño de arquitecturas de software.
+Soy desarrollador de software y especialista en automatización de procesos, enfocado en conectar sistemas de negocio y software con Inteligencia Artificial (LLMs) para eliminar tareas manuales e ineficiencias. Actualmente estudio Ingeniería Mecánica en la Universidad de Valladolid (UVa) y aplico principios ingenieriles y analíticos al diseño de arquitecturas de software.
 
 ## 🚀 Lo que hago
 *   **Automatización de Procesos:** Construcción de pipelines de integración de datos conectando APIs, Webhooks y plataformas *low-code* / *no-code* (Make, Zapier, n8n).
