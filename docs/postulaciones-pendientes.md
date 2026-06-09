@@ -58,3 +58,14 @@
 ### 4. **Zenchef — AI & Automation Process Specialist (Híbrido, Sevilla)**
 * **Estado:** Pendiente de aplicar desde su web externa.
 * **Pitch:** Usar la carta de presentación [docs/carta-presentacion-javier.pdf](file:///Users/javidel/Library/CloudStorage/GoogleDrive-deljavierher@gmail.com/Mi%20unidad/EsarIA/docs/carta-presentacion-javier.pdf) y enviar el mensaje personalizado redactado en el chat.
+
+### 5. **Leadtech — AI Automation Engineer (Remoto o Barcelona)**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "Leadtech AI Automation Engineer")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** en LinkedIn.
+* **Pitch en inglés para Leadtech:**
+  > "Hi Leadtech Hiring Team,
+  > I am writing to apply for the AI Automation Engineer position.
+  > I specialize in building end-to-end automation pipelines using **n8n, Make, REST APIs, and Webhooks**, with a strong command of JavaScript and Python for code scripting. In addition, I have hands-on experience in **Voice AI and LLM integrations**—I developed a production-ready conversational booking bot that uses the Whisper API for real-time speech transcription and LLMs for structured JSON parsing.
+  > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > My GitHub: https://github.com/deljavierher-web"
+
