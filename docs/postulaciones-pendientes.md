@@ -100,6 +100,18 @@
   > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
   > My GitHub: https://github.com/deljavierher-web"
 
+### 9. **Omega CRM (Merkle) — AI & Automation Business Analyst (Remoto)**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "Omega CRM AI Automation Business Analyst")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** en LinkedIn.
+* **Nota importante:** Es el **mismo proyecto farmacéutico** que el de Hays, pero directamente contratado por la consultora tecnológica (Omega CRM). Es mucho mejor aplicar aquí directamente.
+* **Pitch en español para Omega CRM:**
+  > "Hola Elena y equipo de selección de Omega CRM:
+  > Me pongo en contacto con vosotros para presentar mi candidatura al puesto de AI & Automation Business Analyst.
+  > Aporto experiencia práctica en el modelado, análisis y rediseño de procesos ("as-is" y "to-be") que he liderado en proyectos de digitalización para pymes. Sé traducir necesidades de negocio complejas en especificaciones técnicas claras y flujos de automatización integrando APIs y herramientas como n8n y Make, colaborando directamente con equipos técnicos.
+  > Mi CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > Mi GitHub: https://github.com/deljavierher-web"
+
+
 
 
 
