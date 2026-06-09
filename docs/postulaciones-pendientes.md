@@ -131,3 +131,14 @@
   > I specialize in building end-to-end automation pipelines and reasoning chains using **n8n, Make, and Python**, with a focus on connecting business systems via APIs. In my experience at EsarIA, I have built production-ready integrations linking LLMs (OpenAI/Claude/DeepSeek) and voice processing tools (Whisper API) for booking and operations automation. I value modularity, speed of execution, and solving real business problems over over-engineered code.
   > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
   > My GitHub: https://github.com/deljavierher-web"
+
+### 12. **Echelonn — AI Automation Engineer (Junior) (Remoto)**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "Echelonn AI Automation Engineer Junior")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** en LinkedIn.
+* **Pitch en inglés para Sophie Lidzbarska:**
+  > "Hi Sophie and Echelonn Team,
+  > I am writing to apply for the Junior AI Automation Engineer position.
+  > I am currently studying Engineering at the University of Valladolid (UVa) and have a strong technical foundation in **JavaScript, Python, and SQL**. In my work with EsarIA, I have built and maintained automation workflows using **Make and n8n**, connecting APIs (including Google Sheets and Google Apps Script) and integrating LLM APIs (OpenAI/Claude) into production workflows. I am highly motivated to learn from your senior engineers and contribute to Echelonn.
+  > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > My GitHub: https://github.com/deljavierher-web"
+
