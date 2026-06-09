@@ -122,8 +122,12 @@
   > Mi CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
   > Mi GitHub: https://github.com/deljavierher-web"
 
-
-
-
-
-
+### 11. **THRYVE — AI Automation Engineer (Remoto)**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "THRYVE AI Automation Engineer")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** en LinkedIn.
+* **Pitch en inglés para Ryan Delaney:**
+  > "Hi Ryan and THRYVE Hiring Team,
+  > I am writing to apply for the AI Automation Engineer position.
+  > I specialize in building end-to-end automation pipelines and reasoning chains using **n8n, Make, and Python**, with a focus on connecting business systems via APIs. In my experience at EsarIA, I have built production-ready integrations linking LLMs (OpenAI/Claude/DeepSeek) and voice processing tools (Whisper API) for booking and operations automation. I value modularity, speed of execution, and solving real business problems over over-engineered code.
+  > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > My GitHub: https://github.com/deljavierher-web"
