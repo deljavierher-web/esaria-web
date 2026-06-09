@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Javier Delgado Hernández</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F172A;
+      --accent: #6D5EF3;
+      --bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --light-blue: #F8FAFC;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F1F5F9;
+      color: var(--text);
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .cv-page {
+      background: var(--bg);
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      padding: 16mm 18mm;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      position: relative;
+    }
+
+    /* Layout de Dos Columnas */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10mm;
+      height: 100%;
+    }
+
+    /* Columna Principal (Izquierda) */
+    .main-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+    }
+
+    /* Columna Lateral (Derecha) */
+    .side-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+      border-left: 1px solid var(--border);
+      padding-left: 8mm;
+    }
+
+    /* Cabecera del CV */
+    .header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 4mm;
+      margin-bottom: 4mm;
+    }
+
+    .name {
+      font-size: 24pt;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .title {
+      font-size: 11.5pt;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1mm;
+    }
+
+    /* Secciones */
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 1.5mm;
+      margin-bottom: 3mm;
+    }
+
+    /* Experiencia y Proyectos */
+    .item {
+      margin-bottom: 4mm;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1mm;
+    }
+
+    .item-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .item-company {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .item-date {
+      font-size: 8.5pt;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      font-size: 8.5pt;
+      color: var(--text-muted);
+      margin-bottom: 1.5mm;
+      font-style: italic;
+    }
+
+    .item-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .item-list li {
+      font-size: 8.5pt;
+      position: relative;
+      padding-left: 4.5mm;
+      margin-bottom: 1mm;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .item-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 11pt;
+      position: absolute;
+      left: 1mm;
+      top: -0.5px;
+    }
+
+    /* Datos de Contacto y Enlaces */
+    .contact-item {
+      font-size: 8.5pt;
+      margin-bottom: 2mm;
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--primary);
+      min-width: 15mm;
+    }
+
+    .contact-value {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-value:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills en la Barra Lateral */
+    .skill-category {
+      margin-bottom: 4mm;
+    }
+
+    .skill-category-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.5mm;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5mm;
+    }
+
+    .skill-tag {
+      font-size: 7.5pt;
+      background: var(--light-blue);
+      color: var(--primary);
+      padding: 1mm 2mm;
+      border-radius: 4px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+
+    /* Educación */
+    .edu-item {
+      margin-bottom: 3.5mm;
+    }
+
+    .edu-degree {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .edu-school {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .edu-date {
+      font-size: 8pt;
+      color: var(--text-muted);
+      margin-top: 0.5mm;
+    }
+
+    .edu-details {
+      font-size: 8pt;
+      color: var(--text);
+      margin-top: 1mm;
+      font-style: italic;
+    }
+
+    /* Configuración de Impresión PDF */
+    @media print {
+      body {
+        background-color: var(--bg);
+      }
+      .cv-page {
+        margin: 0;
+        box-shadow: none;
+        padding: 10mm 12mm;
+        width: 210mm;
+        height: 297mm;
+      }
+      /* Ajuste fino de espaciados para impresión en una sola página */
+      .grid {
+        gap: 8mm;
+      }
+      .side-col {
+        padding-left: 6mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cv-page">
+    
+    <!-- Cabecera -->
+    <div class="header">
+      <div class="name">Javier Delgado Hernández</div>
+      <div class="title">AI Automation Specialist & Software Developer</div>
+    </div>
+
+    <!-- Contenedor Principal -->
+    <div class="grid">
+      
+      <!-- Columna Principal (Izquierda) -->
+      <div class="main-col">
+        
+        <!-- Perfil Profesional -->
+        <div>
+          <div class="section-title">Perfil Profesional</div>
+          <p style="font-size: 8.5pt; text-align: justify; line-height: 1.4;">
+            Especialista en Automatización de Procesos e Integración de Software con enfoque práctico en Inteligencia Artificial y modelos de lenguaje (LLMs). Combino formación analítica en ingeniería con experiencia en el desarrollo nativo de aplicaciones móviles (Kotlin, Jetpack Compose). Especializado en diseñar flujos de integración y arquitecturas de datos robustas (APIs, JSON) que optimizan el rendimiento operativo de los negocios, reduciendo tiempos de gestión y eliminando errores manuales.
+          </p>
+        </div>
+
+        <!-- Experiencia Profesional -->
+        <div>
+          <div class="section-title">Experiencia Profesional</div>
+          
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">Especialista en Automatización e Integraciones de IA (Lead Developer)</span>
+              <span class="item-date">Sept. 2025 – Presente</span>
+            </div>
+            <div style="font-size: 9pt; font-weight: 600; color: var(--accent); margin-bottom: 1mm;">EsarIA (Soluciones Tecnológicas B2B) — Valladolid, España</div>
+            <div style="font-size: 7.8pt; color: var(--text-muted); margin-bottom: 2mm;">Código en GitHub: <a href="https://github.com/deljavierher-web/citas-bot-whisper" style="color: var(--accent); text-decoration: none; font-weight: 600;" target="_blank">github.com/deljavierher-web/citas-bot-whisper</a></div>
+            <div class="item-desc">Desarrollo y despliegue de sistemas de automatización de flujos de trabajo y optimización de procesos.</div>
+            <ul class="item-list">
+              <li><strong>Modelado y Análisis de Procesos:</strong> Auditoría de flujos operativos en empresas de servicios (clínicas, talleres y ópticas), mapeando cuellos de botella para diseñar planes de digitalización que redujeron hasta un 70% las horas de gestión manual.</li>
+              <li><strong>Desarrollo de Integraciones y APIs:</strong> Sincronización automática de datos entre hojas de cálculo, sistemas CRM y bases de datos estructurando payloads JSON mediante REST APIs, Webhooks y plataformas como Make/n8n.</li>
+              <li><strong>Pipeline de Agentes Conversacionales:</strong> Desarrollo de una demo de agendado autónomo por voz vía Telegram, integrando procesamiento de audio (Whisper) y clasificación con LLMs para procesar citas en tiempo récord.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Proyectos de Desarrollo -->
+        <div>
+          <div class="section-title">Proyectos Destacados (Software)</div>
+          
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">Desarrollador Android Principal</span>
+              <span class="item-date">Proyecto de Innovación</span>
+            </div>
+            <div style="font-size: 9pt; font-weight: 600; color: var(--accent); margin-bottom: 1mm;">Aplicación Móvil NutriFit AI</div>
+            <div style="font-size: 7.8pt; color: var(--text-muted); margin-bottom: 2mm;">Código en GitHub: <a href="https://github.com/deljavierher-web/nutrifit-ai-android" style="color: var(--accent); text-decoration: none; font-weight: 600;" target="_blank">github.com/deljavierher-web/nutrifit-ai-android</a></div>
+            <div class="item-desc">Aplicación nativa para la planificación y seguimiento inteligente de entrenamiento y nutrición.</div>
+            <ul class="item-list">
+              <li><strong>Arquitectura robusta:</strong> Implementación completa en Kotlin siguiendo patrones Clean Architecture y MVVM para asegurar escalabilidad y modularidad en el código.</li>
+              <li><strong>Interfaz declarativa:</strong> Diseño fluido de pantallas e interactividad dinámica utilizando Jetpack Compose con óptimo rendimiento en hilos de renderizado.</li>
+              <li><strong>Persistencia local y offline:</strong> Configuración de base de datos relacional local con Room DB para la resiliencia de datos y sincronización diferida de perfiles de usuario.</li>
+              <li><strong>Integración con LLMs:</strong> Desarrollo de llamadas de red a APIs de Inteligencia Artificial para parsear descripciones libres de comidas y ejercicios en métricas numéricas estructuradas.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Columna Lateral (Derecha) -->
+      <div class="side-col">
+        
+        <!-- Información de Contacto -->
+        <div>
+          <div class="section-title">Contacto</div>
+          <div class="contact-item">
+            <span class="contact-label">Teléfono:</span>
+            <a href="tel:+34678363377" class="contact-value">+34 678 36 33 77</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Email:</span>
+            <a href="mailto:deljavierher@gmail.com" class="contact-value" style="font-size: 8.2pt;">deljavierher@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">LinkedIn:</span>
+            <a href="https://www.linkedin.com/in/javier-delgado-hern%C3%A1ndez-esaria" class="contact-value" target="_blank" style="font-size: 7.2pt; letter-spacing: -0.2px;">linkedin.com/in/javier-delgado-hernández-esaria</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">GitHub:</span>
+            <a href="https://github.com/deljavierher-web" class="contact-value" target="_blank" style="font-size: 8.2pt;">github.com/deljavierher-web</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Web:</span>
+            <a href="https://esaria.es" class="contact-value" target="_blank">esaria.es</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Ubicación:</span>
+            <span class="contact-value">Valladolid, España</span>
+          </div>
+        </div>
+
+        <!-- Educación -->
+        <div style="margin-top: 4mm;">
+          <div class="section-title">Educación</div>
+          <div class="edu-item">
+            <div class="edu-degree">Grado en Ingeniería Mecánica</div>
+            <div class="edu-school">Escuela de Ingenierías Industriales</div>
+            <div class="edu-date">Universidad de Valladolid (UVa)</div>
+            <div class="edu-date">2024 – Presente</div>
+            <div class="edu-details" style="font-weight: 500; font-size: 7.8pt; color: var(--accent); margin-top: 1mm;">Estudios compatibles con jornada laboral (horario flexible).</div>
+            <div class="edu-details" style="margin-top: 1mm;">Áreas clave: Informática, Estadística, Física, Gestión de Proyectos.</div>
+          </div>
+        </div>
+
+        <!-- Habilidades Técnicas -->
+        <div style="margin-top: 4mm;">
+          <div class="section-title">Habilidades</div>
+          
+          <div class="skill-category">
+            <div class="skill-category-title">Automatización & APIs</div>
+            <div class="skill-tags">
+              <span class="skill-tag">n8n</span>
+              <span class="skill-tag">Make</span>
+              <span class="skill-tag">Zapier</span>
+              <span class="skill-tag">Webhooks</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">JSON</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-title">Inteligencia Artificial</div>
+            <div class="skill-tags">
+              <span class="skill-tag">OpenAI API</span>
+              <span class="skill-tag">Whisper Speech</span>
+              <span class="skill-tag">Prompting</span>
+              <span class="skill-tag">DeepSeek</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-title">Desarrollo Móvil</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Kotlin</span>
+              <span class="skill-tag">Jetpack Compose</span>
+              <span class="skill-tag">Room DB</span>
+              <span class="skill-tag">SQLite</span>
+              <span class="skill-tag">MVVM</span>
+              <span class="skill-tag">Git/GitHub</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,14 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
-const TELEGRAM_TOKEN = '8729855087:AAEs8kwEH0Hwmn_-TBklQEL3V85MhmlMXFg';
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxiURd0fomiwlRuWJn6jPa-TqEXKv4_o-T0-KR6rv7V5-Fla-nofS9WtgoOKzBh8PWQ/exec';
+const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL || '';
 
 // Configuración de OpenCode Cloud
-const OPENCODE_API_KEY = 'sk-WVLidGgUEoS8LcR8Uw9V9U7rpGaG1QNlb4F0jknqBF9YXcUsrJaNQkca3v79dJeC';
-const OPENCODE_API_URL = 'https://opencode.ai/zen/go/v1/chat/completions';
-const OPENCODE_MODEL = 'deepseek-v4-flash';
+const OPENCODE_API_KEY = process.env.AI_API_KEY;
+const OPENCODE_API_URL = process.env.AI_API_BASE_URL ? `${process.env.AI_API_BASE_URL}/chat/completions` : 'https://opencode.ai/zen/go/v1/chat/completions';
+const OPENCODE_MODEL = process.env.AI_MODEL || 'deepseek-v4-flash';
 
 let lastUpdateId = 0;
 
