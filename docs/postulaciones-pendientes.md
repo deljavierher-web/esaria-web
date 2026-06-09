@@ -111,6 +111,18 @@
   > Mi CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
   > Mi GitHub: https://github.com/deljavierher-web"
 
+### 10. **Fujitsu — AI Automation & Agentic Engineer (Híbrido, Madrid) — [Oportunidad Retadora / Stretch]**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "Fujitsu AI Automation Agentic Engineer")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** en LinkedIn.
+* **Nota importante:** Es una oferta para perfiles senior (+4 años de experiencia), por lo que tiene baja prioridad debido a los filtros automáticos, pero al ser "Solicitud sencilla" vale la pena dejarla enviada por si acaso.
+* **Pitch en español para Fujitsu:**
+  > "Hola, equipo de selección de Fujitsu España:
+  > Me dirijo a vosotros con gran interés en la posición de AI Automation & Agentic Engineer.
+  > Combino mi formación en Ingeniería con experiencia práctica desarrollando sistemas de automatización e IA. He diseñado y desplegado flujos completos integrando APIs de LLMs (OpenAI, Claude, DeepSeek) con procesamiento de voz en tiempo real (Whisper API), controlando la estructuración de datos en JSON y conectando herramientas de backend mediante Python y webhooks.
+  > Mi CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > Mi GitHub: https://github.com/deljavierher-web"
+
+
 
 
 
