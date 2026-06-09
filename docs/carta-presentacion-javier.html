@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Presentación - Javier Delgado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F172A;
+      --accent: #6D5EF3;
+      --bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F1F5F9;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      background: var(--bg);
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      padding: 20mm 22mm;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+    .header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5mm;
+      margin-bottom: 8mm;
+    }
+    .name {
+      font-size: 24pt;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .title {
+      font-size: 11.5pt;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1mm;
+    }
+    .contact-info {
+      margin-top: 3mm;
+      font-size: 9pt;
+      color: var(--text-muted);
+      display: flex;
+      gap: 5mm;
+    }
+    .contact-link {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+    .date {
+      font-size: 10pt;
+      color: var(--text-muted);
+      margin-bottom: 6mm;
+    }
+    .recipient {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6mm;
+    }
+    .content {
+      font-size: 10pt;
+      color: var(--text);
+      text-align: justify;
+    }
+    .paragraph {
+      margin-bottom: 5mm;
+    }
+    .bullets {
+      margin-bottom: 5mm;
+      padding-left: 6mm;
+    }
+    .bullets li {
+      margin-bottom: 2mm;
+    }
+    .signature {
+      margin-top: 12mm;
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    @media print {
+      body {
+        background-color: var(--bg);
+      }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        padding: 18mm 20mm;
+        width: 210mm;
+        height: 297mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="name">Javier Delgado Hernández</div>
+      <div class="title">AI Automation Specialist & Software Developer</div>
+      <div class="contact-info">
+        <span>+34 678 36 33 77</span>
+        <span>•</span>
+        <a href="mailto:deljavierher@gmail.com" class="contact-link">deljavierher@gmail.com</a>
+        <span>•</span>
+        <a href="https://esaria.es" class="contact-link">esaria.es</a>
+        <span>•</span>
+        <a href="https://github.com/deljavierher-web" class="contact-link">github.com/deljavierher-web</a>
+      </div>
+    </div>
+
+    <div class="date">Valladolid, España</div>
+
+    <div class="recipient">
+      A la atención del Equipo de Selección y Dirección de Tecnología
+    </div>
+
+    <div class="content">
+      <div class="paragraph">
+        Estimado/a responsable de selección:
+      </div>
+      <div class="paragraph">
+        Me dirijo a vosotros con gran entusiasmo para presentar mi candidatura a vuestras posiciones abiertas en el ámbito de la automatización de procesos e inteligencia artificial. Mi perfil híbrido combina una sólida base analítica fruto de mis estudios en Ingeniería Mecánica en la Universidad de Valladolid (UVa) con experiencia real en el diseño, desarrollo y despliegue de integraciones técnicas de software.
+      </div>
+      <div class="paragraph">
+        Como fundador y especialista técnico de la iniciativa EsarIA en Valladolid, he ayudado a empresas de servicios a optimizar sus flujos de trabajo diarios. En mi día a día, diseño arquitecturas de datos (REST APIs, Webhooks, payloads JSON) utilizando herramientas avanzadas como n8n y Make, logrando reducir hasta en un 70% los tiempos dedicados a tareas administrativas y manuales. 
+      </div>
+      <div class="paragraph">
+        Además de mi especialización en integraciones B2B, cuento con experiencia práctica en:
+      </div>
+      <ul class="bullets">
+        <li><strong>Implementación de IA:</strong> Creación de pipelines interactivos conectando APIs de LLMs (OpenAI, Anthropic, DeepSeek) y Whisper para transcripción de audio en tiempo real y extracción de datos estructurados.</li>
+        <li><strong>Desarrollo Móvil Nativo:</strong> Programación en Kotlin y Jetpack Compose, con arquitecturas MVVM y persistencia local offline-first (Room DB / SQLite).</li>
+      </ul>
+      <div class="paragraph">
+        Me atrae especialmente la posibilidad de incorporarme a un equipo donde pueda aplicar este enfoque de automatización práctica para crear sistemas escalables y eficientes. Soy una persona proactiva, orientada a resultados tangibles y en constante aprendizaje.
+      </div>
+      <div class="paragraph">
+        Agradezco de antemano el tiempo dedicado a revisar mi currículum adjunto y mi portafolio público en GitHub. Quedo a vuestra entera disposición para mantener una entrevista y conversar sobre cómo puedo aportar valor a vuestro equipo.
+      </div>
+      
+      <div class="paragraph">
+        Atentamente,
+      </div>
+      
+      <div class="signature">
+        Javier Delgado Hernández
+      </div>
+    </div>
+  </div>
+</body>
+</html>
