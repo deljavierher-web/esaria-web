@@ -90,5 +90,16 @@
   > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
   > My GitHub: https://github.com/deljavierher-web"
 
+### 8. **Resourceful Talent Group — AI Automation & Generative AI Engineer (Remoto)**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "Resourceful Talent Group AI Automation")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** en LinkedIn.
+* **Pitch en inglés para Resourceful Talent Group:**
+  > "Hi Irina and Hiring Team,
+  > I am writing to apply for the AI Automation & Generative AI Engineer position.
+  > I specialize in building AI-powered integrations and workflows using **n8n, Make, and Python**, focusing on connecting business applications via REST APIs. I have developer experience integrating **OpenAI, Claude, and DeepSeek APIs** in production workflows, including a real-time conversational booking agent utilizing the Whisper API for audio processing and structured JSON outputs. I am also familiar with structuring local databases (Room/SQLite) and designing prompt schemas.
+  > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > My GitHub: https://github.com/deljavierher-web"
+
+
 
 
