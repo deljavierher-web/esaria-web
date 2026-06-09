@@ -69,3 +69,14 @@
   > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
   > My GitHub: https://github.com/deljavierher-web"
 
+### 6. **AirAdvisor — Product & AI Automation Intern / Specialist (Remoto, B2B)**
+* **Enlace de la oferta:** [Ver en LinkedIn](https://www.linkedin.com/jobs/view/4279581896/) *(o buscar "AirAdvisor Product Intern")*
+* **Estado:** Pendiente de aplicar con **Solicitud sencilla** o desde su web.
+* **Pitch en inglés para AirAdvisor:**
+  > "Hi AirAdvisor Hiring Team,
+  > I am writing to apply for the Product / AI Automation role.
+  > I am currently studying Engineering at the University of Valladolid (UVa) and work as an independent developer specializing in workflow automation. I saw that your top priority is **developing workflows using AI agents to automate processes**, which matches my day-to-day work. I have built production-ready integrations using **n8n, Make, and LLM APIs (OpenAI/Anthropic/DeepSeek)**, including a conversational voice agent for bookings using the Whisper API.
+  > My CV (PDF): https://esaria.es/docs/cv-javier-delgado.pdf
+  > My GitHub: https://github.com/deljavierher-web"
+
+
