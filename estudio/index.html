@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Estudio de camino · GCPP</title>
+<style>
+  :root{ --bg:#0f1420; --card:#1b2434; --card2:#222d40; --accent:#4f9dff; --good:#39c46e; --bad:#ff5d6c; --txt:#eaf0fa; --mut:#9fb0c9; }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--txt); padding-bottom:80px;}
+  header{position:sticky; top:0; background:linear-gradient(180deg,#0f1420 70%,rgba(15,20,32,0)); padding:14px 16px 8px; z-index:10;}
+  h1{font-size:18px; margin:0 0 10px;}
+  .row{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{flex:1; min-width:60px; text-align:center; padding:9px 6px; border-radius:12px; background:var(--card); color:var(--mut); font-size:13px; font-weight:600; border:1px solid #2a3650;}
+  .chip.active{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .modebar{display:flex; gap:8px; margin-top:8px;}
+  .mode{flex:1; text-align:center; padding:8px; border-radius:10px; background:#141c2b; color:var(--mut); font-size:13px; font-weight:700; border:1px solid #243150;}
+  .mode.active{background:var(--card2); color:var(--txt);}
+  main{padding:6px 16px;}
+  .counter{color:var(--mut); font-size:12px; text-align:center; margin:8px 0;}
+  .card{background:var(--card); border:1px solid #2a3650; border-radius:18px; padding:20px; margin:10px 0; min-height:140px; display:flex; flex-direction:column; justify-content:center;}
+  .q{font-size:17px; line-height:1.45; font-weight:600;}
+  .tag{display:inline-block; font-size:11px; color:var(--accent); font-weight:700; margin-bottom:10px; letter-spacing:.5px;}
+  .ans{margin-top:14px; padding-top:14px; border-top:1px dashed #34425f; color:var(--txt); font-size:15.5px; line-height:1.5; display:none;}
+  .ans.show{display:block;}
+  .ans ul{margin:6px 0 0; padding-left:18px;} .ans li{margin:3px 0;}
+  .hint{color:var(--mut); font-size:13px; text-align:center; margin-top:6px;}
+  .opts{margin-top:14px; display:flex; flex-direction:column; gap:8px;}
+  .opt{padding:13px 14px; border-radius:12px; background:#141c2b; border:1px solid #28344e; font-size:15px; line-height:1.35;}
+  .opt.correct{background:rgba(57,196,110,.18); border-color:var(--good);}
+  .opt.wrong{background:rgba(255,93,108,.16); border-color:var(--bad);}
+  .nav{position:fixed; bottom:0; left:0; right:0; display:flex; gap:10px; padding:12px 16px; background:linear-gradient(0deg,#0f1420 70%,rgba(15,20,32,0));}
+  .btn{flex:1; padding:15px; border-radius:14px; border:none; font-size:16px; font-weight:700; background:var(--card2); color:var(--txt);}
+  .btn.primary{background:var(--accent); color:#fff;}
+  .btn:active{transform:scale(.97);}
+  .flip-hint{font-size:12px;color:var(--mut);text-align:center;margin-top:2px}
+</style>
+</head>
+<body>
+<header>
+  <h1>📚 Estudio de camino · Calidad, PRL y Medio Ambiente</h1>
+  <div class="row" id="muestras"></div>
+  <div class="modebar" id="modes">
+    <div class="mode active" data-m="flash">Tarjetas</div>
+    <div class="mode" data-m="test">Test</div>
+    <div class="mode" data-m="dev">Desarrollo</div>
+  </div>
+</header>
+<main>
+  <div class="counter" id="counter"></div>
+  <div id="stage"></div>
+  <div class="hint" id="hint">Toca la tarjeta para ver la respuesta</div>
+</main>
+<div class="nav">
+  <button class="btn" id="prev">‹ Anterior</button>
+  <button class="btn primary" id="next">Siguiente ›</button>
+</div>
+
+<script>
+/* ============ CONTENIDO ============ */
+const M = ["M1 Aseguramiento","M2 Gestión Calidad","M3 PRL","M4 Medio Amb.","M5 Residuos"];
+
+const FLASH = [
+ // M1
+ [["Calidad","Capacidad de un producto/servicio de satisfacer las necesidades y expectativas del cliente. ISO 9000: grado en que unas características cumplen los requisitos."],
+  ["Evolución de la calidad","1) Inspección 2) Control de calidad 3) Aseguramiento de la calidad 4) Calidad total (TQM)."],
+  ["Normalización","Elaborar y aplicar normas para unificar criterios. Funciones: simplificar, unificar, especificar. Organismos: UNE, CEN, ISO."],
+  ["Certificación","Una entidad independiente (AENOR) garantiza por escrito que algo cumple una norma."],
+  ["¿Quién acredita?","La ENAC acredita en España a las entidades certificadoras."],
+  ["Marcado CE","El fabricante declara que el producto cumple las directivas europeas de seguridad, salud y medio ambiente. Obligatorio en la UE, NO es marca de calidad."],
+  ["3 expectativas de calidad","Esperada (mínimo que da por hecho), Programada (la que planea la empresa), Realizada (la que se entrega)."],
+  ["Proceso vs procedimiento","Proceso = QUÉ se hace (actividades entradas→salidas). Procedimiento = CÓMO se hace (paso a paso)."],
+  ["Familia ISO 9000","9000 (vocabulario), 9001 (requisitos, certificable), 9004 (éxito sostenido), 19011 (auditorías)."],
+  ["Ciclo PDCA","Planificar, Hacer, Verificar, Actuar. Operación=Hacer, Evaluación=Verificar, Mejora=Actuar."],
+  ["Enfoque basado en riesgos","Anticiparse a riesgos y oportunidades para prevenir, no corregir. Principio ISO 9001:2015."],
+  ["Mapa de procesos","Gráfico de los procesos y sus relaciones. Niveles: estratégicos, operativos/clave, de apoyo."],
+  ["Pirámide documental","Manual → Procedimientos → Instrucciones → Registros. La BASE son los REGISTROS (evidencia)."],
+  ["Mantener vs retener","Mantener = documentos actualizados. Retener = registros conservados como evidencia."]],
+ // M2
+ [["Costes de calidad","Lo que cuesta hacerlo bien + lo que cuesta hacerlo mal. 4 categorías."],
+  ["Prevención","Evitar que aparezcan errores (formación, mantenimiento preventivo)."],
+  ["Evaluación","Comprobar que se cumplen requisitos (inspección, ensayos, auditorías)."],
+  ["Fallos internos","Errores detectados dentro, antes del cliente (reprocesos, mermas)."],
+  ["Fallos externos","Errores detectados con el cliente (devoluciones, garantías). Los más caros."],
+  ["5S","Seiri (clasificar), Seiton (ordenar), Seiso (limpiar), Seiketsu (estandarizar), Shitsuke (disciplina)."],
+  ["Seiketsu (4ª S)","Estandarizar: crear normas y controles visuales para mantener las 3 primeras S."],
+  ["Ishikawa (causa-efecto)","Espina de pez: identifica las causas de un problema. Categorías 6M."],
+  ["DAFO","Internos: Debilidades/Fortalezas. Externos: Amenazas/Oportunidades."],
+  ["Estrategias DAFO","Ofensiva (F+O), Defensiva (F+A), Adaptativa/Reorientación (D+O), Supervivencia (D+A)."],
+  ["Variabilidad","Causas comunes (aleatorias, proceso bajo control) y asignables (motivo concreto, fuera de control)."],
+  ["Pareto","Barras de mayor a menor (80/20): el 20% de las causas da el 80% de los problemas. Prioriza."]],
+ // M3 PRL
+ [["Prevención (LPRL)","Conjunto de medidas para evitar o disminuir los riesgos del trabajo."],
+  ["Riesgo laboral","Posibilidad de sufrir un daño derivado del trabajo (probabilidad × severidad)."],
+  ["Accidente de trabajo","Lesión corporal con ocasión o por consecuencia del trabajo por cuenta ajena. Incluye in itinere."],
+  ["Enfermedad profesional","La contraída por el trabajo, en las actividades del cuadro (RD 1299/2006)."],
+  ["Incidente / accidente blanco","Incidente: suceso sin daños ni lesiones. Accidente blanco: daños materiales sin lesiones."],
+  ["Ley de PRL","Ley 31/1995 de Prevención de Riesgos Laborales (norma de referencia)."],
+  ["INSST","Instituto Nacional de Seguridad y Salud en el Trabajo: órgano científico-técnico."],
+  ["Inspección de Trabajo","Vigila el cumplimiento, propone sanciones, puede paralizar trabajos con riesgo grave e inminente."],
+  ["Modalidades de prevención","1) Empresario 2) Trabajadores designados 3) Servicio propio 4) Servicio ajeno."],
+  ["Principios actividad preventiva","Evitar riesgos, evaluar los inevitables, combatirlos en origen, sustituir lo peligroso, protección colectiva antes que individual."],
+  ["Tetraedro del fuego","Combustible + comburente (O₂) + energía de activación + reacción en cadena."],
+  ["Clases de fuego","A sólidos, B líquidos, C gases, D metales (UNE 23010)."],
+  ["Métodos de extinción","Sofocación, enfriamiento, eliminación del combustible, inhibición de la reacción en cadena."],
+  ["Técnicas de seguridad","Activas (antes: evaluación, inspección), Reactivas (después: investigación), Complementarias (normas, señalización)."],
+  ["Evaluación de riesgos","Análisis (identificar peligro + estimar riesgo) + valoración (comparar con riesgo tolerable)."],
+  ["Índice de frecuencia","IF = (nº accidentes / horas-hombre) × 10⁶."],
+  ["Índice de gravedad","IG = (jornadas perdidas / horas-hombre) × 10³."],
+  ["Plan de prevención","Herramienta que integra la prevención en la gestión de la empresa (art.16 LPRL)."],
+  ["EPI","Equipo que lleva el trabajador para protegerse. Última barrera (tras la protección colectiva). Lleva marcado CE."],
+  ["Niveles de emergencia","Conato, parcial, general, de protección civil."]],
+ // M4
+ [["SGA","Sistema de Gestión Ambiental: procesos para reducir impactos ambientales y mejorar. Tipos: ISO 14001 y EMAS."],
+  ["ISO 14001","Norma internacional de gestión ambiental. Se certifica."],
+  ["EMAS","Reglamento europeo. Más exigente, incluye la ISO 14001 + declaración ambiental pública."],
+  ["Dif. clave ISO/EMAS","EMAS: ámbito europeo, declaración pública obligatoria, registro y verificación oficial, mejora del comportamiento real."],
+  ["Fases SGA","Decisión, Revisión ambiental inicial, Verificación legal, Documentación, Implantación, Auditoría interna → Certificación."],
+  ["Pirámide legislación amb.","Comunitaria > Estatal > Autonómica > Municipal. La inferior siempre más restrictiva."],
+  ["Art. 45 Constitución","Derecho a un medio ambiente adecuado y deber de conservarlo."],
+  ["Responsabilidad amb.","Ley 26/2007: prevenir, evitar y reparar daños. 'Quien contamina paga'."]],
+ // M5
+ [["Residuo","Sustancia u objeto que su poseedor deseche o tenga intención/obligación de desechar."],
+  ["Ley de residuos","Ley 7/2022 de residuos y suelos contaminados para una economía circular."],
+  ["Clasificación residuos ind.","3 bloques: inertes, urbanos/asimilables, especiales o peligrosos."],
+  ["Residuos peligrosos (subtipos)","Corrosivos, reactivos, explosivos, inflamables, tóxicos, radioactivos."],
+  ["Fin de la condición de residuo","Tras valorización si: tiene uso, hay demanda, cumple normativa y no daña al medio/salud."],
+  ["Ficha de datos de seguridad","Documento con peligros y forma segura de manipular/almacenar un producto químico peligroso."],
+  ["Gestión de residuos","Recogida, transporte, almacenamiento, valorización y eliminación + vigilancia."],
+  ["Jerarquía de residuos","Prevención → Reutilización → Reciclado → Valorización → Eliminación."],
+  ["Productor de residuos","Quien con su actividad produce residuos (productor inicial)."],
+  ["Negociante","Quien compra y vende residuos por cuenta propia aunque no los posea físicamente."],
+  ["NIMA","Número de Identificación Medioambiental, para los traslados de residuos."],
+  ["Virutas de metal","Gestión: separar → reciclar (chatarra). Reducir: optimizar el corte y recuperar el aceite."]]
+];
+
+const TEST = [
+ // M1
+ [["¿Quién acredita en España a las entidades de certificación?",["AENOR","ENAC","UNE","ISO"],1],
+  ["El marcado CE es...",["Una marca de calidad superior","Una marca de conformidad legal (seguridad)","Un certificado de personas","Una norma ISO"],1],
+  ["La norma certificable del sistema de gestión de la calidad es:",["ISO 9000","ISO 9001","ISO 9004","ISO 19011"],1],
+  ["La base de la pirámide documental son:",["El manual de calidad","Los procedimientos","Los registros","Las instrucciones"],2],
+  ["'CÓMO se hace una actividad, paso a paso' es:",["Un proceso","Un procedimiento","Un registro","Una política"],1],
+  ["La calidad 'que la empresa planifica ofrecer' es la calidad:",["Esperada","Programada","Realizada","Total"],1]],
+ // M2
+ [["Las devoluciones y garantías son costes de:",["Prevención","Evaluación","Fallos internos","Fallos externos"],3],
+  ["La 4ª S (Seiketsu) consiste en:",["Clasificar","Ordenar","Estandarizar","Disciplina"],2],
+  ["El diagrama que ordena causas de mayor a menor (80/20) es:",["Ishikawa","Pareto","DAFO","Flujo"],1],
+  ["En el DAFO, las características EXTERNAS son:",["Debilidades y Fortalezas","Amenazas y Oportunidades","Fortalezas y Oportunidades","Debilidades y Amenazas"],1],
+  ["La formación de los trabajadores es un coste de:",["Prevención","Evaluación","Fallo interno","Fallo externo"],0],
+  ["Una avería que saca el proceso de control es una causa:",["Común","Aleatoria","Asignable","Natural"],2]],
+ // M3
+ [["La ley de referencia en PRL es:",["Ley 7/2022","Ley 31/1995","Ley 26/2007","RD 39/1997"],1],
+  ["El accidente al ir o volver del trabajo se llama:",["In itinere","Blanco","Profesional","Grave"],0],
+  ["En el tetraedro del fuego, el comburente suele ser:",["El calor","El oxígeno","El combustible","La chispa"],1],
+  ["La protección colectiva debe anteponerse a la:",["Prevención","Individual (EPI)","Señalización","Evaluación"],1],
+  ["La evaluación de riesgos es una técnica de seguridad:",["Activa","Reactiva","Complementaria","Correctiva"],0],
+  ["Un fuego de líquidos (gasolina) es de clase:",["A","B","C","D"],1],
+  ["Puede paralizar trabajos con riesgo grave e inminente:",["El INSST","La Inspección de Trabajo","El comité","La mutua"],1]],
+ // M4
+ [["¿Cuál es un reglamento europeo más exigente que la ISO 14001?",["AENOR","EMAS","UNE","EFQM"],1],
+  ["La declaración ambiental pública es obligatoria en:",["ISO 14001","EMAS","Ambas","Ninguna"],1],
+  ["La legislación ambiental, a menor rango es:",["Menos restrictiva","Más restrictiva","Igual","Voluntaria"],1],
+  ["'Quien contamina paga' es el principio de la:",["Ley 31/1995","Ley 7/2022","Ley 26/2007","ISO 14001"],2]],
+ // M5
+ [["La clasificación de residuos industriales tiene 3 bloques:",["Sólidos, líquidos, gases","Inertes, urbanos, peligrosos","A, B, C","Orgánicos e inorgánicos"],1],
+  ["Un residuo deja de serlo tras una operación de:",["Eliminación","Almacenamiento","Valorización","Transporte"],2],
+  ["La opción preferente de la jerarquía de residuos es:",["Reciclado","Prevención","Valorización","Eliminación"],1],
+  ["Quien compra y vende residuos sin poseerlos físicamente es el:",["Productor","Gestor","Negociante","Poseedor"],2],
+  ["Las virutas de metal limpias van preferentemente a:",["Vertedero","Reciclado (chatarra)","Incineración","Residuo peligroso"],1]]
+];
+
+const DEV = [
+ // M1
+ [["Explica el concepto de calidad y su evolución.","Calidad = capacidad de satisfacer las necesidades y expectativas del cliente (ISO 9000: grado en que unas características cumplen los requisitos). Evolución en 4 etapas: 1) Inspección (control final), 2) Control de calidad (estadístico del proceso), 3) Aseguramiento (prevención con sistema documentado, ISO 9000), 4) Calidad total (TQM: toda la empresa, mejora continua)."],
+  ["Normalización, certificación y acreditación.","Normalización: crear y aplicar normas (UNE/CEN/ISO) para simplificar, unificar y especificar. Certificación: una entidad independiente (AENOR) garantiza que algo cumple una norma. Acreditación: la ENAC autoriza y da validez a las entidades certificadoras."],
+  ["Las 3 expectativas de calidad.","Esperada (lo mínimo que el cliente da por hecho), Programada (la que la empresa planifica ofrecer), Realizada (la que de verdad se entrega). Objetivo: que las tres coincidan."],
+  ["Mapa de procesos y sus 3 niveles.","Representación gráfica de los procesos y sus relaciones. Niveles: Estratégicos (dirección, marcan directrices), Operativos/clave (realización del producto, aportan valor), De apoyo (soporte: mantenimiento, RRHH, compras)."],
+  ["Enfoque basado en riesgos y qué consiguen las empresas.","Identificar y anticiparse a riesgos y oportunidades antes de que ocurran, para prevenir (ISO 9001:2015). Consiguen: prevenir errores, reducir costes, mejorar decisiones, aprovechar oportunidades y más satisfacción del cliente."]],
+ // M2
+ [["Costes de calidad y sus categorías.","Lo que cuesta conseguir la calidad + lo que cuesta no alcanzarla. Categorías: Prevención (evitar errores), Evaluación (comprobar), Fallos internos (errores antes del cliente) y Fallos externos (errores con el cliente; los más graves y caros)."],
+  ["¿En qué consiste el modelo 5S y la 4ª fase?","5S: Seiri (clasificar), Seiton (ordenar), Seiso (limpiar), Seiketsu (estandarizar), Shitsuke (disciplina). La 4ª (Seiketsu-Estandarizar) se desarrolla creando normas y controles visuales (carteles, marcas, fotos, checklist) para mantener lo logrado y detectar desviaciones a simple vista."],
+  ["¿Para qué sirve el diagrama causa-efecto y sus pasos?","Identifica y organiza las causas de un problema. Pasos: 1) definir el problema (cabeza), 2) trazar la espina central, 3) definir categorías (6M: mano de obra, máquina, método, material, medio, medición), 4) lluvia de ideas de causas, 5) analizar las más probables."],
+  ["Análisis DAFO: características externas y estrategias adaptativas.","Internos: debilidades y fortalezas. Externos (los que analiza fuera): amenazas y oportunidades. Estrategias adaptativas/de reorientación = cruce Debilidades + Oportunidades: superar las debilidades aprovechando las oportunidades del entorno."]],
+ // M3
+ [["Diferencia entre accidente de trabajo, incidente y accidente blanco.","Accidente de trabajo: lesión corporal con ocasión o por consecuencia del trabajo por cuenta ajena (incluye in itinere). Incidente: suceso no deseado sin daños ni lesiones. Accidente blanco: se dieron las circunstancias para el accidente pero hay daños materiales sin lesiones."],
+  ["Modalidades de organización de la prevención.","1) El empresario la asume personalmente (≤10 trabajadores, baja peligrosidad, con formación). 2) Designación de trabajadores. 3) Servicio de prevención propio (obligatorio >500 trabajadores o especial peligrosidad). 4) Servicio de prevención ajeno."],
+  ["Principios de la actividad preventiva.","Evitar los riesgos; evaluar los inevitables; combatirlos en su origen; adaptar el trabajo a la persona; sustituir lo peligroso; planificar la prevención; anteponer la protección colectiva a la individual; dar instrucciones a los trabajadores."],
+  ["Técnicas de seguridad según el momento del accidente.","Activas (antes del accidente: evaluación de riesgos e inspecciones), Reactivas (después: investigación de accidentes y control estadístico) y Complementarias (normas y señalización)."],
+  ["Riesgo de incendio: tetraedro del fuego y métodos de extinción.","Tetraedro: combustible + comburente (oxígeno) + energía de activación (calor) + reacción en cadena. Extinción: sofocación (quitar O₂), enfriamiento (quitar calor), eliminación del combustible e inhibición de la reacción en cadena."]],
+ // M4
+ [["Diferencias fundamentales entre ISO 14001 y EMAS.","Ambos son SGA, EMAS es más exigente e incluye la ISO 14001. 1) Ámbito: ISO internacional / EMAS europeo. 2) EMAS obliga a declaración ambiental pública verificada. 3) EMAS más exigente. 4) ISO se certifica; EMAS exige registro oficial y verificación. 5) EMAS mejora del comportamiento ambiental real y exige participación de los trabajadores."],
+  ["Estructura de la legislación ambiental en España.","Pirámide: Comunitaria (reglamentos, directivas) > Estatal (leyes, RD) > Autonómica > Municipal (ordenanzas). La norma de rango inferior siempre debe ser más restrictiva. Base estatal: art. 45 de la Constitución."],
+  ["Fases de implantación de un SGA.","1) Decisión (ISO o EMAS), 2) Revisión ambiental inicial, 3) Verificación del cumplimiento legal, 4) Elaboración de la documentación, 5) Implantación, 6) Auditoría interna → Certificación."]],
+ // M5
+ [["¿Qué es un residuo y cómo se clasifican los industriales?","Residuo: sustancia u objeto que su poseedor deseche o tenga intención/obligación de desechar. Clasificación de los industriales en 3 bloques: inertes (no peligrosos, no necesitan tratamiento: escombros), urbanos o asimilables (cartón, papel, plásticos) y especiales o peligrosos (amenazan salud y medio; subtipos: corrosivos, reactivos, explosivos, inflamables, tóxicos, radioactivos)."],
+  ["¿Cuándo deja de considerarse residuo?","Tras una operación de valorización (incluido reciclado) si cumple: 1) se usa para finalidades concretas, 2) existe mercado/demanda, 3) cumple los requisitos técnicos y la normativa, 4) su uso no genera impactos negativos para el medio ambiente ni la salud."],
+  ["Jerarquía de residuos (define 2 niveles).","De mejor a peor: Prevención, Preparación para la reutilización, Reciclado, Otra valorización (energética), Eliminación. Prevención: evitar generar el residuo y reducir su cantidad y peligrosidad. Reciclado: transformar el residuo en nuevos materiales o productos."],
+  ["Dos residuos del taller: gestión y reducción.","Virutas de metal: separar por tipo y entregar a gestor de chatarra → reciclado (si llevan aceite, residuo peligroso); reducir optimizando el corte y recuperando el aceite. Serrín: aspirar y almacenar seco; madera limpia → reciclado o biomasa, tratada → residuo peligroso; reducir optimizando patrones de corte y reutilizando el serrín limpio."]]
+];
+
+/* ============ LÓGICA ============ */
+let muestra=0, mode="flash", idx=0, answered=false;
+const stage=document.getElementById('stage'), counter=document.getElementById('counter'), hint=document.getElementById('hint');
+
+// pintar chips
+const mc=document.getElementById('muestras');
+M.forEach((m,i)=>{const d=document.createElement('div'); d.className='chip'+(i==0?' active':''); d.textContent=m; d.onclick=()=>{muestra=i; idx=0; [...mc.children].forEach(c=>c.classList.remove('active')); d.classList.add('active'); render();}; mc.appendChild(d);});
+document.querySelectorAll('.mode').forEach(el=>{el.onclick=()=>{mode=el.dataset.m; idx=0; document.querySelectorAll('.mode').forEach(m=>m.classList.remove('active')); el.classList.add('active'); render();};});
+
+function data(){ return mode=="flash"?FLASH[muestra] : mode=="test"?TEST[muestra] : DEV[muestra]; }
+
+function render(){
+  const d=data(); if(idx>=d.length) idx=0; if(idx<0) idx=d.length-1;
+  answered=false;
+  counter.textContent=`${M[muestra]} · ${idx+1}/${d.length}`;
+  const item=d[idx];
+  if(mode=="flash"){
+    hint.textContent="Toca la tarjeta para ver la definición";
+    stage.innerHTML=`<div class="card" id="card"><span class="tag">TARJETA</span><div class="q">${item[0]}</div><div class="ans" id="ans">${item[1]}</div></div>`;
+    document.getElementById('card').onclick=()=>document.getElementById('ans').classList.toggle('show');
+  } else if(mode=="dev"){
+    hint.textContent="Toca para ver la respuesta modelo";
+    stage.innerHTML=`<div class="card" id="card"><span class="tag">DESARROLLO</span><div class="q">${item[0]}</div><div class="ans" id="ans">${item[1]}</div></div>`;
+    document.getElementById('card').onclick=()=>document.getElementById('ans').classList.toggle('show');
+  } else {
+    hint.textContent="Toca la opción que creas correcta";
+    const opts=item[1].map((o,i)=>`<div class="opt" data-i="${i}">${o}</div>`).join('');
+    stage.innerHTML=`<div class="card"><span class="tag">TEST</span><div class="q">${item[0]}</div><div class="opts" id="opts">${opts}</div></div>`;
+    document.querySelectorAll('#opts .opt').forEach(op=>{op.onclick=()=>{
+      if(answered) return; answered=true; const correct=item[2];
+      document.querySelectorAll('#opts .opt').forEach(o=>{const i=+o.dataset.i; if(i==correct)o.classList.add('correct'); else if(i==+op.dataset.i)o.classList.add('wrong');});
+    };});
+  }
+}
+document.getElementById('next').onclick=()=>{idx++; render();};
+document.getElementById('prev').onclick=()=>{idx--; render();};
+render();
+</script>
+</body>
+</html>
