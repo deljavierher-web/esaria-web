@@ -21,7 +21,7 @@ store.best   = store.best   || null;    // mejor nota examen (0-10)
 // ====== Util ======
 const $ = id => document.getElementById(id);
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
-function show(view){ ['home','quiz','result'].forEach(v=>$(v).classList.toggle('hide', v!==view)); window.scrollTo(0,0); }
+function show(view){ ['home','quiz','result','resumen'].forEach(v=>$(v).classList.toggle('hide', v!==view)); window.scrollTo(0,0); }
 
 // ====== Init ======
 function init(){
@@ -273,6 +273,7 @@ function dispatch(act){
     case 'home':  goHome(); break;
     case 'review':reviewFails(); break;
     case 'repeat':repeatMode(); break;
+    case 'resumen': if(S&&S.timer){clearInterval(S.timer);S.timer=null;} show('resumen'); break;
   }
 }
 document.addEventListener('click',e=>{

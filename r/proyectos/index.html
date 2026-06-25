@@ -102,6 +102,19 @@ body{
 .hide{display:none!important}
 .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:24px;line-height:1.7}
 kbd{background:var(--card2);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 7px;font-size:12px;font-family:inherit}
+
+/* RESUMEN */
+.sum{font-size:14.5px;line-height:1.6}
+.sum .block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.sum .block.star{border-color:var(--gold);background:linear-gradient(135deg,rgba(255,210,74,.08),var(--card))}
+.sum h3{margin:0 0 10px;font-size:16px;color:var(--brand2);display:flex;align-items:center;gap:8px}
+.sum .block.star h3{color:var(--gold)}
+.sum ul{margin:0;padding-left:18px}
+.sum li{margin:6px 0}
+.sum b{color:var(--ink)}
+.sum .hot{color:var(--gold);font-weight:700;font-size:12px;border:1px solid #5a4d1e;border-radius:99px;padding:2px 8px;margin-left:auto}
+.sum .tip{background:rgba(39,196,152,.1);border:1px solid #1f6b54;border-radius:10px;padding:10px 13px;font-size:13.5px;margin-top:8px}
+.sum .def{color:var(--brand2);font-weight:600}
 </style>
 </head>
 <body>
@@ -117,6 +130,16 @@ kbd{background:var(--card2);border:1px solid var(--line);border-bottom-width:2px
 
   <!-- ============ HOME ============ -->
   <div id="home">
+    <div class="card" style="background:linear-gradient(135deg,rgba(91,140,255,.18),rgba(155,107,255,.14));border-color:var(--brand)">
+      <div style="display:flex;gap:13px;align-items:center;cursor:pointer" data-act="resumen">
+        <div class="ico" style="font-size:30px">📖</div>
+        <div style="flex:1">
+          <h3 style="margin:0 0 3px;font-size:16px">Resumen del temario</h3>
+          <p style="margin:0;font-size:12.5px;color:var(--muted)">¿Vas a ciegas? <b>Empieza aquí.</b> Lo esencial del examen en 15 min para que te suene, y luego al test.</p>
+        </div>
+        <div style="font-size:22px;color:var(--brand2)">→</div>
+      </div>
+    </div>
     <div class="card">
       <div class="h2">Elige modo</div>
       <div class="modes">
@@ -173,6 +196,123 @@ kbd{background:var(--card2);border:1px solid var(--line);border-bottom-width:2px
       Examen real: <b>40 preguntas ABCD con penalización</b>. Necesitas un <b>4/10</b> para liberar el tipo test.<br>
       El tema que más cae: <b>Planificación y red PERT/CPM</b>. Hecho para ti la noche antes. ¡A por ello! 💪
     </div>
+  </div>
+
+  <!-- ============ RESUMEN ============ -->
+  <div id="resumen" class="hide">
+    <button class="btn sec" data-act="home" style="margin-bottom:14px">← Volver</button>
+    <div class="card" style="border-color:var(--brand)">
+      <h2 style="margin:0 0 6px;font-size:18px">📖 Resumen del temario — Proyectos / Oficina Técnica</h2>
+      <p style="margin:0;font-size:13px;color:var(--muted)">Lo que de verdad cae en el examen, sacado de las propias preguntas. Lee de arriba abajo; lo marcado con 🔥 es lo que más sale. Luego haz Práctica libre.</p>
+    </div>
+
+    <div class="sum">
+
+      <div class="block star">
+        <h3>📅 Planificación: PERT, CPM y Roy <span class="hot">🔥 ~mitad del examen</span></h3>
+        <ul>
+          <li>Lo más importante de planificar es la <b>anticipación en el tiempo</b> (prever para decidir y controlar).</li>
+          <li><span class="def">Diagrama de Gantt</span> = diagrama de <b>barras</b>. Es visual y cómodo, pero su <b>limitación</b> es que <b>NO muestra la interdependencia</b> entre actividades.</li>
+          <li><span class="def">Grafo / diagrama reticular</span>: sí muestra las dependencias (ligaduras orientadas / precedencias). <b>Supera al Gantt</b> en eso.</li>
+          <li><span class="def">PERT</span> (1957, Marina de EE.UU., proyecto Polaris, adelantó <b>2 años</b>): estima la duración de forma <b>probabilista</b> (3 tiempos: optimista, más probable, pesimista) para un nivel de coste dado.</li>
+          <li><span class="def">CPM (Camino Crítico)</span>: dos estimaciones duración-coste → <b>duración normal</b> (coste mínimo, recursos óptimos) y <b>duración acelerada</b> (mínima duración sin reparar en coste).</li>
+          <li><b>Actividades críticas = holgura total NULA.</b> Forman el <b>camino crítico</b>; si se retrasan, se retrasa todo el proyecto.</li>
+          <li><span class="def">Método de Roy</span> (potenciales): <b>Fechas mínimas</b> (tempranas) → de <b>izquierda a derecha</b>, y en convergentes se toma el <b>mayor</b> valor. <b>Fechas máximas</b> (tardías) → de <b>derecha a izquierda</b>.</li>
+          <li>Holgura total = LS − ES = LF − EF.</li>
+        </ul>
+        <div class="tip">💡 Si solo te da tiempo a dominar una cosa, que sea esta. "Holgura nula = crítica", "fechas mínimas → ida (izq→der), máximas → vuelta (der→izq)", "Gantt = barras, no muestra dependencias", "PERT = probabilista, Polaris, 2 años".</div>
+      </div>
+
+      <div class="block">
+        <h3>🧩 Fases del proyecto <span class="hot">🔥 cae mucho</span></h3>
+        <ul>
+          <li>Dos grandes grupos: <b>fases CREATIVAS</b> (diseño) y <b>fases de CONSTRUCCIÓN</b> (obra), + explotación.</li>
+          <li><b>Creativas:</b> Fase 0 <b>Orden de Magnitud</b> (prefase), Fase 1 <b>Estudio Preliminar / Viabilidad</b>, Fase 2 <b>Anteproyecto / Proyecto Básico</b>, Fase 3 <b>Proyecto / Diseño Detallado</b>.</li>
+          <li><b>De construcción:</b> Adjudicación/Contratación, Ejecución/Realización, Tramitación, Recepción.</li>
+          <li><b>Fase 0:</b> acotar el problema y eliminar ideas inviables (definición, usos, estado de la técnica, fuentes).</li>
+          <li><b>Fase 1:</b> recopilar antecedentes, estudiar el mercado, ver alternativas y viabilidad.</li>
+          <li><b>Fase 2 (Anteproyecto):</b> la <b>más creativa y difícil</b>; seleccionar la solución y conocer la rentabilidad. = proyecto básico (sirve para licencias).</li>
+          <li><b>Fase 3 (Detallado):</b> documentos para la <b>definición constructiva + valoración económica</b>; tan completos que otro equipo podría ejecutarlo.</li>
+          <li><span class="def">Macroestructura</span> = QUÉ hay que hacer. <span class="def">Microestructura</span> = CÓMO se resuelve la fase.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>📐 Diagramas de proceso</h3>
+        <ul>
+          <li>Un <b>proceso</b> = sucesión de actividades para obtener un producto. Se descompone en <b>operaciones → fases → subfases</b> (la <b>operación</b> es la de mayor amplitud).</li>
+          <li><b>5 actividades simples</b>: <b>Operación</b> (cambio intencionado, ○), <b>Transporte</b> (traslado &gt;1 m, →), <b>Inspección</b> (verificar características, □), <b>Espera/Demora</b> (D), <b>Almacenamiento</b> (▽, riesgo de obsolescencia/deterioro). ⚠️ "Fabricación" <b>NO</b> es una de ellas.</li>
+          <li><span class="def">Diagrama sinóptico</span>: solo <b>operaciones e inspecciones</b> (visión rápida).</li>
+          <li><span class="def">Diagrama analítico</span> (cursograma): <b>todas</b> las actividades pormenorizadas (incluye transportes y esperas).</li>
+          <li><b>Mejora de métodos</b>: se parte del <b>diagrama analítico</b> → registrar el método actual, examinarlo con sentido crítico, idear uno nuevo e implantarlo.</li>
+          <li><b>Distribución en planta</b>: <b>por producto</b> (en línea, ej. montaje de coches), <b>por proceso/funcional</b> (tiempo unitario mayor), <b>in situ</b> (producto fijo, el material concurre al puesto).</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>📄 Documentos del proyecto</h3>
+        <ul>
+          <li><span class="def">Memoria</span>: documento <b>descriptivo</b> (enunciado, justificación, descripción del producto). <b>NO</b> incluye cálculos ni planos constructivos.</li>
+          <li><span class="def">Planos</span>: documento <b>gráfico</b> (forma, dimensiones, tolerancias, materiales). Cada pieza en <b>plano independiente</b>. La lista de despiece va en planos de conjunto y subconjunto.</li>
+          <li><span class="def">Pliego de condiciones</span>: <b>Generales</b> (administrativas: plazos, apertura de plicas, concurso-subasta; independientes del proyecto) vs <b>Específicas</b> (técnicas: calidad de materiales, garantía).</li>
+          <li>Documentos para la definición constructiva: <b>Memoria, Planos, Pliego y Presupuesto</b> (el <b>modelo NO</b> es necesario).</li>
+          <li>Los documentos escritos van en formato <b>UNE A4</b>.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>🏢 Empresa, diseño y modelos</h3>
+        <ul>
+          <li><b>Ingeniería de Procesos</b> (Métodos y Tiempos): define los procesos de fabricación y los tiempos. <b>Estudios y Proyectos</b>: estudio previo, anteproyecto y <b>presupuestos</b>. <b>Control de Calidad</b>: inspecciona materias primas y producto.</li>
+          <li>La actividad de proyectos se desarrolla <b>fundamentalmente en la dirección técnica</b>. El sistema <b>MTM</b> es de tiempos predeterminados.</li>
+          <li><b>Diseño</b> ≠ <b>Proyecto</b>: el diseño define el producto (esbozar piezas); el proyecto es la actividad más amplia y compleja.</li>
+          <li><b>Modelos</b>: <span class="def">icónicos</span> (visuales/físicos: maquetas, renders), <span class="def">analógicos</span> (simulan por analogía), <span class="def">simbólicos</span> (matemáticos/cuantificables). Sirven para conocer las dificultades antes de construir.</li>
+          <li><span class="def">Ingeniería concurrente / simultánea</span>: diseñar y fabricar <b>en paralelo</b>; los ingenieros de fabricación participan en el diseño (fabricabilidad). Es la <b>tendencia actual</b>.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>👷 Agentes de la obra y normativa</h3>
+        <ul>
+          <li><b>Promotor</b> (propiedad): encarga la obra. <b>Dirección facultativa</b>: representa al promotor; asume responsabilidad <b>técnica, civil y penal</b>.</li>
+          <li>Una vez iniciada la obra, el principal responsable es el <b>Director del Proyecto</b>. El <b>Contratista</b> ejecuta.</li>
+          <li><span class="def">CTE</span> (Código Técnico de la Edificación): aprobado por <b>Real Decreto 314/2006</b>, de <b>obligado cumplimiento</b>.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>🦺 Seguridad y Salud · Impacto Ambiental</h3>
+        <ul>
+          <li><b>Ley 31/1995 de Prevención de Riesgos Laborales (PRL)</b>: garantías para proteger la salud del trabajador.</li>
+          <li><b>RD 1627/1997</b>: disposiciones mínimas de seguridad y salud en <b>obras de construcción</b>.</li>
+          <li><b>Estudio (Básico) de Seguridad</b> → lo redacta el <b>técnico designado por el promotor</b>. <b>Plan de Seguridad</b> → lo elabora el <b>contratista</b>, basándose en el Estudio.</li>
+          <li><b>Coordinador de seguridad y salud</b>: interviene en redacción y ejecución. El <b>libro de incidencias</b> es obligatorio <b>siempre</b>. <b>Trabajador autónomo</b>: ejecuta parte sin contrato de trabajo.</li>
+          <li><b>Impacto ambiental</b>: la <b>evaluación ordinaria</b> es para actividades de gran incidencia; la <b>declaración de impacto ambiental</b> dice si conviene o no ejecutar el proyecto; el <b>documento de síntesis</b> es obligatorio. Equipo redactor: al menos 2 titulados universitarios.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>💶 Evaluación económica de proyectos</h3>
+        <ul>
+          <li>Es <b>interdisciplinar</b>; mide rentabilidad <b>económica y social</b>. Niveles: <b>Gran Visión → Prefactibilidad → Evaluación definitiva</b>.</li>
+          <li>Pasos: ¿hay <b>mercado</b>? ¿es técnicamente <b>posible</b>? ¿es <b>rentable</b>? El análisis de la <b>comercialización</b> es el más ambiguo y descuidado.</li>
+          <li><b>Costes hundidos</b> = pasados, irrecuperables. <b>Activo fijo</b> = máquinas. <b>Activo intangible/diferido</b> = contratos, patentes. Sueldo de ingenieros = coste general. <b>Tasa circulante &lt; 1</b> = riesgo de impago.</li>
+        </ul>
+      </div>
+
+      <div class="block star">
+        <h3>🎯 Plan para esta noche</h3>
+        <ul>
+          <li><b>1.</b> Lee este resumen entero (que te suene).</li>
+          <li><b>2.</b> <b>Práctica libre</b> leyendo SIEMPRE el "¿Por qué?" de cada pregunta — ahí aprendes de verdad.</li>
+          <li><b>3.</b> Cuando lleves un rato, <b>Modo examen</b> para ver tu nota con penalización.</li>
+          <li><b>4.</b> <b>Repasar fallos</b> hasta que dejes de fallarlas.</li>
+        </ul>
+        <div class="tip">Necesitas un <b>4/10</b>. Con dominar PERT/CPM + diagramas de proceso + las fases, lo tienes. ¡A por ello! 💪</div>
+      </div>
+
+    </div>
+    <button class="btn block" data-act="start:practica" style="margin-bottom:30px">Empezar a practicar →</button>
   </div>
 
   <!-- ============ QUIZ ============ -->
@@ -233,6 +373,6 @@ kbd{background:var(--card2);border:1px solid var(--line);border-bottom-width:2px
   </div>
 </div>
 
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
