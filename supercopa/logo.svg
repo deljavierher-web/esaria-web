@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Supercopa de Huesca">
+  <!-- Balón geométrico -->
+  <path fill="#F5B90F" d="M120 20 L137 39 L120 58 L103 39 Z"/>
+  <!-- Copa angular con corte diagonal -->
+  <g fill="#14355C">
+    <path d="M44 48 H100 L120 68 L140 48 H150 L105 148 H94 Z"/>
+    <path d="M162 48 H196 L146 148 H117 Z"/>
+    <path d="M112 148 H128 V176 H112 Z"/>
+    <path d="M88 176 H152 L160 196 H80 Z"/>
+  </g>
+</svg>
