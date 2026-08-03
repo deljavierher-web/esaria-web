@@ -1,6 +1,6 @@
 {
   "competicion": "Copa Mundial de Elche",
-  "actualizado_en": "2026-08-03T17:56:58",
+  "actualizado_en": "latencia-1785773003",
   "partido_en_vivo": null,
   "partidos": [
     {
@@ -66,7 +66,7 @@
     {
       "nombre": "JotaGay",
       "capitan": "jota",
-      "escudo": null,
+      "escudo": "escudos/equipo-3.jpg",
       "pj": 1,
       "g": 1,
       "e": 0,
