@@ -1,74 +1,16 @@
 {
   "competicion": "Copa Mundial de Elche",
-  "actualizado_en": "latencia-1785773003",
+  "actualizado_en": "2026-08-03T18:07:35",
   "partido_en_vivo": null,
-  "partidos": [
-    {
-      "estado": "finalizado",
-      "fecha": "2026-08-03",
-      "local": "JotaGay",
-      "visitante": "preslav gay",
-      "goles_local": 1,
-      "goles_visitante": 0,
-      "cronologia": [
-        {
-          "minuto": 1,
-          "tipo": "gol",
-          "jugador": "jota",
-          "equipo": "JotaGay",
-          "asistencia": "jota4"
-        }
-      ]
-    },
-    {
-      "estado": "cancelado",
-      "fecha": "2026-07-22",
-      "local": "preslav gay",
-      "visitante": "gygjgjl",
-      "goles_local": 1,
-      "goles_visitante": 0,
-      "cronologia": [
-        {
-          "minuto": 1,
-          "tipo": "gol",
-          "jugador": "jhv",
-          "equipo": "preslav gay",
-          "asistencia": "56576756"
-        }
-      ]
-    }
-  ],
-  "clasificacion": [
-    {
-      "equipo": "JotaGay",
-      "pj": 1,
-      "g": 1,
-      "e": 0,
-      "p": 0,
-      "gf": 1,
-      "gc": 0,
-      "dg": 1,
-      "pts": 3
-    },
-    {
-      "equipo": "preslav gay",
-      "pj": 1,
-      "g": 0,
-      "e": 0,
-      "p": 1,
-      "gf": 0,
-      "gc": 1,
-      "dg": -1,
-      "pts": 0
-    }
-  ],
+  "partidos": [],
+  "clasificacion": [],
   "equipos": [
     {
       "nombre": "JotaGay",
       "capitan": "jota",
       "escudo": "escudos/equipo-3.jpg",
-      "pj": 1,
-      "g": 1,
+      "pj": 0,
+      "g": 0,
       "e": 0,
       "p": 0
     },
@@ -85,27 +27,15 @@
       "nombre": "preslav gay",
       "capitan": "Preslav",
       "escudo": "escudos/equipo-1.jpg",
-      "pj": 1,
+      "pj": 0,
       "g": 0,
       "e": 0,
-      "p": 1
+      "p": 0
     }
   ],
   "estadisticas": {
-    "goleadores": [
-      {
-        "jugador": "jota",
-        "equipo": "JotaGay",
-        "goles": 1
-      }
-    ],
-    "asistentes": [
-      {
-        "jugador": "jota4",
-        "equipo": "JotaGay",
-        "asistencias": 1
-      }
-    ],
+    "goleadores": [],
+    "asistentes": [],
     "tarjetas": []
   }
 }
