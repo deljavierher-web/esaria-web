@@ -1,18 +1,10 @@
 {
   "competicion": "Copa Mundial de Elche",
-  "actualizado_en": "2026-08-03T17:56:33",
-  "partido_en_vivo": {
-    "local": "JotaGay",
-    "visitante": "preslav gay",
-    "goles_local": 1,
-    "goles_visitante": 0,
-    "duracion_parte_minutos": 20,
-    "inicio_primera_en": "2026-08-03T15:55:31Z",
-    "inicio_segunda_en": null
-  },
+  "actualizado_en": "2026-08-03T17:56:58",
+  "partido_en_vivo": null,
   "partidos": [
     {
-      "estado": "en_juego",
+      "estado": "finalizado",
       "fecha": "2026-08-03",
       "local": "JotaGay",
       "visitante": "preslav gay",
@@ -46,14 +38,37 @@
       ]
     }
   ],
-  "clasificacion": [],
+  "clasificacion": [
+    {
+      "equipo": "JotaGay",
+      "pj": 1,
+      "g": 1,
+      "e": 0,
+      "p": 0,
+      "gf": 1,
+      "gc": 0,
+      "dg": 1,
+      "pts": 3
+    },
+    {
+      "equipo": "preslav gay",
+      "pj": 1,
+      "g": 0,
+      "e": 0,
+      "p": 1,
+      "gf": 0,
+      "gc": 1,
+      "dg": -1,
+      "pts": 0
+    }
+  ],
   "equipos": [
     {
       "nombre": "JotaGay",
       "capitan": "jota",
       "escudo": null,
-      "pj": 0,
-      "g": 0,
+      "pj": 1,
+      "g": 1,
       "e": 0,
       "p": 0
     },
@@ -70,10 +85,10 @@
       "nombre": "preslav gay",
       "capitan": "Preslav",
       "escudo": "escudos/equipo-1.jpg",
-      "pj": 0,
+      "pj": 1,
       "g": 0,
       "e": 0,
-      "p": 0
+      "p": 1
     }
   ],
   "estadisticas": {
