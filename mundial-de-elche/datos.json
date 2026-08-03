@@ -1,8 +1,33 @@
 {
   "competicion": "Copa Mundial de Elche",
-  "actualizado_en": "2026-08-03T17:54:25",
-  "partido_en_vivo": null,
+  "actualizado_en": "2026-08-03T17:56:33",
+  "partido_en_vivo": {
+    "local": "JotaGay",
+    "visitante": "preslav gay",
+    "goles_local": 1,
+    "goles_visitante": 0,
+    "duracion_parte_minutos": 20,
+    "inicio_primera_en": "2026-08-03T15:55:31Z",
+    "inicio_segunda_en": null
+  },
   "partidos": [
+    {
+      "estado": "en_juego",
+      "fecha": "2026-08-03",
+      "local": "JotaGay",
+      "visitante": "preslav gay",
+      "goles_local": 1,
+      "goles_visitante": 0,
+      "cronologia": [
+        {
+          "minuto": 1,
+          "tipo": "gol",
+          "jugador": "jota",
+          "equipo": "JotaGay",
+          "asistencia": "jota4"
+        }
+      ]
+    },
     {
       "estado": "cancelado",
       "fecha": "2026-07-22",
@@ -52,8 +77,20 @@
     }
   ],
   "estadisticas": {
-    "goleadores": [],
-    "asistentes": [],
+    "goleadores": [
+      {
+        "jugador": "jota",
+        "equipo": "JotaGay",
+        "goles": 1
+      }
+    ],
+    "asistentes": [
+      {
+        "jugador": "jota4",
+        "equipo": "JotaGay",
+        "asistencias": 1
+      }
+    ],
     "tarjetas": []
   }
 }
