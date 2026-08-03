@@ -404,13 +404,17 @@
   }
 
   /* ─── Equipos ─── */
-  function pintarEquipos(equipos) {
+  function pintarEquipos(equipos, version) {
+    // El escudo lleva una versión en la URL: si alguna vez se pidió antes de
+    // existir, Cloudflare devolvió su página de relleno con 4 h de caché y el
+    // navegador se quedaría con ella. Cambiando la URL se descarta esa copia.
+    const sufijo = version ? "?v=" + encodeURIComponent(version) : "";
     if (!equipos || !equipos.length) return;
     $("#contenedor-equipos").innerHTML = `
       <div class="rejilla-equipos">${equipos.map((e, i) => `
         <article class="club" data-animar="subir" style="--i:${i}">
           ${e.escudo
-            ? `<img class="escudo" src="${esc(e.escudo)}" alt="Escudo de ${esc(e.nombre)}" loading="lazy">`
+            ? `<img class="escudo" src="${esc(e.escudo)}${sufijo}" alt="Escudo de ${esc(e.nombre)}" loading="lazy">`
             : '<div class="escudo-vacio" aria-hidden="true"></div>'}
           <h3 class="display">${esc(e.nombre)}</h3>
           ${e.capitan ? `<p class="capitan">Capitán: <b>${esc(e.capitan)}</b></p>` : '<p class="capitan">Sin capitán asignado</p>'}
@@ -502,7 +506,7 @@
       observarAnimables($("#contenedor-resultados"));
     }
     if (haCambiado("equipos", datos.equipos)) {
-      pintarEquipos(datos.equipos);
+      pintarEquipos(datos.equipos, datos.actualizado_en);
       observarAnimables($("#contenedor-equipos"));
       activarInclinacion($("#contenedor-equipos"));
     }
