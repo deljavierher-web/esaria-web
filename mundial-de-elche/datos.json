@@ -1,6 +1,6 @@
 {
   "competicion": "Copa Mundial de Elche",
-  "actualizado_en": "2026-08-03T17:53:42",
+  "actualizado_en": "2026-08-03T17:54:25",
   "partido_en_vivo": null,
   "partidos": [
     {
@@ -23,6 +23,15 @@
   ],
   "clasificacion": [],
   "equipos": [
+    {
+      "nombre": "JotaGay",
+      "capitan": "jota",
+      "escudo": null,
+      "pj": 0,
+      "g": 0,
+      "e": 0,
+      "p": 0
+    },
     {
       "nombre": "gygjgjl",
       "capitan": null,
