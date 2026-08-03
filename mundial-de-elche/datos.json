@@ -1,18 +1,10 @@
 {
   "competicion": "Copa Mundial de Elche",
-  "actualizado_en": "2026-08-03T17:47:12",
-  "partido_en_vivo": {
-    "local": "preslav gay",
-    "visitante": "gygjgjl",
-    "goles_local": 1,
-    "goles_visitante": 0,
-    "duracion_parte_minutos": 20,
-    "inicio_primera_en": "2026-07-22T15:09:17Z",
-    "inicio_segunda_en": null
-  },
+  "actualizado_en": "2026-08-03T17:53:42",
+  "partido_en_vivo": null,
   "partidos": [
     {
-      "estado": "en_juego",
+      "estado": "cancelado",
       "fecha": "2026-07-22",
       "local": "preslav gay",
       "visitante": "gygjgjl",
@@ -51,20 +43,8 @@
     }
   ],
   "estadisticas": {
-    "goleadores": [
-      {
-        "jugador": "jhv",
-        "equipo": "preslav gay",
-        "goles": 1
-      }
-    ],
-    "asistentes": [
-      {
-        "jugador": "56576756",
-        "equipo": "preslav gay",
-        "asistencias": 1
-      }
-    ],
+    "goleadores": [],
+    "asistentes": [],
     "tarjetas": []
   }
 }
