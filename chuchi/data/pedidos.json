@@ -1,20 +1,29 @@
 {
-  "ultima_actualizacion": "2026-08-12 14:44:12",
+  "ultima_actualizacion": "2026-08-12 14:48:29",
   "resumen_tallas": {
     "desglose": {
-      "XL": 1,
-      "M": 1
+      "M": 2,
+      "XL": 1
     },
-    "total_camisetas": 2
+    "total_camisetas": 3
   },
   "resumen_finanzas": {
-    "total_pedidos": 2,
+    "total_pedidos": 3,
     "pagados": 2,
-    "pendientes": 0,
-    "bizum": 1,
+    "pendientes": 1,
+    "bizum": 2,
     "efectivo": 1
   },
   "pedidos": [
+    {
+      "id": 5,
+      "comprador": "Mexi",
+      "talla": "M",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-12 14:48:28",
+      "notas": "Pendiente definir Bizum/Efectivo"
+    },
     {
       "id": 4,
       "comprador": "Javier Delgado",
