@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-12 14:51:57",
+  "ultima_actualizacion": "2026-08-12 14:55:50",
   "resumen_tallas": {
     "desglose": {
       "M": 2,
@@ -10,8 +10,8 @@
   },
   "resumen_finanzas": {
     "total_pedidos": 4,
-    "pagados": 2,
-    "pendientes": 2,
+    "pagados": 3,
+    "pendientes": 1,
     "bizum": 3,
     "efectivo": 1
   },
@@ -21,7 +21,7 @@
       "comprador": "Ethan",
       "talla": "L",
       "metodo_pago": "Bizum",
-      "estado_pago": "Pendiente",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-12 14:51:55",
       "notas": ""
     },
