@@ -1,15 +1,27 @@
 {
-  "ultima_actualizacion": "2026-08-12 14:33:52",
+  "ultima_actualizacion": "2026-08-12 14:43:00",
   "resumen_tallas": {
-    "desglose": {},
-    "total_camisetas": 0
+    "desglose": {
+      "XL": 1
+    },
+    "total_camisetas": 1
   },
   "resumen_finanzas": {
-    "total_pedidos": 0,
-    "pagados": 0,
+    "total_pedidos": 1,
+    "pagados": 1,
     "pendientes": 0,
-    "bizum": 0,
+    "bizum": 1,
     "efectivo": 0
   },
-  "pedidos": []
+  "pedidos": [
+    {
+      "id": 3,
+      "comprador": "Robert",
+      "talla": "XL",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-12 14:42:57",
+      "notas": ""
+    }
+  ]
 }
