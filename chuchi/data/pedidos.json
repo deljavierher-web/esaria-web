@@ -1,19 +1,29 @@
 {
-  "ultima_actualizacion": "2026-08-12 14:43:00",
+  "ultima_actualizacion": "2026-08-12 14:44:12",
   "resumen_tallas": {
     "desglose": {
-      "XL": 1
+      "XL": 1,
+      "M": 1
     },
-    "total_camisetas": 1
+    "total_camisetas": 2
   },
   "resumen_finanzas": {
-    "total_pedidos": 1,
-    "pagados": 1,
+    "total_pedidos": 2,
+    "pagados": 2,
     "pendientes": 0,
     "bizum": 1,
-    "efectivo": 0
+    "efectivo": 1
   },
   "pedidos": [
+    {
+      "id": 4,
+      "comprador": "Javier Delgado",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-12 14:44:10",
+      "notas": "13€"
+    },
     {
       "id": 3,
       "comprador": "Robert",
