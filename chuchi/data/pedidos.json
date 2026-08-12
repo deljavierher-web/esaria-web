@@ -1,0 +1,15 @@
+{
+  "ultima_actualizacion": "2026-08-12 14:33:52",
+  "resumen_tallas": {
+    "desglose": {},
+    "total_camisetas": 0
+  },
+  "resumen_finanzas": {
+    "total_pedidos": 0,
+    "pagados": 0,
+    "pendientes": 0,
+    "bizum": 0,
+    "efectivo": 0
+  },
+  "pedidos": []
+}

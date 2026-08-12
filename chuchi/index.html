@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camisetas en Memoria de Chuchi Padilla | Control de Pedidos</title>
+    <meta name="description" content="Panel de control y preventa de camisetas conmemorativas en memoria de Chuchi Padilla.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+
+    <div class="container">
+        <!-- Memorial Header -->
+        <header class="header">
+            <div class="badge-memorial">🕯️ En memoria de Chuchi Padilla</div>
+            <h1 class="title">Camisetas Chuchi Padilla</h1>
+            <p class="subtitle">Gestión de la preventa, control de tallas y estado de pagos en tiempo real.</p>
+            <div class="sync-status" id="syncStatus">
+                <span class="pulse-dot"></span>
+                <span id="lastUpdate">Cargando datos...</span>
+            </div>
+        </header>
+
+        <!-- KPI Metrics Grid -->
+        <section class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">👕</div>
+                <div class="kpi-content">
+                    <span class="kpi-label">Total Pedidos</span>
+                    <span class="kpi-value" id="kpiTotal">0</span>
+                    <span class="kpi-subtext">Camisetas registradas</span>
+                </div>
+            </div>
+
+            <div class="kpi-card highlight-green">
+                <div class="kpi-icon">✅</div>
+                <div class="kpi-content">
+                    <span class="kpi-label">Camisetas Pagadas</span>
+                    <span class="kpi-value" id="kpiPagados">0</span>
+                    <span class="kpi-subtext" id="kpiPagadosSub">0% del total</span>
+                </div>
+            </div>
+
+            <div class="kpi-card highlight-amber">
+                <div class="kpi-icon">⏳</div>
+                <div class="kpi-content">
+                    <span class="kpi-label">Pendientes de Pago</span>
+                    <span class="kpi-value" id="kpiPendientes">0</span>
+                    <span class="kpi-subtext">Por cobrar</span>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">💳</div>
+                <div class="kpi-content">
+                    <span class="kpi-label">Desglose Pago</span>
+                    <div class="kpi-split">
+                        <span class="split-tag bizum" id="kpiBizum">📲 0 Bizum</span>
+                        <span class="split-tag efectivo" id="kpiEfectivo">💵 0 Efectivo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Bar Section -->
+        <section class="progress-section">
+            <div class="progress-header">
+                <span>Progreso de Cobro</span>
+                <span id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+            </div>
+        </section>
+
+        <!-- Main Content Split: Size Breakdown & Filterable Table -->
+        <div class="main-layout">
+            <!-- Left Side: Sizes Summary for Printer -->
+            <aside class="sidebar-card">
+                <div class="card-header">
+                    <h2>📦 Tallas para Imprenta</h2>
+                    <p>Desglose exacto de pedido</p>
+                </div>
+                <div class="sizes-list" id="sizesList">
+                    <div class="loading-state">Cargando tallas...</div>
+                </div>
+            </aside>
+
+            <!-- Right Side: Orders Search & Table -->
+            <main class="table-card">
+                <div class="table-header-tools">
+                    <div>
+                        <h2>📋 Lista de Compradores</h2>
+                        <p class="table-subtitle">Busca por nombre o filtra por estado</p>
+                    </div>
+                    
+                    <div class="controls-group">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="searchInput" placeholder="Buscar comprador...">
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">Todos</button>
+                            <button class="filter-btn" data-filter="Pendiente">⏳ Pendientes</button>
+                            <button class="filter-btn" data-filter="Pagado">✅ Pagados</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Comprador</th>
+                                <th>Talla</th>
+                                <th>Método Pago</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td colspan="6" class="empty-message">Cargando lista de pedidos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Camisetas Chuchi Padilla &bull; Sistema gestionado mediante Bot de Telegram & Google Drive.</p>
+        </footer>
+    </div>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
