@@ -1,20 +1,30 @@
 {
-  "ultima_actualizacion": "2026-08-12 14:48:29",
+  "ultima_actualizacion": "2026-08-12 14:51:57",
   "resumen_tallas": {
     "desglose": {
       "M": 2,
-      "XL": 1
+      "XL": 1,
+      "L": 1
     },
-    "total_camisetas": 3
+    "total_camisetas": 4
   },
   "resumen_finanzas": {
-    "total_pedidos": 3,
+    "total_pedidos": 4,
     "pagados": 2,
-    "pendientes": 1,
-    "bizum": 2,
+    "pendientes": 2,
+    "bizum": 3,
     "efectivo": 1
   },
   "pedidos": [
+    {
+      "id": 6,
+      "comprador": "Ethan",
+      "talla": "L",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-12 14:51:55",
+      "notas": ""
+    },
     {
       "id": 5,
       "comprador": "Mexi",
