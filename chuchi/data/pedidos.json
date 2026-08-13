@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-13 21:49:15",
+  "ultima_actualizacion": "2026-08-14 00:14:35",
   "resumen_tallas": {
     "desglose": {
       "S": 4,
@@ -15,8 +15,8 @@
     "total_pedidos": 15,
     "pagados": 7,
     "pendientes": 8,
-    "bizum": 4,
-    "efectivo": 11
+    "bizum": 2,
+    "efectivo": 13
   },
   "pedidos": [
     {
@@ -77,7 +77,7 @@
       "id": 9,
       "comprador": "Juan Armando 2",
       "talla": "S",
-      "metodo_pago": "Bizum",
+      "metodo_pago": "Efectivo",
       "estado_pago": "Pendiente",
       "fecha_registro": "2026-08-13 20:11:04",
       "notas": ""
@@ -86,7 +86,7 @@
       "id": 8,
       "comprador": "Juan Armando 1",
       "talla": "S",
-      "metodo_pago": "Bizum",
+      "metodo_pago": "Efectivo",
       "estado_pago": "Pendiente",
       "fecha_registro": "2026-08-13 20:11:04",
       "notas": ""
