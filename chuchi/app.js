@@ -1,3 +1,6 @@
+// Precio fijo por camiseta (si cambia el precio, cambiar aquí)
+const PRECIO_CAMISETA = 13;
+
 document.addEventListener('DOMContentLoaded', () => {
     let allOrders = [];
     let currentFilter = 'all';
@@ -17,22 +20,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInputEl = document.getElementById('searchInput');
     const filterButtons = document.querySelectorAll('.filter-btn');
 
-    async function loadData() {
-        try {
-            const response = await fetch(`data/pedidos.json?t=${new Date().getTime()}`);
-            if (!response.ok) throw new Error('Error al cargar pedidos.json');
-            
-            const data = await response.json();
-            allOrders = data.pedidos || [];
+    // Money section elements
+    const moneyRecaudadoEl = document.getElementById('moneyRecaudado');
+    const moneyRecaudadoSubEl = document.getElementById('moneyRecaudadoSub');
+    const moneyPendienteEl = document.getElementById('moneyPendiente');
+    const moneyPendienteSubEl = document.getElementById('moneyPendienteSub');
+    const moneyTotalEl = document.getElementById('moneyTotal');
+    const moneyTotalSubEl = document.getElementById('moneyTotalSub');
 
-            updateSyncTime(data.ultima_actualizacion);
-            updateKPIs(data.resumen_finanzas, data.resumen_tallas);
-            renderSizes(data.resumen_tallas);
-            renderTable();
-        } catch (error) {
-            console.error('Error al cargar datos:', error);
-            syncStatusEl.textContent = 'Modo vista previa';
+    function formatEuro(n) {
+        return n.toFixed(2).replace('.', ',') + ' €';
+    }
+
+    async function loadData() {
+        // Intenta primero la ruta de producción (data/pedidos.json) y, si no está
+        // disponible, usa la copia local en la raíz (pedidos.json).
+        const rutas = [`data/pedidos.json`, `pedidos.json`];
+        let data = null;
+
+        for (const ruta of rutas) {
+            try {
+                const response = await fetch(`${ruta}?t=${new Date().getTime()}`);
+                if (response.ok) {
+                    data = await response.json();
+                    break;
+                }
+            } catch (e) {
+                // continúa con la siguiente ruta
+            }
         }
+
+        if (!data) {
+            console.error('Error al cargar pedidos.json');
+            syncStatusEl.textContent = 'Modo vista previa';
+            return;
+        }
+
+        allOrders = data.pedidos || [];
+        updateSyncTime(data.ultima_actualizacion);
+        updateKPIs(data.resumen_finanzas, data.resumen_tallas);
+        renderSizes(data.resumen_tallas);
+        renderTable();
     }
 
     function updateSyncTime(timeStr) {
@@ -61,6 +89,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressPercentageEl.textContent = `${percent}%`;
         progressBarFillEl.style.width = `${percent}%`;
+
+        // Money calculations (in real time from data)
+        const recaudado = pagados * PRECIO_CAMISETA;
+        const pendiente = pendientes * PRECIO_CAMISETA;
+        const totalEsperado = total * PRECIO_CAMISETA;
+
+        moneyRecaudadoEl.textContent = formatEuro(recaudado);
+        moneyRecaudadoSubEl.textContent = `${pagados} camiseta${pagados === 1 ? '' : 's'} pagada${pagados === 1 ? '' : 's'}`;
+
+        moneyPendienteEl.textContent = formatEuro(pendiente);
+        moneyPendienteSubEl.textContent = `${pendientes} camiseta${pendientes === 1 ? '' : 's'} pendiente${pendientes === 1 ? '' : 's'}`;
+
+        moneyTotalEl.textContent = formatEuro(totalEsperado);
+        moneyTotalSubEl.textContent = `${total} camiseta${total === 1 ? '' : 's'} en total`;
     }
 
     function renderSizes(tallasData) {
@@ -88,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.className = 'size-item';
             div.innerHTML = `
-                <span class="size-badge">${size}</span>
+                <span class="size-badge">${escapeHtml(size)}</span>
                 <span class="size-count">${count} u.</span>
             `;
             sizesListEl.appendChild(div);
@@ -119,24 +161,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const isPagado = order.estado_pago === 'Pagado';
             
             tr.innerHTML = `
-                <td>#${order.id}</td>
-                <td class="comprador-name">${escapeHtml(order.comprador)}</td>
-                <td><span class="talla-chip">${order.talla}</span></td>
-                <td><span class="badge-method">${order.metodo_pago === 'Bizum' ? '📲 Bizum' : '💵 Efectivo'}</span></td>
-                <td>
+                <td data-label="Nº">#${order.id}</td>
+                <td data-label="Comprador" class="comprador-name">${escapeHtml(order.comprador)}</td>
+                <td data-label="Talla"><span class="talla-chip">${escapeHtml(order.talla)}</span></td>
+                <td data-label="Método"><span class="badge-method">${order.metodo_pago === 'Bizum' ? '📲 Bizum' : '💵 Efectivo'}</span></td>
+                <td data-label="Estado">
                     <span class="badge-status ${isPagado ? 'pagado' : 'pendiente'}">
                         ${isPagado ? '✅ Pagado' : '⏳ Pendiente'}
                     </span>
                 </td>
-                <td style="font-size:0.8rem; opacity:0.7;">${order.fecha_registro}</td>
+                <td data-label="Fecha" style="font-size:0.8rem; opacity:0.7;">${escapeHtml(order.fecha_registro)}</td>
             `;
             ordersTableBodyEl.appendChild(tr);
         });
     }
 
     function escapeHtml(text) {
-        if (!text) return '';
-        return text
+        if (text === null || text === undefined) return '';
+        return String(text)
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")

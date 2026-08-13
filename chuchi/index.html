@@ -22,6 +22,7 @@
         <header class="header">
             <div class="badge-memorial">🕯️ En memoria de Chuchi Padilla</div>
             <h1 class="title">Camisetas Chuchi Padilla</h1>
+            <div class="header-ornament" aria-hidden="true"><span></span>✦<span></span></div>
             <p class="subtitle">Gestión de la preventa, control de tallas y estado de pagos en tiempo real.</p>
             <div class="sync-status" id="syncStatus">
                 <span class="pulse-dot"></span>
@@ -58,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="kpi-card">
+            <div class="kpi-card highlight-blue">
                 <div class="kpi-icon">💳</div>
                 <div class="kpi-content">
                     <span class="kpi-label">Desglose Pago</span>
@@ -81,6 +82,42 @@
             </div>
         </section>
 
+        <!-- Money Summary Section -->
+        <section class="money-section">
+            <div class="section-heading">
+                <h2>💶 Resumen Económico</h2>
+                <span class="price-tag">13 € por camiseta</span>
+            </div>
+            <div class="money-grid">
+                <div class="money-card money-raised">
+                    <div class="money-icon">✅</div>
+                    <div class="money-info">
+                        <span class="money-label">Recaudado</span>
+                        <span class="money-value" id="moneyRecaudado">0,00 €</span>
+                        <span class="money-sub" id="moneyRecaudadoSub">0 camisetas pagadas</span>
+                    </div>
+                </div>
+
+                <div class="money-card money-pending">
+                    <div class="money-icon">⏳</div>
+                    <div class="money-info">
+                        <span class="money-label">Pendiente de cobrar</span>
+                        <span class="money-value" id="moneyPendiente">0,00 €</span>
+                        <span class="money-sub" id="moneyPendienteSub">0 camisetas pendientes</span>
+                    </div>
+                </div>
+
+                <div class="money-card money-total">
+                    <div class="money-icon">🎽</div>
+                    <div class="money-info">
+                        <span class="money-label">Total esperado</span>
+                        <span class="money-value" id="moneyTotal">0,00 €</span>
+                        <span class="money-sub" id="moneyTotalSub">0 camisetas en total</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Main Content Split: Size Breakdown & Filterable Table -->
         <div class="main-layout">
             <!-- Left Side: Sizes Summary for Printer -->
@@ -97,7 +134,7 @@
             <!-- Right Side: Orders Search & Table -->
             <main class="table-card">
                 <div class="table-header-tools">
-                    <div>
+                    <div class="table-title-group">
                         <h2>📋 Lista de Compradores</h2>
                         <p class="table-subtitle">Busca por nombre o filtra por estado</p>
                     </div>
@@ -139,7 +176,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>Camisetas Chuchi Padilla &bull; Sistema gestionado mediante Bot de Telegram & Google Drive.</p>
+            <p>Camisetas Chuchi Padilla &bull; Sistema gestionado mediante Bot de Telegram &amp; Google Drive.</p>
         </footer>
     </div>
 
