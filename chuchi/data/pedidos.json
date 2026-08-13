@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-13 20:26:05",
+  "ultima_actualizacion": "2026-08-13 20:27:00",
   "resumen_tallas": {
     "desglose": {
       "S": 3,
@@ -15,15 +15,15 @@
     "total_pedidos": 11,
     "pagados": 7,
     "pendientes": 4,
-    "bizum": 5,
-    "efectivo": 6
+    "bizum": 4,
+    "efectivo": 7
   },
   "pedidos": [
     {
       "id": 13,
       "comprador": "Luis Fernando",
       "talla": "XL",
-      "metodo_pago": "Bizum",
+      "metodo_pago": "Efectivo",
       "estado_pago": "Pagado",
       "fecha_registro": "2026-08-13 20:26:05",
       "notas": ""
