@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-12 18:37:46",
+  "ultima_actualizacion": "2026-08-13 17:34:15",
   "resumen_tallas": {
     "desglose": {
       "M": 3,
@@ -12,10 +12,10 @@
   },
   "resumen_finanzas": {
     "total_pedidos": 7,
-    "pagados": 3,
-    "pendientes": 4,
-    "bizum": 3,
-    "efectivo": 4
+    "pagados": 4,
+    "pendientes": 3,
+    "bizum": 2,
+    "efectivo": 5
   },
   "pedidos": [
     {
@@ -58,8 +58,8 @@
       "id": 5,
       "comprador": "Mexi",
       "talla": "M",
-      "metodo_pago": "Bizum",
-      "estado_pago": "Pendiente",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-12 14:48:28",
       "notas": "Pendiente definir Bizum/Efectivo"
     },
