@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-13 20:22:29",
+  "ultima_actualizacion": "2026-08-13 20:24:20",
   "resumen_tallas": {
     "desglose": {
       "S": 3,
@@ -13,18 +13,18 @@
   },
   "resumen_finanzas": {
     "total_pedidos": 10,
-    "pagados": 5,
-    "pendientes": 5,
+    "pagados": 6,
+    "pendientes": 4,
     "bizum": 4,
     "efectivo": 6
   },
   "pedidos": [
     {
       "id": 12,
-      "comprador": "Barotorío",
+      "comprador": "Álvaro Torio",
       "talla": "3XL",
       "metodo_pago": "Efectivo",
-      "estado_pago": "Pendiente",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-13 20:22:29",
       "notas": ""
     },
