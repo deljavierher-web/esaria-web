@@ -1,6 +1,3 @@
-// Precio fijo por camiseta (si cambia el precio, cambiar aquí)
-const PRECIO_CAMISETA = 13;
-
 document.addEventListener('DOMContentLoaded', () => {
     let allOrders = [];
     let currentFilter = 'all';
@@ -19,18 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ordersTableBodyEl = document.getElementById('ordersTableBody');
     const searchInputEl = document.getElementById('searchInput');
     const filterButtons = document.querySelectorAll('.filter-btn');
-
-    // Money section elements
-    const moneyRecaudadoEl = document.getElementById('moneyRecaudado');
-    const moneyRecaudadoSubEl = document.getElementById('moneyRecaudadoSub');
-    const moneyPendienteEl = document.getElementById('moneyPendiente');
-    const moneyPendienteSubEl = document.getElementById('moneyPendienteSub');
-    const moneyTotalEl = document.getElementById('moneyTotal');
-    const moneyTotalSubEl = document.getElementById('moneyTotalSub');
-
-    function formatEuro(n) {
-        return n.toFixed(2).replace('.', ',') + ' €';
-    }
 
     async function loadData() {
         // Intenta primero la ruta de producción (data/pedidos.json) y, si no está
@@ -89,20 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressPercentageEl.textContent = `${percent}%`;
         progressBarFillEl.style.width = `${percent}%`;
-
-        // Money calculations (in real time from data)
-        const recaudado = pagados * PRECIO_CAMISETA;
-        const pendiente = pendientes * PRECIO_CAMISETA;
-        const totalEsperado = total * PRECIO_CAMISETA;
-
-        moneyRecaudadoEl.textContent = formatEuro(recaudado);
-        moneyRecaudadoSubEl.textContent = `${pagados} camiseta${pagados === 1 ? '' : 's'} pagada${pagados === 1 ? '' : 's'}`;
-
-        moneyPendienteEl.textContent = formatEuro(pendiente);
-        moneyPendienteSubEl.textContent = `${pendientes} camiseta${pendientes === 1 ? '' : 's'} pendiente${pendientes === 1 ? '' : 's'}`;
-
-        moneyTotalEl.textContent = formatEuro(totalEsperado);
-        moneyTotalSubEl.textContent = `${total} camiseta${total === 1 ? '' : 's'} en total`;
     }
 
     function renderSizes(tallasData) {
