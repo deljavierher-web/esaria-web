@@ -1,23 +1,33 @@
 {
-  "ultima_actualizacion": "2026-08-13 20:11:04",
+  "ultima_actualizacion": "2026-08-13 20:22:29",
   "resumen_tallas": {
     "desglose": {
       "S": 3,
       "M": 3,
       "XL": 1,
       "L": 1,
+      "3XL": 1,
       "2XL": 1
     },
-    "total_camisetas": 9
+    "total_camisetas": 10
   },
   "resumen_finanzas": {
-    "total_pedidos": 9,
+    "total_pedidos": 10,
     "pagados": 5,
-    "pendientes": 4,
+    "pendientes": 5,
     "bizum": 4,
-    "efectivo": 5
+    "efectivo": 6
   },
   "pedidos": [
+    {
+      "id": 12,
+      "comprador": "Barotorío",
+      "talla": "3XL",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-13 20:22:29",
+      "notas": ""
+    },
     {
       "id": 11,
       "comprador": "Juan Armando 2",
