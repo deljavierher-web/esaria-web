@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-13 20:27:00",
+  "ultima_actualizacion": "2026-08-13 21:29:35",
   "resumen_tallas": {
     "desglose": {
       "S": 3,
@@ -20,7 +20,7 @@
   },
   "pedidos": [
     {
-      "id": 13,
+      "id": 11,
       "comprador": "Luis Fernando",
       "talla": "XL",
       "metodo_pago": "Efectivo",
@@ -29,7 +29,7 @@
       "notas": ""
     },
     {
-      "id": 12,
+      "id": 10,
       "comprador": "Álvaro Torio",
       "talla": "3XL",
       "metodo_pago": "Efectivo",
@@ -38,7 +38,7 @@
       "notas": ""
     },
     {
-      "id": 11,
+      "id": 9,
       "comprador": "Juan Armando 2",
       "talla": "S",
       "metodo_pago": "Bizum",
@@ -47,7 +47,7 @@
       "notas": ""
     },
     {
-      "id": 10,
+      "id": 8,
       "comprador": "Juan Armando 1",
       "talla": "S",
       "metodo_pago": "Bizum",
@@ -56,7 +56,7 @@
       "notas": ""
     },
     {
-      "id": 9,
+      "id": 7,
       "comprador": "Víctor",
       "talla": "2XL",
       "metodo_pago": "Efectivo",
@@ -65,7 +65,7 @@
       "notas": ""
     },
     {
-      "id": 8,
+      "id": 6,
       "comprador": "Daniela",
       "talla": "S",
       "metodo_pago": "Efectivo",
@@ -74,7 +74,7 @@
       "notas": ""
     },
     {
-      "id": 7,
+      "id": 5,
       "comprador": "Martín",
       "talla": "M",
       "metodo_pago": "Efectivo",
@@ -83,7 +83,7 @@
       "notas": ""
     },
     {
-      "id": 6,
+      "id": 4,
       "comprador": "Ethan",
       "talla": "L",
       "metodo_pago": "Bizum",
@@ -92,7 +92,7 @@
       "notas": ""
     },
     {
-      "id": 5,
+      "id": 3,
       "comprador": "Mexi",
       "talla": "M",
       "metodo_pago": "Efectivo",
@@ -101,7 +101,7 @@
       "notas": "Pendiente definir Bizum/Efectivo"
     },
     {
-      "id": 4,
+      "id": 2,
       "comprador": "Javier Delgado",
       "talla": "M",
       "metodo_pago": "Efectivo",
@@ -110,7 +110,7 @@
       "notas": "13€"
     },
     {
-      "id": 3,
+      "id": 1,
       "comprador": "Robert",
       "talla": "XL",
       "metodo_pago": "Bizum",
