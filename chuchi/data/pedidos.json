@@ -1,24 +1,33 @@
 {
-  "ultima_actualizacion": "2026-08-14 00:14:35",
+  "ultima_actualizacion": "2026-08-17 21:33:51",
   "resumen_tallas": {
     "desglose": {
+      "M": 5,
       "S": 4,
-      "M": 4,
       "2XL": 3,
       "XL": 2,
       "L": 1,
       "3XL": 1
     },
-    "total_camisetas": 15
+    "total_camisetas": 16
   },
   "resumen_finanzas": {
-    "total_pedidos": 15,
-    "pagados": 7,
+    "total_pedidos": 16,
+    "pagados": 8,
     "pendientes": 8,
-    "bizum": 2,
+    "bizum": 3,
     "efectivo": 13
   },
   "pedidos": [
+    {
+      "id": 16,
+      "comprador": "Pini",
+      "talla": "M",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-17 21:33:38",
+      "notas": ""
+    },
     {
       "id": 15,
       "comprador": "Espeso",
