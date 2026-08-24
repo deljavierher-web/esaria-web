@@ -1,24 +1,33 @@
 {
-  "ultima_actualizacion": "2026-08-24 14:15:35",
+  "ultima_actualizacion": "2026-08-24 14:20:22",
   "resumen_tallas": {
     "desglose": {
       "M": 6,
-      "S": 4,
+      "S": 5,
       "2XL": 3,
       "XL": 2,
       "L": 2,
       "3XL": 1
     },
-    "total_camisetas": 18
+    "total_camisetas": 19
   },
   "resumen_finanzas": {
-    "total_pedidos": 18,
+    "total_pedidos": 19,
     "pagados": 9,
-    "pendientes": 9,
+    "pendientes": 10,
     "bizum": 4,
-    "efectivo": 14
+    "efectivo": 15
   },
   "pedidos": [
+    {
+      "id": 19,
+      "comprador": "Viadero",
+      "talla": "S",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-24 14:20:22",
+      "notas": ""
+    },
     {
       "id": 18,
       "comprador": "Hugo",
