@@ -1,0 +1,185 @@
+{
+  "ultima_actualizacion": "2026-08-24 14:15:35",
+  "resumen_tallas": {
+    "desglose": {
+      "M": 6,
+      "S": 4,
+      "2XL": 3,
+      "XL": 2,
+      "L": 2,
+      "3XL": 1
+    },
+    "total_camisetas": 18
+  },
+  "resumen_finanzas": {
+    "total_pedidos": 18,
+    "pagados": 9,
+    "pendientes": 9,
+    "bizum": 4,
+    "efectivo": 14
+  },
+  "pedidos": [
+    {
+      "id": 18,
+      "comprador": "Hugo",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-24 14:15:35",
+      "notas": ""
+    },
+    {
+      "id": 17,
+      "comprador": "Saúl",
+      "talla": "L",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-18 22:34:18",
+      "notas": ""
+    },
+    {
+      "id": 16,
+      "comprador": "Pini",
+      "talla": "M",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-17 21:33:38",
+      "notas": ""
+    },
+    {
+      "id": 15,
+      "comprador": "Espeso",
+      "talla": "S",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-13 21:49:15",
+      "notas": ""
+    },
+    {
+      "id": 14,
+      "comprador": "Flemin",
+      "talla": "2XL",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-13 21:49:15",
+      "notas": ""
+    },
+    {
+      "id": 13,
+      "comprador": "Kike",
+      "talla": "2XL",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-13 21:49:15",
+      "notas": ""
+    },
+    {
+      "id": 12,
+      "comprador": "Javi Sanz",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-13 21:49:15",
+      "notas": ""
+    },
+    {
+      "id": 11,
+      "comprador": "Luis Fernando",
+      "talla": "XL",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-13 20:26:05",
+      "notas": ""
+    },
+    {
+      "id": 10,
+      "comprador": "Álvaro Torio",
+      "talla": "3XL",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-13 20:22:29",
+      "notas": ""
+    },
+    {
+      "id": 9,
+      "comprador": "Juan Armando 2",
+      "talla": "S",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-13 20:11:04",
+      "notas": ""
+    },
+    {
+      "id": 8,
+      "comprador": "Juan Armando 1",
+      "talla": "S",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-13 20:11:04",
+      "notas": ""
+    },
+    {
+      "id": 7,
+      "comprador": "Víctor",
+      "talla": "2XL",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-12 18:37:42",
+      "notas": ""
+    },
+    {
+      "id": 6,
+      "comprador": "Daniela",
+      "talla": "S",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-12 15:43:13",
+      "notas": ""
+    },
+    {
+      "id": 5,
+      "comprador": "Martín",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-12 14:59:13",
+      "notas": ""
+    },
+    {
+      "id": 4,
+      "comprador": "Ethan",
+      "talla": "L",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-12 14:51:55",
+      "notas": ""
+    },
+    {
+      "id": 3,
+      "comprador": "Mexi",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-12 14:48:28",
+      "notas": "Pendiente definir Bizum/Efectivo"
+    },
+    {
+      "id": 2,
+      "comprador": "Javier Delgado",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-12 14:44:10",
+      "notas": "13€"
+    },
+    {
+      "id": 1,
+      "comprador": "Robert",
+      "talla": "XL",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-12 14:42:57",
+      "notas": ""
+    }
+  ]
+}
