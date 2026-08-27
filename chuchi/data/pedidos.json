@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-27 21:44:47",
+  "ultima_actualizacion": "2026-08-27 21:46:54",
   "resumen_tallas": {
     "desglose": {
       "M": 8,
@@ -13,8 +13,8 @@
   },
   "resumen_finanzas": {
     "total_pedidos": 23,
-    "pagados": 14,
-    "pendientes": 9,
+    "pagados": 15,
+    "pendientes": 8,
     "bizum": 7,
     "efectivo": 16
   },
@@ -69,7 +69,7 @@
       "comprador": "Hugo",
       "talla": "M",
       "metodo_pago": "Efectivo",
-      "estado_pago": "Pendiente",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-24 14:15:35",
       "notas": ""
     },
