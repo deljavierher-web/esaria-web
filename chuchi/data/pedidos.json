@@ -1,24 +1,42 @@
 {
-  "ultima_actualizacion": "2026-08-24 14:20:22",
+  "ultima_actualizacion": "2026-08-27 21:40:24",
   "resumen_tallas": {
     "desglose": {
+      "S": 6,
       "M": 6,
-      "S": 5,
+      "L": 3,
       "2XL": 3,
       "XL": 2,
-      "L": 2,
       "3XL": 1
     },
-    "total_camisetas": 19
+    "total_camisetas": 21
   },
   "resumen_finanzas": {
-    "total_pedidos": 19,
-    "pagados": 9,
+    "total_pedidos": 21,
+    "pagados": 11,
     "pendientes": 10,
-    "bizum": 4,
-    "efectivo": 15
+    "bizum": 7,
+    "efectivo": 14
   },
   "pedidos": [
+    {
+      "id": 21,
+      "comprador": "Juan",
+      "talla": "L",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-27 21:36:34",
+      "notas": ""
+    },
+    {
+      "id": 20,
+      "comprador": "Juan",
+      "talla": "S",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pendiente",
+      "fecha_registro": "2026-08-27 21:36:34",
+      "notas": ""
+    },
     {
       "id": 19,
       "comprador": "Viadero",
@@ -78,7 +96,7 @@
       "comprador": "Kike",
       "talla": "2XL",
       "metodo_pago": "Efectivo",
-      "estado_pago": "Pendiente",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-13 21:49:15",
       "notas": ""
     },
@@ -86,8 +104,8 @@
       "id": 12,
       "comprador": "Javi Sanz",
       "talla": "M",
-      "metodo_pago": "Efectivo",
-      "estado_pago": "Pendiente",
+      "metodo_pago": "Bizum",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-13 21:49:15",
       "notas": ""
     },
