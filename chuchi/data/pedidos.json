@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-08-27 21:46:54",
+  "ultima_actualizacion": "2026-08-27 21:47:22",
   "resumen_tallas": {
     "desglose": {
       "M": 8,
@@ -13,8 +13,8 @@
   },
   "resumen_finanzas": {
     "total_pedidos": 23,
-    "pagados": 15,
-    "pendientes": 8,
+    "pagados": 17,
+    "pendientes": 6,
     "bizum": 7,
     "efectivo": 16
   },
@@ -42,7 +42,7 @@
       "comprador": "Juan",
       "talla": "L",
       "metodo_pago": "Bizum",
-      "estado_pago": "Pendiente",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-27 21:36:34",
       "notas": ""
     },
@@ -51,7 +51,7 @@
       "comprador": "Juan",
       "talla": "S",
       "metodo_pago": "Bizum",
-      "estado_pago": "Pendiente",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-27 21:36:34",
       "notas": ""
     },
