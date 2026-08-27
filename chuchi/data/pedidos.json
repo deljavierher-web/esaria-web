@@ -1,24 +1,42 @@
 {
-  "ultima_actualizacion": "2026-08-27 21:40:24",
+  "ultima_actualizacion": "2026-08-27 21:44:47",
   "resumen_tallas": {
     "desglose": {
+      "M": 8,
       "S": 6,
-      "M": 6,
       "L": 3,
       "2XL": 3,
       "XL": 2,
       "3XL": 1
     },
-    "total_camisetas": 21
+    "total_camisetas": 23
   },
   "resumen_finanzas": {
-    "total_pedidos": 21,
-    "pagados": 11,
-    "pendientes": 10,
+    "total_pedidos": 23,
+    "pagados": 14,
+    "pendientes": 9,
     "bizum": 7,
-    "efectivo": 14
+    "efectivo": 16
   },
   "pedidos": [
+    {
+      "id": 23,
+      "comprador": "Albar",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-27 21:44:47",
+      "notas": ""
+    },
+    {
+      "id": 22,
+      "comprador": "Sergio",
+      "talla": "M",
+      "metodo_pago": "Efectivo",
+      "estado_pago": "Pagado",
+      "fecha_registro": "2026-08-27 21:44:47",
+      "notas": ""
+    },
     {
       "id": 21,
       "comprador": "Juan",
@@ -159,7 +177,7 @@
       "comprador": "Daniela",
       "talla": "S",
       "metodo_pago": "Efectivo",
-      "estado_pago": "Pendiente",
+      "estado_pago": "Pagado",
       "fecha_registro": "2026-08-12 15:43:13",
       "notas": ""
     },
