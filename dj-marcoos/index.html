@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARCOOS — DJ · Valladolid</title>
+<meta name="description" content="MARCOOS. DJ en Valladolid. Cabina en Coocon Club. Contrataciones por Instagram Directo.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="MARCOOS — DJ · Valladolid">
+<meta property="og:description" content="DJ en Valladolid. Cabina en Coocon Club.">
+<meta property="og:image" content="https://esaria.es/assets/dj-marcoos/marcoos-avatar.jpg">
+<meta property="og:url" content="https://esaria.es/dj-marcoos/">
+<link rel="icon" type="image/jpeg" href="../assets/dj-marcoos/marcoos-avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0B0C;
+    --paper:#F4F3EF;
+    --volt:#D4FF3F;
+    --line:#26262A;
+    --mut:#8E8E96;
+    --font-display:'Anton', 'Archivo', sans-serif;
+    --font-body:'Archivo', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block}
+  ::selection{background:var(--volt);color:#000}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;inset:0 0 auto 0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,4vw,48px);
+    mix-blend-mode:difference;
+  }
+  .nav__brand{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+  .nav__links{display:flex;gap:28px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  .nav__links a{opacity:.75;transition:opacity .2s}
+  .nav__links a:hover{opacity:1}
+  @media(max-width:720px){.nav__links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:grid;
+    grid-template-rows:1fr auto;
+    padding-top:96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero__grid{
+    grid-row:1;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,42%);
+    align-items:end;
+    gap:32px;
+    padding-bottom:8px;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);
+    margin-bottom:20px;
+  }
+  .kicker::before{content:"";width:34px;height:2px;background:var(--volt)}
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(64px,13.5vw,190px);
+    line-height:.92;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    margin-left:-.04em;
+  }
+  h1 .thin{color:transparent;-webkit-text-stroke:1.5px var(--paper)}
+  .hero__side{display:flex;align-items:end;gap:22px}
+  .hero__pic{
+    width:clamp(150px,17vw,236px);
+    aspect-ratio:1;
+    flex:none;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--line);
+    position:relative;
+  }
+  .hero__pic img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);transition:filter .35s}
+  .hero__pic:hover img{filter:grayscale(0) contrast(1)}
+  .hero__pic::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    box-shadow:inset 0 0 0 3px var(--ink);
+  }
+  .hero__meta{font-size:13px;color:var(--mut);line-height:1.9;letter-spacing:.02em}
+  .hero__meta b{color:var(--paper);font-weight:700}
+  .hero__meta .live{color:var(--volt)}
+  @media(max-width:860px){
+    .hero__grid{grid-template-columns:1fr;align-items:start}
+    .hero__side{align-items:center;margin-top:28px}
+  }
+
+  /* marquee texto bajo hero */
+  .tick{
+    grid-row:2;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    padding:14px 0;
+    font-family:var(--font-display);
+    font-size:clamp(18px,2.6vw,30px);
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .tick__track{display:inline-flex;gap:0;animation:tick 22s linear infinite;will-change:transform}
+  .tick span{padding:0 22px}
+  .tick .dot{color:var(--volt)}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- FOTO STRIP ---------- */
+  .strip{
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    padding:26px 0 30px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  }
+  .strip__track{
+    display:flex;gap:14px;width:max-content;
+    animation:tick 38s linear infinite reverse;
+  }
+  .strip figure{
+    width:150px;height:150px;flex:none;
+    border:1px solid var(--line);
+    background:#141416;
+    overflow:hidden;
+  }
+  .strip img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(1) contrast(1.1) brightness(.92);
+    transform:scale(1.02);
+    transition:filter .3s, transform .3s;
+  }
+  .strip figure:hover img{filter:none;transform:scale(1.07)}
+
+  /* ---------- SECCIONES ---------- */
+  section{padding:clamp(72px,10vw,130px) 0}
+  .sec__head{
+    display:flex;align-items:baseline;gap:18px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:18px;margin-bottom:44px;
+  }
+  .sec__num{font-family:var(--font-display);color:var(--volt);font-size:15px;letter-spacing:.1em}
+  .sec__title{font-family:var(--font-display);font-size:clamp(34px,5vw,64px);text-transform:uppercase;line-height:1}
+
+  /* sobre */
+  .about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px}
+  .about__txt p{
+    font-size:clamp(19px,2.2vw,26px);
+    line-height:1.42;
+    font-weight:500;
+    text-wrap:pretty;
+  }
+  .about__txt p + p{margin-top:1.1em;color:var(--mut)}
+  .about__txt em{font-style:normal;color:var(--volt)}
+  dl.now{border-top:1px solid var(--line)}
+  dl.now > div{
+    display:flex;justify-content:space-between;gap:16px;
+    padding:16px 2px;border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  dl.now dt{color:var(--mut);letter-spacing:.14em;text-transform:uppercase;font-size:11px;font-weight:700;padding-top:3px}
+  dl.now dd{text-align:right;font-weight:700}
+  dl.now dd a{border-bottom:1px solid var(--volt);color:var(--paper)}
+  dl.now dd a:hover{color:var(--volt)}
+  @media(max-width:860px){.about{grid-template-columns:1fr}}
+
+  /* club */
+  .club{background:#0E0E10;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .club__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+  .club__txt p{color:var(--mut);max-width:46ch;margin-top:18px}
+  .club__tag{
+    font-family:var(--font-display);
+    font-size:clamp(48px,7vw,96px);
+    line-height:.95;text-transform:uppercase;
+    display:inline-block;
+  }
+  .club__tag span{color:transparent;-webkit-text-stroke:1.5px var(--paper)}
+  .club__cta{
+    display:inline-flex;align-items:center;gap:10px;margin-top:30px;
+    font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--volt);border-bottom:1px solid var(--volt);padding-bottom:6px;
+  }
+  .club__cta:hover{color:var(--paper);border-color:var(--paper)}
+  .club__mosaic{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .club__mosaic figure{
+    aspect-ratio:1;overflow:hidden;border:1px solid var(--line);background:#141416;
+  }
+  .club__mosaic img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(1) contrast(1.1) brightness(.9);
+    transition:filter .3s, transform .5s;
+  }
+  .club__mosaic figure:hover img{filter:none;transform:scale(1.05)}
+  @media(max-width:860px){.club__grid{grid-template-columns:1fr}}
+
+  /* redes */
+  .links{border-top:1px solid var(--line)}
+  .links__row{
+    display:grid;grid-template-columns:minmax(0,.38fr) minmax(0,1fr) 40px;
+    align-items:center;gap:18px;
+    padding:30px 6px;border-bottom:1px solid var(--line);
+    transition:background .25s,color .25s,padding-left .25s;
+  }
+  .links__row .red{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+  .links__row .handle{font-family:var(--font-display);font-size:clamp(26px,4.4vw,54px);text-transform:uppercase;line-height:1}
+  .links__row .arrow{font-size:26px;justify-self:end;transform:translateX(-6px);opacity:0;transition:opacity .25s,transform .25s}
+  .links__row:hover{background:var(--volt);color:#000;padding-left:20px}
+  .links__row:hover .red{color:#000}
+  .links__row:hover .arrow{opacity:1;transform:translateX(0)}
+  @media(max-width:720px){.links__row{grid-template-columns:1fr 40px}.links__row .red{grid-column:1}}
+
+  /* booking */
+  .booking{text-align:left;position:relative}
+  .booking h2{
+    font-family:var(--font-display);
+    font-size:clamp(56px,11vw,150px);
+    line-height:.92;text-transform:uppercase;
+  }
+  .booking h2 span{color:var(--volt)}
+  .booking p{color:var(--mut);margin:26px 0 34px;max-width:52ch}
+  .btn{
+    display:inline-flex;align-items:center;gap:14px;
+    background:var(--volt);color:#000;
+    font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    padding:20px 30px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,255,63,.28)}
+  .btn svg{width:16px;height:16px;fill:currentColor}
+
+  /* footer */
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:12px;color:var(--mut);
+  }
+  footer a:hover{color:var(--volt)}
+
+  @media (prefers-reduced-motion: reduce){
+    .tick__track,.strip__track{animation:none}
+    html{scroll-behavior:auto}
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__brand" href="#top">M—98</a>
+  <div class="nav__links">
+    <a href="#cabina">Cabina</a>
+    <a href="#club">El club</a>
+    <a href="#redes">Redes</a>
+    <a href="#booking">Booking</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero__grid">
+    <div>
+      <p class="kicker">DJ · Valladolid · España</p>
+      <h1>Mar<span class="thin">—</span>coos</h1>
+    </div>
+    <div class="hero__side">
+      <div class="hero__pic">
+        <img src="../assets/dj-marcoos/marcoos-avatar.jpg" alt="MARCOOS, DJ en Valladolid">
+      </div>
+      <p class="hero__meta">
+        <b>Marcos Muñoz</b><br>
+        Cabina: <b>Coocon Club</b><br>
+        Estado: <span class="live">● En cabina</span>
+      </p>
+    </div>
+  </div>
+  <div class="tick" aria-hidden="true">
+    <div class="tick__track">
+      <span>Marcoos</span><span class="dot">●</span><span>DJ</span><span class="dot">●</span><span>Valladolid</span><span class="dot">●</span><span>Coocon Club</span><span class="dot">●</span>
+      <span>Marcoos</span><span class="dot">●</span><span>DJ</span><span class="dot">●</span><span>Valladolid</span><span class="dot">●</span><span>Coocon Club</span><span class="dot">●</span>
+    </div>
+  </div>
+</header>
+
+<div class="strip" aria-label="Fotos de la cabina y el club">
+  <div class="strip__track">
+    <figure><img src="../assets/dj-marcoos/marcoos-h2.jpg" alt="Historia destacada de MARCOOS"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-1.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/marcoos-h3.jpg" alt="Historia destacada de MARCOOS"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-2.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/marcoos-h1.jpg" alt="Historia destacada de MARCOOS"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-3.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-4.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-5.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-6.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-7.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/marcoos-h2.jpg" alt="Historia destacada de MARCOOS"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-1.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/marcoos-h3.jpg" alt="Historia destacada de MARCOOS"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-2.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/marcoos-h1.jpg" alt="Historia destacada de MARCOOS"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-3.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-4.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-5.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-6.jpg" alt="Coocon Club"></figure>
+    <figure><img src="../assets/dj-marcoos/coocon-7.jpg" alt="Coocon Club"></figure>
+  </div>
+</div>
+
+<section id="cabina">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num">01</span>
+      <h2 class="sec__title">En cabina</h2>
+    </div>
+    <div class="about">
+      <div class="about__txt">
+        <p>Marcos Muñoz, <em>Valladolid</em>. Detrás de los platos como <em>MARCOOS</em> — la cabina de cada fin de semana en el <em>Coocon Club</em>.</p>
+        <p>Sigue su día a día, sesiones y directos en Instagram: es donde cuelga todo.</p>
+      </div>
+      <dl class="now">
+        <div><dt>Nombre</dt><dd>Marcos Muñoz</dd></div>
+        <div><dt>Residencia</dt><dd><a href="https://www.instagram.com/cooconclub/" target="_blank" rel="noopener">Coocon Club</a></dd></div>
+        <div><dt>Ciudad</dt><dd>Valladolid</dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/_marcoos_98/" target="_blank" rel="noopener">2.4K seguidores</a></dd></div>
+        <div><dt>Booking</dt><dd>Instagram Directo</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="club" id="club">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num">02</span>
+      <h2 class="sec__title">Su casa</h2>
+    </div>
+    <div class="club__grid">
+      <div class="club__txt">
+        <span class="club__tag">Coocon<br><span>Club</span></span>
+        <p>El club de Valladolid donde MARCOOS tiene su residencia. Música, noches y comunidad — toda la vida del club, en su Instagram.</p>
+        <a class="club__cta" href="https://www.instagram.com/cooconclub/" target="_blank" rel="noopener">@cooconclub — 14K ↗</a>
+      </div>
+      <div class="club__mosaic">
+        <figure><img src="../assets/dj-marcoos/coocon-club.jpg" alt="Coocon Club"></figure>
+        <figure><img src="../assets/dj-marcoos/coocon-1.jpg" alt="Coocon Club"></figure>
+        <figure><img src="../assets/dj-marcoos/coocon-2.jpg" alt="Coocon Club"></figure>
+        <figure><img src="../assets/dj-marcoos/coocon-3.jpg" alt="Coocon Club"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="redes">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num">03</span>
+      <h2 class="sec__title">Síguelo</h2>
+    </div>
+    <div class="links">
+      <a class="links__row" href="https://www.instagram.com/_marcoos_98/" target="_blank" rel="noopener">
+        <span class="red">Instagram</span>
+        <span class="handle">@_marcoos_98</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="links__row" href="https://www.tiktok.com/@_marcoos_98" target="_blank" rel="noopener">
+        <span class="red">TikTok</span>
+        <span class="handle">@_marcoos_98</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="links__row" href="https://www.instagram.com/cooconclub/" target="_blank" rel="noopener">
+        <span class="red">El club</span>
+        <span class="handle">@cooconclub</span>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="wrap">
+    <div class="sec__head">
+      <span class="sec__num">04</span>
+      <h2 class="sec__title">Booking</h2>
+    </div>
+    <h2>¿Pinchamos<span>?</span></h2>
+    <p>Para fechas, eventos y colaboraciones: escríbele por Instagram Directo y responde personalmente.</p>
+    <a class="btn" href="https://ig.me/m/_marcoos_98" target="_blank" rel="noopener">
+      Instagram Directo
+      <svg viewBox="0 0 24 24"><path d="M6.4 18 5 16.6 15.6 6H7V4h12v12h-2V7.4z"/></svg>
+    </a>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>MARCOOS — Valladolid · <span id="yr"></span></span>
+    <span>Página por <a href="https://esaria.es" target="_blank" rel="noopener">EsarIA</a></span>
+  </footer>
+</div>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
