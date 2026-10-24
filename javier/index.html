@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Javier Delgado Hernández — Especialista en Automatización de Procesos e Inteligencia Artificial Aplicada (Valladolid & Remoto). Sistemas reales en producción: Visión/OCR, Agentes con Tool Calling, Bots B2B y Pipelines 24/7." />
+  <link rel="canonical" href="https://esaria.es/javier/" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://esaria.es/javier/" />
+  <meta property="og:title" content="Javier Delgado Hernández — Automatización de Procesos e IA Aplicada" />
+  <meta property="og:description" content="Portfolio técnico de sistemas reales en producción: OCR de matrículas en ~1s, tramitación documental autónoma, ERPs conversacionales y agentes 24/7." />
+  <meta property="og:image" content="https://esaria.es/assets/brand/previews/og-image.jpg" />
+  <title>Javier Delgado Hernández · Especialista en Automatización e IA Aplicada</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon/favicon.svg" />
+
+  <style>
+    :root {
+      --ink:          #0A0F1D;
+      --ink-2:        #111827;
+      --ink-3:        #1E293B;
+      --violet:       #6D5EF3;
+      --violet-soft:  #8B7FF7;
+      --violet-dim:   rgba(109, 94, 243, 0.14);
+      --violet-glow:  rgba(109, 94, 243, 0.32);
+      --emerald:      #10B981;
+      --emerald-dim:  rgba(16, 185, 129, 0.14);
+      --amber:        #F59E0B;
+      --chalk:        #F8FAFC;
+      --chalk-2:      #E2E8F0;
+      --mist:         #94A3B8;
+      --border:       rgba(255, 255, 255, 0.09);
+      --border-strong:rgba(109, 94, 243, 0.4);
+      --wa:           #25D366;
+      --radius-sm:    8px;
+      --radius:       14px;
+      --radius-lg:    22px;
+      --container:    1120px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--ink);
+      color: var(--chalk);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ambient grid & glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(109, 94, 243, 0.14), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.08), transparent 40%),
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+      line-height: 1.15;
+      color: var(--chalk);
+    }
+
+    code, pre, .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* NAVBAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(10, 15, 29, 0.82);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .brand-badge {
+      background: var(--violet-dim);
+      border: 1px solid var(--border-strong);
+      color: var(--violet-soft);
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.92rem;
+      color: var(--mist);
+    }
+    .nav-links a:hover { color: var(--chalk); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--violet);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--violet-glow);
+    }
+    .btn-primary:hover {
+      background: #5B4BE0;
+      transform: translateY(-1px);
+    }
+    .btn-wa {
+      background: rgba(37, 211, 102, 0.14);
+      border-color: rgba(37, 211, 102, 0.4);
+      color: #4ADE80;
+    }
+    .btn-wa:hover {
+      background: rgba(37, 211, 102, 0.24);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border);
+      color: var(--chalk-2);
+    }
+    .btn-outline:hover {
+      border-color: var(--violet-soft);
+      background: rgba(109, 94, 243, 0.08);
+    }
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 0.84rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 72px 0 56px;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--emerald-dim);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34D399;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 36px;
+      align-items: start;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 4.8vw, 3.7rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .hero-title .accent {
+      background: linear-gradient(135deg, #fff 15%, var(--violet-soft) 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-lead {
+      font-size: 1.12rem;
+      color: var(--chalk-2);
+      margin-bottom: 16px;
+      max-width: 660px;
+      font-weight: 400;
+    }
+    .hero-sub {
+      font-size: 0.96rem;
+      color: var(--mist);
+      margin-bottom: 28px;
+      max-width: 640px;
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    /* TERMINAL / SYSTEM CARD */
+    .sys-card {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+    .sys-header {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--mist);
+    }
+    .sys-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .sys-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .sys-body {
+      padding: 18px;
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+    .sys-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.07);
+    }
+    .sys-row:last-child { border-bottom: none; }
+    .sys-key { color: var(--mist); }
+    .sys-val { color: var(--chalk); font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+    .sys-val.ok { color: #34D399; }
+    .sys-val.violet { color: var(--violet-soft); }
+
+    /* KPIs BENTO */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 24px 0 64px;
+    }
+    .kpi-card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: border-color 0.2s;
+    }
+    .kpi-card:hover { border-color: var(--border-strong); }
+    .kpi-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--chalk);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .kpi-num span {
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--violet-soft);
+      font-weight: 500;
+    }
+    .kpi-label {
+      font-size: 0.88rem;
+      color: var(--mist);
+    }
+
+    /* SECTION HEADINGS */
+    section { padding: 64px 0; }
+    .sec-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet-soft);
+      background: var(--violet-dim);
+      padding: 4px 11px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .sec-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .sec-desc {
+      color: var(--mist);
+      max-width: 680px;
+      margin-bottom: 36px;
+    }
+
+    /* INTERACTIVE SIMULATOR */
+    .sim-box {
+      background: linear-gradient(180deg, rgba(26, 37, 64, 0.55) 0%, rgba(17, 24, 39, 0.9) 100%);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+    .sim-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+    .sim-tab {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--mist);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .sim-tab:hover { color: var(--chalk); border-color: rgba(255,255,255,0.2); }
+    .sim-tab.active {
+      background: var(--violet);
+      color: #fff;
+      border-color: var(--violet);
+      box-shadow: 0 4px 14px var(--violet-glow);
+    }
+
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .sim-panel {
+      background: rgba(10, 15, 29, 0.85);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sim-panel-title {
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--mist);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sim-input-area {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--chalk);
+      padding: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      resize: vertical;
+      min-height: 92px;
+      margin-bottom: 12px;
+    }
+    .sim-input-area:focus {
+      outline: none;
+      border-color: var(--violet-soft);
+    }
+    .sim-presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .preset-chip {
+      background: rgba(109, 94, 243, 0.12);
+      border: 1px solid rgba(109, 94, 243, 0.3);
+      color: var(--chalk-2);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .preset-chip:hover { background: rgba(109, 94, 243, 0.25); }
+    .sim-output {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #A7F3D0;
+      background: #060913;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      min-height: 190px;
+      line-height: 1.5;
+    }
+
+    /* PRODUCTION SYSTEMS CARDS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .proj-card {
+      background: rgba(17, 24, 39, 0.75);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      transition: border-color 0.2s;
+    }
+    .proj-card:hover { border-color: var(--border-strong); }
+    .proj-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .badge-live {
+      background: var(--emerald-dim);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      padding: 3px 9px;
+      border-radius: 99px;
+    }
+    .badge-tech {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--chalk-2);
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+    .proj-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .proj-desc {
+      color: var(--chalk-2);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .proj-list {
+      list-style: none;
+      margin-bottom: 18px;
+    }
+    .proj-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: var(--mist);
+      margin-bottom: 7px;
+    }
+    .proj-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--violet-soft);
+      font-weight: bold;
+    }
+    .proj-code {
+      background: #070B14;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: #CBD5E1;
+      overflow-x: auto;
+      line-height: 1.55;
+      align-self: center;
+    }
+    .proj-code .comment { color: #64748B; }
+    .proj-code .kw { color: #C084FC; }
+    .proj-code .str { color: #34D399; }
+    .proj-code .fn { color: #60A5FA; }
+
+    /* STACK MATRIX */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .stack-card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .stack-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .stack-tags span {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 6px 11px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: var(--chalk-2);
+    }
+
+    /* FOOTER / CONTACT CTA */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(109, 94, 243, 0.22) 0%, rgba(17, 24, 39, 0.95) 100%);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      text-align: center;
+      margin: 40px 0 60px;
+    }
+    .cta-banner h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+      margin-bottom: 12px;
+    }
+    .cta-banner p {
+      color: var(--chalk-2);
+      max-width: 600px;
+      margin: 0 auto 26px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      color: var(--mist);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .sim-grid, .proj-card, .stack-grid {
+        grid-template-columns: 1fr;
+      }
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 520px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .hero-cta .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/javier/" class="brand">
+        <span>Javier Delgado</span>
+        <span class="brand-badge">AI Ops &amp; Automation</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#simulador">Simulador en Vivo</a>
+        <a href="#sistemas">Sistemas en Producción</a>
+        <a href="#stack">Stack &amp; Arquitectura</a>
+        <a href="/">Web EsarIA B2B ↗</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="CV_Javier_Delgado_IA.pdf" download class="btn btn-outline btn-sm">📄 Descargar CV (PDF)</a>
+        <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20portfolio%20t%C3%A9cnico%20en%20esaria.es%2Fjavier" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Contactar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>Disponible para Incorporación o Proyectos · Valladolid (Presencial/Híbrido) y 100% Remoto</span>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">
+            Conecto procesos reales con <span class="accent">Inteligencia Artificial en producción.</span>
+          </h1>
+          <p class="hero-lead">
+            Soy <strong>Javier Delgado Hernández</strong>, especialista en automatización de procesos, integración de LLMs/Visión y despliegue de agentes operativos.
+          </p>
+          <p class="hero-sub">
+            No me quedo en demos teóricas: opero mi propia infraestructura 24/7 con <strong>22 servicios automatizados</strong> resolviendo problemas en terreno real —desde control de matrículas por visión en ~1 segundo para eventos en Valladolid hasta ERPs conversacionales con <em>Tool Calling</em> y tramitación documental autónoma. Combino mentalidad de <strong>Ingeniería Mecánica (UVa)</strong> y <strong>Gestión de la Calidad (CIFP Juan de Herrera)</strong> con desarrollo asistido por IA de alta velocidad.
+          </p>
+
+          <div class="hero-cta">
+            <a href="CV_Javier_Delgado_IA.pdf" download class="btn btn-primary">
+              <span>⬇️ Descargar CV en PDF</span>
+            </a>
+            <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20perfil%20de%20IA%20y%20automatizaci%C3%B3n%20en%20esaria.es%2Fjavier" target="_blank" rel="noopener" class="btn btn-wa">
+              <span>💬 WhatsApp Directo (+34 614 91 82 61)</span>
+            </a>
+            <a href="mailto:hola@esaria.es" class="btn btn-outline">
+              <span>✉️ hola@esaria.es</span>
+            </a>
+            <a href="https://github.com/deljavierher-web" target="_blank" rel="noopener" class="btn btn-outline">
+              <span>💻 GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/javier-delgado-hern%C3%A1ndez-esaria" target="_blank" rel="noopener" class="btn btn-outline">
+              <span>🔗 LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- LIVE TELEMETRY SNAPSHOT -->
+        <aside class="sys-card" aria-label="Estado de infraestructura personal">
+          <div class="sys-header">
+            <div class="sys-dots">
+              <span style="background:#EF4444"></span>
+              <span style="background:#F59E0B"></span>
+              <span style="background:#10B981"></span>
+            </div>
+            <span class="mono">javidel@mac-mini-prod ~ launchctl</span>
+          </div>
+          <div class="sys-body">
+            <div class="sys-row">
+              <span class="sys-key">Nodo Principal</span>
+              <span class="sys-val ok">● ONLINE (24/7 Host)</span>
+            </div>
+            <div class="sys-row">
+              <span class="sys-key">Servicios launchd activos</span>
+              <span class="sys-val violet">22 daemons</span>
+            </div>
+            <div class="sys-row">
+              <span class="sys-key">Orquestación LLM</span>
+              <span class="sys-val">Multi-Provider + Failover 429</span>
+            </div>
+            <div class="sys-row">
+              <span class="sys-key">Visión OCR (ParkingBot)</span>
+              <span class="sys-val ok">~0.95s TTFT (Qwen-VL)</span>
+            </div>
+            <div class="sys-row">
+              <span class="sys-key">Voz Local (STT / TTS)</span>
+              <span class="sys-val">faster-whisper + OmniVoice</span>
+            </div>
+            <div class="sys-row">
+              <span class="sys-key">Exposición Segura</span>
+              <span class="sys-val">Cloudflare Tunnels + Zero-Trust</span>
+            </div>
+            <div class="sys-row">
+              <span class="sys-key">Ubicación Base</span>
+              <span class="sys-val">Valladolid, ES (41°39′N)</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- KPI BENTO -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-num">22 <span>daemons</span></div>
+          <div class="kpi-label">Servicios y demonios autónomos en producción continua sobre macOS (`launchd` + túneles Cloudflare).</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">~1.0s <span>latencia</span></div>
+          <div class="kpi-label">Extracción de matrículas por visión y cruce con base de datos desde foto en móvil en eventos reales.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">11 <span>tools JSON</span></div>
+          <div class="kpi-label">Funciones estructuradas de inventario, compras, ventas y balance en mi ERP conversacional con FastAPI.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">100% <span>práctico</span></div>
+          <div class="kpi-label">Sistemas diseñados desde la necesidad operativa real (seguridad, arbitraje, industria, talleres y pymes).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SIMULATOR -->
+    <section id="simulador">
+      <span class="sec-tag">Demo Interactiva en Navegador</span>
+      <h2 class="sec-title">Prueba cómo razonan mis pipelines</h2>
+      <p class="sec-desc">
+        Selecciona uno de mis 3 flujos reales desplegados, elige un caso de entrada (o escribe el tuyo) y observa cómo el pipeline normaliza, extrae entidades y ejecuta la acción de negocio.
+      </p>
+
+      <div class="sim-box">
+        <div class="sim-tabs" role="tablist">
+          <button type="button" class="sim-tab active" data-sim="parking">🚗 1. VisionParking AI (Control Matrículas)</button>
+          <button type="button" class="sim-tab" data-sim="erp">📦 2. ERP Conversacional (FastAPI + Tool Calling)</button>
+          <button type="button" class="sim-tab" data-sim="taller">🔧 3. Operador IA Recepción de Talleres</button>
+        </div>
+
+        <div class="sim-grid">
+          <div class="sim-panel">
+            <div>
+              <div class="sim-panel-title">
+                <span id="sim-input-label">ENTRADA DEL OPERARIO (TELEGRAM / CÁMARA / VOZ)</span>
+                <span class="badge-tech" id="sim-engine-badge">Motor: Qwen-VL + Regex ES</span>
+              </div>
+              <div class="sim-presets" id="sim-presets"></div>
+              <textarea id="sim-input" class="sim-input-area" rows="4"></textarea>
+            </div>
+            <button type="button" id="sim-run-btn" class="btn btn-primary" style="width:100%">
+              ⚡ Ejecutar Pipeline de IA
+            </button>
+          </div>
+
+          <div class="sim-panel">
+            <div class="sim-panel-title">
+              <span>SALIDA ESTRUCTURADA Y ACCIÓN EJECUTADA</span>
+              <span id="sim-latency" class="mono" style="color:#34D399">Listo</span>
+            </div>
+            <pre id="sim-output" class="sim-output"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTION SYSTEMS -->
+    <section id="sistemas">
+      <span class="sec-tag">Arquitectura &amp; Código Real</span>
+      <h2 class="sec-title">Sistemas construidos y operando en producción</h2>
+      <p class="sec-desc">
+        Cada uno de estos proyectos resuelve un cuello de botella real que he vivido en primera persona trabajando o estudiando en Valladolid.
+      </p>
+
+      <div class="projects-grid">
+
+        <!-- PROYECTO 1: PARKING BOT -->
+        <article class="proj-card">
+          <div>
+            <div class="proj-meta">
+              <span class="badge-live">● EN PRODUCCIÓN (VALLADOLID)</span>
+              <span class="badge-tech">Python</span>
+              <span class="badge-tech">Qwen-VL / Gemini Flash</span>
+              <span class="badge-tech">Telegram Bot API</span>
+              <span class="badge-tech">Flask</span>
+            </div>
+            <h3 class="proj-title">1. VisionParking AI (`@ParkingCasetas_bot`)</h3>
+            <p class="proj-desc">
+              Sistema de verificación instantánea de matrículas desplegado en el control de accesos de las Casetas Regionales (Servisecur, Valladolid). Sustituye la búsqueda manual en listas impresas bajo presión de tráfico.
+            </p>
+            <ul class="proj-list">
+              <li><strong>Cadena de Visión con Failover:</strong> Prioriza <code>Qwen-VL-Flash</code> para latencia ~1s y conmuta automáticamente a <code>Gemini Flash</code> o <code>GPT-4o-mini</code> si hay saturación de cuota.</li>
+              <li><strong>Normalización Española Robusta:</strong> Soporta matrículas modernas (<code>1234-BBB</code>) y provinciales antiguas (<code>VA-1234-AB</code>), además de búsqueda ultrarrápida por voz/texto en <code>&lt;0.2s</code>.</li>
+              <li><strong>Registro y Panel Web:</strong> Botones inline para fichar la entrada en vivo (<code>registros.csv</code>) y dashboard web de vehículos dentro del recinto.</li>
+            </ul>
+          </div>
+          <pre class="proj-code"><span class="comment"># Extracto real de ocr.py — Normalizador + Cadena de Failover Multimodal</span>
+<span class="kw">def</span> <span class="fn">extract_plate_from_text</span>(text: str) -> Optional[str]:
+    text = text.upper().strip()
+    <span class="comment"># 1) Formato moderno: 4 dígitos + 3 consonantes (ej. 4821 MNP)</span>
+    m_mod = re.search(<span class="str">r'([0-9]{4})\s*[- ]?\s*([BCDFGHJKLMNPRSTVWXYZ]{3})'</span>, text)
+    <span class="kw">if</span> m_mod:
+        <span class="kw">return</span> <span class="str">f"{m_mod.group(1)}{m_mod.group(2)}"</span>
+    <span class="comment"># 2) Formato provincial (ej. VA 1234 AB)</span>
+    m_prv = re.search(<span class="str">r'([A-Z]{1,2})\s*[- ]?\s*([0-9]{4})\s*[- ]?\s*([A-Z]{1,2})'</span>, text)
+    <span class="kw">if</span> m_prv:
+        <span class="kw">return</span> <span class="str">f"{m_prv.group(1)}{m_prv.group(2)}{m_prv.group(3)}"</span>
+
+<span class="comment"># En bot.py: Respuesta instantánea al vigilante en la puerta</span>
+<span class="comment"># 🟢 ¡VEHÍCULO AUTORIZADO! -> Pulsa [ENTRA] para registrar acceso</span></pre>
+        </article>
+
+        <!-- PROYECTO 2: ACTAS BALONMANO -->
+        <article class="proj-card">
+          <div>
+            <div class="proj-meta">
+              <span class="badge-live">● EN PRODUCCIÓN</span>
+              <span class="badge-tech">Visión Multimodal</span>
+              <span class="badge-tech">Python Automation</span>
+              <span class="badge-tech">JSON Schema</span>
+              <span class="badge-tech">MySquad / iSquad</span>
+            </div>
+            <h3 class="proj-title">2. iSquad Auto-Actas — Tramitación Federativa Autónoma</h3>
+            <p class="proj-desc">
+              Automatización completa del proceso de cierre de actas arbitrales de balonmano. Convierte una foto hecha con el móvil al terminar el partido en un trámite federativo oficial firmado.
+            </p>
+            <ul class="proj-list">
+              <li><strong>Extracción Manuscrita Compleja:</strong> Lee goles, sanciones, tiempos muertos y dorsales desde fotografías de actas en papel.</li>
+              <li><strong>Subida Desatendida:</strong> Conecta con el portal oficial <em>MySquad / iSquad</em>, vuelca el JSON del encuentro, descarga el PDF federativo oficial y lo envía de vuelta al chat de Telegram.</li>
+              <li><strong>Vigilancia de Designaciones:</strong> Demonio complementario que monitoriza cambios de partidos asignados y avisa al instante.</li>
+            </ul>
+          </div>
+          <pre class="proj-code"><span class="comment"># Flujo end-to-end del pipeline actas_balonmano.py</span>
+[Foto Acta Manuscrita en Telegram]
+       │
+       ▼  1. Visión IA + Validación de Reglas
+{
+  <span class="str">"partido_id"</span>: <span class="str">"FBM-2026-084"</span>,
+  <span class="str">"resultado"</span>: { <span class="str">"local"</span>: 28, <span class="str">"visitante"</span>: 26 },
+  <span class="str">"jugadores_verificados"</span>: <span class="kw">true</span>,
+  <span class="str">"incidencias"</span>: <span class="str">"Sin descalificaciones"</span>
+}
+       │
+       ▼  2. Automatización Portal MySquad (iSquad)
+[Subida Oficial OK] ──► [Descarga acta_firmada.pdf] ──► 📲 Telegram</pre>
+        </article>
+
+        <!-- PROYECTO 3: ERP CONVERSACIONAL -->
+        <article class="proj-card">
+          <div>
+            <div class="proj-meta">
+              <span class="badge-live">● EN PRODUCCIÓN</span>
+              <span class="badge-tech">FastAPI</span>
+              <span class="badge-tech">SQLite</span>
+              <span class="badge-tech">DeepSeek Tool Calling</span>
+              <span class="badge-tech">Chart.js</span>
+            </div>
+            <h3 class="proj-title">3. ERP Conversacional (`VictorVape` &amp; `Chuchi Orders`)</h3>
+            <p class="proj-desc">
+              Sistema de gestión comercial e inventario donde los socios hablan en lenguaje natural en un grupo de Telegram y el agente ejecuta transacciones contables seguras contra SQLite y actualiza un dashboard web.
+            </p>
+            <ul class="proj-list">
+              <li><strong>11 Funciones Estructuradas:</strong> <code>consultar_stock</code>, <code>crear_y_comprar</code>, <code>registrar_venta</code>, <code>calcular_balance</code>, <code>alertar_stock_bajo</code> y estadísticas semanales.</li>
+              <li><strong>Guardrails Financieros:</strong> El prompt del sistema prohíbe inventar precios o cantidades ambiguas; si falta un dato crítico, el agente repregunta antes de tocar la base de datos.</li>
+              <li><strong>Sincronización Resiliente:</strong> Incluye watchdog propio (<code>push_esaria_retry.py</code>) que reintenta despliegues automáticamente si cae la red.</li>
+            </ul>
+          </div>
+          <pre class="proj-code"><span class="comment"># Extracto real de vaper-app/backend/llm_client.py</span>
+<span class="comment"># Mensaje usuario: "Le he vendido 3 de sandía a Marcos"</span>
+{
+  <span class="str">"accion"</span>: <span class="str">"registrar_venta"</span>,
+  <span class="str">"params"</span>: {
+    <span class="str">"producto_id"</span>: 4,
+    <span class="str">"cantidad"</span>: 3,
+    <span class="str">"persona"</span>: <span class="str">"Marcos"</span>,
+    <span class="str">"precio_unitario"</span>: <span class="kw">null</span> <span class="comment">// Usa PVP oficial en SQLite</span>
+  },
+  <span class="str">"mensaje"</span>: <span class="str">"Registrando venta de 3 uds (Sandía) a Marcos..."</span>
+}</pre>
+        </article>
+
+        <!-- PROYECTO 4: MUSE ESTUDIOS & INFRAESTRUCTURA -->
+        <article class="proj-card">
+          <div>
+            <div class="proj-meta">
+              <span class="badge-live">● OPEN SOURCE &amp; LOCAL</span>
+              <span class="badge-tech">Python SAML/ADFS</span>
+              <span class="badge-tech">iCalendar RFC 5545</span>
+              <span class="badge-tech">Typst</span>
+              <span class="badge-tech">Unittest</span>
+            </div>
+            <h3 class="proj-title">4. Ecosistema Académico (`muse-estudios`) &amp; Motor Agéntico `DSH`</h3>
+            <p class="proj-desc">
+              Suite automatizada que conecta con los campus Moodle de la Universidad de Valladolid (UVa) y Educacyl mediante autenticación SAML, descarga nuevos apuntes, los clasifica con IA y vigila entregas cada 60 minutos.
+            </p>
+            <ul class="proj-list">
+              <li><strong>Cola de Revisión Interactiva:</strong> Si el clasificador duda dónde archivar un PDF, consulta por Telegram (<code>REV-01</code>) y mueve el archivo en local y Google Drive según tu respuesta.</li>
+              <li><strong>Seguridad y Sanitización:</strong> Incluye suite de pruebas automatizadas (<code>test_sanitizacion.py</code>) para impedir fugas de credenciales o datos privados en Git, además de protección anti-bloqueo de login de 12h.</li>
+              <li><strong>Clonación de Voz y Benchmarking:</strong> Servidor local <code>OmniVoice</code> + <code>faster-whisper</code> y scripts de benchmark empírico de latencia TTFT entre modelos (<code>latencia_bench.py</code>).</li>
+            </ul>
+          </div>
+          <pre class="proj-code"><span class="comment"># Comandos reales del motor CLI (github.com/deljavierher-web/muse-estudios)</span>
+$ python3 moodle_cli.py tasks            <span class="comment"># Plazos de entrega UVa + Educacyl</span>
+$ python3 moodle_cli.py sync-resources   <span class="comment"># Descarga incremental y clasificación IA</span>
+$ python3 moodle_review.py reply <span class="str">"REV-01 2"</span> <span class="comment"># Archiva desde Telegram y sincroniza Drive</span>
+$ python3 -m unittest discover tests -v  <span class="comment"># Verifica 0 fugas de credenciales</span></pre>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- STACK & VALUE PROPOSITION -->
+    <section id="stack">
+      <span class="sec-tag">Capacidades Técnicas</span>
+      <h2 class="sec-title">Qué aporto a tu empresa desde el primer día</h2>
+      <p class="sec-desc">
+        No soy un perfil teórico: utilizo ingeniería asistida por IA (Claude Code, Codex, Antigravity) junto con Python, Node.js y n8n para entregar en días automatizaciones que antes llevaban meses.
+      </p>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h3>🧠 IA Aplicada &amp; Agentes</h3>
+          <div class="stack-tags">
+            <span>OpenAI / DeepSeek / Claude APIs</span>
+            <span>Qwen-VL &amp; Gemini Vision OCR</span>
+            <span>Tool Calling &amp; JSON Schemas</span>
+            <span>faster-whisper / whisper.cpp</span>
+            <span>OmniVoice (TTS Local)</span>
+            <span>Model Context Protocol (MCP)</span>
+            <span>Ollama Local</span>
+            <span>Failover &amp; Latencia TTFT</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h3>⚙️ Automatización &amp; Backend</h3>
+          <div class="stack-tags">
+            <span>Python (FastAPI · Flask)</span>
+            <span>Node.js (Express)</span>
+            <span>n8n (Docker Self-Hosted)</span>
+            <span>Make / Webhooks REST</span>
+            <span>WhatsApp Business Cloud API</span>
+            <span>Telegram Bot API</span>
+            <span>SQLite / SQLAlchemy</span>
+            <span>Scraping &amp; Auth SAML/ADFS</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h3>🏭 Operaciones, Calidad &amp; Despliegue</h3>
+          <div class="stack-tags">
+            <span>Cloudflare Tunnels &amp; Pages</span>
+            <span>macOS launchd / Linux Bash</span>
+            <span>Git &amp; GitHub</span>
+            <span>Ingeniería Mecánica (UVa)</span>
+            <span>Gestión de Calidad y PRL</span>
+            <span>Informes Técnicos en Typst</span>
+            <span>Auditoría de Procesos B2B</span>
+            <span>Obsidian Knowledge Ops</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <h2>¿Hablamos sobre cómo automatizar procesos en tu equipo?</h2>
+      <p>
+        Disponible para incorporación en empresas de <strong>Valladolid</strong> (Parque Tecnológico de Boecillo, San Cristóbal, Argales o centro) y en modalidad <strong>100% remota</strong>. Puedo enseñarte cualquiera de estos sistemas funcionando en vivo desde mi móvil en 2 minutos.
+      </p>
+      <div class="hero-cta" style="justify-content:center; margin-bottom:0">
+        <a href="CV_Javier_Delgado_IA.pdf" download class="btn btn-primary">📄 Descargar CV Completo (PDF)</a>
+        <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20portfolio%20en%20esaria.es%2Fjavier%20y%20me%20gustar%C3%ADa%20hablar%20contigo" target="_blank" rel="noopener" class="btn btn-wa">💬 Escribir por WhatsApp</a>
+        <a href="mailto:hola@esaria.es" class="btn btn-outline">✉️ Enviar Email</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Javier Delgado Hernández · Valladolid, España · <a href="https://esaria.es" style="color:var(--violet-soft)">EsarIA (esaria.es)</a> · <a href="https://github.com/deljavierher-web" style="color:var(--violet-soft)">GitHub @deljavierher-web</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
