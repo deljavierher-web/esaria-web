@@ -3,1014 +3,1309 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Javier Delgado Hernández — Especialista en Automatización de Procesos e Inteligencia Artificial Aplicada (Valladolid & Remoto). Sistemas reales en producción: Visión/OCR, Agentes con Tool Calling, Bots B2B y Pipelines 24/7." />
+  <meta name="description" content="Dossier de Ingeniería de Automatización e IA Aplicada — Javier Delgado Hernández (EsarIA · Valladolid). Sistemas autónomos en producción 24/7." />
   <link rel="canonical" href="https://esaria.es/javier/" />
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://esaria.es/javier/" />
-  <meta property="og:title" content="Javier Delgado Hernández — Automatización de Procesos e IA Aplicada" />
-  <meta property="og:description" content="Portfolio técnico de sistemas reales en producción: OCR de matrículas en ~1s, tramitación documental autónoma, ERPs conversacionales y agentes 24/7." />
+  <meta property="og:title" content="JAVIER DELGADO — Archivo Técnico & Dossier de Operaciones IA [EsarIA]" />
+  <meta property="og:description" content="Arquitectura de automatización industrial y B2B, visión artificial en tiempo real (<1s), ERPs conversacionales y demonios autónomos 24/7." />
   <meta property="og:image" content="https://esaria.es/assets/brand/previews/og-image.jpg" />
-  <title>Javier Delgado Hernández · Especialista en Automatización e IA Aplicada</title>
+  <title>JAVIER DELGADO — Dossier Técnico de Operaciones IA [ESARIA-01]</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon/favicon.svg" />
 
   <style>
+    /* ==========================================================================
+       ESARIA // DOSSIER TÉCNICO DE AUTOR — SWISS INDUSTRIAL & TACTILE ARCHIVE
+       Cero estética SaaS genérica · Retícula estructural expuesta · Cero redondeces
+       ========================================================================== */
     :root {
-      --ink:          #0A0F1D;
-      --ink-2:        #111827;
-      --ink-3:        #1E293B;
-      --violet:       #6D5EF3;
-      --violet-soft:  #8B7FF7;
-      --violet-dim:   rgba(109, 94, 243, 0.14);
-      --violet-glow:  rgba(109, 94, 243, 0.32);
-      --emerald:      #10B981;
-      --emerald-dim:  rgba(16, 185, 129, 0.14);
-      --amber:        #F59E0B;
-      --chalk:        #F8FAFC;
-      --chalk-2:      #E2E8F0;
-      --mist:         #94A3B8;
-      --border:       rgba(255, 255, 255, 0.09);
-      --border-strong:rgba(109, 94, 243, 0.4);
-      --wa:           #25D366;
-      --radius-sm:    8px;
-      --radius:       14px;
-      --radius-lg:    22px;
-      --container:    1120px;
+      /* Superficies Orgánicas / Pizarra Técnica */
+      --bg-abyss:       #090C12;   /* hsl(220, 33%, 5%)  - Carbón mineral */
+      --bg-obsidian:    #0E131D;   /* hsl(220, 35%, 8%)  - Pizarra de taller */
+      --bg-panel:       #131A27;   /* hsl(219, 34%, 11%) - Mesa de trabajo */
+      --bg-elevated:    #1A2334;   /* hsl(219, 33%, 15%) - Módulo activo */
+
+      /* Tintas / Papel Hueso */
+      --ink-bone:       #F3F1EC;   /* hsl(43, 23%, 94%)  - Papel técnico */
+      --ink-secondary:  #B8C0CC;   /* hsl(216, 16%, 76%) - Gris aluminio */
+      --ink-muted:      #687385;   /* hsl(217, 12%, 46%) - Acotación de plano */
+
+      /* Acentos Sobrios de Ingeniería (EsarIA Elevado) */
+      --cobalt:         #5E50EC;   /* hsl(245, 80%, 62%) - Violeta cobalto EsarIA */
+      --cobalt-dim:     rgba(94, 80, 236, 0.14);
+      --signal-ok:      #10B981;   /* Verde osciloscopio */
+      --signal-warn:    #D97706;   /* Ámbar industrial */
+      --signal-err:     #E11D48;   /* Rojo corte */
+
+      /* Trazos de Retícula Arquitectónica */
+      --hairline:       rgba(243, 241, 236, 0.11);
+      --hairline-strong:rgba(243, 241, 236, 0.28);
+      --hairline-cobalt:rgba(94, 80, 236, 0.65);
+
+      /* Tipografía */
+      --font-display:   'Syne', sans-serif;
+      --font-serif:     'Instrument Serif', Georgia, serif;
+      --font-sans:      'DM Sans', -apple-system, sans-serif;
+      --font-mono:      'JetBrains Mono', monospace;
+
+      /* Cinemática Física */
+      --ease-expo:      cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-shutter:   cubic-bezier(0.85, 0, 0.15, 1);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--ink);
-      color: var(--chalk);
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-abyss);
+      color: var(--ink-bone);
+      font-family: var(--font-sans);
       font-size: 16px;
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    /* Ambient grid & glow */
-    body::before {
+    body {
+      background-color: var(--bg-abyss);
+      color: var(--ink-bone);
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    /* Textura analógica sutil (grano litográfico 3.5%) */
+    body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(109, 94, 243, 0.14), transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.08), transparent 40%),
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
       pointer-events: none;
-      z-index: 0;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Syne', sans-serif;
-      line-height: 1.15;
-      color: var(--chalk);
-    }
-
-    code, pre, .mono {
-      font-family: 'JetBrains Mono', monospace;
+      z-index: 999;
     }
 
     a { color: inherit; text-decoration: none; }
+    button, input, textarea { font-family: inherit; color: inherit; background: none; border: none; }
 
-    .container {
-      width: 100%;
-      max-width: var(--container);
+    /* ==========================================================================
+       SISTEMA DE RETÍCULA SUIZA EXPUESTA (12 COLUMNAS + MARCO ESTRUCTURAL)
+       ========================================================================== */
+    .frame {
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 0 24px;
+      border-left: 1px solid var(--hairline);
+      border-right: 1px solid var(--hairline);
       position: relative;
-      z-index: 1;
     }
 
-    /* NAVBAR */
-    .topbar {
+    .rule-h {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    /* TELEMETRÍA SUPERIOR (BARRA DE ESTADO TÉCNICO) */
+    .telemetry-bar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 24px;
+      background: var(--bg-obsidian);
+      border-bottom: 1px solid var(--hairline);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .telemetry-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-bone);
+    }
+    .led-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--signal-ok);
+      display: inline-block;
+      box-shadow: 0 0 8px var(--signal-ok);
+    }
+    .telemetry-coords {
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* CABECERA DE NAVEGACIÓN */
+    .header-nav {
+      display: grid;
+      grid-template-columns: 280px 1fr auto;
+      border-bottom: 1px solid var(--hairline);
+      background: rgba(9, 12, 18, 0.92);
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(10, 15, 29, 0.82);
-      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
-    .topbar-inner {
+    .nav-brand {
+      padding: 18px 24px;
+      border-right: 1px solid var(--hairline);
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-      gap: 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-    .brand-badge {
-      background: var(--violet-dim);
-      border: 1px solid var(--border-strong);
-      color: var(--violet-soft);
-      padding: 3px 10px;
-      border-radius: 99px;
-      font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 500;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-size: 0.92rem;
-      color: var(--mist);
-    }
-    .nav-links a:hover { color: var(--chalk); }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* BUTTONS */
-    .btn {
-      display: inline-flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      gap: 8px;
-      padding: 11px 20px;
-      border-radius: var(--radius-sm);
-      font-weight: 500;
-      font-size: 0.92rem;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-      white-space: nowrap;
     }
-    .btn-primary {
-      background: var(--violet);
-      color: #fff;
-      box-shadow: 0 4px 20px var(--violet-glow);
-    }
-    .btn-primary:hover {
-      background: #5B4BE0;
-      transform: translateY(-1px);
-    }
-    .btn-wa {
-      background: rgba(37, 211, 102, 0.14);
-      border-color: rgba(37, 211, 102, 0.4);
-      color: #4ADE80;
-    }
-    .btn-wa:hover {
-      background: rgba(37, 211, 102, 0.24);
-      transform: translateY(-1px);
-    }
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: var(--border);
-      color: var(--chalk-2);
-    }
-    .btn-outline:hover {
-      border-color: var(--violet-soft);
-      background: rgba(109, 94, 243, 0.08);
-    }
-    .btn-sm {
-      padding: 8px 14px;
-      font-size: 0.84rem;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 72px 0 56px;
-    }
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: var(--emerald-dim);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #34D399;
-      padding: 6px 14px;
-      border-radius: 99px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      margin-bottom: 22px;
-    }
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--emerald);
-      box-shadow: 0 0 10px var(--emerald);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 36px;
-      align-items: start;
-    }
-    .hero-title {
-      font-size: clamp(2.2rem, 4.8vw, 3.7rem);
+    .nav-brand-name {
+      font-family: var(--font-display);
       font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
-    }
-    .hero-title .accent {
-      background: linear-gradient(135deg, #fff 15%, var(--violet-soft) 85%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-lead {
-      font-size: 1.12rem;
-      color: var(--chalk-2);
-      margin-bottom: 16px;
-      max-width: 660px;
-      font-weight: 400;
-    }
-    .hero-sub {
-      font-size: 0.96rem;
-      color: var(--mist);
-      margin-bottom: 28px;
-      max-width: 640px;
-    }
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    /* TERMINAL / SYSTEM CARD */
-    .sys-card {
-      background: rgba(17, 24, 39, 0.85);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-    }
-    .sys-header {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 11px 16px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      color: var(--mist);
-    }
-    .sys-dots {
-      display: flex;
-      gap: 6px;
-    }
-    .sys-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .sys-body {
-      padding: 18px;
-      font-size: 0.82rem;
-      line-height: 1.55;
-    }
-    .sys-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 7px 0;
-      border-bottom: 1px dashed rgba(255,255,255,0.07);
-    }
-    .sys-row:last-child { border-bottom: none; }
-    .sys-key { color: var(--mist); }
-    .sys-val { color: var(--chalk); font-family: 'JetBrains Mono', monospace; font-weight: 500; }
-    .sys-val.ok { color: #34D399; }
-    .sys-val.violet { color: var(--violet-soft); }
-
-    /* KPIs BENTO */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin: 24px 0 64px;
-    }
-    .kpi-card {
-      background: rgba(17, 24, 39, 0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      transition: border-color 0.2s;
-    }
-    .kpi-card:hover { border-color: var(--border-strong); }
-    .kpi-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.1rem;
-      font-weight: 800;
-      color: var(--chalk);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-    .kpi-num span {
-      font-size: 0.85rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--violet-soft);
-      font-weight: 500;
-    }
-    .kpi-label {
-      font-size: 0.88rem;
-      color: var(--mist);
-    }
-
-    /* SECTION HEADINGS */
-    section { padding: 64px 0; }
-    .sec-tag {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
+    }
+    .nav-brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cobalt);
       letter-spacing: 0.08em;
-      color: var(--violet-soft);
-      background: var(--violet-dim);
-      padding: 4px 11px;
-      border-radius: 6px;
-      margin-bottom: 12px;
+      margin-top: 2px;
     }
-    .sec-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-    .sec-desc {
-      color: var(--mist);
-      max-width: 680px;
-      margin-bottom: 36px;
-    }
-
-    /* INTERACTIVE SIMULATOR */
-    .sim-box {
-      background: linear-gradient(180deg, rgba(26, 37, 64, 0.55) 0%, rgba(17, 24, 39, 0.9) 100%);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      margin-bottom: 40px;
-    }
-    .sim-tabs {
+    .nav-index {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
-    }
-    .sim-tab {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      color: var(--mist);
-      padding: 10px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 0.88rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-    .sim-tab:hover { color: var(--chalk); border-color: rgba(255,255,255,0.2); }
-    .sim-tab.active {
-      background: var(--violet);
-      color: #fff;
-      border-color: var(--violet);
-      box-shadow: 0 4px 14px var(--violet-glow);
-    }
-
-    .sim-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
       align-items: stretch;
     }
-    .sim-panel {
-      background: rgba(10, 15, 29, 0.85);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 22px;
+      border-right: 1px solid var(--hairline);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--ink-secondary);
+      transition: background 0.2s var(--ease-expo), color 0.2s;
+    }
+    .nav-item span { color: var(--ink-muted); font-size: 0.68rem; }
+    .nav-item:hover {
+      background: var(--bg-panel);
+      color: var(--ink-bone);
+    }
+    .nav-cta-group {
+      display: flex;
+      align-items: stretch;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-left: 1px solid var(--hairline);
+      transition: all 0.25s var(--ease-expo);
+      cursor: pointer;
+    }
+    .nav-btn-outline:hover {
+      background: var(--ink-bone);
+      color: var(--bg-abyss);
+    }
+    .nav-btn-primary {
+      background: var(--cobalt);
+      color: var(--ink-bone);
+    }
+    .nav-btn-primary:hover {
+      background: var(--ink-bone);
+      color: var(--bg-abyss);
+    }
+
+    /* ==========================================================================
+       SECCIÓN 00 // HERO — DOSSIER DE AUTOR & MANIFIESTO
+       ========================================================================== */
+    .hero-dossier {
+      display: grid;
+      grid-template-columns: 8fr 4fr;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .hero-main {
+      padding: 64px 48px 56px;
+      border-right: 1px solid var(--hairline);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .sim-panel-title {
-      font-size: 0.8rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--mist);
+    .dossier-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--ink-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .dossier-tag {
+      padding: 3px 8px;
+      border: 1px solid var(--hairline-cobalt);
+      background: var(--cobalt-dim);
+      color: var(--ink-bone);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.6vw, 4.35rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      margin-bottom: 28px;
+    }
+    .hero-headline em {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-secondary);
+      font-size: 1.08em;
+      letter-spacing: -0.01em;
+    }
+    .hero-manifesto {
+      font-size: 1.08rem;
+      color: var(--ink-secondary);
+      max-width: 660px;
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+    .hero-manifesto strong {
+      color: var(--ink-bone);
+      font-weight: 500;
+    }
+
+    /* BOTONERA TÁCTIL INDUSTRIAL */
+    .action-strip {
+      display: flex;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--hairline);
+      border-left: 1px solid var(--hairline);
+      width: fit-content;
+    }
+    .tactile-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-right: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      background: var(--bg-obsidian);
+      color: var(--ink-bone);
+      transition: background 0.2s var(--ease-expo), color 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .tactile-btn:hover {
+      background: var(--ink-bone);
+      color: var(--bg-abyss);
+    }
+    .tactile-btn.primary {
+      background: var(--cobalt);
+    }
+    .tactile-btn.primary:hover {
+      background: var(--ink-bone);
+      color: var(--bg-abyss);
+    }
+    .tactile-btn .arrow {
+      font-size: 0.9rem;
+      transition: transform 0.2s var(--ease-expo);
+    }
+    .tactile-btn:hover .arrow {
+      transform: translate(3px, -3px);
+    }
+
+    /* COLUMNA DERECHA HERO: FICHA TÉCNICA DE OPERADOR */
+    .hero-spec {
+      background: var(--bg-obsidian);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .spec-block {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .spec-block:last-child { border-bottom: none; }
+    .spec-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
       margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
-    .sim-input-area {
+    .spec-table {
       width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: var(--chalk);
-      padding: 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.92rem;
-      resize: vertical;
-      min-height: 92px;
-      margin-bottom: 12px;
-    }
-    .sim-input-area:focus {
-      outline: none;
-      border-color: var(--violet-soft);
-    }
-    .sim-presets {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .preset-chip {
-      background: rgba(109, 94, 243, 0.12);
-      border: 1px solid rgba(109, 94, 243, 0.3);
-      color: var(--chalk-2);
-      padding: 5px 10px;
-      border-radius: 6px;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
       font-size: 0.78rem;
-      cursor: pointer;
-      font-family: inherit;
     }
-    .preset-chip:hover { background: rgba(109, 94, 243, 0.25); }
-    .sim-output {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #A7F3D0;
-      background: #060913;
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: var(--radius-sm);
-      padding: 14px;
-      white-space: pre-wrap;
-      overflow-x: auto;
-      min-height: 190px;
-      line-height: 1.5;
+    .spec-table td {
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(243, 241, 236, 0.06);
+    }
+    .spec-table tr:last-child td { border-bottom: none; }
+    .spec-table td:first-child { color: var(--ink-muted); }
+    .spec-table td:last-child {
+      text-align: right;
+      color: var(--ink-bone);
+      font-variant-numeric: tabular-nums;
     }
 
-    /* PRODUCTION SYSTEMS CARDS */
-    .projects-grid {
+    /* ==========================================================================
+       BANDA DE MÉTRICAS VERIFICADAS (4 CELDAS ESTRUCTURALES)
+       ========================================================================== */
+    .metrics-strip {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--hairline);
     }
-    .proj-card {
-      background: rgba(17, 24, 39, 0.75);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
+    .metric-cell {
+      padding: 32px 28px;
+      border-right: 1px solid var(--hairline);
+      background: var(--bg-abyss);
+      transition: background 0.25s var(--ease-expo);
+    }
+    .metric-cell:last-child { border-right: none; }
+    .metric-cell:hover { background: var(--bg-obsidian); }
+    .metric-index {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 3.2vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .metric-value sub {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--cobalt);
+      bottom: 0;
+      margin-left: 4px;
+    }
+    .metric-desc {
+      font-size: 0.86rem;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       CABECERAS DE SECCIÓN NUMERADAS (ESTILO EDITORIAL SUIZO)
+       ========================================================================== */
+    .sec-header {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      transition: border-color 0.2s;
+      grid-template-columns: 280px 1fr;
+      border-bottom: 1px solid var(--hairline);
+      background: var(--bg-obsidian);
     }
-    .proj-card:hover { border-color: var(--border-strong); }
-    .proj-meta {
+    .sec-num-col {
+      padding: 36px 28px;
+      border-right: 1px solid var(--hairline);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .sec-num-col strong {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--ink-bone);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .sec-title-col {
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sec-title-col h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3vw, 2.55rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+    .sec-title-col h2 em {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-secondary);
+    }
+    .sec-title-col p {
+      color: var(--ink-secondary);
+      max-width: 680px;
+      font-size: 0.96rem;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 01 // WORKBENCH INTERACTIVO DE PIPELINES (COMPONENTE ICÓNICO)
+       ========================================================================== */
+    .workbench {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      border-bottom: 1px solid var(--hairline);
+      background: var(--bg-abyss);
+    }
+    .wb-sidebar {
+      border-right: 1px solid var(--hairline);
+      background: var(--bg-obsidian);
+      display: flex;
+      flex-direction: column;
+    }
+    .wb-tab {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--hairline);
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s var(--ease-expo);
+      position: relative;
+    }
+    .wb-tab:hover { background: var(--bg-panel); }
+    .wb-tab.active {
+      background: var(--bg-panel);
+      border-left: 3px solid var(--cobalt);
+    }
+    .wb-tab-code {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ink-muted);
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: 0.06em;
+    }
+    .wb-tab-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--ink-bone);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .wb-tab-meta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ink-secondary);
+    }
+
+    .wb-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .wb-pane {
+      padding: 32px 36px;
+      border-right: 1px solid var(--hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .wb-pane:last-child {
+      border-right: none;
+      background: #070A0F;
+    }
+    .wb-pane-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--hairline);
+      margin-bottom: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .wb-presets {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 6px;
+      margin-bottom: 16px;
     }
-    .badge-live {
-      background: var(--emerald-dim);
-      color: #34D399;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.73rem;
-      padding: 3px 9px;
-      border-radius: 99px;
+    .wb-chip {
+      padding: 6px 11px;
+      border: 1px solid var(--hairline);
+      background: var(--bg-obsidian);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
     }
-    .badge-tech {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--chalk-2);
-      border: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.73rem;
-      padding: 3px 9px;
-      border-radius: 6px;
+    .wb-chip:hover {
+      border-color: var(--ink-bone);
+      color: var(--ink-bone);
     }
-    .proj-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .proj-desc {
-      color: var(--chalk-2);
-      font-size: 0.95rem;
-      margin-bottom: 14px;
-    }
-    .proj-list {
-      list-style: none;
+    .wb-textarea {
+      width: 100%;
+      min-height: 118px;
+      padding: 14px;
+      background: var(--bg-obsidian);
+      border: 1px solid var(--hairline-strong);
+      color: var(--ink-bone);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.55;
+      resize: vertical;
       margin-bottom: 18px;
     }
-    .proj-list li {
-      position: relative;
-      padding-left: 20px;
-      font-size: 0.9rem;
-      color: var(--mist);
-      margin-bottom: 7px;
+    .wb-textarea:focus {
+      outline: none;
+      border-color: var(--cobalt);
     }
-    .proj-list li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--violet-soft);
-      font-weight: bold;
-    }
-    .proj-code {
-      background: #070B14;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
-      color: #CBD5E1;
-      overflow-x: auto;
-      line-height: 1.55;
-      align-self: center;
-    }
-    .proj-code .comment { color: #64748B; }
-    .proj-code .kw { color: #C084FC; }
-    .proj-code .str { color: #34D399; }
-    .proj-code .fn { color: #60A5FA; }
-
-    /* STACK MATRIX */
-    .stack-grid {
+    .wb-pipeline-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      border: 1px solid var(--hairline);
+      margin-bottom: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
     }
-    .stack-card {
-      background: rgba(17, 24, 39, 0.7);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
+    .wb-step {
+      padding: 8px 10px;
+      border-right: 1px solid var(--hairline);
+      color: var(--ink-muted);
     }
-    .stack-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 14px;
+    .wb-step:last-child { border-right: none; }
+    .wb-step strong {
+      display: block;
+      color: var(--ink-bone);
+      margin-top: 2px;
+    }
+    .wb-terminal {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #D1FAE5;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      min-height: 240px;
+      padding: 16px;
+      border: 1px solid var(--hairline);
+      background: var(--bg-abyss);
+    }
+
+    /* ==========================================================================
+       SECCIÓN 02 // ARCHIVO DE SISTEMAS EN PRODUCCIÓN (CASOS AUDITABLES)
+       ========================================================================== */
+    .case-row {
+      display: grid;
+      grid-template-columns: 280px 1fr 440px;
+      border-bottom: 1px solid var(--hairline);
+      transition: background 0.25s var(--ease-expo);
+    }
+    .case-row:hover {
+      background: rgba(19, 26, 39, 0.55);
+    }
+    .case-meta-col {
+      padding: 36px 28px;
+      border-right: 1px solid var(--hairline);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .stack-tags {
+    .case-id {
+      color: var(--cobalt);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .case-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--signal-ok);
+      font-size: 0.7rem;
+      margin-bottom: 16px;
+    }
+    .case-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
+      margin-top: 16px;
     }
-    .stack-tags span {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      padding: 6px 11px;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      color: var(--chalk-2);
+    .case-tags span {
+      padding: 3px 7px;
+      border: 1px solid var(--hairline);
+      color: var(--ink-secondary);
+      font-size: 0.68rem;
     }
 
-    /* FOOTER / CONTACT CTA */
-    .cta-banner {
-      background: linear-gradient(135deg, rgba(109, 94, 243, 0.22) 0%, rgba(17, 24, 39, 0.95) 100%);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-lg);
-      padding: 44px;
-      text-align: center;
-      margin: 40px 0 60px;
+    .case-body-col {
+      padding: 36px 40px;
+      border-right: 1px solid var(--hairline);
     }
-    .cta-banner h2 {
-      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    .case-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
       margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
-    .cta-banner p {
-      color: var(--chalk-2);
-      max-width: 600px;
-      margin: 0 auto 26px;
+    .case-summary {
+      color: var(--ink-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
     }
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0;
-      color: var(--mist);
-      font-size: 0.86rem;
-      text-align: center;
+    .case-specs {
+      list-style: none;
+      border-top: 1px solid var(--hairline);
+      padding-top: 14px;
+    }
+    .case-specs li {
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+      margin-bottom: 8px;
+      padding-left: 18px;
+      position: relative;
+    }
+    .case-specs li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--cobalt);
+      font-family: var(--font-mono);
+    }
+    .case-specs li strong { color: var(--ink-bone); font-weight: 500; }
+
+    .case-code-col {
+      padding: 28px;
+      background: #07090E;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .code-caption {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ink-muted);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 6px;
+    }
+    .code-snippet {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      line-height: 1.55;
+      color: var(--ink-secondary);
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .code-snippet .hl { color: var(--ink-bone); }
+    .code-snippet .ac { color: var(--cobalt); }
+    .code-snippet .ok { color: var(--signal-ok); }
+
+    /* ==========================================================================
+       SECCIÓN 03 // MATRIZ DE ARQUITECTURA, CALIDAD INDUSTRIAL Y STACK
+       ========================================================================== */
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .matrix-col {
+      padding: 36px 28px;
+      border-right: 1px solid var(--hairline);
+    }
+    .matrix-col:last-child { border-right: none; }
+    .matrix-col-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--cobalt);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .matrix-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .matrix-list {
+      list-style: none;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--ink-secondary);
+    }
+    .matrix-list li {
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(243, 241, 236, 0.05);
+      display: flex;
+      justify-content: space-between;
+    }
+    .matrix-list li span:last-child {
+      color: var(--ink-muted);
+      font-size: 0.68rem;
     }
 
-    @media (max-width: 920px) {
-      .hero-grid, .sim-grid, .proj-card, .stack-grid {
+    /* ==========================================================================
+       SECCIÓN 04 // DESPACHO DE CONTACTO Y DESCARGA DE EXPEDIENTE
+       ========================================================================== */
+    .dispatch-block {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      background: var(--bg-obsidian);
+    }
+    .dispatch-left {
+      padding: 56px 48px;
+      border-right: 1px solid var(--hairline);
+    }
+    .dispatch-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+    .dispatch-left h2 em {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-secondary);
+    }
+    .dispatch-left p {
+      color: var(--ink-secondary);
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+    .dispatch-right {
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+    .contact-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border: 1px solid var(--hairline);
+      background: var(--bg-abyss);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-line:hover {
+      border-color: var(--ink-bone);
+      background: var(--bg-panel);
+    }
+    .contact-line span:first-child { color: var(--ink-muted); }
+
+    .footer-bar {
+      padding: 20px 28px;
+      border-top: 1px solid var(--hairline);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 1024px) {
+      .header-nav, .hero-dossier, .sec-header, .workbench, .wb-stage, .case-row, .dispatch-block {
         grid-template-columns: 1fr;
       }
-      .kpi-grid {
+      .metrics-strip, .matrix-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .nav-links { display: none; }
+      .nav-index { display: none; }
+      .hero-main, .sec-title-col, .dispatch-left { padding: 36px 24px; }
+      .case-meta-col, .case-body-col, .wb-sidebar, .wb-pane {
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+      }
     }
-    @media (max-width: 520px) {
-      .kpi-grid { grid-template-columns: 1fr; }
-      .hero-cta .btn { width: 100%; }
+    @media (max-width: 600px) {
+      .metrics-strip, .matrix-grid { grid-template-columns: 1fr; }
+      .telemetry-coords { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a href="/javier/" class="brand">
-        <span>Javier Delgado</span>
-        <span class="brand-badge">AI Ops &amp; Automation</span>
+  <div class="frame">
+    <!-- BARRA DE TELEMETRÍA SUPERIOR -->
+    <div class="telemetry-bar">
+      <div class="telemetry-status">
+        <span class="led-dot"></span>
+        <span>HOST: MAC-MINI-PROD // 22 LAUNCHD DAEMONS ONLINE</span>
+      </div>
+      <div class="telemetry-coords">
+        41°39′08″N · 04°43′24″W — VALLADOLID, CASTILLA Y LEÓN [MODALIDAD: PRESENCIAL / HÍBRIDO / REMOTO]
+      </div>
+      <div>EXP: JDH-2026-IA</div>
+    </div>
+
+    <!-- NAVEGACIÓN ESTRUCTURAL -->
+    <header class="header-nav">
+      <a href="/javier/" class="nav-brand">
+        <span class="nav-brand-name">Javier Delgado</span>
+        <span class="nav-brand-sub">ESARIA // AI OPS &amp; SYSTEMS</span>
       </a>
-      <nav class="nav-links">
-        <a href="#simulador">Simulador en Vivo</a>
-        <a href="#sistemas">Sistemas en Producción</a>
-        <a href="#stack">Stack &amp; Arquitectura</a>
-        <a href="/">Web EsarIA B2B ↗</a>
+      <nav class="nav-index" aria-label="Secciones del dossier">
+        <a href="#workbench" class="nav-item"><span>01</span> WORKBENCH EN VIVO</a>
+        <a href="#archivo" class="nav-item"><span>02</span> SISTEMAS EN PRODUCCIÓN</a>
+        <a href="#arquitectura" class="nav-item"><span>03</span> MATRIZ TÉCNICA</a>
+        <a href="/" class="nav-item"><span>↗</span> ESARIA B2B</a>
       </nav>
-      <div class="nav-actions">
-        <a href="CV_Javier_Delgado_IA.pdf" download class="btn btn-outline btn-sm">📄 Descargar CV (PDF)</a>
-        <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20portfolio%20t%C3%A9cnico%20en%20esaria.es%2Fjavier" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Contactar</a>
+      <div class="nav-cta-group">
+        <a href="CV_Javier_Delgado_IA.pdf" download class="nav-btn nav-btn-outline">DESCARGAR CV [.PDF]</a>
+        <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20revisado%20tu%20dossier%20t%C3%A9cnico%20en%20esaria.es%2Fjavier" target="_blank" rel="noopener" class="nav-btn nav-btn-primary">CONTACTO DIRECTO ↗</a>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        <span>Disponible para Incorporación o Proyectos · Valladolid (Presencial/Híbrido) y 100% Remoto</span>
-      </div>
-
-      <div class="hero-grid">
+    <!-- 00 // HERO DOSSIER -->
+    <section class="hero-dossier">
+      <div class="hero-main">
         <div>
-          <h1 class="hero-title">
-            Conecto procesos reales con <span class="accent">Inteligencia Artificial en producción.</span>
+          <div class="dossier-meta">
+            <span class="dossier-tag">DOSSIER DE INGENIERÍA APLICADA</span>
+            <span>ACTUALIZADO: OCT 2026</span>
+          </div>
+          <h1 class="hero-headline">
+            Arquitectura de automatización y sistemas de IA <em>que operan en el mundo físico.</em>
           </h1>
-          <p class="hero-lead">
-            Soy <strong>Javier Delgado Hernández</strong>, especialista en automatización de procesos, integración de LLMs/Visión y despliegue de agentes operativos.
+          <p class="hero-manifesto">
+            No diseño presentaciones ni prototipos de salón. Construyo, despliego y mantengo <strong>pipelines autónomos 24/7</strong> que conectan modelos de visión artificial, LLMs con <em>Tool Calling</em> determinista, motores de voz local y bases de datos para eliminar fricción operativa en empresas reales. Combino formación en <strong>Ingeniería Mecánica (UVa)</strong> y <strong>Gestión de la Calidad Industrial (CIFP Juan de Herrera)</strong> con desarrollo asistido por agentes de alta velocidad.
           </p>
-          <p class="hero-sub">
-            No me quedo en demos teóricas: opero mi propia infraestructura 24/7 con <strong>22 servicios automatizados</strong> resolviendo problemas en terreno real —desde control de matrículas por visión en ~1 segundo para eventos en Valladolid hasta ERPs conversacionales con <em>Tool Calling</em> y tramitación documental autónoma. Combino mentalidad de <strong>Ingeniería Mecánica (UVa)</strong> y <strong>Gestión de la Calidad (CIFP Juan de Herrera)</strong> con desarrollo asistido por IA de alta velocidad.
-          </p>
-
-          <div class="hero-cta">
-            <a href="CV_Javier_Delgado_IA.pdf" download class="btn btn-primary">
-              <span>⬇️ Descargar CV en PDF</span>
-            </a>
-            <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20perfil%20de%20IA%20y%20automatizaci%C3%B3n%20en%20esaria.es%2Fjavier" target="_blank" rel="noopener" class="btn btn-wa">
-              <span>💬 WhatsApp Directo (+34 614 91 82 61)</span>
-            </a>
-            <a href="mailto:hola@esaria.es" class="btn btn-outline">
-              <span>✉️ hola@esaria.es</span>
-            </a>
-            <a href="https://github.com/deljavierher-web" target="_blank" rel="noopener" class="btn btn-outline">
-              <span>💻 GitHub</span>
-            </a>
-            <a href="https://www.linkedin.com/in/javier-delgado-hern%C3%A1ndez-esaria" target="_blank" rel="noopener" class="btn btn-outline">
-              <span>🔗 LinkedIn</span>
-            </a>
-          </div>
         </div>
 
-        <!-- LIVE TELEMETRY SNAPSHOT -->
-        <aside class="sys-card" aria-label="Estado de infraestructura personal">
-          <div class="sys-header">
-            <div class="sys-dots">
-              <span style="background:#EF4444"></span>
-              <span style="background:#F59E0B"></span>
-              <span style="background:#10B981"></span>
-            </div>
-            <span class="mono">javidel@mac-mini-prod ~ launchctl</span>
-          </div>
-          <div class="sys-body">
-            <div class="sys-row">
-              <span class="sys-key">Nodo Principal</span>
-              <span class="sys-val ok">● ONLINE (24/7 Host)</span>
-            </div>
-            <div class="sys-row">
-              <span class="sys-key">Servicios launchd activos</span>
-              <span class="sys-val violet">22 daemons</span>
-            </div>
-            <div class="sys-row">
-              <span class="sys-key">Orquestación LLM</span>
-              <span class="sys-val">Multi-Provider + Failover 429</span>
-            </div>
-            <div class="sys-row">
-              <span class="sys-key">Visión OCR (ParkingBot)</span>
-              <span class="sys-val ok">~0.95s TTFT (Qwen-VL)</span>
-            </div>
-            <div class="sys-row">
-              <span class="sys-key">Voz Local (STT / TTS)</span>
-              <span class="sys-val">faster-whisper + OmniVoice</span>
-            </div>
-            <div class="sys-row">
-              <span class="sys-key">Exposición Segura</span>
-              <span class="sys-val">Cloudflare Tunnels + Zero-Trust</span>
-            </div>
-            <div class="sys-row">
-              <span class="sys-key">Ubicación Base</span>
-              <span class="sys-val">Valladolid, ES (41°39′N)</span>
-            </div>
-          </div>
-        </aside>
+        <div class="action-strip">
+          <a href="CV_Javier_Delgado_IA.pdf" download class="tactile-btn primary">
+            <span>DESCARGAR EXPEDIENTE / CV (PDF)</span>
+            <span class="arrow">↘</span>
+          </a>
+          <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20dossier%20en%20esaria.es%2Fjavier" target="_blank" rel="noopener" class="tactile-btn">
+            <span>WHATSAPP (+34 614 91 82 61)</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://github.com/deljavierher-web" target="_blank" rel="noopener" class="tactile-btn">
+            <span>GITHUB (@DELJAVIERHER-WEB)</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="mailto:hola@esaria.es" class="tactile-btn">
+            <span>HOLA@ESARIA.ES</span>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
       </div>
 
-      <!-- KPI BENTO -->
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-num">22 <span>daemons</span></div>
-          <div class="kpi-label">Servicios y demonios autónomos en producción continua sobre macOS (`launchd` + túneles Cloudflare).</div>
+      <aside class="hero-spec" aria-label="Especificaciones del operador">
+        <div class="spec-block">
+          <div class="spec-label">
+            <span>FICHA DE OPERADOR</span>
+            <span>[ID: JDH-VLL]</span>
+          </div>
+          <table class="spec-table">
+            <tr><td>Rol Principal</td><td>AI Automation &amp; Systems Builder</td></tr>
+            <tr><td>Base Operativa</td><td>Valladolid, España</td></tr>
+            <tr><td>Disponibilidad</td><td>Valladolid / Híbrido / Remoto</td></tr>
+            <tr><td>Ingeniería</td><td>Mecánica (UVa, en curso)</td></tr>
+            <tr><td>Calidad &amp; Procesos</td><td>GCPP (CIFP Juan de Herrera)</td></tr>
+            <tr><td>Marca B2B</td><td>EsarIA (esaria.es)</td></tr>
+          </table>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-num">~1.0s <span>latencia</span></div>
-          <div class="kpi-label">Extracción de matrículas por visión y cruce con base de datos desde foto en móvil en eventos reales.</div>
+
+        <div class="spec-block">
+          <div class="spec-label">
+            <span>TELEMETRÍA DE NODO LOCAL</span>
+            <span style="color:var(--signal-ok)">● ACTIVO</span>
+          </div>
+          <table class="spec-table">
+            <tr><td>Demonios en producción</td><td>22 servicios launchd</td></tr>
+            <tr><td>Enrutamiento IA</td><td>Multi-LLM + Failover HTTP 429</td></tr>
+            <tr><td>Latencia OCR Matrículas</td><td>0.89s media (Qwen-VL-Flash)</td></tr>
+            <tr><td>Pila de Voz Local</td><td>faster-whisper + OmniVoice</td></tr>
+            <tr><td>Exposición de Red</td><td>Cloudflare Zero-Trust Tunnels</td></tr>
+          </table>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-num">11 <span>tools JSON</span></div>
-          <div class="kpi-label">Funciones estructuradas de inventario, compras, ventas y balance en mi ERP conversacional con FastAPI.</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-num">100% <span>práctico</span></div>
-          <div class="kpi-label">Sistemas diseñados desde la necesidad operativa real (seguridad, arbitraje, industria, talleres y pymes).</div>
-        </div>
+      </aside>
+    </section>
+
+    <!-- BANDA DE 4 MÉTRICAS ESTRUCTURALES -->
+    <section class="metrics-strip" aria-label="Métricas de producción">
+      <div class="metric-cell">
+        <div class="metric-index"><span>MÉTRICA // 01</span><span>UPTIME 24/7</span></div>
+        <div class="metric-value">22<sub>daemons</sub></div>
+        <p class="metric-desc">Procesos autónomos corriendo en segundo plano en servidor propio con autorreparación y vigilancia de estado.</p>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-index"><span>MÉTRICA // 02</span><span>VISIÓN EN CAMPO</span></div>
+        <div class="metric-value">~0.9<sub>seg</sub></div>
+        <p class="metric-desc">Tiempo total desde captura fotográfica en móvil hasta validación de matrícula contra base de datos en eventos reales.</p>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-index"><span>MÉTRICA // 03</span><span>DETERMINISMO</span></div>
+        <div class="metric-value">11<sub>tools JSON</sub></div>
+        <p class="metric-desc">Herramientas transaccionales en FastAPI + SQLite con guardrails contables que impiden alucinaciones de precios o stock.</p>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-index"><span>MÉTRICA // 04</span><span>VELOCIDAD DE ENTREGA</span></div>
+        <div class="metric-value">10×<sub>AI-Native</sub></div>
+        <p class="metric-desc">Arquitectura y despliegue acelerado combinando diseño de procesos industriales con orquestación en Claude Code y Codex.</p>
       </div>
     </section>
 
-    <!-- INTERACTIVE SIMULATOR -->
-    <section id="simulador">
-      <span class="sec-tag">Demo Interactiva en Navegador</span>
-      <h2 class="sec-title">Prueba cómo razonan mis pipelines</h2>
-      <p class="sec-desc">
-        Selecciona uno de mis 3 flujos reales desplegados, elige un caso de entrada (o escribe el tuyo) y observa cómo el pipeline normaliza, extrae entidades y ejecuta la acción de negocio.
-      </p>
-
-      <div class="sim-box">
-        <div class="sim-tabs" role="tablist">
-          <button type="button" class="sim-tab active" data-sim="parking">🚗 1. VisionParking AI (Control Matrículas)</button>
-          <button type="button" class="sim-tab" data-sim="erp">📦 2. ERP Conversacional (FastAPI + Tool Calling)</button>
-          <button type="button" class="sim-tab" data-sim="taller">🔧 3. Operador IA Recepción de Talleres</button>
-        </div>
-
-        <div class="sim-grid">
-          <div class="sim-panel">
-            <div>
-              <div class="sim-panel-title">
-                <span id="sim-input-label">ENTRADA DEL OPERARIO (TELEGRAM / CÁMARA / VOZ)</span>
-                <span class="badge-tech" id="sim-engine-badge">Motor: Qwen-VL + Regex ES</span>
-              </div>
-              <div class="sim-presets" id="sim-presets"></div>
-              <textarea id="sim-input" class="sim-input-area" rows="4"></textarea>
-            </div>
-            <button type="button" id="sim-run-btn" class="btn btn-primary" style="width:100%">
-              ⚡ Ejecutar Pipeline de IA
-            </button>
-          </div>
-
-          <div class="sim-panel">
-            <div class="sim-panel-title">
-              <span>SALIDA ESTRUCTURADA Y ACCIÓN EJECUTADA</span>
-              <span id="sim-latency" class="mono" style="color:#34D399">Listo</span>
-            </div>
-            <pre id="sim-output" class="sim-output"></pre>
-          </div>
-        </div>
+    <!-- 01 // WORKBENCH INTERACTIVO DE PIPELINES -->
+    <div id="workbench" class="sec-header">
+      <div class="sec-num-col">
+        <strong>01 / 04</strong>
+        <span>BANCO DE PRUEBAS</span>
       </div>
-    </section>
+      <div class="sec-title-col">
+        <h2>Mesa de inspección de <em>pipelines en vivo.</em></h2>
+        <p>Inspecciona cómo mis sistemas transforman entradas desordenadas del mundo real (fotos en accesos, audios de almacén, partes manuscritos o avisos de avería) en estructuras JSON deterministas.</p>
+      </div>
+    </div>
 
-    <!-- PRODUCTION SYSTEMS -->
-    <section id="sistemas">
-      <span class="sec-tag">Arquitectura &amp; Código Real</span>
-      <h2 class="sec-title">Sistemas construidos y operando en producción</h2>
-      <p class="sec-desc">
-        Cada uno de estos proyectos resuelve un cuello de botella real que he vivido en primera persona trabajando o estudiando en Valladolid.
-      </p>
+    <section class="workbench" aria-label="Simulador técnico de pipelines">
+      <div class="wb-sidebar" role="tablist">
+        <button type="button" class="wb-tab active" data-sim="parking">
+          <span class="wb-tab-code">SYS-01 // VISIÓN &amp; ACCESOS</span>
+          <span class="wb-tab-name">VisionParking OCR</span>
+          <span class="wb-tab-meta">Qwen-VL · Regex ES · Flask</span>
+        </button>
+        <button type="button" class="wb-tab" data-sim="erp">
+          <span class="wb-tab-code">SYS-02 // CONTABILIDAD &amp; STOCK</span>
+          <span class="wb-tab-name">Conversational ERP</span>
+          <span class="wb-tab-meta">FastAPI · SQLite · 11 Tools</span>
+        </button>
+        <button type="button" class="wb-tab" data-sim="actas">
+          <span class="wb-tab-code">SYS-03 // BACK-OFFICE FEDERATIVO</span>
+          <span class="wb-tab-name">iSquad Auto-Actas</span>
+          <span class="wb-tab-meta">Visión Manuscrita · Portal Web</span>
+        </button>
+        <button type="button" class="wb-tab" data-sim="taller">
+          <span class="wb-tab-code">SYS-04 // RECEPCIÓN INDUSTRIAL</span>
+          <span class="wb-tab-name">Triaje Taller Mecánico</span>
+          <span class="wb-tab-meta">WhatsApp Cloud API · Priorización</span>
+        </button>
+      </div>
 
-      <div class="projects-grid">
-
-        <!-- PROYECTO 1: PARKING BOT -->
-        <article class="proj-card">
+      <div class="wb-stage">
+        <div class="wb-pane">
           <div>
-            <div class="proj-meta">
-              <span class="badge-live">● EN PRODUCCIÓN (VALLADOLID)</span>
-              <span class="badge-tech">Python</span>
-              <span class="badge-tech">Qwen-VL / Gemini Flash</span>
-              <span class="badge-tech">Telegram Bot API</span>
-              <span class="badge-tech">Flask</span>
+            <div class="wb-pane-header">
+              <span id="sim-input-label">ENTRADA DE CAMPO (TELEGRAM / CÁMARA / VOZ)</span>
+              <span id="sim-engine-badge">MOTOR: QWEN-VL + REGEX ES</span>
             </div>
-            <h3 class="proj-title">1. VisionParking AI (`@ParkingCasetas_bot`)</h3>
-            <p class="proj-desc">
-              Sistema de verificación instantánea de matrículas desplegado en el control de accesos de las Casetas Regionales (Servisecur, Valladolid). Sustituye la búsqueda manual en listas impresas bajo presión de tráfico.
-            </p>
-            <ul class="proj-list">
-              <li><strong>Cadena de Visión con Failover:</strong> Prioriza <code>Qwen-VL-Flash</code> para latencia ~1s y conmuta automáticamente a <code>Gemini Flash</code> o <code>GPT-4o-mini</code> si hay saturación de cuota.</li>
-              <li><strong>Normalización Española Robusta:</strong> Soporta matrículas modernas (<code>1234-BBB</code>) y provinciales antiguas (<code>VA-1234-AB</code>), además de búsqueda ultrarrápida por voz/texto en <code>&lt;0.2s</code>.</li>
-              <li><strong>Registro y Panel Web:</strong> Botones inline para fichar la entrada en vivo (<code>registros.csv</code>) y dashboard web de vehículos dentro del recinto.</li>
-            </ul>
+            <div class="wb-presets" id="sim-presets"></div>
+            <textarea id="sim-input" class="wb-textarea" rows="4" aria-label="Entrada de prueba del pipeline"></textarea>
+            <div class="wb-pipeline-steps" id="sim-steps">
+              <div class="wb-step">PASO 01<strong>INGESTA / OCR</strong></div>
+              <div class="wb-step">PASO 02<strong>GUARDRAIL / REGEX</strong></div>
+              <div class="wb-step">PASO 03<strong>EJECUCIÓN DB</strong></div>
+            </div>
           </div>
-          <pre class="proj-code"><span class="comment"># Extracto real de ocr.py — Normalizador + Cadena de Failover Multimodal</span>
-<span class="kw">def</span> <span class="fn">extract_plate_from_text</span>(text: str) -> Optional[str]:
+          <button type="button" id="sim-run-btn" class="tactile-btn primary" style="width:100%; justify-content:space-between">
+            <span>EJECUTAR INSPECCIÓN DE PIPELINE</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+
+        <div class="wb-pane">
+          <div class="wb-pane-header">
+            <span>SALIDA DEL SISTEMA // TRAZA DE EJECUCIÓN</span>
+            <span id="sim-latency" style="color:var(--signal-ok)">ESTADO: LISTO</span>
+          </div>
+          <pre id="sim-output" class="wb-terminal"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 // ARCHIVO DE SISTEMAS EN PRODUCCIÓN -->
+    <div id="archivo" class="sec-header">
+      <div class="sec-num-col">
+        <strong>02 / 04</strong>
+        <span>REGISTRO DE OBRA</span>
+      </div>
+      <div class="sec-title-col">
+        <h2>Sistemas auditables <em>operando en producción.</em></h2>
+        <p>Código real y arquitecturas desplegadas para resolver cuellos de botella operativos en Valladolid y en remoto.</p>
+      </div>
+    </div>
+
+    <section aria-label="Casos de estudio en producción">
+      <!-- CASO 01 -->
+      <article class="case-row">
+        <div class="case-meta-col">
+          <div>
+            <span class="case-id">EXP-01 // VISION-PARKING</span>
+            <span class="case-status">● PRODUCCIÓN EN VALLADOLID</span>
+            <p style="color:var(--ink-muted); font-size:0.74rem">Desplegado en control de accesos de vehículos del Servicio Casetas Regionales (Servisecur).</p>
+          </div>
+          <div>
+            <div class="case-tags">
+              <span>Python</span><span>Qwen-VL</span><span>Gemini Flash</span><span>Telegram API</span><span>Flask</span>
+            </div>
+            <div style="margin-top:14px">
+              <a href="https://github.com/deljavierher-web/vision-parking-ai" target="_blank" rel="noopener" style="color:var(--ink-bone); text-decoration:underline">INSPECCIONAR REPOSITORIO ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="case-body-col">
+          <h3 class="case-title">Control de Accesos y Lectura de Matrículas en Tiempo Real (~1.0s)</h3>
+          <p class="case-summary">
+            Sustituye la verificación manual con listados en papel en la puerta de eventos con alto flujo de vehículos. El vigilante fotografía el coche o dicta los números por Telegram y recibe confirmación de pase en menos de un segundo.
+          </p>
+          <ul class="case-specs">
+            <li><strong>Failover Multimodal en Cascada:</strong> Conmutación transparente entre <strong>Qwen-VL-Flash</strong>, <strong>Gemini Flash</strong> y <strong>GPT-4o-mini</strong> ante caídas o límites de cuota.</li>
+            <li><strong>Normalizador Español Dual:</strong> Expresiones regulares para matrículas europeas modernas (<code>4821MNP</code>) y provinciales antiguas (<code>VA9213AL</code>) + sugerencia difusa a distancia de edición 1.</li>
+            <li><strong>Auditoría en Vivo:</strong> Botones inline de entrada/salida conectados a <code>registros.csv</code> y panel web de supervisión expuesto por túnel Cloudflare.</li>
+          </ul>
+        </div>
+        <div class="case-code-col">
+          <div class="code-caption"><span>ocr.py // EXTRACTOR REGEX ES</span><span>L10-L31</span></div>
+          <pre class="code-snippet"><span class="ac">def</span> <span class="hl">extract_plate_from_text</span>(text: str) -> Optional[str]:
     text = text.upper().strip()
-    <span class="comment"># 1) Formato moderno: 4 dígitos + 3 consonantes (ej. 4821 MNP)</span>
-    m_mod = re.search(<span class="str">r'([0-9]{4})\s*[- ]?\s*([BCDFGHJKLMNPRSTVWXYZ]{3})'</span>, text)
-    <span class="kw">if</span> m_mod:
-        <span class="kw">return</span> <span class="str">f"{m_mod.group(1)}{m_mod.group(2)}"</span>
-    <span class="comment"># 2) Formato provincial (ej. VA 1234 AB)</span>
-    m_prv = re.search(<span class="str">r'([A-Z]{1,2})\s*[- ]?\s*([0-9]{4})\s*[- ]?\s*([A-Z]{1,2})'</span>, text)
-    <span class="kw">if</span> m_prv:
-        <span class="kw">return</span> <span class="str">f"{m_prv.group(1)}{m_prv.group(2)}{m_prv.group(3)}"</span>
+    <span class="ok"># 1) Formato moderno: 4 dígitos + 3 consonantes</span>
+    m_mod = re.search(
+        <span class="hl">r'([0-9]{4})\s*[- ]?\s*([BCDFGHJKLMNPRSTVWXYZ]{3})'</span>,
+        text
+    )
+    <span class="ac">if</span> m_mod:
+        <span class="ac">return</span> f"{m_mod.group(1)}{m_mod.group(2)}"
+    <span class="ok"># 2) Formato provincial (ej. VA 1234 AB)</span>
+    m_prv = re.search(
+        <span class="hl">r'([A-Z]{1,2})\s*[- ]?\s*([0-9]{4})\s*[- ]?\s*([A-Z]{1,2})'</span>,
+        text
+    )
+    <span class="ac">if</span> m_prv:
+        <span class="ac">return</span> f"{m_prv.group(1)}{m_prv.group(2)}{m_prv.group(3)}"</pre>
+        </div>
+      </article>
 
-<span class="comment"># En bot.py: Respuesta instantánea al vigilante en la puerta</span>
-<span class="comment"># 🟢 ¡VEHÍCULO AUTORIZADO! -> Pulsa [ENTRA] para registrar acceso</span></pre>
-        </article>
-
-        <!-- PROYECTO 2: ACTAS BALONMANO -->
-        <article class="proj-card">
+      <!-- CASO 02 -->
+      <article class="case-row">
+        <div class="case-meta-col">
           <div>
-            <div class="proj-meta">
-              <span class="badge-live">● EN PRODUCCIÓN</span>
-              <span class="badge-tech">Visión Multimodal</span>
-              <span class="badge-tech">Python Automation</span>
-              <span class="badge-tech">JSON Schema</span>
-              <span class="badge-tech">MySquad / iSquad</span>
-            </div>
-            <h3 class="proj-title">2. iSquad Auto-Actas — Tramitación Federativa Autónoma</h3>
-            <p class="proj-desc">
-              Automatización completa del proceso de cierre de actas arbitrales de balonmano. Convierte una foto hecha con el móvil al terminar el partido en un trámite federativo oficial firmado.
-            </p>
-            <ul class="proj-list">
-              <li><strong>Extracción Manuscrita Compleja:</strong> Lee goles, sanciones, tiempos muertos y dorsales desde fotografías de actas en papel.</li>
-              <li><strong>Subida Desatendida:</strong> Conecta con el portal oficial <em>MySquad / iSquad</em>, vuelca el JSON del encuentro, descarga el PDF federativo oficial y lo envía de vuelta al chat de Telegram.</li>
-              <li><strong>Vigilancia de Designaciones:</strong> Demonio complementario que monitoriza cambios de partidos asignados y avisa al instante.</li>
-            </ul>
+            <span class="case-id">EXP-02 // CONVERSATIONAL-ERP</span>
+            <span class="case-status">● PRODUCCIÓN ACTIVA</span>
+            <p style="color:var(--ink-muted); font-size:0.74rem">Gestión de inventario, compras a proveedor, ventas y márgenes para socios comerciales.</p>
           </div>
-          <pre class="proj-code"><span class="comment"># Flujo end-to-end del pipeline actas_balonmano.py</span>
-[Foto Acta Manuscrita en Telegram]
-       │
-       ▼  1. Visión IA + Validación de Reglas
-{
-  <span class="str">"partido_id"</span>: <span class="str">"FBM-2026-084"</span>,
-  <span class="str">"resultado"</span>: { <span class="str">"local"</span>: 28, <span class="str">"visitante"</span>: 26 },
-  <span class="str">"jugadores_verificados"</span>: <span class="kw">true</span>,
-  <span class="str">"incidencias"</span>: <span class="str">"Sin descalificaciones"</span>
-}
-       │
-       ▼  2. Automatización Portal MySquad (iSquad)
-[Subida Oficial OK] ──► [Descarga acta_firmada.pdf] ──► 📲 Telegram</pre>
-        </article>
-
-        <!-- PROYECTO 3: ERP CONVERSACIONAL -->
-        <article class="proj-card">
           <div>
-            <div class="proj-meta">
-              <span class="badge-live">● EN PRODUCCIÓN</span>
-              <span class="badge-tech">FastAPI</span>
-              <span class="badge-tech">SQLite</span>
-              <span class="badge-tech">DeepSeek Tool Calling</span>
-              <span class="badge-tech">Chart.js</span>
+            <div class="case-tags">
+              <span>FastAPI</span><span>SQLite</span><span>DeepSeek V4</span><span>Tool Calling</span><span>Chart.js</span>
             </div>
-            <h3 class="proj-title">3. ERP Conversacional (`VictorVape` &amp; `Chuchi Orders`)</h3>
-            <p class="proj-desc">
-              Sistema de gestión comercial e inventario donde los socios hablan en lenguaje natural en un grupo de Telegram y el agente ejecuta transacciones contables seguras contra SQLite y actualiza un dashboard web.
-            </p>
-            <ul class="proj-list">
-              <li><strong>11 Funciones Estructuradas:</strong> <code>consultar_stock</code>, <code>crear_y_comprar</code>, <code>registrar_venta</code>, <code>calcular_balance</code>, <code>alertar_stock_bajo</code> y estadísticas semanales.</li>
-              <li><strong>Guardrails Financieros:</strong> El prompt del sistema prohíbe inventar precios o cantidades ambiguas; si falta un dato crítico, el agente repregunta antes de tocar la base de datos.</li>
-              <li><strong>Sincronización Resiliente:</strong> Incluye watchdog propio (<code>push_esaria_retry.py</code>) que reintenta despliegues automáticamente si cae la red.</li>
-            </ul>
+            <div style="margin-top:14px">
+              <a href="https://github.com/deljavierher-web/conversational-erp-ai" target="_blank" rel="noopener" style="color:var(--ink-bone); text-decoration:underline">INSPECCIONAR REPOSITORIO ↗</a>
+            </div>
           </div>
-          <pre class="proj-code"><span class="comment"># Extracto real de vaper-app/backend/llm_client.py</span>
-<span class="comment"># Mensaje usuario: "Le he vendido 3 de sandía a Marcos"</span>
-{
-  <span class="str">"accion"</span>: <span class="str">"registrar_venta"</span>,
-  <span class="str">"params"</span>: {
-    <span class="str">"producto_id"</span>: 4,
-    <span class="str">"cantidad"</span>: 3,
-    <span class="str">"persona"</span>: <span class="str">"Marcos"</span>,
-    <span class="str">"precio_unitario"</span>: <span class="kw">null</span> <span class="comment">// Usa PVP oficial en SQLite</span>
+        </div>
+        <div class="case-body-col">
+          <h3 class="case-title">ERP Conversacional con Guardrails Contables y Dashboard Analítico</h3>
+          <p class="case-summary">
+            Elimina la fricción de los ERPs tradicionales: dos socios hablan de forma natural en un grupo de Telegram y el agente ejecuta asientos contables seguros sobre SQLite mientras actualiza un panel financiero web.
+          </p>
+          <ul class="case-specs">
+            <li><strong>11 Herramientas Estructuradas:</strong> <code>consultar_stock</code>, <code>crear_y_comprar</code>, <code>registrar_venta</code>, <code>calcular_balance</code>, <code>alertar_stock_bajo</code> y analítica semanal.</li>
+            <li><strong>Prevención de Corrupción Contable:</strong> El modelo tiene prohibido inventar importes (delega en el PVP de SQLite si se pasa <code>null</code>) y bloquea cantidades ambiguas exigiendo confirmación.</li>
+          </ul>
+        </div>
+        <div class="case-code-col">
+          <div class="code-caption"><span>llm_client.py // CONTRATO JSON</span><span>TOOLS</span></div>
+          <pre class="code-snippet">{
+  <span class="ac">"accion"</span>: <span class="hl">"registrar_venta"</span>,
+  <span class="ac">"params"</span>: {
+    <span class="ac">"producto_id"</span>: 4,
+    <span class="ac">"cantidad"</span>: 3,
+    <span class="ac">"persona"</span>: <span class="hl">"Marcos"</span>,
+    <span class="ac">"precio_unitario"</span>: <span class="ok">null</span> <span class="ok">// Lee PVP oficial en SQLite</span>
   },
-  <span class="str">"mensaje"</span>: <span class="str">"Registrando venta de 3 uds (Sandía) a Marcos..."</span>
+  <span class="ac">"mensaje"</span>: <span class="hl">"Registrando venta de 3 uds..."</span>
 }</pre>
-        </article>
+        </div>
+      </article>
 
-        <!-- PROYECTO 4: MUSE ESTUDIOS & INFRAESTRUCTURA -->
-        <article class="proj-card">
+      <!-- CASO 03 -->
+      <article class="case-row">
+        <div class="case-meta-col">
           <div>
-            <div class="proj-meta">
-              <span class="badge-live">● OPEN SOURCE &amp; LOCAL</span>
-              <span class="badge-tech">Python SAML/ADFS</span>
-              <span class="badge-tech">iCalendar RFC 5545</span>
-              <span class="badge-tech">Typst</span>
-              <span class="badge-tech">Unittest</span>
+            <span class="case-id">EXP-03 // ISQUAD &amp; MOODLE SAML</span>
+            <span class="case-status">● PRODUCCIÓN 24/7</span>
+            <p style="color:var(--ink-muted); font-size:0.74rem">Automatización documental federativa (Balonmano) y vigilancia académica UVa/Educacyl.</p>
+          </div>
+          <div>
+            <div class="case-tags">
+              <span>SAML/ADFS</span><span>Visión IA</span><span>iCal RFC 5545</span><span>Typst</span><span>Unittest</span>
             </div>
-            <h3 class="proj-title">4. Ecosistema Académico (`muse-estudios`) &amp; Motor Agéntico `DSH`</h3>
-            <p class="proj-desc">
-              Suite automatizada que conecta con los campus Moodle de la Universidad de Valladolid (UVa) y Educacyl mediante autenticación SAML, descarga nuevos apuntes, los clasifica con IA y vigila entregas cada 60 minutos.
-            </p>
-            <ul class="proj-list">
-              <li><strong>Cola de Revisión Interactiva:</strong> Si el clasificador duda dónde archivar un PDF, consulta por Telegram (<code>REV-01</code>) y mueve el archivo en local y Google Drive según tu respuesta.</li>
-              <li><strong>Seguridad y Sanitización:</strong> Incluye suite de pruebas automatizadas (<code>test_sanitizacion.py</code>) para impedir fugas de credenciales o datos privados en Git, además de protección anti-bloqueo de login de 12h.</li>
-              <li><strong>Clonación de Voz y Benchmarking:</strong> Servidor local <code>OmniVoice</code> + <code>faster-whisper</code> y scripts de benchmark empírico de latencia TTFT entre modelos (<code>latencia_bench.py</code>).</li>
-            </ul>
+            <div style="margin-top:14px">
+              <a href="https://github.com/deljavierher-web/muse-estudios" target="_blank" rel="noopener" style="color:var(--ink-bone); text-decoration:underline">INSPECCIONAR REPOSITORIO ↗</a>
+            </div>
           </div>
-          <pre class="proj-code"><span class="comment"># Comandos reales del motor CLI (github.com/deljavierher-web/muse-estudios)</span>
-$ python3 moodle_cli.py tasks            <span class="comment"># Plazos de entrega UVa + Educacyl</span>
-$ python3 moodle_cli.py sync-resources   <span class="comment"># Descarga incremental y clasificación IA</span>
-$ python3 moodle_review.py reply <span class="str">"REV-01 2"</span> <span class="comment"># Archiva desde Telegram y sincroniza Drive</span>
-$ python3 -m unittest discover tests -v  <span class="comment"># Verifica 0 fugas de credenciales</span></pre>
-        </article>
+        </div>
+        <div class="case-body-col">
+          <h3 class="case-title">Tramitación de Actas Manuscritas (`iSquad`) &amp; Motor Académico SAML (`muse-estudios`)</h3>
+          <p class="case-summary">
+            Dos sistemas de extracción y sincronización desatendida: digitalización de actas arbitrales manuscritas desde foto hasta PDF federativo firmado, y vigilancia de campus virtuales con clasificación automática.
+          </p>
+          <ul class="case-specs">
+            <li><strong>Pipeline iSquad:</strong> Extrae resultados y sanciones de fotos de actas en papel, sube los datos al portal oficial de la federación y retorna el acta PDF firmada por Telegram.</li>
+            <li><strong>Motor Moodle SAML/ADFS:</strong> Descarga incremental de recursos, clasificación con IA, cola interactiva de revisión (<code>REV-01</code>), bloqueo preventivo de 12h ante fallos de login y tests unitarios de sanitización.</li>
+          </ul>
+        </div>
+        <div class="case-code-col">
+          <div class="code-caption"><span>moodle_cli.py &amp; tests // CLI</span><span>SHELL</span></div>
+          <pre class="code-snippet">$ python3 moodle_cli.py tasks
+$ python3 moodle_cli.py sync-resources
+$ python3 moodle_review.py reply <span class="hl">"REV-01 2"</span>
+<span class="ok"># Suite de verificación anti-fuga de credenciales:</span>
+$ python3 -m unittest discover tests -v
+<span class="ok">Ran 12 tests in 0.042s — OK (0 leaks)</span></pre>
+        </div>
+      </article>
+    </section>
 
+    <!-- 03 // MATRIZ TÉCNICA -->
+    <div id="arquitectura" class="sec-header">
+      <div class="sec-num-col">
+        <strong>03 / 04</strong>
+        <span>ESPECIFICACIONES</span>
+      </div>
+      <div class="sec-title-col">
+        <h2>Matriz de capacidades <em>y herramientas de producción.</em></h2>
+        <p>Arquitectura pragmática orientada a coste mínimo de infraestructura, baja latencia y mantenimiento autónomo.</p>
+      </div>
+    </div>
+
+    <section class="matrix-grid" aria-label="Stack técnico por capas">
+      <div class="matrix-col">
+        <span class="matrix-col-num">CAPA 01 // MODELOS &amp; AGENTES</span>
+        <h3>IA Aplicada &amp; Visión</h3>
+        <ul class="matrix-list">
+          <li><span>OpenAI / DeepSeek / Claude</span><span>API</span></li>
+          <li><span>Qwen-VL &amp; Gemini Flash</span><span>OCR</span></li>
+          <li><span>Structured Tool Calling</span><span>JSON</span></li>
+          <li><span>faster-whisper / whisper.cpp</span><span>STT</span></li>
+          <li><span>OmniVoice Local (Port 3900)</span><span>TTS</span></li>
+          <li><span>Model Context Protocol</span><span>MCP</span></li>
+        </ul>
+      </div>
+      <div class="matrix-col">
+        <span class="matrix-col-num">CAPA 02 // BACKEND &amp; FLUJOS</span>
+        <h3>Automatización &amp; APIs</h3>
+        <ul class="matrix-list">
+          <li><span>Python (FastAPI · Flask)</span><span>CORE</span></li>
+          <li><span>Node.js (Express)</span><span>BOTS</span></li>
+          <li><span>n8n Self-Hosted (Docker)</span><span>FLOW</span></li>
+          <li><span>WhatsApp Business Cloud API</span><span>META</span></li>
+          <li><span>Telegram Bot API</span><span>OPS</span></li>
+          <li><span>Scraping &amp; Auth SAML/ADFS</span><span>WEB</span></li>
+        </ul>
+      </div>
+      <div class="matrix-col">
+        <span class="matrix-col-num">CAPA 03 // INFRAESTRUCTURA</span>
+        <h3>Datos &amp; Despliegue 24/7</h3>
+        <ul class="matrix-list">
+          <li><span>SQLite / SQLAlchemy</span><span>DATA</span></li>
+          <li><span>macOS launchd (22 Daemons)</span><span>HOST</span></li>
+          <li><span>Cloudflare Tunnels &amp; Pages</span><span>NET</span></li>
+          <li><span>Watchdogs &amp; Failover 429</span><span>SRE</span></li>
+          <li><span>Git / GitHub Actions</span><span>CI/CD</span></li>
+          <li><span>Typst Automated Reports</span><span>DOCS</span></li>
+        </ul>
+      </div>
+      <div class="matrix-col">
+        <span class="matrix-col-num">CAPA 04 // OPERACIONES</span>
+        <h3>Ingeniería &amp; Procesos</h3>
+        <ul class="matrix-list">
+          <li><span>Ingeniería Mecánica (UVa)</span><span>B.Sc</span></li>
+          <li><span>Gestión Calidad y PRL</span><span>GCPP</span></li>
+          <li><span>Auditoría ROI en Pymes</span><span>B2B</span></li>
+          <li><span>Claude Code &amp; Codex Workflows</span><span>DEV</span></li>
+          <li><span>Benchmarks TTFT / Latencia</span><span>PERF</span></li>
+          <li><span>Obsidian Knowledge Ops</span><span>PKM</span></li>
+        </ul>
       </div>
     </section>
 
-    <!-- STACK & VALUE PROPOSITION -->
-    <section id="stack">
-      <span class="sec-tag">Capacidades Técnicas</span>
-      <h2 class="sec-title">Qué aporto a tu empresa desde el primer día</h2>
-      <p class="sec-desc">
-        No soy un perfil teórico: utilizo ingeniería asistida por IA (Claude Code, Codex, Antigravity) junto con Python, Node.js y n8n para entregar en días automatizaciones que antes llevaban meses.
-      </p>
-
-      <div class="stack-grid">
-        <div class="stack-card">
-          <h3>🧠 IA Aplicada &amp; Agentes</h3>
-          <div class="stack-tags">
-            <span>OpenAI / DeepSeek / Claude APIs</span>
-            <span>Qwen-VL &amp; Gemini Vision OCR</span>
-            <span>Tool Calling &amp; JSON Schemas</span>
-            <span>faster-whisper / whisper.cpp</span>
-            <span>OmniVoice (TTS Local)</span>
-            <span>Model Context Protocol (MCP)</span>
-            <span>Ollama Local</span>
-            <span>Failover &amp; Latencia TTFT</span>
-          </div>
+    <!-- 04 // DESPACHO DE CONTACTO -->
+    <section class="dispatch-block" aria-label="Contacto directo y descarga de CV">
+      <div class="dispatch-left">
+        <div class="dossier-meta">
+          <span class="dossier-tag">DISPONIBILIDAD INMEDIATA</span>
+          <span>VALLADOLID · HÍBRIDO · REMOTO</span>
         </div>
-
-        <div class="stack-card">
-          <h3>⚙️ Automatización &amp; Backend</h3>
-          <div class="stack-tags">
-            <span>Python (FastAPI · Flask)</span>
-            <span>Node.js (Express)</span>
-            <span>n8n (Docker Self-Hosted)</span>
-            <span>Make / Webhooks REST</span>
-            <span>WhatsApp Business Cloud API</span>
-            <span>Telegram Bot API</span>
-            <span>SQLite / SQLAlchemy</span>
-            <span>Scraping &amp; Auth SAML/ADFS</span>
-          </div>
+        <h2>¿Necesitas automatizar procesos reales <em>sin burocracia técnica?</em></h2>
+        <p>
+          Disponible para incorporación en equipos técnicos o industriales en Valladolid (Parque Tecnológico de Boecillo, San Cristóbal, Argales) y en remoto para toda España. Puedo hacerte una demostración en directo de cualquiera de estos 22 servicios desde mi teléfono en menos de 2 minutos.
+        </p>
+        <div class="action-strip">
+          <a href="CV_Javier_Delgado_IA.pdf" download class="tactile-btn primary">
+            <span>DESCARGAR CV EN PDF (1 PÁGINA A4)</span>
+            <span class="arrow">↘</span>
+          </a>
+          <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20dossier%20en%20esaria.es%2Fjavier%20y%20me%20gustar%C3%ADa%20hablar%20contigo" target="_blank" rel="noopener" class="tactile-btn">
+            <span>ABRIR WHATSAPP DIRECTO</span>
+            <span class="arrow">↗</span>
+          </a>
         </div>
+      </div>
 
-        <div class="stack-card">
-          <h3>🏭 Operaciones, Calidad &amp; Despliegue</h3>
-          <div class="stack-tags">
-            <span>Cloudflare Tunnels &amp; Pages</span>
-            <span>macOS launchd / Linux Bash</span>
-            <span>Git &amp; GitHub</span>
-            <span>Ingeniería Mecánica (UVa)</span>
-            <span>Gestión de Calidad y PRL</span>
-            <span>Informes Técnicos en Typst</span>
-            <span>Auditoría de Procesos B2B</span>
-            <span>Obsidian Knowledge Ops</span>
-          </div>
-        </div>
+      <div class="dispatch-right">
+        <a href="https://wa.me/34614918261" target="_blank" rel="noopener" class="contact-line">
+          <span>TELÉFONO / WHATSAPP</span>
+          <span>+34 614 91 82 61 ↗</span>
+        </a>
+        <a href="mailto:hola@esaria.es" class="contact-line">
+          <span>CORREO CORPORATIVO</span>
+          <span>hola@esaria.es ↗</span>
+        </a>
+        <a href="mailto:deljavierher@gmail.com" class="contact-line">
+          <span>CORREO PERSONAL</span>
+          <span>deljavierher@gmail.com ↗</span>
+        </a>
+        <a href="https://github.com/deljavierher-web" target="_blank" rel="noopener" class="contact-line">
+          <span>REPOSITORIOS GITHUB</span>
+          <span>github.com/deljavierher-web ↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/javier-delgado-hern%C3%A1ndez-esaria" target="_blank" rel="noopener" class="contact-line">
+          <span>PERFIL LINKEDIN</span>
+          <span>/in/javier-delgado-hernández-esaria ↗</span>
+        </a>
       </div>
     </section>
 
-    <!-- CTA BANNER -->
-    <div class="cta-banner">
-      <h2>¿Hablamos sobre cómo automatizar procesos en tu equipo?</h2>
-      <p>
-        Disponible para incorporación en empresas de <strong>Valladolid</strong> (Parque Tecnológico de Boecillo, San Cristóbal, Argales o centro) y en modalidad <strong>100% remota</strong>. Puedo enseñarte cualquiera de estos sistemas funcionando en vivo desde mi móvil en 2 minutos.
-      </p>
-      <div class="hero-cta" style="justify-content:center; margin-bottom:0">
-        <a href="CV_Javier_Delgado_IA.pdf" download class="btn btn-primary">📄 Descargar CV Completo (PDF)</a>
-        <a href="https://wa.me/34614918261?text=Hola%20Javier%2C%20he%20visto%20tu%20portfolio%20en%20esaria.es%2Fjavier%20y%20me%20gustar%C3%ADa%20hablar%20contigo" target="_blank" rel="noopener" class="btn btn-wa">💬 Escribir por WhatsApp</a>
-        <a href="mailto:hola@esaria.es" class="btn btn-outline">✉️ Enviar Email</a>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>Javier Delgado Hernández · Valladolid, España · <a href="https://esaria.es" style="color:var(--violet-soft)">EsarIA (esaria.es)</a> · <a href="https://github.com/deljavierher-web" style="color:var(--violet-soft)">GitHub @deljavierher-web</a></p>
-    </div>
-  </footer>
+    <footer class="footer-bar">
+      <span>JAVIER DELGADO HERNÁNDEZ // ESARIA AUTOMATIZACIÓN APLICADA</span>
+      <span>VALLADOLID, ESPAÑA [41°39′N 04°43′W]</span>
+    </footer>
+  </div>
 
   <script src="app.js" defer></script>
 </body>
